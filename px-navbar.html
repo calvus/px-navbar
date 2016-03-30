@@ -1,0 +1,90 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="stylesheet" href="http://predixdev.github.io/px-library-design/css/style.css">
+<!--
+## Usage
+To use this component in your custom component do the following:
+```
+<dom-module id="demo-view">
+  <template>
+  </template>
+</dom-module>
+<script>
+  Polymer({
+    is: 'demo-view',
+    behaviors:['pxNavbarBehavior']
+  });
+</script>
+```
+@element component.html
+@blurb px-navbar Element description
+@demo demo.html
+@homepage index.html
+-->
+<dom-module id="px-navbar">
+  <link rel="stylesheet" href="px-navbar.css">
+  <style>
+    :host .navbar--dark .navbar__button{
+      color: #fff !important;
+    }
+    :host .navbar--primary .navbar__button{
+      color: #fff !important;
+    }
+  </style>
+  <template>
+    <div class="navbar flex flex--middle">
+    	<div class="navbar__left flex flex__item flex--left">
+    		<button class="navbar__button">Label</button>
+    	</div>
+    	<div class="navbar__center flex__item">
+    		<span class="color-auto title no-margin no-padding font-normal">{{title}}</span>
+    	</div>
+    	<div class="navbar__right flex flex__item flex--right">
+    		<button class="navbar__button">Label</button>
+    	</div>
+    </div>
+
+  </template>
+  <script>
+    Polymer({
+      is: 'px-navbar',
+      properties: {
+        title: {
+          type: String,
+          value: 'Navbar Title'
+        },
+
+        theme: {
+          type: String
+        },
+
+        showMenuBtn:{
+          type: Boolean,
+          value: true
+        },
+
+        back : {
+          type : Boolean,
+          value : false,
+        },
+
+        dynamicNavbar : {
+          type : Boolean,
+          value : false,
+        }
+      },
+      created: function(){
+
+      },
+      attached: function(){
+        if(this.theme){
+          console.log('attaching theme', this.theme);
+          this.toggleClass('navbar--' + this.theme, true, Polymer.dom(this.root).querySelector('.navbar'));
+        }
+      },
+      toggleMenu: function(){
+        return this.fire('px-toggle-menu', this);
+      }
+    });
+
+  </script>
+</dom-module>

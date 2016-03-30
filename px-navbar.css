@@ -1,0 +1,106 @@
+/*
+bem model:
+
+navbar
+	--fixed
+	--dark
+	--light
+	navbar__toggle
+		navbar__toggle__button
+	navbar__center
+		navbar__center__title
+		navbar__center__subtitle
+
+	navbar__button
+		--left
+		--right
+
+	navbar__left
+		navbar__left__button
+
+	navbar__right
+		navbar-ui__right__button
+
+*/
+.navbar {
+	-moz-transition: all .3 ease-in-out;
+	-webkit-transition: all .3 ease-in-out;
+	transition: all .3  ease-in-out;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  position: relative;
+  z-index: 200;
+  color: #1f1f21;
+  font-weight: 400;
+  font-size: 17px;
+  box-sizing: border-box;
+  background-clip: padding-box;
+  white-space: nowrap;
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-image: -webkit-linear-gradient(90deg, #ddd, #ddd 50%, transparent 50%);
+  background-image: linear-gradient(0deg, #ddd, #ddd 50%, transparent 50%);
+  height: 45px;
+}
+.navbar--primary {
+  background-color: #0f5fb6;
+  color: #fff;
+}
+.navbar--chrome {
+  background-color: #efeff4;
+}
+.navbar--alt {
+  background-color: #888;
+}
+.navbar--dark {
+  background-color: #242326;
+  color: #fff;
+}
+.navbar__center {
+  text-align: center;
+  padding: 10px 0;
+}
+.navbar__right {
+  padding: 0 8px;
+}
+.navbar__left {
+  padding: 0 8px;
+}
+.navbar__button {
+  padding: 4px 10px;
+  letter-spacing: 0;
+  text-shadow: 0 1px none;
+  background-color: transparent;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  font-weight: 400;
+  font-size: 17px;
+  -webkit-transition: none;
+  transition: none;
+  vertical-align: middle;
+  box-shadow: none;
+}
+.navbar__button:active {
+  background-color: transparent;
+  -webkit-transition: none;
+  transition: none;
+  opacity: 0.2;
+}
+.navbar__button:disabled, .navbar__button[disabled] {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+.navbar__button:focus {
+  outline: 0;
+  -webkit-transition: none;
+  transition: none;
+}
+.navbar__button:hover {
+  box-shadow: none;
+  -webkit-transition: none;
+  transition: none;
+}

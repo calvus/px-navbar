@@ -1,27 +1,38 @@
 <html>
 <head>
   <title>px navbar demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
   <!-- TODO: Dependencies -->
   <script src="../webcomponentsjs/webcomponents-lite.min.js"></script>
   <link rel="import" href="../polymer/polymer.html">
+  <link rel="import" href="../px-example/px-example.html">
 
 
   <!-- TODO: pxm components -->
-  <link rel="import" href="component.html">
+  <link rel="import" href="px-navbar.html">
 
 </head>
-<body>
+<body class="viewport">
 
-<!-- TODO: px-view docs -->
-<h2>px navbar</h2>
-<p>The px navbar tag enables.</p>
-
-
-<px-navbar id="test"></px-navbar>
+  <div class="">
+    <!-- TODO: px-view docs -->
+    <h2>px navbar</h2>
+    <p>The px navbar tag enables.</p>
 
 
 
+    <px-example>
+      <px-navbar id="navbar1" title="Navbar Title"></px-navbar>
+      <br>
+      <px-navbar id="navbar2" title="Navbar Title" theme="chrome"></px-navbar>
+      <br>
+      <px-navbar id="navbar3" title="Navbar Title" theme="dark"></px-navbar>
+    </px-example>
 
+
+
+
+  </div>
 </body>
 </html>
