@@ -1,0 +1,30 @@
+{
+  "name": "px-navbar",
+  "version": "0.0.1",
+  "authors": [
+    ""
+  ],
+  "description": "A web component.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.build.ge.com/PredixComponents/px-log.git"
+  },
+  "main": "dist/px navbar.html",
+  "keywords": [
+    "px", "web-component"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "~1.0.9"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#~1.0.5"
+  }
+}

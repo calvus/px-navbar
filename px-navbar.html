@@ -1,0 +1,142 @@
+<!--
+## Usage
+To use this component in your custom component do the following:
+```
+
+```
+@element component.html
+@blurb px-navbar Element description
+@demo demo.html
+@homepage index.html
+-->
+<dom-module id="px-navbar">
+  <link rel="stylesheet" href="px-navbar.css">
+  <style>
+    :host .navbar--dark ::content .navbar__button,
+    :host .navbar--primary ::content  .navbar__button {
+      color: #fff !important;
+    }
+
+    :host .navbar--dark .navbar__hamburger__icon,
+    :host .navbar--primary .navbar__hamburger__icon {
+      background-color: #fff !important;
+    }
+
+    :host.px-sidebar-open .hamburger-1 {
+      -webkit-transform: translate3d(0, 0, 0) rotate(45deg);
+      transform: translate3d(0, 0, 0) rotate(45deg);
+    }
+
+    :host.px-sidebar-open .hamburger-2 {
+      -webkit-transform: translate3d(0, 0, 0) scale(0.1, 1);
+      transform: translate3d(0, 0, 0) scale(0.1, 1);
+    }
+
+    :host.px-sidebar-open .hamburger-3 {
+      -webkit-transform: translate3d(0, 0, 0) rotate(-45deg);
+      transform: translate3d(0, 0, 0) rotate(-45deg);
+    }
+
+
+  </style>
+  <template>
+    <div class="navbar flex flex--middle">
+
+      <!-- back btn-->
+      <template is="dom-if" if="{{back}}">
+        <div class="left">
+          <button class="navbar__button navbar__button--back" on-click="handleBackClick">
+            <i class="icon ion-ios-arrow-back"></i>
+            <span>{{backBtnLabel}}</span>
+          </button>
+        </div>
+      </template>
+
+      <!-- menu btn-->
+      <template is="dom-if" if="{{menu}}">
+        <div class="left">
+          <button class="navbar__button navbar__hamburger position-relative" on-click="toggleSidebar">
+            <i class="icon">
+              <span class="navbar__hamburger__icon navbar__hamburger__icon--1"></span>
+              <span class="navbar__hamburger__icon navbar__hamburger__icon--2"></span>
+              <span class="navbar__hamburger__icon navbar__hamburger__icon--3"></span>
+            </i>
+          </button>
+        </div>
+      </template>
+
+      <!-- title/subtitle -->
+      <div class="navbar__center">
+        <span class="color-auto navbar__center__title">{{title}}</span>
+        <span class="color-auto navbar__center__subtitle">{{subtitle}}</span>
+      </div>
+
+      <!-- content -->
+      <div class="navbar__content">
+        <content></content>
+      </div>
+
+
+
+    </div>
+  </template>
+  <script>
+    Polymer({
+      is: 'px-navbar',
+      properties: {
+        title: {
+          type: String,
+          value: 'Navbar Title'
+        },
+
+        subtitle: {
+          type: String
+        },
+
+        backBtnLabel: {
+          type: String,
+          value: 'Back'
+        },
+
+        back: {
+          type: Boolean,
+          value: false
+        },
+
+
+        theme: {
+          type: String
+        },
+
+        showMenuBtn: {
+          type: Boolean,
+          value: true
+        },
+
+        menu: {
+          type: Boolean,
+          value: false
+        },
+
+        dynamicNavbar: {
+          type: Boolean,
+          value: false,
+        }
+      },
+      created: function() {
+
+      },
+      attached: function() {
+        console.warn(this.tagName, 'attached');
+        console.dir(this);
+        if (this.theme) {
+          console.log('attaching theme', this.theme);
+          this.toggleClass('navbar--' + this.theme, true, Polymer.dom(this.root).querySelector('.navbar'));
+        }
+      },
+      toggleMenu: function() {
+        return this.fire('px-toggle-menu', this);
+      }
+    });
+  </script>
+</dom-module>
