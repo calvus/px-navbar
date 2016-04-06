@@ -1,3 +1,5 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="px-navbar-behavior.html">
 <!--
 ## Usage
 To use this component in your custom component do the following:
@@ -12,6 +14,25 @@ To use this component in your custom component do the following:
 <dom-module id="px-navbar">
   <link rel="stylesheet" href="px-navbar.css">
   <style>
+  :host{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;
+  }
+  :host.fixed-bottom{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
+  :host.fixed-top{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+  }
     :host .navbar--dark ::content .navbar__button,
     :host .navbar--primary ::content  .navbar__button {
       color: #fff !important;
@@ -67,8 +88,8 @@ To use this component in your custom component do the following:
 
       <!-- title/subtitle -->
       <div class="navbar__center">
-        <span class="color-auto navbar__center__title">{{title}}</span>
-        <span class="color-auto navbar__center__subtitle">{{subtitle}}</span>
+        <span class="color-auto navbar__center__title" hidden="{{!title}}">{{title}}</span>
+        <span class="color-auto navbar__center__subtitle" hidden="{{!subtitle}}">{{subtitle}}</span>
       </div>
 
       <!-- content -->
@@ -76,67 +97,193 @@ To use this component in your custom component do the following:
         <content></content>
       </div>
 
-
-
     </div>
   </template>
   <script>
     Polymer({
       is: 'px-navbar',
+    //  behaviors: [pxNavbarBehavior],
       properties: {
-        title: {
-          type: String,
-          value: 'Navbar Title'
-        },
+				//The title to display.
+				title: {
+					type: String
+				},
+				//The #id of the sidebar container.
+				sidebarContainer: {
+					type: String
+				},
+				//The #id of the view container.
+				viewContainer: {
+					type: String,
+					notify: true,
+					reflectToAttribute: true
+				},
+				//To show the menu button or not.
+				showMenuBtn: {
+					type: Boolean,
+					value: true
+				},
+				//Fix the pxm--navbar to the top.
+				fixed: {
+					type: Boolean,
+					value: false
+				},
+				//Display open
+				open: {
+					type: Boolean,
+					notify: true,
+					observer: '_openChanged',
+					value: false
+				},
+				//Display sidebar on desktop, hide on mobile/tablet
+				responsive: {
+					type: Boolean,
+					value: false
+				},
+				//Show the menu button
+				menu: {
+					type: Boolean,
+					value: false
+				},
+				//The view containers instance.
+				views: {
+					type: Object,
+					value: {}
+				},
+				//Use a dynamic navbar
+				dynamicNavbar: {
+					type: Boolean,
+					value: false
+				},
+				//To show the back button or not.
+				back: {
+					type: Boolean,
+					value: false,
+					reflectToAttribute: true
+				},
+				//The label for the back button.
+				backText: {
+					type: String,
+					value: 'Back'
+				},
+				//The type of theme to apply.
+				theme: {
+					type: String,
+					notify: true,
+					observer: '_themeChanged',
+					reflectToAttribute: true
+				}
+			},
+			ready: function() {
+				if (this.fixed) {
+					this.toggleClass('fixed-top', true);
+				}
+			},
+			attached: function() {
+				var _this = this;
+				if (_this.sidebarContainer) {
+					_this.sidebar = document.getElementById(_this.sidebarContainer);
+					_this.sidebar.addEventListener('toggle', function() {
+						_this.toggleClass('px-sidebar-open', _this.sidebar.open);
+					});
+				}
 
-        subtitle: {
-          type: String
-        },
-
-        backBtnLabel: {
-          type: String,
-          value: 'Back'
-        },
-
-        back: {
-          type: Boolean,
-          value: false
-        },
+				var parent = this.parentNode;
+				if (parent && parent.localName === 'px-view' || parent.localName === 'px-page') {
+					this.theme = parent.attr('theme');
+					this.title = parent.attr('title');
+					if (parent.viewContainer) {
+						_this.viewContainer = parent.viewContainer.id;
+						_this.views = parent.viewContainer;
+						_this.menu = _this.views.getCurrent().main;
+						//_this.title = _this.views.getCurrent().attr('title');
+					}
+				}
 
 
-        theme: {
-          type: String
-        },
+				if (this.viewContainer) {
+					this.debounce('initViews', function() {
+						_this.views = document.getElementById(_this.viewContainer);
+						_this.menu = _this.views.getCurrent().main;
+						//	_this.title = _this.views.getCurrent().attr('title');
+						_this.views.addEventListener('px:view:change', function(e) {
+							console.log('listening to view change', e);
+							//_this.title = e.detail.title;
+							if (this.views) {
+								_this.debounce('menu', function() {
+									_this.menu = (_this.views.getCurrent().main);
+									_this.back = (!_this.views.getCurrent().main);
+									//_this.backBtnText = (_this.views.prevView ? _this.views.prevView.title : '');
+								}, 50);
+							}
+						});
+					}, 250);
+				}
+			},
 
-        showMenuBtn: {
-          type: Boolean,
-          value: true
-        },
+			//Handle toggling the sidebar.
+			toggleSidebar: function(open) {
+				console.log('toggleSidebar');
+			//	this.open = open || !this.open;
+				if (this.sidebar && this.sidebar.toggle) {
+					this.sidebar.toggle();
+					if (this.views) {
+						this.views.toggleClass('px-sidebar-open');
+					}
+				}
+			},
+			//Handle when the back button is clicked.
+			handleBackClick: function() {
+				if (this.viewContainer && this.views) {
+					this.views.back();
+					//this.title = model.item.title;
+				}
+			},
+			//Handle when a view from the viewContainer is changed.
+			handleViewChange: function() {
+				if (this.viewContainer && this.views) {
+					this.back = (this.views.getCurrent() !== this.views.main);
+				}
+			},
+			//Toggle the display of the navbar.
+			toggle: function(display) {
+				this.hidden = !this.hidden;
+				this.toggleClass('hidden', this.hidden);
+			},
+			//Handle getting the current view, if there is a viewContainer
+			getCurrent: function() {
+				if (this.viewContainer && this.views) {
+					return this.views.getCurrent();
+				}
+			},
+			_registerOffclick: function() {
+				this.views.addEventListener('click', this.toggleMenu);
+			},
+			_deregisterOffclick: function() {
+				this.views.removeEventListener('click', this.toggleMenu);
+			},
+			_openChanged: function(newVal, oldVal) {
+				var _this = this;
+				console.log('_openChanged', newVal, oldVal);
+				if(_this.sidebar && _this.sidebar.toggle){
+					this.debounce('openSidebar', function(){
+						_this.sidebar.toggle(newVal);
+					}, 100);
+				}
 
-        menu: {
-          type: Boolean,
-          value: false
-        },
+			},
+			_themeChanged: function(newVal, oldVal) {
+        console.log('Theme changed', 'newVal', newVal, 'oldVal', oldVal);
+				var _this = this;
 
-        dynamicNavbar: {
-          type: Boolean,
-          value: false,
+        if (oldVal) {
+          this.toggleClass('navbar--' + oldVal, false, this.$$('.navbar'));
+          //_this.removeClass('background-color-' + oldVal);
         }
-      },
-      created: function() {
-
-      },
-      attached: function() {
-        console.warn(this.tagName, 'attached');
-        console.dir(this);
-        if (this.theme) {
-          console.log('attaching theme', this.theme);
-          this.toggleClass('navbar--' + this.theme, true, Polymer.dom(this.root).querySelector('.navbar'));
+        if(newVal){
+          this.toggleClass('navbar--' + newVal, true, this.$$('.navbar'));
         }
-      },
-      toggleMenu: function() {
-        return this.fire('px-toggle-menu', this);
-      }
+			}
     });
   </script>
 </dom-module>
