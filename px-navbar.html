@@ -108,6 +108,10 @@ To use this component in your custom component do the following:
 				title: {
 					type: String
 				},
+				//The title to display.
+				subtitle: {
+					type: String
+				},
 				//The #id of the sidebar container.
 				sidebarContainer: {
 					type: String
@@ -145,11 +149,7 @@ To use this component in your custom component do the following:
 					type: Boolean,
 					value: false
 				},
-				//The view containers instance.
-				views: {
-					type: Object,
-					value: {}
-				},
+
 				//Use a dynamic navbar
 				dynamicNavbar: {
 					type: Boolean,
@@ -162,7 +162,7 @@ To use this component in your custom component do the following:
 					reflectToAttribute: true
 				},
 				//The label for the back button.
-				backText: {
+				backBtnLabel: {
 					type: String,
 					value: 'Back'
 				},
@@ -188,61 +188,53 @@ To use this component in your custom component do the following:
 					});
 				}
 
-				var parent = this.parentNode;
-				if (parent && parent.localName === 'px-view' || parent.localName === 'px-page') {
-					this.theme = parent.attr('theme');
-					this.title = parent.attr('title');
-					if (parent.viewContainer) {
-						_this.viewContainer = parent.viewContainer.id;
-						_this.views = parent.viewContainer;
-						_this.menu = _this.views.getCurrent().main;
-						//_this.title = _this.views.getCurrent().attr('title');
-					}
-				}
 
 
 				if (this.viewContainer) {
-					this.debounce('initViews', function() {
-						_this.views = document.getElementById(_this.viewContainer);
-						_this.menu = _this.views.getCurrent().main;
-						//	_this.title = _this.views.getCurrent().attr('title');
-						_this.views.addEventListener('px:view:change', function(e) {
-							console.log('listening to view change', e);
-							//_this.title = e.detail.title;
-							if (this.views) {
-								_this.debounce('menu', function() {
-									_this.menu = (_this.views.getCurrent().main);
-									_this.back = (!_this.views.getCurrent().main);
-									//_this.backBtnText = (_this.views.prevView ? _this.views.prevView.title : '');
-								}, 50);
-							}
-						});
-					}, 250);
+					this.async(function() {
+            _this.viewContainer = document.getElementById(_this.viewContainer);
+            if(!_this.title){
+              _this.title = _this.viewContainer.getCurrent().title;
+            }
+            if(_this.viewContainer){
+              console.warn('Got views', _this.viewContainer);
+              _this.main = _this.viewContainer.getCurrent().main;
+  						//	_this.title = _this.views.getCurrent().attr('title');
+  						_this.viewContainer.addEventListener('px:view:change', function(e) {
+  							//_this.title = e.detail.title;
+                _this.debounce('menu', function() {
+                  _this.main = (_this.viewContainer.getCurrent().main);
+                  _this.back = (_this.viewContainer.getCurrent() !== _this.viewContainer.ViewList[0]);
+                  //_this.backBtnText = (_this.views.prevView ? _this.views.prevView.title : '');
+                }, 200);
+  						});
+            }
+					});
 				}
 			},
 
 			//Handle toggling the sidebar.
 			toggleSidebar: function(open) {
 				console.log('toggleSidebar');
-			//	this.open = open || !this.open;
 				if (this.sidebar && this.sidebar.toggle) {
 					this.sidebar.toggle();
-					if (this.views) {
-						this.views.toggleClass('px-sidebar-open');
+					if (this.viewContainer) {
+						this.viewContainer.toggleClass('px-sidebar-open');
 					}
 				}
 			},
 			//Handle when the back button is clicked.
 			handleBackClick: function() {
-				if (this.viewContainer && this.views) {
-					this.views.back();
+				if (this.viewContainer) {
+					this.viewContainer.back();
+            //this.back = (!this.viewContainer.getCurrent() === this.viewContainer.ViewList[0]);
 					//this.title = model.item.title;
 				}
 			},
 			//Handle when a view from the viewContainer is changed.
 			handleViewChange: function() {
-				if (this.viewContainer && this.views) {
-					this.back = (this.views.getCurrent() !== this.views.main);
+				if (this.viewContainer) {
+					this.back = (this.viewContainer.getCurrent() !== this.viewContainer.main);
 				}
 			},
 			//Toggle the display of the navbar.
@@ -252,19 +244,18 @@ To use this component in your custom component do the following:
 			},
 			//Handle getting the current view, if there is a viewContainer
 			getCurrent: function() {
-				if (this.viewContainer && this.views) {
-					return this.views.getCurrent();
+				if (this.viewContainer) {
+					return this.viewContainer.getCurrent();
 				}
 			},
 			_registerOffclick: function() {
-				this.views.addEventListener('click', this.toggleMenu);
+				this.viewContainer.addEventListener('click', this.toggleMenu);
 			},
 			_deregisterOffclick: function() {
-				this.views.removeEventListener('click', this.toggleMenu);
+				this.viewContainer.removeEventListener('click', this.toggleMenu);
 			},
 			_openChanged: function(newVal, oldVal) {
 				var _this = this;
-				console.log('_openChanged', newVal, oldVal);
 				if(_this.sidebar && _this.sidebar.toggle){
 					this.debounce('openSidebar', function(){
 						_this.sidebar.toggle(newVal);
@@ -273,12 +264,10 @@ To use this component in your custom component do the following:
 
 			},
 			_themeChanged: function(newVal, oldVal) {
-        console.log('Theme changed', 'newVal', newVal, 'oldVal', oldVal);
 				var _this = this;
 
         if (oldVal) {
           this.toggleClass('navbar--' + oldVal, false, this.$$('.navbar'));
-          //_this.removeClass('background-color-' + oldVal);
         }
         if(newVal){
           this.toggleClass('navbar--' + newVal, true, this.$$('.navbar'));
