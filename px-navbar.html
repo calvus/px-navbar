@@ -12,6 +12,12 @@ To use this component in your custom component do the following:
 <dom-module id="px-navbar">
   <link rel="stylesheet" href="px-navbar.css">
   <style>
+  :host{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+  }
     :host .navbar--dark ::content .navbar__button,
     :host .navbar--primary ::content  .navbar__button {
       color: #fff !important;
