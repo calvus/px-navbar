@@ -23,7 +23,7 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "latest",
+    "polymer": "latest"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#~1.0.5",
