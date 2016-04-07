@@ -22,11 +22,13 @@
 			border: none;
 			padding: 0;
 		}
+
 		demo-snippet .demo,
-		.position-relative{
+		.position-relative {
 			position: relative;
 		}
-		.position-relative{
+
+		.position-relative {
 			min-height: 75px;
 		}
 	</style>
@@ -106,7 +108,7 @@
 							</button>
 						</div>
 						<button class="navbar__button navbar__button--icon">
-							<i class="icon ion-ios-plus-empty fa-2x"></i>
+							<i class="fa fa-plus fa-lg"></i>
 						</button>
 					</div>
 				</div>
@@ -149,12 +151,12 @@
 					<div class="navbar__content">
 						<div>
 							<button class="navbar__button navbar__button--icon">
-								<i class="icon ion-navicon fa-2x"></i>
+								<i class="fa fa-navicon fa-lg"></i>
 							</button>
 						</div>
 						<div>
 							<button class="navbar__button navbar__button--icon">
-								<i class="icon ion-ios-plus-empty fa-2x"></i>
+								<i class="fa fa-plus fa-lg"></i>
 							</button>
 						</div>
 					</div>
@@ -169,10 +171,25 @@
 		<h2>Default</h2>
 		<demo-snippet>
 			<template>
-				<px-navbar id="navbar1" title="Navbar Title"></px-navbar>
-				<px-navbar id="navbar2" title="Navbar Title" theme="chrome"></px-navbar>
-				<px-navbar id="navbar3" title="Navbar Title" theme="dark"></px-navbar>
-				<px-navbar id="navbar3" title="Navbar Title" theme="primary"></px-navbar>
+				<div class="position-relative">
+					<px-navbar id="navbar1" title="Navbar Title"></px-navbar>
+				</div>
+				<div class="position-relative">
+					<px-navbar id="navbar2" title="Navbar Title" theme="chrome"></px-navbar>
+				</div>
+				<div class="position-relative">
+					<px-navbar id="navbar3" title="Navbar Title" theme="alt"></px-navbar>
+				</div>
+				<div class="position-relative">
+					<px-navbar id="navbar3" title="Navbar Title" theme="dark"></px-navbar>
+				</div>
+				<div class="position-relative">
+					<px-navbar id="navbar3" title="Navbar Title" theme="primary"></px-navbar>
+				</div>
+
+
+
+
 			</template>
 		</demo-snippet>
 	</div>
@@ -182,10 +199,21 @@
 		<h2>Default with Back Button</h2>
 		<demo-snippet>
 			<template>
-				<px-navbar id="navbar1" title="Navbar Title" back-btn-label="Back" back></px-navbar>
-				<px-navbar id="navbar2" title="Navbar Title" back-btn-label="Back" back theme="chrome"></px-navbar>
-				<px-navbar id="navbar3" title="Navbar Title" back-btn-label="Back" back theme="dark"></px-navbar>
-				<px-navbar id="navbar3" title="Navbar Title" back-btn-label="Back" back theme="primary"></px-navbar>
+				<div class="position-relative">
+					<px-navbar id="navbar1-1" title="Navbar Title" back-btn-label="Back" back></px-navbar>
+				</div>
+				<div class="position-relative">
+					<px-navbar id="navbar2-1" title="Navbar Title" back-btn-label="Back" back theme="chrome"></px-navbar>
+				</div>
+				<div class="position-relative">
+					<px-navbar id="navbar2-1" title="Navbar Title" back-btn-label="Back" back theme="alt"></px-navbar>
+				</div>
+				<div class="position-relative">
+					<px-navbar id="navbar3-1" title="Navbar Title" back-btn-label="Back" back theme="dark"></px-navbar>
+				</div>
+				<div class="position-relative">
+					<px-navbar id="navbar3-1" title="Navbar Title" back-btn-label="Back" back theme="primary"></px-navbar>
+				</div>
 			</template>
 		</demo-snippet>
 	</div>
@@ -195,16 +223,16 @@
 		<demo-snippet>
 			<template>
 				<div class="position-relative">
-					<px-navbar id="navbar1" title="Navbar Title" subtitle="Subtitle"></px-navbar>
+					<px-navbar id="navbar1-2" title="Navbar Title" subtitle="Subtitle"></px-navbar>
 				</div>
 				<div class="position-relative">
-					<px-navbar id="navbar2" title="Navbar Title" subtitle="Subtitle" theme="chrome"></px-navbar>
+					<px-navbar id="navbar2-2" title="Navbar Title" subtitle="Subtitle" theme="chrome"></px-navbar>
 				</div>
 				<div class="position-relative">
-					<px-navbar id="navbar3" title="Navbar Title" subtitle="Subtitle" theme="dark"></px-navbar>
+					<px-navbar id="navbar3-2" title="Navbar Title" subtitle="Subtitle" theme="dark"></px-navbar>
 				</div>
 				<div class="position-relative">
-					<px-navbar id="navbar3" title="Navbar Title" subtitle="Subtitle" theme="primary"></px-navbar>
+					<px-navbar id="navbar3-2" title="Navbar Title" subtitle="Subtitle" theme="primary"></px-navbar>
 				</div>
 
 			</template>
@@ -215,41 +243,64 @@
 		<h2>Default with Buttons</h2>
 		<demo-snippet>
 			<template>
-				<px-navbar id="navbar1" title="Navbar Title">
-					<div>
-						<button class="navbar__button">Label</button>
-					</div>
-					<div>
-						<button class="navbar__button">Label</button>
-					</div>
-				</px-navbar>
-				<px-navbar id="navbar2" title="Navbar Title" theme="chrome">
-					<div>
-						<button class="navbar__button">Label</button>
-					</div>
-					<div>
-						<button class="navbar__button">Label</button>
-					</div>
-				</px-navbar>
-				<px-navbar id="navbar3" title="Navbar Title" theme="dark">
-					<div>
-						<button class="navbar__button">Label</button>
-					</div>
-					<div>
-						<button class="navbar__button">Label</button>
-					</div>
-				</px-navbar>
-				<px-navbar id="navbar3" title="Navbar Title" theme="primary">
-					<div>
-						<button class="navbar__button">Label</button>
-					</div>
-					<div>
-						<button class="navbar__button">Label</button>
-					</div>
-				</px-navbar>
+				<div class="position-relative">
+					<px-navbar id="navbar1-3" title="Navbar Title">
+						<div>
+							<button class="navbar__button">Label</button>
+						</div>
+						<div>
+							<button class="navbar__button">Label</button>
+						</div>
+					</px-navbar>
+				</div>
+
+				<div class="position-relative">
+					<px-navbar id="navbar2-3" title="Navbar Title" theme="chrome">
+						<div>
+							<button class="navbar__button">Label</button>
+						</div>
+						<div>
+							<button class="navbar__button">Label</button>
+						</div>
+					</px-navbar>
+				</div>
+
+				<div class="position-relative">
+					<px-navbar id="navbar2-3" title="Navbar Title" theme="alt">
+						<div>
+							<button class="navbar__button">Label</button>
+						</div>
+						<div>
+							<button class="navbar__button">Label</button>
+						</div>
+					</px-navbar>
+				</div>
+
+				<div class="position-relative">
+					<px-navbar id="navbar3-3" title="Navbar Title" theme="dark">
+						<div>
+							<button class="navbar__button">Label</button>
+						</div>
+						<div>
+							<button class="navbar__button">Label</button>
+						</div>
+					</px-navbar>
+				</div>
+
+				<div class="position-relative">
+					<px-navbar id="navbar4-3" title="Navbar Title" theme="primary">
+						<div>
+							<button class="navbar__button">Label</button>
+						</div>
+						<div>
+							<button class="navbar__button">Label</button>
+						</div>
+					</px-navbar>
+				</div>
 			</template>
 		</demo-snippet>
 	</div>
 
 </body>
+
 </html>

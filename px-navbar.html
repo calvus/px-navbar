@@ -1,11 +1,9 @@
 <!--
-## Usage
-To use this component in your custom component do the following:
 ```
-
+<px-navbar id="navbar1" title="Navbar Title" subtitle="Subtitle"></px-navbar>
 ```
-@element component.html
-@blurb px-navbar Element description
+@element px-navbar.html
+@blurb px-navbar
 @demo demo.html
 @homepage index.html
 -->
@@ -52,7 +50,7 @@ To use this component in your custom component do the following:
       <template is="dom-if" if="{{back}}">
         <div class="left">
           <button class="navbar__button navbar__button--back" on-click="handleBackClick">
-            <i class="icon ion-ios-arrow-back"></i>
+          	<i class="fa fa-angle-left"></i>
             <span>{{backBtnLabel}}</span>
           </button>
         </div>
