@@ -3,17 +3,33 @@
 <head>
 	<title>px navbar demo</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<link rel='stylesheet prefetch' href='http://predixdev.github.io/px-library-design/css/style.css'>
-  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css'>
+
+	<link rel='stylesheet prefetch' href='https://predixdev.github.io/px-library-design/css/style.css'>
+
 
 	<!-- TODO: Dependencies -->
 	<script src="../webcomponentsjs/webcomponents-lite.min.js"></script>
 	<link rel="import" href="../polymer/polymer.html">
-	<link rel="import" href="../px-example/px-example.html">
+	<link rel="import" href="../iron-demo-helpers/demo-snippet.html" />
 
 
 	<!-- TODO: pxm components -->
 	<link rel="import" href="px-navbar.html">
+
+	<style media="screen">
+		.box {
+			background: transparent;
+			border: none;
+			padding: 0;
+		}
+		demo-snippet .demo,
+		.position-relative{
+			position: relative;
+		}
+		.position-relative{
+			min-height: 75px;
+		}
+	</style>
 
 </head>
 
@@ -22,162 +38,218 @@
 	<h1>px-navbar</h1>
 	<p>The px-navbar component is a responsive mobile first navigation bar.</p>
 
-
-
+	<h1>HTML Examples</h1>
 
 	<div class="box box--small u-mb++">
 		<h2>Default</h2>
-		<px-example>
-			<px-navbar id="navbar1" title="Navbar Title"></px-navbar>
-			<px-navbar id="navbar2" title="Navbar Title" theme="chrome"></px-navbar>
-			<px-navbar id="navbar3" title="Navbar Title" theme="dark"></px-navbar>
-			<px-navbar id="navbar3" title="Navbar Title" theme="primary"></px-navbar>
-		</px-example>
+		<demo-snippet>
+			<template>
+				<div class="navbar navbar--default">
+					<div class="navbar__center">
+						<span class="navbar__center__title">Navbar Title</span>
+					</div>
+					<div class="navbar__content"></div>
+				</div>
+			</template>
+		</demo-snippet>
+	</div>
+
+
+	<div class="box box--small u-mb++">
+		<h2>Default with Subtitle</h2>
+		<demo-snippet>
+			<template>
+				<div class="navbar navbar--default">
+					<div class="navbar__center">
+						<span class="navbar__center__title">Navbar Title</span>
+						<span class="navbar__center__subtitle">Subtitle</span>
+					</div>
+				</div>
+			</template>
+		</demo-snippet>
+	</div>
+
+	<div class="box box--small u-mb++">
+		<h2>Default with Back Button</h2>
+		<demo-snippet>
+			<template>
+				<div class="navbar navbar--default">
+					<div class="navbar__center">
+						<span class="navbar__center__title">Navbar Title</span>
+					</div>
+					<div class="navbar__content">
+						<button class="navbar__button navbar__button--back">
+							<i class="fa fa-angle-left"></i>
+							<span>Back</span>
+						</button>
+					</div>
+				</div>
+			</template>
+		</demo-snippet>
+	</div>
+
+
+	<div class="box box--small u-mb++">
+		<h2>Default with Action Button</h2>
+		<demo-snippet>
+			<template>
+				<div class="navbar navbar--default">
+					<div class="navbar__center">
+						<span class="navbar__center__title">Navbar Title</span>
+						<span class="navbar__center__subtitle">Subtitle</span>
+					</div>
+					<div class="navbar__content">
+						<div>
+							<button class="navbar__button navbar__button--back">
+								<i class="fa fa-angle-left"></i>
+								<span>Back</span>
+							</button>
+						</div>
+						<button class="navbar__button navbar__button--icon">
+							<i class="icon ion-ios-plus-empty fa-2x"></i>
+						</button>
+					</div>
+				</div>
+			</template>
+		</demo-snippet>
+	</div>
+
+	<div class="box box--small u-mb++">
+		<h2>Default with Modal Actions</h2>
+		<demo-snippet>
+			<template>
+				<div class="navbar navbar--default">
+					<div class="navbar__center">
+						<span class="navbar__center__title">Navbar Title</span>
+					</div>
+					<div class="navbar__content">
+						<div>
+							<button class="navbar__button navbar__button--back">
+								<i class="fa fa-angle-left"></i>
+								<span>Back</span>
+							</button>
+						</div>
+						<button class="btn btn btn--primary">
+							Done
+						</button>
+					</div>
+				</div>
+			</template>
+		</demo-snippet>
+	</div>
+
+	<div class="box box--small u-mb++">
+		<h2>Default with Buttons</h2>
+		<demo-snippet>
+			<template>
+				<div class="navbar navbar--default">
+					<div class="navbar__center">
+						<span class="navbar__center__title">Navbar Title</span>
+					</div>
+					<div class="navbar__content">
+						<div>
+							<button class="navbar__button navbar__button--icon">
+								<i class="icon ion-navicon fa-2x"></i>
+							</button>
+						</div>
+						<div>
+							<button class="navbar__button navbar__button--icon">
+								<i class="icon ion-ios-plus-empty fa-2x"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</template>
+		</demo-snippet>
+	</div>
+
+
+	<h1>Web Component Examples</h1>
+	<div class="box box--small u-mb++">
+		<h2>Default</h2>
+		<demo-snippet>
+			<template>
+				<px-navbar id="navbar1" title="Navbar Title"></px-navbar>
+				<px-navbar id="navbar2" title="Navbar Title" theme="chrome"></px-navbar>
+				<px-navbar id="navbar3" title="Navbar Title" theme="dark"></px-navbar>
+				<px-navbar id="navbar3" title="Navbar Title" theme="primary"></px-navbar>
+			</template>
+		</demo-snippet>
 	</div>
 
 
 	<div class="box box--small u-mb++">
 		<h2>Default with Back Button</h2>
-		<px-example>
-			<px-navbar id="navbar1" title="Navbar Title" back-btn-label="Back" back></px-navbar>
-			<px-navbar id="navbar2" title="Navbar Title" back-btn-label="Back" back theme="chrome"></px-navbar>
-			<px-navbar id="navbar3" title="Navbar Title" back-btn-label="Back" back theme="dark"></px-navbar>
-			<px-navbar id="navbar3" title="Navbar Title" back-btn-label="Back" back theme="primary"></px-navbar>
-		</px-example>
+		<demo-snippet>
+			<template>
+				<px-navbar id="navbar1" title="Navbar Title" back-btn-label="Back" back></px-navbar>
+				<px-navbar id="navbar2" title="Navbar Title" back-btn-label="Back" back theme="chrome"></px-navbar>
+				<px-navbar id="navbar3" title="Navbar Title" back-btn-label="Back" back theme="dark"></px-navbar>
+				<px-navbar id="navbar3" title="Navbar Title" back-btn-label="Back" back theme="primary"></px-navbar>
+			</template>
+		</demo-snippet>
 	</div>
 
 	<div class="box box--small u-mb++">
 		<h2>Default with Sub Title</h2>
-		<px-example>
-			<px-navbar id="navbar1" title="Navbar Title" subtitle="Subtitle"></px-navbar>
-			<px-navbar id="navbar2" title="Navbar Title" subtitle="Subtitle" theme="chrome"></px-navbar>
-			<px-navbar id="navbar3" title="Navbar Title" subtitle="Subtitle" theme="dark"></px-navbar>
-			<px-navbar id="navbar3" title="Navbar Title" subtitle="Subtitle" theme="primary"></px-navbar>
-		</px-example>
+		<demo-snippet>
+			<template>
+				<div class="position-relative">
+					<px-navbar id="navbar1" title="Navbar Title" subtitle="Subtitle"></px-navbar>
+				</div>
+				<div class="position-relative">
+					<px-navbar id="navbar2" title="Navbar Title" subtitle="Subtitle" theme="chrome"></px-navbar>
+				</div>
+				<div class="position-relative">
+					<px-navbar id="navbar3" title="Navbar Title" subtitle="Subtitle" theme="dark"></px-navbar>
+				</div>
+				<div class="position-relative">
+					<px-navbar id="navbar3" title="Navbar Title" subtitle="Subtitle" theme="primary"></px-navbar>
+				</div>
+
+			</template>
+		</demo-snippet>
 	</div>
 
 	<div class="box box--small u-mb++">
 		<h2>Default with Buttons</h2>
-		<px-example>
-			<px-navbar id="navbar1" title="Navbar Title">
-				<div>
-					<button class="navbar__button">Label</button>
-				</div>
-				<div>
-					<button class="navbar__button">Label</button>
-				</div>
-			</px-navbar>
-			<px-navbar id="navbar2" title="Navbar Title" theme="chrome">
-				<div>
-					<button class="navbar__button">Label</button>
-				</div>
-				<div>
-					<button class="navbar__button">Label</button>
-				</div>
-			</px-navbar>
-			<px-navbar id="navbar3" title="Navbar Title" theme="dark">
-				<div>
-					<button class="navbar__button">Label</button>
-				</div>
-				<div>
-					<button class="navbar__button">Label</button>
-				</div>
-			</px-navbar>
-			<px-navbar id="navbar3" title="Navbar Title" theme="primary">
-				<div>
-					<button class="navbar__button">Label</button>
-				</div>
-				<div>
-					<button class="navbar__button">Label</button>
-				</div>
-			</px-navbar>
-		</px-example>
+		<demo-snippet>
+			<template>
+				<px-navbar id="navbar1" title="Navbar Title">
+					<div>
+						<button class="navbar__button">Label</button>
+					</div>
+					<div>
+						<button class="navbar__button">Label</button>
+					</div>
+				</px-navbar>
+				<px-navbar id="navbar2" title="Navbar Title" theme="chrome">
+					<div>
+						<button class="navbar__button">Label</button>
+					</div>
+					<div>
+						<button class="navbar__button">Label</button>
+					</div>
+				</px-navbar>
+				<px-navbar id="navbar3" title="Navbar Title" theme="dark">
+					<div>
+						<button class="navbar__button">Label</button>
+					</div>
+					<div>
+						<button class="navbar__button">Label</button>
+					</div>
+				</px-navbar>
+				<px-navbar id="navbar3" title="Navbar Title" theme="primary">
+					<div>
+						<button class="navbar__button">Label</button>
+					</div>
+					<div>
+						<button class="navbar__button">Label</button>
+					</div>
+				</px-navbar>
+			</template>
+		</demo-snippet>
 	</div>
-
-
-
-	<div class="box box--small u-mb++">
-		<h2>Default</h2>
-		<div class="navbar navbar--chrome">
-			<div class="navbar__center">
-				<span class="navbar__center__title">Navbar Title</span>
-			</div>
-			<div class="navbar__content">
-
-			</div>
-		</div>
-	</div>
-
-
-	<div class="box box--small u-mb++">
-		<h2>Default with Back Button</h2>
-		<div class="navbar navbar--chrome">
-			<div class="navbar__center">
-				<span class="navbar__center__title">Navbar Title</span>
-			</div>
-			<div class="navbar__content">
-				<button class="navbar__button navbar__button--back">
-					<i class="icon ion-chevron-left"></i>
-					<span>Back</span>
-				</button>
-			</div>
-		</div>
-	</div>
-
-	<div class="box box--small u-mb++">
-		<h2>Default with Subtitle</h2>
-		<div class="navbar navbar--chrome flex flex--middle">
-
-			<div class="navbar__center">
-				<span class="navbar__center__title">Navbar Title</span>
-				<span class="navbar__center__subtitle">Subtitle</span>
-			</div>
-		</div>
-	</div>
-
-	<div class="box box--small u-mb++">
-		<h2>Default with Action Button</h2>
-		<div class="navbar navbar--chrome">
-			<div class="navbar__center">
-				<span class="navbar__center__title">Navbar Title</span>
-				<span class="navbar__center__subtitle">Subtitle</span>
-			</div>
-			<div class="navbar__content">
-				<div>
-					<button class="navbar__button navbar__button--back">
-						<i class="icon ion-chevron-left"></i>
-						<span>Back</span>
-					</button>
-				</div>
-				<button class="navbar__button navbar__button--icon">
-					<i class="icon ion-ios-plus-empty fa-2x"></i>
-				</button>
-			</div>
-		</div>
-	</div>
-
-	<div class="box box--small u-mb++">
-		<h2>Default with Buttons</h2>
-		<div class="navbar navbar--chrome">
-			<div class="navbar__center">
-				<span class="navbar__center__title">Navbar Title</span>
-			</div>
-			<div class="navbar__content">
-				<div>
-					<button class="navbar__button navbar__button--icon">
-						<i class="icon ion-navicon fa-2x"></i>
-					</button>
-				</div>
-				<div>
-					<button class="navbar__button navbar__button--icon">
-						<i class="icon ion-ios-plus-empty fa-2x"></i>
-					</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
 
 </body>
-
 </html>

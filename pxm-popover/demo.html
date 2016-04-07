@@ -1,0 +1,40 @@
+<html class="pxm">
+<head>
+  <script src="../../../../webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="../../../../polymer/polymer.html">
+  <link rel="import" href="../../../dist/px-mobile.min.html">
+  <link rel="import" href="../pxm-example/component.html">
+  <title>pxm popover demo</title>
+
+
+
+
+
+</head>
+<body>
+  <pxm-example>
+    <pxm-example-device>
+      <div class="position-relative height-400 background-color-primary">
+        <pxm-navbar id="navbar" theme="chrome" title="Navbar">
+          <button onclick="popover1.toggle()">Open 1</button>
+          <button onclick="popover2.toggle()">Open 2</button>
+
+        </pxm-navbar>
+        <section class="view">
+          <pxm-popover id="popover1" title="Test" position="bottom">
+            <div class="padding-20">
+              This is popover content.
+            </div>
+          </pxm-popover>
+          <pxm-popover id="popover2" title="Test" position="bottom">
+            <div class="padding-20">
+              This is popover content.
+            </div>
+          </pxm-popover>
+        </section>
+      </div>
+
+    </pxm-example-device>
+  </pxm-example>
+</body>
+</html>

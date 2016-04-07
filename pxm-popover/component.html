@@ -1,0 +1,63 @@
+<!--
+## Usage
+To use this component:
+```
+<pxm-template id="feed.html">
+  <pxm-toolbar>
+    <div class="center">Feed</div>
+  </pxm-toolbar>
+
+  <p style="padding-top: 100px; color: #999; text-align: center">Page Contents</p>
+</pxm-template>
+```
+@element component.html
+@blurb pxm-popover Element description
+@demo demo.html
+@homepage index.html
+-->
+<dom-module id="pxm-popover">
+  <style>
+    :host .popover, :host .popover-mask {
+      display: none;
+    }
+    :host.open .popover, :host.open .popover-mask{
+      display: block;
+    }
+  </style>
+  <template>
+    <div class="popover-mask"></div>
+    <div class="popover">
+      <div class="arrow top"></div>
+      <div class="content">
+        <content></content>
+      </div>
+    </div>
+  </template>
+  <script>
+    Polymer({
+      is: 'pxm-popover',
+      properties: {
+        title: {
+          type: String
+        },
+        isOpen: {
+          type: Boolean
+        },
+        direction:{
+          type: String,
+          value: 'bottom'
+        }
+      },
+      attached: function() {
+        console.warn(this.tagName, 'attached');
+        if(this.direction){
+          this.querySelector('.popover').toggleClass(this.direction);
+        }
+      },
+      toggle: function(){
+        this.isOpen = !this.isOpen;
+        this.toggleClass('open', this.isOpen);
+      }
+    });
+  </script>
+</dom-module>
