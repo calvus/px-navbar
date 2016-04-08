@@ -2,7 +2,9 @@
 const gulp = require('gulp');
 const pkg = require('./package.json');
 const $ = require('gulp-load-plugins')();
+const clean = require('gulp-clean');
 const gulpSequence = require('gulp-sequence');
+
 const sassdoc = require('sassdoc');
 const importOnce = require('node-sass-import-once');
 
@@ -35,7 +37,7 @@ gulp.task('sassdoc', function () {
 gulp.task('clean', function () {
   return gulp.src(['.tmp', 'css'], {
     read: false
-  }).pipe($.clean());
+  }).pipe(clean());
 });
 
 gulp.task('sass', function () {

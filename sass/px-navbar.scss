@@ -24,219 +24,187 @@ navbar
 */
 /// @access public
 @mixin element($element) {
-  &__#{$element} {
-    @content;
-  }
+		&__#{$element} {
+				@content;
+		}
 }
 /// @access public
 @mixin modifier($modifier) {
-  &--#{$modifier} {
-    @content;
-  }
+		&--#{$modifier} {
+				@content;
+		}
 }
 /// @alias element
 @mixin e($element) {
-  @include element($element) {
-    @content;
-  }
+		@include element($element) {
+				@content;
+		}
 }
 /// @alias modifier
 @mixin m($modifier) {
-  @include modifier($modifier) {
-    @content;
-  }
+		@include modifier($modifier) {
+				@content;
+		}
 }
 /// Centerer mixin to center object on screen.
 /// @param {Boolean} $horizontal - Align horizontal
 /// @param {Boolean} $vertical - Align vertical
 /// @access public
 @mixin centerer($horizontal: true, $vertical: true) {
-  position: absolute;
-  @if ($horizontal and $vertical) {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  @else if ($horizontal) {
-    left: 50%;
-    transform: translate(-50%, 0);
-  }
-  @else if ($vertical) {
-    top: 50%;
-    transform: translate(0, -50%);
-  }
+		position: absolute;
+		@if ($horizontal and $vertical) {
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+		}
+		@else if ($horizontal) {
+				left: 50%;
+				transform: translate(-50%, 0);
+		}
+		@else if ($vertical) {
+				top: 50%;
+				transform: translate(0, -50%);
+		}
 }
-
 ///px-navbar vars
-
-$navbar-font-color:#222;
-
-
-$navbar-default-background-color:#fff;
-$navbar-default-font-color:#1f1f21;
-
-$navbar-chrome-background-color:#efeff4;
-$navbar-chrome-font-color:#1f1f21;
-
-$navbar-alt-background-color:#888;
-$navbar-alt-font-color:#1f1f21;
-
-$navbar-dark-background-color:#242326;
-$navbar-dark-font-color:#fff;
-
-$navbar-primary-background-color:#0f5fb6;
-$navbar-primary-font-color:#fff;
-
+$navbar-font-color: #222;
+$navbar-default-background-color: #fff;
+$navbar-default-font-color: #1f1f21;
+$navbar-chrome-background-color: #efeff4;
+$navbar-chrome-font-color: #1f1f21;
+$navbar-alt-background-color: #888;
+$navbar-alt-font-color: #1f1f21;
+$navbar-dark-background-color: #242326;
+$navbar-dark-font-color: #fff;
+$navbar-primary-background-color: #0f5fb6;
+$navbar-primary-font-color: #fff;
 ///px-navbar styles
 ///
 ///
 /// @access public
-.navbar{
-	user-select: none;
-	position: relative;
-	z-index: 200;
-
-	font-weight: 400;
-	font-size: 17px;
-	box-sizing: border-box;
-	background-clip: padding-box;
-	white-space: nowrap;
-	background-size: 100% 1px;
-	background-repeat: no-repeat;
-	background-position: bottom;
-	background-image: linear-gradient(0deg, #ddd, #ddd 50%, transparent 50%);
- 	height: 45px;
-	color:$navbar-default-font-color;
-	background-color:$navbar-default-background-color;
-
-	@include m('chrome'){
-		background-color:$navbar-chrome-background-color;
-		color:$navbar-chrome-font-color;
-	}
-	@include m('alt'){
-		background-color:$navbar-alt-background-color;
-		color:$navbar-alt-font-color;
-	}
-  @include m('dark') {
-    background-color:$navbar-dark-background-color;
-    color:$navbar-dark-font-color;
-  }
-	@include m('primary'){
-		background-color:$navbar-primary-background-color;
-		color:$navbar-primary-font-color;
-	}
-
-	@include e('center'){
-	  @include centerer();
-		text-align:center;
-		padding: 10px 0;
-
-		@include e('title'){
-		  display:block;
-		}
-		@include e('subtitle'){
-		  display:block;
-		  font-size: 80%;
-		}
-	}
-
-	@include e('content'){
-	  padding: 0 5px;
-	  position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-	}
-
-	@include e('right'){
-		padding: 0 8px;
-	}
-	@include e('left'){
-		padding: 0 8px;
-	}
-
-	//Button
-	@include e('button'){
-		padding: 4px 10px;
-		letter-spacing: 0;
-		text-shadow: 0 1px none;
-		background-color: rgba(0, 0, 0, 0);
-		border-radius: 2px;
-		border: 1px solid transparent;
+.navbar {
+		user-select: none;
+		position: relative;
+		z-index: 200;
 		font-weight: 400;
 		font-size: 17px;
-		transition: none;
-		vertical-align: middle;
-		box-shadow: none;
-		&:active {
-			    background-color: rgba(0,0,0,0.05);
-			transition: none;
-			opacity: 0.2;
+		box-sizing: border-box;
+		background-clip: padding-box;
+		white-space: nowrap;
+		background-size: 100% 1px;
+		background-repeat: no-repeat;
+		background-position: bottom;
+		background-image: linear-gradient(0deg, #ddd, #ddd 50%, transparent 50%);
+		height: 55px;
+		padding-top: 10px;
+		color: $navbar-default-font-color;
+		background-color: $navbar-default-background-color;
+		@include m('chrome') {
+				background-color: $navbar-chrome-background-color;
+				color: $navbar-chrome-font-color;
 		}
-		&:disabled,
-		&[disabled] {
-			opacity: 0.3;
-			cursor: default;
-			pointer-events: none;
+		@include m('alt') {
+				background-color: $navbar-alt-background-color;
+				color: $navbar-alt-font-color;
 		}
-
-		&:focus {
-			outline: 0;
-			transition: none;
+		@include m('dark') {
+				background-color: $navbar-dark-background-color;
+				color: $navbar-dark-font-color;
 		}
-
-		&:hover {
-			box-shadow: none;
-			transition: none;
+		@include m('primary') {
+				background-color: $navbar-primary-background-color;
+				color: $navbar-primary-font-color;
 		}
-
-		@include m('back'){
-		  .icon{
-		    font-size:1.1em;
-		  }
+		@include e('center') {
+				@include centerer();
+				text-align: center;
+				padding: 10px 0;
+				@include e('title') {
+						display: block;
+				}
+				@include e('subtitle') {
+						display: block;
+						font-size: 80%;
+				}
 		}
-	}
-
-
-
-
-
-	//Hamburger Menu
-	 @include e('hamburger'){
-	   width: 2.5em;
-		 transition: all .2s;
-		 position:relative;
-
-      @include e('icon'){
-        width: 25px;
-        height: 2px;
-        display: block;
-        position: absolute;
-        top: 50%;
-        left: 15%;
-        -webkit-transition: -webkit-transform 300ms;
-        transition: transform 300ms;
-        background: rgba(0, 0, 0, .5);
-
-        @include m('1') {
-          -webkit-transform: translate3d(0, -8px, 0);
-          transform: translate3d(0, -8px, 0);
-        }
-
-        @include m('2') {
-          -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-        }
-
-        @include m('3') {
-          -webkit-transform: translate3d(0, 8px, 0);
-          transform: translate3d(0, 8px, 0);
-        }
-      }
-    }
-
-
-
-
-
+		@include e('content') {
+				padding: 0 5px;
+				position: relative;
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
+		}
+		@include e('right') {
+				padding: 0 8px;
+		}
+		@include e('left') {
+				padding: 0 8px;
+		}
+		//Button
+		@include e('button') {
+				padding: 4px 10px;
+				letter-spacing: 0;
+				text-shadow: 0 1px none;
+				background-color: rgba(0, 0, 0, 0);
+				border-radius: 2px;
+				border: 1px solid transparent;
+				font-weight: 400;
+				font-size: 17px;
+				transition: none;
+				vertical-align: middle;
+				box-shadow: none;
+				&:active {
+						background-color: rgba(0,0,0,0.05);
+						transition: none;
+						opacity: 0.2;
+				}
+				&:disabled,
+				&[disabled] {
+						opacity: 0.3;
+						cursor: default;
+						pointer-events: none;
+				}
+				&:focus {
+						outline: 0;
+						transition: none;
+				}
+				&:hover {
+						box-shadow: none;
+						transition: none;
+				}
+				@include m('back') {
+						.icon {
+								font-size: 1.1em;
+						}
+				}
+		}
+		//Hamburger Menu
+		@include e('hamburger') {
+				width: 2.5em;
+				transition: all 0.2s;
+				position: relative;
+				@include e('icon') {
+						width: 25px;
+						height: 2px;
+						display: block;
+						position: absolute;
+						top: 50%;
+						left: 15%;
+						-webkit-transition: -webkit-transform 300ms;
+						transition: transform 300ms;
+						background: rgba(0, 0, 0, .5);
+						@include m('1') {
+								-webkit-transform: translate3d(0, -8px, 0);
+								transform: translate3d(0, -8px, 0);
+						}
+						@include m('2') {
+								-webkit-transform: translate3d(0, 0, 0);
+								transform: translate3d(0, 0, 0);
+						}
+						@include m('3') {
+								-webkit-transform: translate3d(0, 8px, 0);
+								transform: translate3d(0, 8px, 0);
+						}
+				}
+		}
 }
