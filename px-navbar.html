@@ -1,4 +1,4 @@
-<link rel="import" href="../polymer/polymer.html"/>
+<link rel="import" href="../polymer/polymer.html" />
 <!--
 ```
 <px-navbar id="navbar1" title="Navbar Title" subtitle="Subtitle"></px-navbar>
@@ -9,139 +9,286 @@
 @homepage index.html
 -->
 <dom-module id="px-navbar">
-  <link rel="stylesheet" href="px-navbar.css">
-  <style>
-  :host{
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-  }
-    :host .navbar--dark ::content .navbar__button,
-    :host .navbar--primary ::content  .navbar__button {
-      color: #fff !important;
-    }
+	<link rel="stylesheet" href="css/px-navbar.css">
+	<style>
+		:host {
+			position: absolute;
+			top: 0;
+			right: 0;
+			left: 0;
+		}
 
-    :host .navbar--dark .navbar__hamburger__icon,
-    :host .navbar--primary .navbar__hamburger__icon {
-      background-color: #fff !important;
-    }
+		:host .navbar--dark::content .navbar__button,
+		:host .navbar--primary::content .navbar__button {
+			color: #fff !important;
+		}
 
-    :host.px-sidebar-open .hamburger-1 {
-      -webkit-transform: translate3d(0, 0, 0) rotate(45deg);
-      transform: translate3d(0, 0, 0) rotate(45deg);
-    }
+		:host .navbar--dark .navbar__hamburger__icon,
+		:host .navbar--primary .navbar__hamburger__icon {
+			background-color: #fff !important;
+		}
 
-    :host.px-sidebar-open .hamburger-2 {
-      -webkit-transform: translate3d(0, 0, 0) scale(0.1, 1);
-      transform: translate3d(0, 0, 0) scale(0.1, 1);
-    }
+		:host.px-sidebar-open .hamburger-1 {
+			-webkit-transform: translate3d(0, 0, 0) rotate(45deg);
+			transform: translate3d(0, 0, 0) rotate(45deg);
+		}
 
-    :host.px-sidebar-open .hamburger-3 {
-      -webkit-transform: translate3d(0, 0, 0) rotate(-45deg);
-      transform: translate3d(0, 0, 0) rotate(-45deg);
-    }
+		:host.px-sidebar-open .hamburger-2 {
+			-webkit-transform: translate3d(0, 0, 0) scale(0.1, 1);
+			transform: translate3d(0, 0, 0) scale(0.1, 1);
+		}
 
+		:host.px-sidebar-open .hamburger-3 {
+			-webkit-transform: translate3d(0, 0, 0) rotate(-45deg);
+			transform: translate3d(0, 0, 0) rotate(-45deg);
+		}
+	</style>
+	<template>
+		<div class="navbar">
 
-  </style>
-  <template>
-    <div class="navbar flex flex--middle">
+			<!-- back btn-->
+			<template is="dom-if" if="{{back}}">
+				<div class="left">
+					<button class="navbar__button navbar__button--back" on-click="handleBackClick">
+						<i class="fa fa-angle-left"></i>
+						<span>{{backBtnLabel}}</span>
+					</button>
+				</div>
+			</template>
 
-      <!-- back btn-->
-      <template is="dom-if" if="{{back}}">
-        <div class="left">
-          <button class="navbar__button navbar__button--back" on-click="handleBackClick">
-          	<i class="fa fa-angle-left"></i>
-            <span>{{backBtnLabel}}</span>
-          </button>
-        </div>
-      </template>
-
-      <!-- menu btn-->
-      <template is="dom-if" if="{{menu}}">
-        <div class="left">
-          <button class="navbar__button navbar__hamburger position-relative" on-click="toggleSidebar">
-            <i class="icon">
+			<!-- menu btn-->
+			<template is="dom-if" if="{{menu}}">
+				<div class="left">
+					<button class="navbar__button navbar__hamburger position-relative" on-click="toggleSidebar">
+						<i class="icon">
               <span class="navbar__hamburger__icon navbar__hamburger__icon--1"></span>
               <span class="navbar__hamburger__icon navbar__hamburger__icon--2"></span>
               <span class="navbar__hamburger__icon navbar__hamburger__icon--3"></span>
             </i>
-          </button>
-        </div>
-      </template>
+					</button>
+				</div>
+			</template>
 
-      <!-- title/subtitle -->
-      <div class="navbar__center">
-        <span class="color-auto navbar__center__title">{{title}}</span>
-        <span class="color-auto navbar__center__subtitle">{{subtitle}}</span>
-      </div>
+			<!-- title/subtitle -->
+			<div class="navbar__center">
+				<span class="color-auto navbar__center__title">{{title}}</span>
+				<span class="color-auto navbar__center__subtitle">{{subtitle}}</span>
+			</div>
 
-      <!-- content -->
-      <div class="navbar__content">
-        <content></content>
-      </div>
+			<!-- content -->
+			<div class="navbar__content">
+				<content></content>
+			</div>
 
 
 
-    </div>
-  </template>
-  <script>
-    Polymer({
-      is: 'px-navbar',
-      properties: {
+		</div>
+	</template>
+	<script>
+		Polymer({
+			is: 'px-navbar',
+			properties: {
+
+				subtitle: {
+					type: String
+				},
+
+				backBtnLabel: {
+					type: String,
+					value: 'Back'
+				},
+        //The title to display.
         title: {
-          type: String,
-          value: 'Navbar Title'
-        },
-
-        subtitle: {
           type: String
         },
-
-        backBtnLabel: {
-          type: String,
-          value: 'Back'
-        },
-
-        back: {
-          type: Boolean,
-          value: false
-        },
-
-
-        theme: {
+        //The #id of the sidebar container.
+        sidebarContainer: {
           type: String
         },
-
+        //The #id of the view container.
+        viewContainer: {
+          type: String,
+          notify: true,
+          reflectToAttribute: true
+        },
+        //To show the menu button or not.
         showMenuBtn: {
           type: Boolean,
           value: true
         },
-
+        //Fix the pxm--navbar to the top.
+        fixed: {
+          type: Boolean,
+          value: false
+        },
+        //Display open
+        open: {
+          type: Boolean,
+          notify: true,
+          observer: '_openChanged',
+          value: false
+        },
+        //Display sidebar on desktop, hide on mobile/tablet
+        responsive: {
+          type: Boolean,
+          value: false
+        },
+        //Show the menu button
         menu: {
           type: Boolean,
           value: false
         },
-
+        //The view containers instance.
+        views: {
+          type: Object,
+          value: {}
+        },
+        //Use a dynamic navbar
         dynamicNavbar: {
           type: Boolean,
+          value: false
+        },
+        //To show the back button or not.
+        back: {
+          type: Boolean,
           value: false,
+          reflectToAttribute: true
+        },
+        //The label for the back button.
+        backBtnLabel: {
+          type: String,
+          value: 'Back'
+        },
+        //The type of theme to apply.
+        theme: {
+          type: String,
+          value: 'white',
+          notify: true,
+          observer: '_themeChanged',
+          reflectToAttribute: true
         }
-      },
-      created: function() {
+			},
+			created: function() {
 
-      },
-      attached: function() {
-        console.warn(this.tagName, 'attached');
-        console.dir(this);
-        if (this.theme) {
-          console.log('attaching theme', this.theme);
-          this.toggleClass('navbar--' + this.theme, true, Polymer.dom(this.root).querySelector('.navbar'));
-        }
-      },
-      toggleMenu: function() {
-        return this.fire('px-toggle-menu', this);
-      }
-    });
-  </script>
+			},
+			ready: function() {
+
+				console.warn(this.tagName, 'attached');
+				console.dir(this);
+				if (this.theme) {
+					console.log('attaching theme', this.theme);
+					this.toggleClass('navbar--' + this.theme, true, Polymer.dom(this.root).querySelector('.navbar'));
+				}
+			},
+			attached: function() {
+				var _this = this;
+				if (_this.sidebarContainer) {
+					_this.sidebar = document.getElementById(_this.sidebarContainer);
+					_this.sidebar.addEventListener('toggle', function() {
+						_this.toggleClass('px-sidebar-open', _this.sidebar.open);
+					});
+				}
+				var parent = this.parentNode;
+				if (parent && parent.localName === 'px-view' || parent.localName === 'px-page') {
+					this.theme = parent.attr('theme');
+					this.title = parent.attr('title');
+					if (parent.viewContainer) {
+						_this.viewContainer = parent.viewContainer.id;
+						_this.views = parent.viewContainer;
+						_this.menu = _this.views.getCurrent().main;
+						console.log('parentViewContainer', parent.viewContainer);
+						//_this.title = _this.views.getCurrent().attr('title');
+					}
+				}
+				if (this.viewContainer) {
+					this.debounce('initViews', function() {
+						_this.views = document.getElementById(_this.viewContainer);
+						_this.menu = _this.views.getCurrent().main;
+						//	_this.title = _this.views.getCurrent().attr('title');
+						_this.views.addEventListener('px:view:change', function(e) {
+							console.log('listening to view change', e);
+							_this.title = e.detail.title;
+							if (this.views) {
+								_this.debounce('menu', function() {
+									_this.menu = (_this.views.getCurrent().main);
+									_this.back = (!_this.views.getCurrent().main);
+									_this.backBtnText = (_this.views.prevView ? _this.views.prevView.title : '');
+								}, 50);
+							}
+						});
+					}, 250);
+				}
+			},
+			toggleMenu: function() {
+				return this.fire('px-toggle-menu', this);
+			},
+
+
+			//Handle toggling the sidebar.
+			toggleSidebar: function(open) {
+				//	this.open = open || !this.open;
+				if (this.sidebar && this.sidebar.toggle) {
+					this.sidebar.toggle();
+					if (this.views) {
+						this.views.toggleClass('px-sidebar-open');
+					}
+				}
+			},
+			//Handle when the back button is clicked.
+			handleBackClick: function() {
+        console.log('handleBackClick', this);
+        this.fire('back');
+        if(this.parentNode && this.parentNode.viewContainer){
+					this.parentNode.viewContainer.back();
+				}
+				if (this.viewContainer && this.views) {
+          console.log('handleBackClick', this.viewContainer);
+					this.views.back();
+					//this.title = model.item.title;
+				}
+			},
+			//Handle when a view from the viewContainer is changed.
+			handleViewChange: function() {
+				if (this.viewContainer && this.views) {
+					this.back = (this.views.getCurrent() !== this.views.main);
+				}
+			},
+			//Toggle the display of the navbar.
+			toggle: function(display) {
+				this.hidden = !this.hidden;
+				this.toggleClass('hidden', this.hidden);
+			},
+			//Handle getting the current view, if there is a viewContainer
+			getCurrent: function() {
+				if (this.viewContainer && this.views) {
+					return this.views.getCurrent();
+				}
+			},
+			_registerOffclick: function() {
+				this.views.addEventListener('click', this.toggleMenu);
+			},
+			_deregisterOffclick: function() {
+				this.views.removeEventListener('click', this.toggleMenu);
+			},
+			_openChanged: function(newVal, oldVal) {
+				var _this = this;
+				console.log('_openChanged', newVal, oldVal);
+				if (_this.sidebar && _this.sidebar.toggle) {
+					this.debounce('openSidebar', function() {
+						_this.sidebar.toggle(newVal);
+					}, 100);
+				}
+
+			},
+			_themeChanged: function(newVal, oldVal) {
+				var _this = this;
+				this.async(function() {
+					if (oldVal) {
+						_this.removeClass('background-color-' + oldVal);
+					}
+					_this.addClass('background-color-' + newVal);
+				});
+			}
+		});
+	</script>
 </dom-module>
