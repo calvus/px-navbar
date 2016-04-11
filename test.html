@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<script src="../webcomponentsjs/webcomponents-lite.js"></script>
+	<script src="../web-component-tester/browser.js"></script>
+	<script src="../px-mobile.js/dist/px-mobile.js"></script>
+	<link rel="import" href="px-navbar.html">
+	<title>wct - px-navbar</title>
+	<style media="screen">
+		body {
+			position: relative;
+		}
+	</style>
+</head>
+
+<body>
+	<px-navbar id="navbarfixture" title="Test Element"></px-navbar>
+	<script>
+		suite('<px-navbar>', function() {
+			var element = document.getElementById('navbarfixture');
+
+			test('renders', function() {
+				assert.ok(element);
+			});
+
+			test('has title', function() {
+				assert.equal(element.title, 'Test Element');
+			});
+
+
+			test('toggle()', function() {
+				element.toggle();
+				assert.equal(element.hidden, true);
+				element.toggle();
+				assert.equal(element.hidden, false);
+			});
+
+			suite('Theme', function() {
+				test('has theme', function() {
+					element.theme = 'primary';
+					assert.equal(element.theme, 'primary');
+					//assert(element.querySelector('.navbar--primary'));
+				});
+				test('can change theme to chrome', function() {
+					element.theme = 'chrome';
+					assert.equal(element.theme, 'chrome');
+        //  assert(element.querySelector('.navbar--chrome'));
+
+				});
+				test('can change theme to dark', function() {
+					element.theme = 'dark';
+					assert.equal(element.theme, 'dark');
+				//	assert(element.querySelector('.navbar--dark'));
+				});
+				test('can change theme alt', function() {
+					element.theme = 'alt';
+          				assert.equal(element.theme, 'alt');
+
+//					assert(element.querySelector('.navbar--alt'), 'has alt theme');
+				});
+			});
+
+			suite('Back Button', function() {
+				test('back button disabled by default', function() {
+					assert.equal(element.back, false);
+				});
+
+				test('back button displays', function() {
+					element.back = true;
+					assert.equal(element.back, true);
+				});
+
+				test('can change back button text', function() {
+					element.backBtnLabel = 'Account';
+					assert.equal(element.backBtnLabel, 'Account');
+					//assert.equal(element.querySelector('.back-btn').text().trim(), 'Account');
+				});
+
+			});
+
+
+
+		});
+	</script>
+</body>
+
+</html>

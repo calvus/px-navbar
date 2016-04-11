@@ -1,28 +1,4 @@
 
-/*
-bem model:
-
-navbar
-	--fixed
-	--dark
-	--light
-	navbar__toggle
-		navbar__toggle__button
-	navbar__center
-		navbar__center__title
-		navbar__center__subtitle
-
-	navbar__button
-		--left
-		--right
-
-	navbar__left
-		navbar__left__button
-
-	navbar__right
-		navbar-ui__right__button
-
-*/
 .navbar {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -40,7 +16,7 @@ navbar
   background-position: bottom;
   background-image: linear-gradient(0deg, #ddd, #ddd 50%, transparent 50%);
   height: 45px;
-  padding-top: .5rem;
+  padding-top: 0.5rem;
   color: #1f1f21;
   background-color: #fff; }
   .navbar--chrome {

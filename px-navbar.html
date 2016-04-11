@@ -1,4 +1,5 @@
 <link rel="import" href="../polymer/polymer.html" />
+
 <!--
 ```
 <px-navbar id="navbar1" title="Navbar Title" subtitle="Subtitle"></px-navbar>
@@ -8,43 +9,46 @@
 @demo demo.html
 @homepage index.html
 -->
+	<link rel="stylesheet" href="css/px-navbar.css" />
 <dom-module id="px-navbar">
-	<link rel="stylesheet" href="css/px-navbar.css">
-	<style>
-		:host {
-			position: absolute;
-			top: 0;
-			right: 0;
-			left: 0;
-		}
 
-		:host .navbar--alt::content .navbar__button,
-		:host .navbar--dark::content .navbar__button,
-		:host .navbar--primary::content .navbar__button {
-			color: #fff !important;
-		}
-
-		:host .navbar--dark .navbar__hamburger__icon,
-		:host .navbar--primary .navbar__hamburger__icon {
-			background-color: #fff !important;
-		}
-
-		:host.px-sidebar-open .hamburger-1 {
-			-webkit-transform: translate3d(0, 0, 0) rotate(45deg);
-			transform: translate3d(0, 0, 0) rotate(45deg);
-		}
-
-		:host.px-sidebar-open .hamburger-2 {
-			-webkit-transform: translate3d(0, 0, 0) scale(0.1, 1);
-			transform: translate3d(0, 0, 0) scale(0.1, 1);
-		}
-
-		:host.px-sidebar-open .hamburger-3 {
-			-webkit-transform: translate3d(0, 0, 0) rotate(-45deg);
-			transform: translate3d(0, 0, 0) rotate(-45deg);
-		}
-	</style>
 	<template>
+		<style>
+			:host {
+				position: absolute;
+				top: 0;
+				right: 0;
+				left: 0;
+			}
+
+			:host .navbar--alt::content .navbar__button,
+			:host .navbar--dark::content .navbar__button,
+			:host .navbar--primary::content .navbar__button {
+				color: #fff !important;
+			}
+
+			:host .navbar--dark .navbar__hamburger__icon,
+			:host .navbar--primary .navbar__hamburger__icon {
+				background-color: #fff !important;
+			}
+
+			:host.px-sidebar-open .hamburger-1 {
+				-webkit-transform: translate3d(0, 0, 0) rotate(45deg);
+				transform: translate3d(0, 0, 0) rotate(45deg);
+			}
+
+			:host.px-sidebar-open .hamburger-2 {
+				-webkit-transform: translate3d(0, 0, 0) scale(0.1, 1);
+				transform: translate3d(0, 0, 0) scale(0.1, 1);
+			}
+
+			:host.px-sidebar-open .hamburger-3 {
+				-webkit-transform: translate3d(0, 0, 0) rotate(-45deg);
+				transform: translate3d(0, 0, 0) rotate(-45deg);
+			}
+		</style>
+
+
 		<div class="navbar">
 
 			<!-- back btn-->
@@ -98,88 +102,82 @@
 					type: String,
 					value: 'Back'
 				},
-        //The title to display.
-        title: {
-          type: String
-        },
-        //The #id of the sidebar container.
-        sidebarContainer: {
-          type: String
-        },
-        //The #id of the view container.
-        viewContainer: {
-          type: String,
-          notify: true,
-          reflectToAttribute: true
-        },
-        //To show the menu button or not.
-        showMenuBtn: {
-          type: Boolean,
-          value: true
-        },
-        //Fix the pxm--navbar to the top.
-        fixed: {
-          type: Boolean,
-          value: false
-        },
-        //Display open
-        open: {
-          type: Boolean,
-          notify: true,
-          observer: '_openChanged',
-          value: false
-        },
-        //Display sidebar on desktop, hide on mobile/tablet
-        responsive: {
-          type: Boolean,
-          value: false
-        },
-        //Show the menu button
-        menu: {
-          type: Boolean,
-          value: false
-        },
-        //The view containers instance.
-        views: {
-          type: Object,
-          value: {}
-        },
-        //Use a dynamic navbar
-        dynamicNavbar: {
-          type: Boolean,
-          value: false
-        },
-        //To show the back button or not.
-        back: {
-          type: Boolean,
-          value: false,
-          reflectToAttribute: true
-        },
-        //The label for the back button.
-        backBtnLabel: {
-          type: String,
-          value: 'Back'
-        },
-        //The type of theme to apply.
-        theme: {
-          type: String,
-          value: 'white',
-          notify: true,
-          observer: '_themeChanged',
-          reflectToAttribute: true
-        }
-			},
-			created: function() {
-
+				//The title to display.
+				title: {
+					type: String
+				},
+				//The #id of the sidebar container.
+				sidebarContainer: {
+					type: String
+				},
+				//The #id of the view container.
+				viewContainer: {
+					type: String,
+					notify: true,
+					reflectToAttribute: true
+				},
+				//To show the menu button or not.
+				showMenuBtn: {
+					type: Boolean,
+					value: true
+				},
+				//Fix the pxm--navbar to the top.
+				fixed: {
+					type: Boolean,
+					value: false
+				},
+				//Display open
+				open: {
+					type: Boolean,
+					notify: true,
+					observer: '_openChanged',
+					value: false
+				},
+				//Display sidebar on desktop, hide on mobile/tablet
+				responsive: {
+					type: Boolean,
+					value: false
+				},
+				//Show the menu button
+				menu: {
+					type: Boolean,
+					value: false
+				},
+				//The view containers instance.
+				views: {
+					type: Object,
+					value: {}
+				},
+				//Use a dynamic navbar
+				dynamicNavbar: {
+					type: Boolean,
+					value: false
+				},
+				//To show the back button or not.
+				back: {
+					type: Boolean,
+					value: false,
+					reflectToAttribute: true
+				},
+				//The label for the back button.
+				backBtnLabel: {
+					type: String,
+					value: 'Back'
+				},
+				//The type of theme to apply.
+				theme: {
+					type: String,
+					value: 'white',
+					notify: true,
+					observer: '_themeChanged',
+					reflectToAttribute: true
+				}
 			},
 			ready: function() {
-
-				console.warn(this.tagName, 'attached');
-				console.dir(this);
 				if (this.theme) {
-					console.log('attaching theme', this.theme);
 					this.toggleClass('navbar--' + this.theme, true, Polymer.dom(this.root).querySelector('.navbar'));
 				}
+
 			},
 			attached: function() {
 				var _this = this;
@@ -219,6 +217,7 @@
 						});
 					}, 250);
 				}
+				this._fixButtons();
 			},
 			toggleMenu: function() {
 				return this.fire('px-toggle-menu', this);
@@ -237,13 +236,13 @@
 			},
 			//Handle when the back button is clicked.
 			handleBackClick: function() {
-        console.log('handleBackClick', this);
-        this.fire('back');
-        if(this.parentNode && this.parentNode.viewContainer){
+				console.log('handleBackClick', this);
+				this.fire('back');
+				if (this.parentNode && this.parentNode.viewContainer) {
 					this.parentNode.viewContainer.back();
 				}
 				if (this.viewContainer && this.views) {
-          console.log('handleBackClick', this.viewContainer);
+					console.log('handleBackClick', this.viewContainer);
 					this.views.back();
 					//this.title = model.item.title;
 				}
@@ -279,15 +278,19 @@
 						_this.sidebar.toggle(newVal);
 					}, 100);
 				}
-
 			},
 			_themeChanged: function(newVal, oldVal) {
 				var _this = this;
 				this.async(function() {
 					if (oldVal) {
-						_this.toggleClass('background-color-' + oldVal, false);
+						_this.toggleClass('navbar--' + oldVal, false, _this.$$('.navbar'));
 					}
-					_this.toggleClass('background-color-' + newVal, true);
+					_this.toggleClass('navbar--' + newVal, true, _this.$$('.navbar'));
+				});
+			},
+			_fixButtons: function() {
+				this.queryAllEffectiveChildren('button').forEach(function(b) {
+					b.toggleClass('navbar__button')
 				});
 			}
 		});
