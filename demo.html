@@ -9,7 +9,7 @@
 
 	<!-- TODO: Dependencies -->
 	<script src="../webcomponentsjs/webcomponents-lite.min.js"></script>
-	
+
 	<link rel="import" href="../iron-demo-helpers/demo-snippet.html" />
 
 
@@ -300,6 +300,16 @@
 			</template>
 		</demo-snippet>
 	</div>
+
+	<link rel="import" href="../px-example/px-example.html">
+	<px-code-editor id="myEditor" layout="bottom" height="600px" style="height: 500px;"></px-code-editor>
+	<script type="text/javascript">
+		document.addEventListener('WebComponentsReady', function(e) {
+			setTimeout(function() {
+				document.getElementById('myEditor').code = '<h2>Hello</h2>';
+			}, 500);
+		});
+	</script>
 
 </body>
 

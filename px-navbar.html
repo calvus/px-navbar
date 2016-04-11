@@ -285,9 +285,9 @@
 				var _this = this;
 				this.async(function() {
 					if (oldVal) {
-						_this.removeClass('background-color-' + oldVal);
+						_this.toggleClass('background-color-' + oldVal, false);
 					}
-					_this.addClass('background-color-' + newVal);
+					_this.toggleClass('background-color-' + newVal, true);
 				});
 			}
 		});
