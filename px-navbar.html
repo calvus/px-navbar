@@ -51,41 +51,42 @@
 
 		<div class="navbar">
 
-			<!-- back btn-->
-			<template is="dom-if" if="{{back}}">
-				<div class="left">
-					<button class="navbar__button navbar__button--back" on-click="handleBackClick">
-						<i class="fa fa-angle-left"></i>
-						<span>{{backBtnLabel}}</span>
-					</button>
+
+
+			<template is="dom-if" if="{{title}}">
+				<div class="navbar__center">
+					<span class="color-auto navbar__center__title">{{title}}</span>
+					<span class="color-auto navbar__center__subtitle">{{subtitle}}</span>
 				</div>
 			</template>
 
-			<!-- menu btn-->
-			<template is="dom-if" if="{{menu}}">
-				<div class="left">
-					<button class="navbar__button navbar__hamburger position-relative" on-click="toggleSidebar">
-						<i class="icon">
-              <span class="navbar__hamburger__icon navbar__hamburger__icon--1"></span>
-              <span class="navbar__hamburger__icon navbar__hamburger__icon--2"></span>
-              <span class="navbar__hamburger__icon navbar__hamburger__icon--3"></span>
-            </i>
-					</button>
-				</div>
-			</template>
-
-			<!-- title/subtitle -->
-			<div class="navbar__center">
-				<span class="color-auto navbar__center__title">{{title}}</span>
-				<span class="color-auto navbar__center__subtitle">{{subtitle}}</span>
-			</div>
 
 			<!-- content -->
 			<div class="navbar__content">
-				<content></content>
+				<!-- back btn-->
+				<template is="dom-if" if="{{back}}">
+					<div class="left">
+						<button class="navbar__button navbar__button--back" on-click="handleBackClick">
+							<i class="fa fa-angle-left"></i>
+							<span>{{backLabel}}</span>
+						</button>
+					</div>
+				</template>
+
+				<!-- menu btn-->
+				<template is="dom-if" if="{{menu}}">
+					<div class="left">
+						<button class="navbar__button navbar__hamburger position-relative" on-click="toggleSidebar">
+							<i class="icon">
+								<span class="navbar__hamburger__icon navbar__hamburger__icon--1"></span>
+								<span class="navbar__hamburger__icon navbar__hamburger__icon--2"></span>
+								<span class="navbar__hamburger__icon navbar__hamburger__icon--3"></span>
+							</i>
+						</button>
+					</div>
+				</template>
+				<content id="navbarContent" select="*"></content>
 			</div>
-
-
 
 		</div>
 	</template>
@@ -93,14 +94,9 @@
 		Polymer({
 			is: 'px-navbar',
 			properties: {
-
+				//The sub-title to display.
 				subtitle: {
 					type: String
-				},
-
-				backBtnLabel: {
-					type: String,
-					value: 'Back'
 				},
 				//The title to display.
 				title: {
@@ -116,12 +112,7 @@
 					notify: true,
 					reflectToAttribute: true
 				},
-				//To show the menu button or not.
-				showMenuBtn: {
-					type: Boolean,
-					value: true
-				},
-				//Fix the pxm--navbar to the top.
+				//Fix the navbar to the top.
 				fixed: {
 					type: Boolean,
 					value: false
@@ -131,11 +122,6 @@
 					type: Boolean,
 					notify: true,
 					observer: '_openChanged',
-					value: false
-				},
-				//Display sidebar on desktop, hide on mobile/tablet
-				responsive: {
-					type: Boolean,
 					value: false
 				},
 				//Show the menu button
@@ -160,7 +146,7 @@
 					reflectToAttribute: true
 				},
 				//The label for the back button.
-				backBtnLabel: {
+				backLabel: {
 					type: String,
 					value: 'Back'
 				},
@@ -207,15 +193,15 @@
 						_this.views.addEventListener('px:view:change', function(e) {
 							console.log('listening to view change', e);
 							_this.title = e.detail.title;
-							if (this.views) {
+							if (_this.views) {
 								_this.debounce('menu', function() {
 									_this.menu = (_this.views.getCurrent().main);
 									_this.back = (!_this.views.getCurrent().main);
-									_this.backBtnText = (_this.views.prevView ? _this.views.prevView.title : '');
+									_this.backLabel = (_this.views.prevView ? _this.views.prevView.title : '');
 								}, 50);
 							}
 						});
-					}, 250);
+					}, 150);
 				}
 				this._fixButtons();
 			},
@@ -234,6 +220,7 @@
 					}
 				}
 			},
+
 			//Handle when the back button is clicked.
 			handleBackClick: function() {
 				console.log('handleBackClick', this);

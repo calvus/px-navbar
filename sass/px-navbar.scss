@@ -1,5 +1,7 @@
 @import "variables";
-@import "px-mobile-mixin-design/mixins";
+
+@import 'px-mobile-design';
+@import 'px-mobile-mixin-design/_mixins';
 
 ///px-navbar styles
 ///
@@ -19,25 +21,47 @@
 		background-position: bottom;
 		background-image: linear-gradient(0deg, $navbar-border-color, $navbar-border-color 50%, transparent 50%);
 		height: $navbar-height;
-		padding-top: 0.5rem;
+		padding: $navbar-padding;
 		color: $navbar-default-font-color;
 		background-color: $navbar-default-background-color;
+
+		@include modifier('transparent') {
+			background-color: transparent;
+			color: $navbar-default-font-color;
+			.navbar__button{
+				color: $navbar-default-font-color;
+			}
+		}
 		@include modifier('chrome') {
 				background-color: $navbar-chrome-background-color;
 				color: $navbar-chrome-font-color;
+				.navbar__button{
+					color: $navbar-chrome-font-color;
+				}
 		}
 		@include modifier('alt') {
 				background-color: $navbar-alt-background-color;
 				color: $navbar-alt-font-color;
+				.navbar__button{
+					color: $navbar-alt-font-color;
+				}
 		}
+
 		@include modifier('dark') {
 				background-color: $navbar-dark-background-color;
 				color: $navbar-dark-font-color;
+				.navbar__button{
+					color: $navbar-dark-font-color;
+				}
 		}
 		@include modifier('primary') {
 				background-color: $navbar-primary-background-color;
 				color: $navbar-primary-font-color;
+				.navbar__button{
+					color: $navbar-primary-font-color;
+				}
 		}
+
 		@include element('center') {
 				@include centerer();
 				text-align: center;
@@ -73,13 +97,15 @@
 				border: 1px solid transparent;
 				font-weight: 400;
 				font-size: $navbar-button-font-size;
+				padding: $navbar-button-padding;
+				height: $navbar-button-height;
 				transition: none;
 				vertical-align: middle;
 				box-shadow: none;
 				&:active {
-						background-color: rgba(0, 0, 0, 0.05);
+						background-color: rgba(0, 0, 0, .5);
 						transition: none;
-						opacity: 0.2;
+						opacity: 0.5;
 				}
 				&:disabled,
 				&[disabled] {

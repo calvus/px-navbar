@@ -1,17 +1,30 @@
+@import 'px-mobile-design';
+//@import 'px-mobile-design/sass/_variables';
+@import 'px-mobile-mixin-design/_mixins';
+
 ///px-navbar vars
 $navbar-font-color: #222;
 $navbar-border-color:#ddd;
-$navbar-default-background-color: #fff;
-$navbar-default-font-color: #1f1f21;
-$navbar-chrome-background-color: #efeff4;
-$navbar-chrome-font-color: #1f1f21;
-$navbar-alt-background-color: #888;
-$navbar-alt-font-color: #1f1f21;
-$navbar-dark-background-color: #242326;
-$navbar-dark-font-color: #fff;
-$navbar-primary-background-color: #0f5fb6;
-$navbar-primary-font-color: #fff;
-$navbar-height: 45px;
+
+$navbar-default-background-color: $white;
+$navbar-default-font-color: $gray9;
+
+$navbar-chrome-background-color: $gray4;
+$navbar-chrome-font-color: $gray9;
+
+$navbar-alt-background-color: $gray5;
+$navbar-alt-font-color: $gray9;
+
+$navbar-dark-background-color: $gray10;
+$navbar-dark-font-color: $white;
+
+$navbar-primary-background-color: $primary-blue;
+$navbar-primary-font-color: $white;
+
+$navbar-height: 56px;
+$navbar-padding: .4rem .2rem;
+
 $navbar-button-font-size: 1.1rem;
-$navbar-button-padding: .2rem .5rem;
+$navbar-button-padding: .4rem .5rem;
+$navbar-button-height: 44px;
 $navbar-button-background-color: rgba(0, 0, 0, 0);

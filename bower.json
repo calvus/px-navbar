@@ -31,6 +31,7 @@
     "px-mobile-mixin-design": "https://github.build.ge.com/PredixComponents/px-mobile-mixin-design.git"
   },
   "resolutions": {
-    "polymer": "^1.2.0"
+    "polymer": "^1.2.0",
+    "fetch": "~0.10.0"
   }
 }
