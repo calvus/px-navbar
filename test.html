@@ -6,8 +6,8 @@
 	<script src="../webcomponentsjs/webcomponents.js"></script>
 	<script src="../web-component-tester/browser.js"></script>
 
-	<link rel="import" href="../px-page/px-pages.html">
-	<link rel="import" href="../px-sidebar/px-sidebar.html">
+
+
 	<link rel="import" href="px-navbar.html">
 	<title>wct - px-navbar</title>
 	<style media="screen">
@@ -18,40 +18,25 @@
 </head>
 
 <body>
-	<test-fixture id="simple">
-	  <template>
-	    <div></div>
-	  </template>
-	</test-fixture>
-	<script>
-	  suite('classList', function() {
-	    var div;
-	    setup(function() {
-	      div = fixture('simple');
-	    });
-	    test('foo', function() {
-	      div.classList.add('foo');
-	      assertSomethingOrOther(div);
-	    });
-	    test('bar', function() {
-	      div.classList.add('bar');
-	      assertNoFooClass(div);
-	    });
-	  });
-	</script>
+	<px-navbar id="navbarfixture" title="Page1" subtitle="Unit Tests" sidebar-container="sidebarFixture">
+		<div>
+			<button class="navbar__button" onclick="pagesFixture.next()">Next</button>
+		</div>
+	</px-navbar>
+	<link rel="import" href="../px-sidebar/px-sidebar.html">
 	<px-sidebar id="sidebarFixture"></px-sidebar>
+
+<!--
+	link rel="import" href="../px-page/px-pages.html">
 	<px-pages id="pagesFixture">
 		<px-page id="page1" title="Page1">
-			<px-navbar id="navbarfixture" title="Test Element" subtitle="Unit Tests" sidebar-container="sidebarFixture">
-				<div>
-					<button class="navbar__button" onclick="pagesFixture.next()">Next</button>
-				</div>
-			</px-navbar>
+
 		</px-page>
 		<px-page id="page2" title="Page2">
 			<px-navbar sidebar-container="sidebarFixture"></px-navbar>
 		</px-page>
 	</px-pages>
+-->
 	<script>
 		suite('<px-navbar>', function() {
 			var element = document.getElementById('navbarfixture');
@@ -67,10 +52,10 @@
 			test('it should have sub-title', function() {
 				assert.equal(element.subtitle, 'Unit Tests');
 			});
+
 			test('it should change title to current page title.', function() {
 				assert.equal(element.title, 'Page1');
 			});
-
 
 			test('is can be hidden', function() {
 				element.toggle();
@@ -116,11 +101,9 @@
 				});
 
 			});
-
-
-
 		});
 	</script>
+
 </body>
 
 </html>

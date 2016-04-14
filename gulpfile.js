@@ -4,9 +4,11 @@ const pkg = require('./package.json');
 const $ = require('gulp-load-plugins')();
 const clean = require('gulp-clean');
 const gulpSequence = require('gulp-sequence');
-
 const sassdoc = require('sassdoc');
 const importOnce = require('node-sass-import-once');
+const wct = require('web-component-tester');
+
+wct.gulp.init(gulp);
 
 const sassdocOptions = {
   dest: 'docs',
@@ -83,4 +85,5 @@ gulp.task('sass:watch', function () {
 
 
 gulp.task('watch', ['sass:watch']);
+gulp.task('test', ['test:local']);
 gulp.task('default', gulpSequence('clean', 'sass', 'autoprefixer', 'css', 'sassdoc'));
