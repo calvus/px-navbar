@@ -3,9 +3,11 @@
 
 <head>
 	<meta charset="UTF-8">
-	<script src="../webcomponentsjs/webcomponents-lite.js"></script>
+	<script src="../webcomponentsjs/webcomponents.js"></script>
 	<script src="../web-component-tester/browser.js"></script>
-	<script src="../px-mobile.js/dist/px-mobile.js"></script>
+
+	<link rel="import" href="../px-page/px-pages.html">
+	<link rel="import" href="../px-sidebar/px-sidebar.html">
 	<link rel="import" href="px-navbar.html">
 	<title>wct - px-navbar</title>
 	<style media="screen">
@@ -16,66 +18,81 @@
 </head>
 
 <body>
-	<px-navbar id="navbarfixture" title="Test Element"></px-navbar>
+
+	<px-sidebar id="sidebarFixture"></px-sidebar>
+	<px-pages id="pagesFixture">
+		<px-page id="page1" title="Page1">
+			<px-navbar id="navbarfixture" title="Test Element" subtitle="Unit Tests" sidebar-container="sidebarFixture">
+				<div>
+					<button class="navbar__button" onclick="pagesFixture.next()">Next</button>
+				</div>
+			</px-navbar>
+		</px-page>
+		<px-page id="page2" title="Page2">
+			<px-navbar sidebar-container="sidebarFixture"></px-navbar>
+		</px-page>
+	</px-pages>
 	<script>
 		suite('<px-navbar>', function() {
 			var element = document.getElementById('navbarfixture');
 
-			test('renders', function() {
+			test('it should have render', function() {
 				assert.ok(element);
 			});
 
-			test('has title', function() {
-				assert.equal(element.title, 'Test Element');
+			test('it should have title', function() {
+				assert(element.title);
+			});
+
+			test('it should have sub-title', function() {
+				assert.equal(element.subtitle, 'Unit Tests');
+			});
+			test('it should change title to current page title.', function() {
+				assert.equal(element.title, 'Page1');
 			});
 
 
-			test('toggle()', function() {
+			test('is can be hidden', function() {
 				element.toggle();
-				assert.equal(element.hidden, true);
+				assert.equal(element.className, 'hidden');
 				element.toggle();
-				assert.equal(element.hidden, false);
 			});
 
 			suite('Theme', function() {
-				test('has theme', function() {
+				test('is should change theme to primary', function() {
 					element.theme = 'primary';
 					assert.equal(element.theme, 'primary');
-					//assert(element.querySelector('.navbar--primary'));
 				});
-				test('can change theme to chrome', function() {
+
+				test('is should change theme to chrome', function() {
 					element.theme = 'chrome';
 					assert.equal(element.theme, 'chrome');
-        //  assert(element.querySelector('.navbar--chrome'));
-
 				});
-				test('can change theme to dark', function() {
+
+				test('is should change theme to dark', function() {
 					element.theme = 'dark';
 					assert.equal(element.theme, 'dark');
-				//	assert(element.querySelector('.navbar--dark'));
 				});
-				test('can change theme alt', function() {
-					element.theme = 'alt';
-          				assert.equal(element.theme, 'alt');
 
-//					assert(element.querySelector('.navbar--alt'), 'has alt theme');
+				test('is should change theme alt', function() {
+					element.theme = 'alt';
+					assert.equal(element.theme, 'alt');
 				});
 			});
 
 			suite('Back Button', function() {
-				test('back button disabled by default', function() {
+				test('is not visibile by default', function() {
 					assert.equal(element.back, false);
 				});
 
-				test('back button displays', function() {
+				test('it should be visible', function() {
 					element.back = true;
 					assert.equal(element.back, true);
 				});
 
-				test('can change back button text', function() {
-					element.backBtnLabel = 'Account';
-					assert.equal(element.backBtnLabel, 'Account');
-					//assert.equal(element.querySelector('.back-btn').text().trim(), 'Account');
+				test('it should change back button text', function() {
+					element.backBtnLabel = 'Back to Settings';
+					assert.equal(element.backBtnLabel, 'Back to Settings');
 				});
 
 			});
