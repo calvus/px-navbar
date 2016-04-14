@@ -18,7 +18,27 @@
 </head>
 
 <body>
-
+	<test-fixture id="simple">
+	  <template>
+	    <div></div>
+	  </template>
+	</test-fixture>
+	<script>
+	  suite('classList', function() {
+	    var div;
+	    setup(function() {
+	      div = fixture('simple');
+	    });
+	    test('foo', function() {
+	      div.classList.add('foo');
+	      assertSomethingOrOther(div);
+	    });
+	    test('bar', function() {
+	      div.classList.add('bar');
+	      assertNoFooClass(div);
+	    });
+	  });
+	</script>
 	<px-sidebar id="sidebarFixture"></px-sidebar>
 	<px-pages id="pagesFixture">
 		<px-page id="page1" title="Page1">
