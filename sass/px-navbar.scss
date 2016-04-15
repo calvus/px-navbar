@@ -29,7 +29,7 @@
 		top: 0;
 		left: 0;
 		right: 0;
-		
+
 		@include modifier('fixed') {
 			position: fixed;
 
@@ -85,11 +85,12 @@
 				}
 		}
 		@include element('content') {
-				padding: 0 5px;
 				position: relative;
-				width: 100%;
 				display: flex;
 				justify-content: space-between;
+				padding: 0 8px;
+				margin: .5%;
+				overflow: hidden;
 		}
 		@include element('right') {
 				padding: 0 8px;

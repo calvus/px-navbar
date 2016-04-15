@@ -62,15 +62,16 @@
       display: block;
       font-size: 80%; }
   .navbar__content {
-    padding: 0 5px;
     position: relative;
-    width: 100%;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     -webkit-justify-content: space-between;
     -ms-flex-pack: justify;
-    justify-content: space-between; }
+    justify-content: space-between;
+    padding: 0 8px;
+    margin: .5%;
+    overflow: hidden; }
   .navbar__right {
     padding: 0 8px; }
   .navbar__left {
