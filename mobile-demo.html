@@ -1,11 +1,18 @@
 <html>
 <head>
-	<title>px navbar mobile demo</title>
-	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<script src="../webcomponentsjs/webcomponents.js"></script>
-	<link rel="import" href="../px-design-system/px-design-system-theme.html">
+	<title>px-navbar mobile demo</title>
+	<!-- Sets initial viewport load and disables zooming  -->
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
 
+	<!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="apple-touch-icon" href="touch-icon-iphone.png">
+
+	<link rel='stylesheet prefetch' href='../px-design-system/css/px-design-system.min.css'>
+  <script src="../webcomponentsjs/webcomponents.min.js"></script>
+  <script src="../fastclick/lib/fastclick.js"></script>
+	<link rel="import" href="../px-drawer/px-drawer.html">
 	<link rel="import" href="px-navbar.html">
 	<style media="screen">
 		body{
@@ -22,12 +29,12 @@
 	<px-navbar id="navbar1-2" title="View Title" subtitle="Context" theme="">
 		<div>
 			<button class="navbar__button">
-					<i class="fa fa-lg fa-bars"></i>
+				<i class="fa fa-lg fa-bars"></i>
 			</button>
 		</div>
 		<div>
 			<button class="navbar__button">
-					<i class="fa fa-lg fa-ellipsis-v"></i>
+				<i class="fa fa-lg fa-ellipsis-v"></i>
 			</button>
 		</div>
 	</px-navbar>

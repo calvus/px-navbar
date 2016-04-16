@@ -24,7 +24,7 @@
 		font-weight: 400;
 		border-bottom: 1px solid $navbar-border-color;
 		background-color: $navbar-default-background-color;
-		box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
+
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -32,7 +32,9 @@
 
 		@include modifier('fixed') {
 			position: fixed;
-
+		}
+		@include modifier('shadow') {
+			box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
 		}
 		@include modifier('static') {
 			position: static;
@@ -76,6 +78,7 @@
 				@include centerer();
 				text-align: center;
 				padding: 10px 0;
+				z-index: 210;
 				@include element('title') {
 						display: block;
 				}
@@ -89,7 +92,7 @@
 				display: flex;
 				justify-content: space-between;
 				padding: 0 8px;
-				margin: .5%;
+				//margin: .5%;
 				overflow: hidden;
 		}
 		@include element('right') {

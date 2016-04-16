@@ -14,13 +14,14 @@
   font-weight: 400;
   border-bottom: 1px solid #b1b1bc;
   background-color: #FFFFFF;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
   position: absolute;
   top: 0;
   left: 0;
   right: 0; }
   .navbar--fixed {
     position: fixed; }
+  .navbar--shadow {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15); }
   .navbar--static {
     position: static; }
   .navbar--transparent {
@@ -55,7 +56,8 @@
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     text-align: center;
-    padding: 10px 0; }
+    padding: 10px 0;
+    z-index: 210; }
     .navbar__center__title {
       display: block; }
     .navbar__center__subtitle {
@@ -70,7 +72,6 @@
     -ms-flex-pack: justify;
     justify-content: space-between;
     padding: 0 8px;
-    margin: .5%;
     overflow: hidden; }
   .navbar__right {
     padding: 0 8px; }
