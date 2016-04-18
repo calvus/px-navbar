@@ -174,14 +174,14 @@
 					});
 				}
 				var parent = this.parentNode;
-				if (parent && parent.localName === 'px-view' || parent.localName === 'px-page') {
+				if (parent &&  parent.localName === 'px-page') {
 					this.theme = parent.attr('theme');
 					this.title = parent.attr('title');
 					if (parent.viewContainer) {
 						_this.viewContainer = parent.viewContainer.id;
 						_this.views = document.getElementById(_this.viewContainer);
 						_this.menu = _this.views.getCurrent().main;
-						//console.log('parentViewContainer', parent.viewContainer);
+						console.log('parentViewContainer', parent.viewContainer);
 						//_this.title = _this.views.getCurrent().attr('title');
 					}
 				}
@@ -190,17 +190,16 @@
 						_this.views = document.getElementById(_this.viewContainer);
 						_this.menu = _this.views.getCurrent().main;
 						//	_this.title = _this.views.getCurrent().attr('title');
-						_this.views.addEventListener('px:view:change', function(e) {
-							//console.log('listening to view change', e);
-							_this.title = e.detail.title;
-							if (_this.views) {
-								_this.debounce('menu', function() {
-									_this.menu = (_this.views.getCurrent().main);
-									_this.back = (!_this.views.getCurrent().main);
+						_this.views.addEventListener('change', function(e) {
+							console.log('Page changed', e);
 
-									//_this.backLabel = (_this.views.prevView ? _this.views.prevView.title : '');
-								}, 50);
-							}
+							_this.debounce('change', function(){
+								_this.title = e.detail.title;
+								_this.menu = (_this.views.getCurrent().main);
+								_this.back = _this.views.getCurrent().main ? false : true;
+								_this.backLabel = (_this.views.prevView ? _this.views.prevView.title : '');
+							}, 50);
+							console.warn('Add back button to previous page', _this.back);
 						});
 					}, 150);
 				}
