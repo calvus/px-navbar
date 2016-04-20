@@ -10,14 +10,24 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="apple-touch-icon" href="touch-icon-iphone.png">
 
-		<link rel='stylesheet prefetch' href='../px-design-system/css/px-design-system.min.css'>
+		<link rel='stylesheet prefetch' href='https://github.build.ge.com/pages/PXd/px-library-design/css/style.css'>
+		<link rel='stylesheet prefetch' href='https://github.build.ge.com/pages/PredixComponents/px-table-view/bower_components/px-table-view/css/px-table-view.css'>
 		<script src="../webcomponentsjs/webcomponents.min.js"></script>
 		<script src="../fastclick/lib/fastclick.js"></script>
+
 		<link rel="import" href="../px-drawer/px-drawer.html">
 		<link rel="import" href="px-navbar.html">
+
 		<style media="screen">
 		body {
-			padding-top: 65px;
+			background: #efeff4;
+			margin: 0;
+			height: 100vh;
+			padding: 45px 0;
+		}
+		
+		ol {
+			margin: 0;
 		}
 		
 		.flex .btn {
@@ -34,33 +44,105 @@
 	</head>
 
 	<body unresolved class="u-bg--gray1">
-		<px-navbar id="navbar1" title="View Title" subtitle="Context" theme="">
-			<div>
-				<button class="navbar__button">
-					<i class="fa fa-lg fa-bars"></i>
-				</button>
+
+		<template id="navbarTmpl" is="dom-bind">
+			<px-navbar id="navbar1" title="{{title}}" subtitle="{{subtitle}}" theme="">
+				<div>
+					<button class="navbar__button" onclick="toggleLeftDrawer()">
+						<i class="fa fa-lg fa-bars"></i>
+					</button>
+				</div>
+				<div>
+					<button class="navbar__button" onclick="toggleRightDrawer()">
+						<i class="fa fa-lg fa-ellipsis-v"></i>
+					</button>
+				</div>
+			</px-navbar>
+			<px-drawer id="myLeftDrawer" side="left" theme="dark" fixed>
+				<ul class="table-view table-view--bare">
+					<li class="table-row table-row--tappable" href="#home">
+						<div class="table-row__media table-row__media--icon"> <i class="fa fa-lg fa-home"></i> </div>
+						<div class="table-row__content"> <span class="table-row__content__title">Home</span> </div>
+					</li>
+					<li class="table-row table-row--tappable" href="#dashboard">
+						<div class="table-row__media table-row__media--icon"> <i class="fa fa-lg fa-dashboard"></i> </div>
+						<div class="table-row__content"> <span class="table-row__content__title">Dashboard</span> </div>
+					</li>
+					<li class="table-row table-row--tappable" href="#alerts">
+						<div class="table-row__media table-row__media--icon"> <i class="fa fa-lg fa-exclamation-triangle"></i> </div>
+						<div class="table-row__content"> <span class="table-row__content__title">Alerts</span> </div>
+					</li>
+					<li class="table-row table-row--tappable" href="#cases">
+						<div class="table-row__media table-row__media--icon"> <i class="fa fa-lg fa-briefcase"></i> </div>
+						<div class="table-row__content"> <span class="table-row__content__title">Cases</span> </div>
+					</li>
+					<li class="table-row table-row--tappable" href="#analysis">
+						<div class="table-row__media table-row__media--icon"> <i class="fa fa-lg fa-bar-chart"></i> </div>
+						<div class="table-row__content"> <span class="table-row__content__title">Analysis</span> </div>
+					</li>
+				</ul>
+			</px-drawer>
+			<px-drawer id="myRightDrawer" side="right" theme="dark" fixed>
+				<div class="u-m">
+					<p>
+						This is content inside of the drawer
+					</p>
+					<p class="flex flex--col">
+						<button class="btn btn--full" type="button" onclick="document.getElementById('navbar1').theme = 'default'">Default</button>
+						<button class="btn btn--full" type="button" onclick="document.getElementById('navbar1').theme = 'transparent'">Transparent</button>
+						<button class="btn btn--full" type="button" onclick="document.getElementById('navbar1').theme = 'chrome'">Chrome</button>
+						<button class="btn btn--full" type="button" onclick="document.getElementById('navbar1').theme = 'alt'">Alt</button>
+						<button class="btn btn--full" type="button" onclick="document.getElementById('navbar1').theme = 'dark'">Dark</button>
+						<button class="btn btn--full" type="button" onclick="document.getElementById('navbar1').theme = 'primary'">Primary</button>
+					</p>
+				</div>
+			</px-drawer>
+			<div class="viewport">
+				<div class="u-m">
+					<h2>px-navbar</h2>
+
+					<p>The px-navbar enables navigation through an information hierarchy and, optionally, management of screen contents.</p>
+
+					<p>When the user goes to a new level in a navigation hierarchy, two things should happen:</p>
+
+					<ol>
+						<li>The navigation bar title should change to the new level’s title, if appropriate.</li>
+						<li>A back button should appear in the left end of the bar; it can be labeled with the previous level’s title if it adds value.</li>
+					</ol>
+
+					<p>In general, a navigation bar should contain no more than the view’s current title, the back button, and one control that manages the view’s contents.</p>
+
+					<blockquote>
+						<p>By default, the buttons are a minimum size of 44x44 (Per Apple Design Guidelines)</p>
+					</blockquote>
+					<p>The following items are configurable:</p>
+
+					<ul>
+						<li>title</li>
+						<li>subtitle</li>
+						<li>buttons on the left/right</li>
+					</ul>
+
+
+				</div>
 			</div>
-			<div>
-				<button class="navbar__button">
-					<i class="fa fa-lg fa-ellipsis-v"></i>
-				</button>
-			</div>
-		</px-navbar>
-		<div class="viewport">
-			<div class="u-m">
-				<h1>px-navbar</h1>
-				<p>The px-navbar component is a responsive mobile first navigation bar.</p>
-				<h3>Themes</h3>
-				<p class="flex flex--col">
-					<button class="btn btn--full" type="button" onclick="document.getElementById('navbar1').theme = 'default'">Default</button>
-					<button class="btn btn--full" type="button" onclick="document.getElementById('navbar1').theme = 'transparent'">Transparent</button>
-					<button class="btn btn--full" type="button" onclick="document.getElementById('navbar1').theme = 'chrome'">Chrome</button>
-					<button class="btn btn--full" type="button" onclick="document.getElementById('navbar1').theme = 'alt'">Alt</button>
-					<button class="btn btn--full" type="button" onclick="document.getElementById('navbar1').theme = 'dark'">Dark</button>
-					<button class="btn btn--full" type="button" onclick="document.getElementById('navbar1').theme = 'primary'">Primary</button>
-				</p>
-			</div>
-		</div>
+		</template>
+		<script type="text/javascript">
+		var tmpl = document.getElementById('navbarTmpl');
+		tmpl.title = "View Title";
+		//	tmpl.subtitle = "View Context";
+
+		var toggleLeftDrawer = function() {
+			document.getElementById('myLeftDrawer').toggle();
+		};
+		var toggleRightDrawer = function() {
+			document.getElementById('myRightDrawer').toggle();
+		};
+
+		</script>
+
+
+
 	</body>
 
 </html>

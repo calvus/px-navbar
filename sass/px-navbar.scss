@@ -9,6 +9,7 @@
 ///
 /// @access public
 @include block ('navbar') {
+		font-family     : 'GE Inspira Sans', sans-serif;
 		user-select     : none;
 		z-index         : 200;
 		box-sizing      : border-box;
@@ -99,7 +100,11 @@
 				z-index   : 300;
 
 				@include element ('title') {
-						display: block;
+						display    : block;
+						font-size  : 1.3rem;
+						font-weight: 500;
+						margin     : 0;
+						padding    : 0;
 				}
 
 				@include element ('subtitle') {
@@ -173,8 +178,9 @@
 				}
 
 				@include modifier ('back') {
-						.icon {
-								font-size: 1.1em;
+						i {
+
+								margin-right: .4rem;
 						}
 				}
 		}

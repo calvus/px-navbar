@@ -24,7 +24,7 @@
   ],
   "dependencies": {
     "polymer": "latest",
-    "px-sidebar": "https://github.build.ge.com/PredixComponents/px-sidebar.git"
+    "px-drawer": "https://github.build.ge.com/PredixComponents/px-drawer.git"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#~1.0.5",
