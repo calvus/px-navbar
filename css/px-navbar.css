@@ -12,7 +12,7 @@
   color: #3b3b3f;
   font-size: 17px;
   font-weight: 400;
-  border-bottom: 1px solid #b1b1bc;
+  border-bottom: 1px solid gray;
   background-color: #FFFFFF;
   position: absolute;
   top: 0;
@@ -30,23 +30,27 @@
     .navbar--transparent .navbar__button {
       color: #3b3b3f; }
   .navbar--chrome {
-    background-color: #d1d0d8;
-    color: #3b3b3f; }
+    background-color: #efeff4;
+    border-bottom-color: #b3b3ca;
+    color: #242326; }
     .navbar--chrome .navbar__button {
-      color: #3b3b3f; }
+      color: #242326; }
   .navbar--alt {
-    background-color: #b1b1bc;
-    color: #3b3b3f; }
+    background-color: #9999a3;
+    color: #242326;
+    border-bottom-color: #656571; }
     .navbar--alt .navbar__button {
-      color: #3b3b3f; }
+      color: #242326; }
   .navbar--dark {
     background-color: #242326;
-    color: #FFFFFF; }
+    color: #FFFFFF;
+    border-bottom-color: black; }
     .navbar--dark .navbar__button {
       color: #FFFFFF; }
   .navbar--primary {
     background-color: #3e87e8;
-    color: #FFFFFF; }
+    color: #FFFFFF;
+    border-bottom-color: #1455ac; }
     .navbar--primary .navbar__button {
       color: #FFFFFF; }
   .navbar__center {
@@ -56,8 +60,8 @@
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     text-align: center;
-    padding: 10px 0;
-    z-index: 210; }
+    padding: .5rem 0;
+    z-index: 300; }
     .navbar__center__title {
       display: block; }
     .navbar__center__subtitle {
@@ -71,7 +75,7 @@
     -webkit-justify-content: space-between;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    padding: 0 8px;
+    padding: 0 .4rem;
     overflow: hidden; }
   .navbar__right {
     padding: 0 8px; }
@@ -107,9 +111,9 @@
     .navbar__button:active {
       background-color: rgba(0, 0, 0, 0.5);
       transition: none;
-      opacity: 0.5; }
+      opacity: .5; }
     .navbar__button:disabled, .navbar__button[disabled] {
-      opacity: 0.3;
+      opacity: .3;
       cursor: default;
       pointer-events: none; }
     .navbar__button:focus {
@@ -122,7 +126,7 @@
       font-size: 1.1em; }
   .navbar__hamburger {
     width: 2.5em;
-    transition: all 0.2s;
+    transition: all .2s;
     position: relative; }
     .navbar__hamburger__icon {
       width: 25px;

@@ -1,176 +1,209 @@
+///
 @import "variables";
-//@import 'px-mobile-design';
+
+///
 @import 'px-mobile-mixin-design/_mixins';
+
 ///px-navbar styles
 ///
 ///
 /// @access public
-@include block('navbar') {
-		user-select: none;
-		z-index: 200;
-
-
-		box-sizing: border-box;
-		white-space: nowrap;
+@include block ('navbar') {
+		user-select     : none;
+		z-index         : 200;
+		box-sizing      : border-box;
+		white-space     : nowrap;
 		//background-clip: padding-box;
 		//background-size: 100% 1px;
 		//background-repeat: no-repeat;
 		//background-position: bottom;
 		//background-image: linear-gradient(0deg, $navbar-border-color, $navbar-border-color 50%, transparent 50%);
-		height: $navbar-height;
-		padding: $navbar-padding;
-		color: $navbar-default-font-color;
-		font-size: 17px;
-		font-weight: 400;
-		border-bottom: 1px solid $navbar-border-color;
+		height          : $navbar-height;
+		padding         : $navbar-padding;
+		color           : $navbar-default-font-color;
+		font-size       : 17px;
+		font-weight     : 400;
+		border-bottom   : 1px solid darken($navbar-default-background-color, 50%);
 		background-color: $navbar-default-background-color;
+		position        : absolute;
+		top             : 0;
+		left            : 0;
+		right           : 0;
 
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-
-		@include modifier('fixed') {
-			position: fixed;
+		///.navbar--fixed
+		@include modifier ('fixed') {
+				position: fixed;
 		}
-		@include modifier('shadow') {
-			box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
+		///.navbar--shadow
+		@include modifier ('shadow') {
+				box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
 		}
-		@include modifier('static') {
-			position: static;
+		///.navbar--static
+		@include modifier ('static') {
+				position: static;
 		}
-		@include modifier('transparent') {
+		///.navbar--transparent
+		@include modifier ('transparent') {
 				background-color: transparent;
-				color: $navbar-default-font-color;
+				color           : $navbar-default-font-color;
+
 				.navbar__button {
 						color: $navbar-default-font-color;
 				}
 		}
-		@include modifier('chrome') {
-				background-color: $navbar-chrome-background-color;
-				color: $navbar-chrome-font-color;
+		///.navbar--chrome
+		@include modifier ('chrome') {
+				background-color   : $navbar-chrome-background-color;
+				border-bottom-color: darken($navbar-chrome-background-color, 20%);
+				color              : $navbar-chrome-font-color;
+
 				.navbar__button {
 						color: $navbar-chrome-font-color;
 				}
 		}
-		@include modifier('alt') {
-				background-color: $navbar-alt-background-color;
-				color: $navbar-alt-font-color;
+		///.navbar--fixed
+		@include modifier ('alt') {
+				background-color   : $navbar-alt-background-color;
+				color              : $navbar-alt-font-color;
+				border-bottom-color: darken($navbar-alt-background-color, 20%);
+
 				.navbar__button {
 						color: $navbar-alt-font-color;
 				}
 		}
-		@include modifier('dark') {
-				background-color: $navbar-dark-background-color;
-				color: $navbar-dark-font-color;
+		///.navbar--fixed
+		@include modifier ('dark') {
+				background-color   : $navbar-dark-background-color;
+				color              : $navbar-dark-font-color;
+				border-bottom-color: darken($navbar-dark-background-color, 20%);
+
 				.navbar__button {
 						color: $navbar-dark-font-color;
 				}
 		}
-		@include modifier('primary') {
-				background-color: $navbar-primary-background-color;
-				color: $navbar-primary-font-color;
+		///.navbar--fixed
+		@include modifier ('primary') {
+				background-color   : $navbar-primary-background-color;
+				color              : $navbar-primary-font-color;
+				border-bottom-color: darken($navbar-primary-background-color, 20%);
+
 				.navbar__button {
 						color: $navbar-primary-font-color;
 				}
 		}
-		@include element('center') {
+		///.navbar--fixed
+		@include element ('center') {
 				@include centerer();
 				text-align: center;
-				padding: 10px 0;
-				z-index: 210;
-				@include element('title') {
+				padding   : .5rem 0;
+				z-index   : 300;
+
+				@include element ('title') {
 						display: block;
 				}
-				@include element('subtitle') {
-						display: block;
+
+				@include element ('subtitle') {
+						display  : block;
 						font-size: 80%;
 				}
 		}
-		@include element('content') {
-				position: relative;
-				display: flex;
+		///.navbar__content
+		@include element ('content') {
+				position       : relative;
+				display        : flex;
 				justify-content: space-between;
-				padding: 0 8px;
+				padding        : 0 .4rem;
 				//margin: .5%;
-				overflow: hidden;
+				overflow       : hidden;
 		}
-		@include element('right') {
+		///.navbar__right
+		@include element ('right') {
 				padding: 0 8px;
 		}
-		@include element('left') {
+		///.navbar__left
+		@include element ('left') {
 				padding: 0 8px;
 		}
-		//Button
-		@include element('button') {
-				padding: $navbar-button-padding;
-				letter-spacing: 0;
-				text-shadow: 0 1px none;
+		///.navbar__button
+		@include element ('button') {
+				padding         : $navbar-button-padding;
+				letter-spacing  : 0;
+				text-shadow     : 0 1px none;
 				background-color: $navbar-button-background-color;
-				border-radius: 2px;
-				border: 1px solid transparent;
-				font-weight: 400;
-				line-height: 34px;
-				font-size: $navbar-button-font-size;
-				padding: $navbar-button-padding;
-				min-width: $navbar-button-height;
-				height: $navbar-button-height;
-				transition: none;
-				vertical-align: middle;
-				box-shadow: none;
-				display: flex;
-				align-items: center;
+				border-radius   : 2px;
+				border          : 1px solid transparent;
+				font-weight     : 400;
+				line-height     : 34px;
+				font-size       : $navbar-button-font-size;
+				padding         : $navbar-button-padding;
+				min-width       : $navbar-button-height;
+				height          : $navbar-button-height;
+				transition      : none;
+				vertical-align  : middle;
+				box-shadow      : none;
+				display         : flex;
+				align-items     : center;
+
 				i,
 				span {
 						flex: 1;
 				}
+
 				&:active {
 						background-color: rgba(0, 0, 0, .5);
-						transition: none;
-						opacity: 0.5;
+						transition      : none;
+						opacity         : .5;
 				}
+
 				&:disabled,
 				&[disabled] {
-						opacity: 0.3;
-						cursor: default;
+						opacity       : .3;
+						cursor        : default;
 						pointer-events: none;
 				}
+
 				&:focus {
-						outline: 0;
+						outline   : 0;
 						transition: none;
 				}
+
 				&:hover {
 						box-shadow: none;
 						transition: none;
 				}
-				@include modifier('back') {
+
+				@include modifier ('back') {
 						.icon {
 								font-size: 1.1em;
 						}
 				}
 		}
 		//Hamburger Menu
-		@include element('hamburger') {
-				width: 2.5em;
-				transition: all 0.2s;
-				position: relative;
-				@include element('icon') {
-						width: 25px;
-						height: 2px;
-						display: block;
-						position: absolute;
-						top: 50%;
-						left: 15%;
+		@include element ('hamburger') {
+				width     : 2.5em;
+				transition: all .2s;
+				position  : relative;
+
+				@include element ('icon') {
+						width             : 25px;
+						height            : 2px;
+						display           : block;
+						position          : absolute;
+						top               : 50%;
+						left              : 15%;
 						-webkit-transition: -webkit-transform 300ms;
-						transition: transform 300ms;
-						background: rgba(0, 0, 0, .5);
-						@include modifier('1') {
+						transition        : transform 300ms;
+						background        : rgba(0, 0, 0, .5);
+
+						@include modifier ('1') {
 								transform: translate3d(0, -8px, 0);
 						}
-						@include modifier('2') {
+
+						@include modifier ('2') {
 								transform: translate3d(0, 0, 0);
 						}
-						@include modifier('3') {
+
+						@include modifier ('3') {
 								transform: translate3d(0, 8px, 0);
 						}
 				}
