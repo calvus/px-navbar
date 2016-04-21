@@ -15,6 +15,7 @@
 		<script src="../webcomponentsjs/webcomponents.min.js"></script>
 		<script src="../fastclick/lib/fastclick.js"></script>
 
+		<link rel="import" href="../px-table-view/px-table-view.html">
 		<link rel="import" href="../px-drawer/px-drawer.html">
 		<link rel="import" href="px-navbar.html">
 
@@ -25,11 +26,11 @@
 			height: 100vh;
 			padding: 45px 0;
 		}
-		
+
 		ol {
 			margin: 0;
 		}
-		
+
 		.flex .btn {
 			margin: 4px;
 		}
@@ -60,26 +61,11 @@
 			</px-navbar>
 			<px-drawer id="myLeftDrawer" side="left" theme="dark" fixed>
 				<ul class="table-view table-view--bare">
-					<li class="table-row table-row--tappable" href="#home">
-						<div class="table-row__media table-row__media--icon"> <i class="fa fa-lg fa-home"></i> </div>
-						<div class="table-row__content"> <span class="table-row__content__title">Home</span> </div>
-					</li>
-					<li class="table-row table-row--tappable" href="#dashboard">
-						<div class="table-row__media table-row__media--icon"> <i class="fa fa-lg fa-dashboard"></i> </div>
-						<div class="table-row__content"> <span class="table-row__content__title">Dashboard</span> </div>
-					</li>
-					<li class="table-row table-row--tappable" href="#alerts">
-						<div class="table-row__media table-row__media--icon"> <i class="fa fa-lg fa-exclamation-triangle"></i> </div>
-						<div class="table-row__content"> <span class="table-row__content__title">Alerts</span> </div>
-					</li>
-					<li class="table-row table-row--tappable" href="#cases">
-						<div class="table-row__media table-row__media--icon"> <i class="fa fa-lg fa-briefcase"></i> </div>
-						<div class="table-row__content"> <span class="table-row__content__title">Cases</span> </div>
-					</li>
-					<li class="table-row table-row--tappable" href="#analysis">
-						<div class="table-row__media table-row__media--icon"> <i class="fa fa-lg fa-bar-chart"></i> </div>
-						<div class="table-row__content"> <span class="table-row__content__title">Analysis</span> </div>
-					</li>
+					<px-table-row title="Home" icon="fa fa-home" type="tappable" href="#home"></px-table-row>
+					<px-table-row title="Dashboard" icon="fa fa-dashboard" type="tappable" href="#dashboard"></px-table-row>
+					<px-table-row title="Alerts" icon="fa fa-exclamation-triangle" type="tappable" href="#alerts"></px-table-row>
+					<px-table-row title="Cases" icon="fa fa-briefcase" type="tappable" href="#cases"></px-table-row>
+					<px-table-row title="Analysis" icon="fa fa-bar-chart" type="tappable" href="#analysis"></px-table-row>
 				</ul>
 			</px-drawer>
 			<px-drawer id="myRightDrawer" side="right" theme="dark" fixed>
