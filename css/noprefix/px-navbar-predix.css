@@ -103,37 +103,3 @@
         transform: translate3d(0, 0, 0); }
       .navbar__hamburger__icon--3 {
         transform: translate3d(0, 8px, 0); }
-
-.navbar--transparent {
-  background-color: transparent;
-  color: black; }
-  .navbar--transparent .navbar__button {
-    color: black; }
-
-.navbar--chrome {
-  background-color: #efeff4;
-  border-bottom-color: #b3b3ca;
-  color: #242326; }
-  .navbar--chrome .navbar__button {
-    color: #242326; }
-
-.navbar--alt {
-  background-color: #9999a3;
-  color: #242326;
-  border-bottom-color: #656571; }
-  .navbar--alt .navbar__button {
-    color: #242326; }
-
-.navbar--dark {
-  background-color: #242326;
-  color: #FFFFFF;
-  border-bottom-color: black; }
-  .navbar--dark .navbar__button {
-    color: #FFFFFF; }
-
-.navbar--primary {
-  background-color: #3e87e8;
-  color: #FFFFFF;
-  border-bottom-color: #1455ac; }
-  .navbar--primary .navbar__button {
-    color: #FFFFFF; }
