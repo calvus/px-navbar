@@ -1,4 +1,4 @@
-<link rel="import" href="../polymer/polymer.html" />
+<link rel="import" href="../polymer/polymer.html"/>
 
 <!--
 ```
@@ -19,28 +19,29 @@
 @demo demo.html
 @homepage index.html
 -->
-<link rel="stylesheet" href="css/px-navbar.css" />
+
 <dom-module id="px-navbar">
-
+	<link rel="stylesheet" href="css/px-navbar.css" is="custom-style"/>
 	<template>
+
 		<style>
-		:host {
-			position: absolute;
-			top: 0;
-			right: 0;
-			left: 0;
-		}
+			:host {
+				position: absolute;
+				top: 0;
+				right: 0;
+				left: 0;
+			}
 
-		:host .navbar__fixed {
-			position: fixed;
-			top: 0;
-		}
+			:host .navbar__fixed {
+				position: fixed;
+				top: 0;
+			}
 
-		:host .navbar--alt::content .navbar__button,
-		:host .navbar--dark::content .navbar__button,
-		:host .navbar--primary::content .navbar__button {
-			color: #fff !important;
-		}
+			:host .navbar--alt::content .navbar__button,
+			:host .navbar--dark::content .navbar__button,
+			:host .navbar--primary::content .navbar__button {
+				color: #fff !important;
+			}
 		</style>
 
 		<template is="dom-if" if="{{back}}">
@@ -52,7 +53,6 @@
 			</div>
 		</template>
 
-		<!-- title -->
 		<template is="dom-if" if="{{title}}">
 			<div class="navbar__center">
 				<span class="navbar__title">{{title}}</span>
@@ -63,154 +63,154 @@
 
 	</template>
 	<script>
-	Polymer({
-		is: 'px-navbar',
-		properties: {
-			//The sub-title to display.
-			subtitle: {
-				type: String
+		Polymer({
+			is: 'px-navbar',
+			properties: {
+				//The sub-title to display.
+				subtitle: {
+					type: String
+				},
+				//The title to display.
+				title: {
+					type: String
+				},
+				//The #id of the view container.
+				viewContainer: {
+					type: String,
+					notify: true,
+					reflectToAttribute: true
+				},
+				//Fix the navbar to the top.
+				fixed: {
+					type: Boolean,
+					value: false
+				},
+				//The view containers instance.
+				views: {
+					type: Object,
+					value: {}
+				},
+				//To show the back button or not.
+				back: {
+					type: Boolean,
+					value: false,
+					reflectToAttribute: true
+				},
+				//The label for the back button.
+				backLabel: {
+					type: String,
+					value: 'Back'
+				}
+				//The type of theme to apply.
+				/*
+				 theme: {
+				 type: String,
+				 value: 'white',
+				 notify: true,
+				 observer: '_themeChanged',
+				 reflectToAttribute: true
+				 }*/
 			},
-			//The title to display.
-			title: {
-				type: String
+			ready: function () {
+				this.toggleClass('navbar');
+				if (this.theme) {
+					this.toggleClass('navbar--' + this.theme, true);
+				}
+				if (this.fixed) {
+					this.toggleClass('navbar--fixed', true);
+				}
 			},
-			//The #id of the view container.
-			viewContainer: {
-				type: String,
-				notify: true,
-				reflectToAttribute: true
+			attached: function () {
+				var _this = this;
+				if (_this.sidebarContainer) {
+					_this.sidebar = document.getElementById(_this.sidebarContainer);
+					_this.sidebar.addEventListener('toggle', function () {
+						_this.toggleClass('px-sidebar-open', _this.sidebar.open);
+					});
+				}
+				var parent = this.parentNode;
+				if (parent && parent.localName === 'px-page') {
+					this.theme = parent.attr('theme');
+					this.title = parent.attr('title');
+					if (parent.viewContainer) {
+						_this.viewContainer = parent.viewContainer.id;
+						_this.views = document.getElementById(_this.viewContainer);
+						_this.menu = _this.views.getCurrent().main;
+						//console.log('parentViewContainer', parent.viewContainer);
+						//_this.title = _this.views.getCurrent().attr('title');
+					}
+				}
+				if (this.viewContainer) {
+					this.debounce('initViews', function () {
+						_this.views = document.getElementById(_this.viewContainer);
+						_this.menu = _this.views.getCurrent().main;
+						//	_this.title = _this.views.getCurrent().attr('title');
+						_this.views.addEventListener('change', function (e) {
+							_this.debounce('change', function () {
+								_this.title = e.detail.title;
+								_this.menu = (_this.views.getCurrent().main);
+								_this.back = _this.views.getCurrent().main ? false : true;
+								_this.backLabel = (_this.views.prevView ? _this.views.prevView.title : '');
+							}, 50);
+							console.warn('Add back button to previous page', _this.back);
+						});
+					}, 150);
+				}
+				this._fixButtons();
 			},
-			//Fix the navbar to the top.
-			fixed: {
-				type: Boolean,
-				value: false
+			//Handle when the back button is clicked.
+			_handleBackClick: function () {
+				if (this.parentNode && this.parentNode.viewContainer) {
+					this.parentNode.viewContainer.back();
+				}
+				if (this.viewContainer && this.views) {
+					this.views.back();
+				}
+				this.fire('back');
 			},
-			//The view containers instance.
-			views: {
-				type: Object,
-				value: {}
+			//Handle when a view from the viewContainer is changed.
+			_handleViewChange: function () {
+				if (this.viewContainer && this.views) {
+					this.back = (this.views.getCurrent() !== this.views.main);
+				}
 			},
-			//To show the back button or not.
-			back: {
-				type: Boolean,
-				value: false,
-				reflectToAttribute: true
+			//Toggle the display of the navbar.
+			toggle: function (display) {
+				this.hidden = !this.hidden;
+				this.toggleClass('hidden', this.hidden);
 			},
-			//The label for the back button.
-			backLabel: {
-				type: String,
-				value: 'Back'
-			}
-			//The type of theme to apply.
-			/*
-			theme: {
-				type: String,
-				value: 'white',
-				notify: true,
-				observer: '_themeChanged',
-				reflectToAttribute: true
-			}*/
-		},
-		ready: function() {
-			this.toggleClass('navbar');
-			if (this.theme) {
-				this.toggleClass('navbar--' + this.theme, true);
-			}
-			if (this.fixed) {
-				this.toggleClass('navbar--fixed', true);
-			}
-		},
-		attached: function() {
-			var _this = this;
-			if (_this.sidebarContainer) {
-				_this.sidebar = document.getElementById(_this.sidebarContainer);
-				_this.sidebar.addEventListener('toggle', function() {
-					_this.toggleClass('px-sidebar-open', _this.sidebar.open);
+			//Handle getting the current view/page, if there is a viewContainer.
+			getCurrentView: function () {
+				if (this.viewContainer && this.views) {
+					return this.views.getCurrent();
+				}
+			},
+			//Listen for a click outside the sidebar and toggle the menu
+			_registerOffclick: function () {
+				this.views.addEventListener('click', this.toggleMenu);
+			},
+			//Unlisten for a click outside the sidebar and toggle the menu
+			_deregisterOffclick: function () {
+				this.views.removeEventListener('click', this.toggleMenu);
+			},
+			//Handle when the theme property changes
+			_themeChanged: function (newVal, oldVal) {
+				var _this = this;
+				this.async(function () {
+					if (oldVal) {
+						_this.toggleClass('navbar--' + oldVal, false, _this.$$('.navbar'));
+					}
+					_this.toggleClass('navbar--' + newVal, true, _this.$$('.navbar'));
+				});
+			},
+			//Handle fixing the class naming of the buttons.
+			_fixButtons: function () {
+				this.queryAllEffectiveChildren('button').forEach(function (b) {
+					if (b && b.toggleClass) {
+						b.toggleClass('navbar__button');
+					}
 				});
 			}
-			var parent = this.parentNode;
-			if (parent && parent.localName === 'px-page') {
-				this.theme = parent.attr('theme');
-				this.title = parent.attr('title');
-				if (parent.viewContainer) {
-					_this.viewContainer = parent.viewContainer.id;
-					_this.views = document.getElementById(_this.viewContainer);
-					_this.menu = _this.views.getCurrent().main;
-					//console.log('parentViewContainer', parent.viewContainer);
-					//_this.title = _this.views.getCurrent().attr('title');
-				}
-			}
-			if (this.viewContainer) {
-				this.debounce('initViews', function() {
-					_this.views = document.getElementById(_this.viewContainer);
-					_this.menu = _this.views.getCurrent().main;
-					//	_this.title = _this.views.getCurrent().attr('title');
-					_this.views.addEventListener('change', function(e) {
-						_this.debounce('change', function() {
-							_this.title = e.detail.title;
-							_this.menu = (_this.views.getCurrent().main);
-							_this.back = _this.views.getCurrent().main ? false : true;
-							_this.backLabel = (_this.views.prevView ? _this.views.prevView.title : '');
-						}, 50);
-						console.warn('Add back button to previous page', _this.back);
-					});
-				}, 150);
-			}
-			this._fixButtons();
-		},
-		//Handle when the back button is clicked.
-		_handleBackClick: function() {
-			if (this.parentNode && this.parentNode.viewContainer) {
-				this.parentNode.viewContainer.back();
-			}
-			if (this.viewContainer && this.views) {
-				this.views.back();
-			}
-			this.fire('back');
-		},
-		//Handle when a view from the viewContainer is changed.
-		_handleViewChange: function() {
-			if (this.viewContainer && this.views) {
-				this.back = (this.views.getCurrent() !== this.views.main);
-			}
-		},
-		//Toggle the display of the navbar.
-		toggle: function(display) {
-			this.hidden = !this.hidden;
-			this.toggleClass('hidden', this.hidden);
-		},
-		//Handle getting the current view/page, if there is a viewContainer.
-		getCurrentView: function() {
-			if (this.viewContainer && this.views) {
-				return this.views.getCurrent();
-			}
-		},
-		//Listen for a click outside the sidebar and toggle the menu
-		_registerOffclick: function() {
-			this.views.addEventListener('click', this.toggleMenu);
-		},
-		//Unlisten for a click outside the sidebar and toggle the menu
-		_deregisterOffclick: function() {
-			this.views.removeEventListener('click', this.toggleMenu);
-		},
-		//Handle when the theme property changes
-		_themeChanged: function(newVal, oldVal) {
-			var _this = this;
-			this.async(function() {
-				if (oldVal) {
-					_this.toggleClass('navbar--' + oldVal, false, _this.$$('.navbar'));
-				}
-				_this.toggleClass('navbar--' + newVal, true, _this.$$('.navbar'));
-			});
-		},
-		//Handle fixing the class naming of the buttons.
-		_fixButtons: function() {
-			this.queryAllEffectiveChildren('button').forEach(function(b) {
-				if (b && b.toggleClass) {
-					b.toggleClass('navbar__button');
-				}
-			});
-		}
-	});
+		});
 	</script>
 </dom-module>

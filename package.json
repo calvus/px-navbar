@@ -10,9 +10,9 @@
   "author": "Jonnie Spratley",
   "scripts": {
     "postinstall": "bower install",
+    "start": "grunt",
     "test": "grunt test",
-    "watch": "grunt watch",
-    "start": "grunt"
+    "watch": "grunt watch"
   },
   "devDependencies": {
     "bower": "*",
@@ -25,9 +25,21 @@
     "grunt-dep-serve": "git+https://github.com/GeneralElectric/grunt-dep-serve.git#master",
     "grunt-sass": "^v1.0.0",
     "grunt-shell": "~v1.1.1",
-    "webdriver-support": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-load-plugins": "^1.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.2.0",
+    "gulp-sequence": "^0.4.5",
+    "gulp-size": "^2.1.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-style-modules": "^0.1.0",
     "node-sass-import-once": "^1.2.0",
+    "sassdoc": "^2.1.20",
     "web-component-tester": "*",
-    "sassdoc": "^2.1.20"
+    "webdriver-support": "^2.2.2"
   }
 }

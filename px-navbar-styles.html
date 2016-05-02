@@ -1,101 +1,98 @@
-.navbar {
+<dom-module id="px-navbar-css">
+<template>
+<style>
+:root .navbar {
   font-family: 'GE Inspira Sans', sans-serif;
   -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   z-index: 200;
-  box-sizing: border-box;
-  white-space: nowrap;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  height: 56px;
-  padding: 0;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
+  box-sizing: border-box;
+  white-space: nowrap;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  height: 56px;
+  padding: 0;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex; }
-  .navbar * {
+  :root .navbar * {
     -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     outline: 0; }
-  .navbar button {
+  :root .navbar button {
     outline: 0; }
-  .navbar--fixed {
+  :root .navbar--fixed {
     position: fixed; }
-  .navbar--shadow {
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15); }
-  .navbar--static {
+  :root .navbar--static {
     position: static; }
-  .navbar__center {
+  :root .navbar__center {
     position: absolute;
     top: 50%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     -webkit-order: 2;
-        -ms-flex-order: 2;
-            order: 2;
+    -ms-flex-order: 2;
+    order: 2;
     -webkit-flex: 1 0 auto;
-        -ms-flex: 1 0 auto;
-            flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
     -webkit-align-self: center;
-        -ms-flex-item-align: center;
-            align-self: center;
+    -ms-flex-item-align: center;
+    align-self: center;
     text-align: center; }
-    .navbar__center > * {
+    :root .navbar__center > * {
       display: block; }
-  .navbar__left {
+  :root .navbar__left {
     -webkit-order: 1;
-        -ms-flex-order: 1;
-            order: 1; }
-  .navbar__right {
+    -ms-flex-order: 1;
+    order: 1; }
+  :root .navbar__right {
     -webkit-order: 3;
-        -ms-flex-order: 3;
-            order: 3; }
-  .navbar__title {
+    -ms-flex-order: 3;
+    order: 3; }
+  :root .navbar__title {
     display: block;
     margin: 0;
     padding: 0;
     -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     outline: 0; }
-  .navbar__subtitle {
+  :root .navbar__subtitle {
     display: block;
     -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none; }
-  .navbar__content {
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; }
+  :root .navbar__content {
     position: relative;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     -webkit-justify-content: space-between;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
     overflow: hidden; }
-  .navbar__button {
+  :root .navbar__button {
     padding: 0.2rem 0.5rem;
     letter-spacing: 0;
     text-shadow: 0 1px none;
     font-weight: 400;
     line-height: 34px;
-    background-color: transparent;
-    border-radius: 2px;
-    border: 1px solid transparent;
-    font-size: 1rem;
     padding: 0.2rem 0.5rem;
     min-width: 44px;
     height: 44px;
@@ -106,69 +103,80 @@
     display: -ms-flexbox;
     display: flex;
     -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center; }
-    .navbar__button.btn {
+    -ms-flex-align: center;
+    align-items: center; }
+    :root .navbar__button.btn {
       min-width: 44px;
       height: 44px;
       background-color: inherit;
       border: inherit;
       border-radius: inherit; }
-    .navbar__button i,
-    .navbar__button span {
+    :root .navbar__button i,
+    :root .navbar__button span {
       -webkit-flex: 1;
-          -ms-flex: 1;
-              flex: 1; }
-    .navbar__button:active {
-      background-color: rgba(0, 0, 0, 0.5);
-      transition: none;
-      opacity: .5; }
-    .navbar__button:disabled, .navbar__button[disabled] {
+      -ms-flex: 1;
+      flex: 1; }
+    :root .navbar__button:disabled, :root .navbar__button[disabled] {
       opacity: .3;
       cursor: default;
       pointer-events: none; }
-    .navbar__button:focus {
+    :root .navbar__button:focus {
       outline: 0;
       transition: none; }
-    .navbar__button:hover {
+    :root .navbar__button:hover {
       box-shadow: none;
       transition: none; }
-    .navbar__button--back i {
+    :root .navbar__button--back i {
       margin-right: .4rem; }
-  .navbar .btn {
+  :root .navbar .btn {
     min-width: 44px;
     height: 44px; }
 
-.navbar {
+:root .navbar {
   color: black;
   border-bottom: 1px solid gray;
   background-color: #FFFFFF; }
-  .navbar--transparent {
+  :root .navbar--transparent {
     background-color: transparent;
     color: black; }
-    .navbar--transparent .navbar__button {
+    :root .navbar--transparent .navbar__button {
       color: black; }
-  .navbar--chrome {
+  :root .navbar--shadow {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15); }
+  :root .navbar--chrome {
     background-color: #efeff4;
     border-bottom-color: #b3b3ca;
     color: #242326; }
-    .navbar--chrome .navbar__button {
+    :root .navbar--chrome .navbar__button {
       color: #242326; }
-  .navbar--dark {
+  :root .navbar--dark {
     background-color: #242326;
     color: #FFFFFF;
     border-bottom-color: black; }
-    .navbar--dark .navbar__button {
+    :root .navbar--dark .navbar__button {
       color: #FFFFFF; }
-  .navbar--primary {
+  :root .navbar--primary {
     background-color: #3e87e8;
     color: #FFFFFF;
     border-bottom-color: #1455ac; }
-    .navbar--primary .navbar__button {
+    :root .navbar--primary .navbar__button {
       color: #FFFFFF; }
-  .navbar__title {
+  :root .navbar__button {
+    background-color: transparent;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    font-size: 1rem; }
+    :root .navbar__button:active {
+      background-color: rgba(0, 0, 0, 0.5);
+      transition: none;
+      opacity: .5; }
+  :root .navbar__title {
     font-size: 1.1rem;
     color: black; }
-  .navbar__subtitle {
+  :root .navbar__subtitle {
     font-size: 1rem;
     color: #9999a3; }
+
+</style>
+</template>
+</dom-module>

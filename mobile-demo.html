@@ -55,11 +55,15 @@
 	<body unresolved class="u-bg--gray1">
 
 		<template id="navbarTmpl" is="dom-bind">
-			<px-navbar id="navbar1" title="{{title}}" subtitle="{{subtitle}}">
+			<px-navbar id="navbar1">
 				<div class="navbar__left">
 					<button class="navbar__button" onclick="document.getElementById('myLeftDrawer').toggle()">
 						<i class="fa fa-lg fa-bars"></i>
 					</button>
+				</div>
+				<div class="navbar__center">
+					<span class="navbar__title">View Title</span>
+					<span class="navbar__subtitle"> </span>
 				</div>
 				<div class="navbar__right">
 					<button class="navbar__button" onclick="document.getElementById('myOtherDrawer').toggle()">

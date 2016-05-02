@@ -1,30 +1,28 @@
-.navbar {
+:root .navbar {
   font-family: 'GE Inspira Sans', sans-serif;
   user-select: none;
   z-index: 200;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   box-sizing: border-box;
   white-space: nowrap;
   align-items: center;
   justify-content: space-between;
   height: 56px;
   padding: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
   display: flex; }
-  .navbar * {
+  :root .navbar * {
     user-select: none;
     outline: 0; }
-  .navbar button {
+  :root .navbar button {
     outline: 0; }
-  .navbar--fixed {
+  :root .navbar--fixed {
     position: fixed; }
-  .navbar--shadow {
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15); }
-  .navbar--static {
+  :root .navbar--static {
     position: static; }
-  .navbar__center {
+  :root .navbar__center {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -33,36 +31,32 @@
     flex: 1 0 auto;
     align-self: center;
     text-align: center; }
-    .navbar__center > * {
+    :root .navbar__center > * {
       display: block; }
-  .navbar__left {
+  :root .navbar__left {
     order: 1; }
-  .navbar__right {
+  :root .navbar__right {
     order: 3; }
-  .navbar__title {
+  :root .navbar__title {
     display: block;
     margin: 0;
     padding: 0;
     user-select: none;
     outline: 0; }
-  .navbar__subtitle {
+  :root .navbar__subtitle {
     display: block;
     user-select: none; }
-  .navbar__content {
+  :root .navbar__content {
     position: relative;
     display: flex;
     justify-content: space-between;
     overflow: hidden; }
-  .navbar__button {
+  :root .navbar__button {
     padding: 0.2rem 0.5rem;
     letter-spacing: 0;
     text-shadow: 0 1px none;
     font-weight: 400;
     line-height: 34px;
-    background-color: transparent;
-    border-radius: 2px;
-    border: 1px solid transparent;
-    font-size: 1rem;
     padding: 0.2rem 0.5rem;
     min-width: 44px;
     height: 44px;
@@ -71,65 +65,72 @@
     box-shadow: none;
     display: flex;
     align-items: center; }
-    .navbar__button.btn {
+    :root .navbar__button.btn {
       min-width: 44px;
       height: 44px;
       background-color: inherit;
       border: inherit;
       border-radius: inherit; }
-    .navbar__button i,
-    .navbar__button span {
+    :root .navbar__button i,
+    :root .navbar__button span {
       flex: 1; }
-    .navbar__button:active {
-      background-color: rgba(0, 0, 0, 0.5);
-      transition: none;
-      opacity: .5; }
-    .navbar__button:disabled, .navbar__button[disabled] {
+    :root .navbar__button:disabled, :root .navbar__button[disabled] {
       opacity: .3;
       cursor: default;
       pointer-events: none; }
-    .navbar__button:focus {
+    :root .navbar__button:focus {
       outline: 0;
       transition: none; }
-    .navbar__button:hover {
+    :root .navbar__button:hover {
       box-shadow: none;
       transition: none; }
-    .navbar__button--back i {
+    :root .navbar__button--back i {
       margin-right: .4rem; }
-  .navbar .btn {
+  :root .navbar .btn {
     min-width: 44px;
     height: 44px; }
 
-.navbar {
+:root .navbar {
   color: black;
   border-bottom: 1px solid gray;
   background-color: #FFFFFF; }
-  .navbar--transparent {
+  :root .navbar--transparent {
     background-color: transparent;
     color: black; }
-    .navbar--transparent .navbar__button {
+    :root .navbar--transparent .navbar__button {
       color: black; }
-  .navbar--chrome {
+  :root .navbar--shadow {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15); }
+  :root .navbar--chrome {
     background-color: #efeff4;
     border-bottom-color: #b3b3ca;
     color: #242326; }
-    .navbar--chrome .navbar__button {
+    :root .navbar--chrome .navbar__button {
       color: #242326; }
-  .navbar--dark {
+  :root .navbar--dark {
     background-color: #242326;
     color: #FFFFFF;
     border-bottom-color: black; }
-    .navbar--dark .navbar__button {
+    :root .navbar--dark .navbar__button {
       color: #FFFFFF; }
-  .navbar--primary {
+  :root .navbar--primary {
     background-color: #3e87e8;
     color: #FFFFFF;
     border-bottom-color: #1455ac; }
-    .navbar--primary .navbar__button {
+    :root .navbar--primary .navbar__button {
       color: #FFFFFF; }
-  .navbar__title {
+  :root .navbar__button {
+    background-color: transparent;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    font-size: 1rem; }
+    :root .navbar__button:active {
+      background-color: rgba(0, 0, 0, 0.5);
+      transition: none;
+      opacity: .5; }
+  :root .navbar__title {
     font-size: 1.1rem;
     color: black; }
-  .navbar__subtitle {
+  :root .navbar__subtitle {
     font-size: 1rem;
     color: #9999a3; }
