@@ -16,36 +16,18 @@
 		<script src="../fastclick/lib/fastclick.js"></script>
 
 		<link rel="import" href="../px-table-view/px-table-view.html">
+		<link rel="import" href="../px-page/px-pages.html">
 		<link rel="import" href="../px-drawer/px-drawer.html">
 		<link rel="import" href="px-navbar.html">
 
-		<style media="screen">
-		body {
-
-			margin: 0;
-			height: 100vh;
-			padding: 45px 0;
-		}
-
-		ol {
-			margin: 0;
-		}
-
-		.flex .btn {
-			margin: 4px;
-		}
-
-		</style>
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
-	  <script src="https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
-	  <script type="text/javascript">
-	    if ('addEventListener' in document) {
-	      document.addEventListener('DOMContentLoaded', function() {
-	        FastClick.attach(document.body);
-	      }, false);
-	    }
-	  </script>
+
 		<script type="text/javascript">
+		if ('addEventListener' in document) {
+			document.addEventListener('DOMContentLoaded', function() {
+				FastClick.attach(document.body);
+			}, false);
+		}
 		document.addEventListener('WebComponentsReady', function() {
 			window.scrollTo(0, 1);
 		});
@@ -53,25 +35,7 @@
 	</head>
 
 	<body unresolved class="u-bg--gray1">
-
 		<template id="navbarTmpl" is="dom-bind">
-			<px-navbar id="navbar1">
-				<div class="navbar__left">
-					<button class="navbar__button" onclick="document.getElementById('myLeftDrawer').toggle()">
-						<i class="fa fa-lg fa-bars"></i>
-					</button>
-				</div>
-				<div class="navbar__center">
-					<span class="navbar__title">View Title</span>
-					<span class="navbar__subtitle"> </span>
-				</div>
-				<div class="navbar__right">
-					<button class="navbar__button" onclick="document.getElementById('myOtherDrawer').toggle()">
-						<i class="fa fa-lg fa-ellipsis-v"></i>
-					</button>
-				</div>
-			</px-navbar>
-
 			<px-drawer id="myLeftDrawer" side="left" theme="dark" fixed>
 				<ul class="table-view">
 					<px-table-row title="Home" icon="fa fa-home" type="tappable"></px-table-row>
@@ -81,7 +45,6 @@
 					<px-table-row title="Analysis" icon="fa fa-bar-chart" type="tappable"></px-table-row>
 				</ul>
 			</px-drawer>
-
 			<px-drawer id="myOtherDrawer" side="bottom" theme="dark" fixed>
 				<div class="u-m">
 					<p>
@@ -98,46 +61,88 @@
 				</div>
 			</px-drawer>
 
+			<px-pages id="pages" selected="0" debug loop>
+				<!-- TODO: Page 1 -->
+				<px-page id="page1" main>
+					<px-navbar id="navbar1" view-container="pages">
+						<div class="navbar__left">
+							<button class="navbar__button" onclick="document.getElementById('myLeftDrawer').toggle()">
+								<i class="fa fa-lg fa-bars"></i>
+							</button>
+						</div>
+						<div class="navbar__center">
+							<span class="navbar__title">px-navbar</span>
+						</div>
+					</px-navbar>
+					<section class="viewport">
+						<h2>px-navbar</h2>
+						<p>The px-navbar enables navigation through an information hierarchy and, optionally, management of screen contents.</p>
+						<div class="flex">
+							<button class="btn btn--full" onclick="document.getElementById('pages').next()">Next</button>
+						</div>
+					</section>
+				</px-page>
+				<!-- TODO: Page 2 -->
+				<px-page id="page2" title="Page 2">
+					<px-navbar id="navbar2" view-container="pages"></px-navbar>
+					<section class="viewport">
+						<p>When the user goes to a new level in a navigation hierarchy, two things should happen:</p>
+						<p>
+							<ol>
+								<li>The navigation bar title should change to the new level’s title, if appropriate.</li>
+								<li>A back button should appear in the left end of the bar; it can be labeled with the previous level’s title if it adds value.</li>
+							</ol>
+						</p>
+						<div class="flex">
+							<button class="btn btn--full" onclick="document.getElementById('pages').next()">Next</button>
+						</div>
+					</section>
+				</px-page>
+				<!-- TODO: Page 3 -->
+				<px-page id="page3" title="Page 3">
+					<px-navbar id="navbar3" view-container="pages">
+						<div class="navbar__right">
+							<button class="navbar__button" onclick="document.getElementById('myOtherDrawer').toggle()">
+								<i class="fa fa-lg fa-ellipsis-v"></i>
+							</button>
+						</div>
+					</px-navbar>
+					<section class="viewport">
+						<p>In general, a navigation bar should contain no more than the view’s current title, the back button, and one control that manages the view’s contents.</p>
+						<p>
+							<blockquote>
+								<p>By default, the buttons are a minimum size of 44x44 (Per Apple Design Guidelines)</p>
+							</blockquote>
+						</p>
+						<div class="flex">
+							<button class="btn btn--full" onclick="document.getElementById('pages').next()">Next</button>
+						</div>
+					</section>
+				</px-page>
 
-			<div class="viewport">
-				<div class="u-m">
-					<h2>px-navbar</h2>
+				<!-- TODO: Page 4 -->
+				<px-page id="page4" title="Page 4">
+					<px-navbar id="navbar4" view-container="pages"></px-navbar>
+					<section class="viewport">
+						<p>The following items are configurable:</p>
+						<p>
+							<ol>
+								<li>title</li>
+								<li>subtitle</li>
+								<li>buttons on the left/right</li>
+							</ol>
+						</p>
+						<div class="flex">
+							<button class="btn btn--full" onclick="document.getElementById('pages').reset()">Back to Main</button>
+						</div>
+					</section>
+				</px-page>
+			</px-pages>
 
-					<p>The px-navbar enables navigation through an information hierarchy and, optionally, management of screen contents.</p>
-
-					<p>When the user goes to a new level in a navigation hierarchy, two things should happen:</p>
-
-					<ol>
-						<li>The navigation bar title should change to the new level’s title, if appropriate.</li>
-						<li>A back button should appear in the left end of the bar; it can be labeled with the previous level’s title if it adds value.</li>
-					</ol>
-
-					<p>In general, a navigation bar should contain no more than the view’s current title, the back button, and one control that manages the view’s contents.</p>
-
-					<blockquote>
-						<p>By default, the buttons are a minimum size of 44x44 (Per Apple Design Guidelines)</p>
-					</blockquote>
-					<p>The following items are configurable:</p>
-
-					<ul>
-						<li>title</li>
-						<li>subtitle</li>
-						<li>buttons on the left/right</li>
-					</ul>
-
-
-				</div>
-			</div>
 		</template>
 		<script type="text/javascript">
 		var tmpl = document.getElementById('navbarTmpl');
-		tmpl.title = "View Title";
-		//	tmpl.subtitle = "View Context";
-
-
 		</script>
-
-
 
 	</body>
 
