@@ -6,8 +6,6 @@
 	<script src="../webcomponentsjs/webcomponents.js"></script>
 	<script src="../web-component-tester/browser.js"></script>
 
-
-
 	<link rel="import" href="px-navbar.html">
 	<title>wct - px-navbar</title>
 	<style media="screen">
@@ -18,13 +16,11 @@
 </head>
 
 <body>
-	<px-navbar id="navbarfixture" title="Page1" subtitle="Unit Tests" sidebar-container="sidebarFixture">
-		<div>
+	<px-navbar id="navbarfixture" title="WCT">
+		<div class="navbar__right">
 			<button class="navbar__button" onclick="pagesFixture.next()">Next</button>
 		</div>
 	</px-navbar>
-	<link rel="import" href="../px-sidebar/px-sidebar.html">
-	<px-sidebar id="sidebarFixture"></px-sidebar>
 
 <!--
 	link rel="import" href="../px-page/px-pages.html">
@@ -47,21 +43,19 @@
 
 			test('it should have title', function() {
 				assert(element.title);
+				assert.equal(element.title, 'WCT');
 			});
 
 			test('it should have sub-title', function() {
+				element.subtitle = 'Unit Tests';
 				assert.equal(element.subtitle, 'Unit Tests');
 			});
 
 			test('it should change title to current page title.', function() {
-				assert.equal(element.title, 'Page1');
+				element.title = 'Test Title';
+				assert.equal(element.title, 'Test Title');
 			});
 
-			test('is can be hidden', function() {
-				element.toggle();
-				assert.equal(element.className, 'hidden');
-				element.toggle();
-			});
 
 			suite('Theme', function() {
 				test('is should change theme to primary', function() {
@@ -79,14 +73,10 @@
 					assert.equal(element.theme, 'dark');
 				});
 
-				test('is should change theme alt', function() {
-					element.theme = 'alt';
-					assert.equal(element.theme, 'alt');
-				});
 			});
 
 			suite('Back Button', function() {
-				test('is not visibile by default', function() {
+				test('is not visible by default', function() {
 					assert.equal(element.back, false);
 				});
 

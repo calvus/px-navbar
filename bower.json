@@ -4,10 +4,10 @@
   "authors": [
     "Jonnie Spratley <jonnie.spratley@ge.com>"
   ],
-  "description": "A web component.",
+  "description": "A web component for mobile navigation.",
   "repository": {
     "type": "git",
-    "url": "https://github.build.ge.com/PredixComponents/px-navbar.git"
+    "url": "https://github.com/PredixDev/px-navbar.git"
   },
   "main": "px-navbar.html",
   "keywords": [
@@ -24,11 +24,13 @@
   ],
   "dependencies": {
     "polymer": "latest",
+    "fastclick": "latest",
     "px-drawer": "https://github.com/PredixDev/px-drawer.git"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#~1.0.5",
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.2.3",
+    "px-table-view": "https://github.com/PredixDev/px-table-view.git",
     "px-mobile-design": "https://github.com/PredixDev/px-mobile-design.git",
     "px-mobile-mixin-design": "https://github.com/PredixDev/px-mobile-mixin-design.git"
   },

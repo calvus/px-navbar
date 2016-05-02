@@ -10,8 +10,8 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="apple-touch-icon" href="touch-icon-iphone.png">
 
-		<link rel='stylesheet prefetch' href='https://github.build.ge.com/pages/PXd/px-library-design/css/style.css'>
-		<link rel='stylesheet prefetch' href='https://github.build.ge.com/pages/PredixComponents/px-table-view/bower_components/px-table-view/css/px-table-view.css'>
+		<link rel='stylesheet prefetch' href="http://predixdev.github.io/px-library-design/css/style.css">
+
 		<script src="../webcomponentsjs/webcomponents.min.js"></script>
 		<script src="../fastclick/lib/fastclick.js"></script>
 
@@ -21,7 +21,7 @@
 
 		<style media="screen">
 		body {
-			background: #efeff4;
+
 			margin: 0;
 			height: 100vh;
 			padding: 45px 0;
@@ -55,40 +55,30 @@
 	<body unresolved class="u-bg--gray1">
 
 		<template id="navbarTmpl" is="dom-bind">
-			<px-navbar id="navbar1" title="{{title}}" subtitle="{{subtitle}}" theme="">
-				<div>
-					<button class="navbar__button" onclick="toggleLeftDrawer()">
+			<px-navbar id="navbar1" title="{{title}}" subtitle="{{subtitle}}">
+				<div class="navbar__left">
+					<button class="navbar__button" onclick="document.getElementById('myLeftDrawer').toggle()">
 						<i class="fa fa-lg fa-bars"></i>
 					</button>
 				</div>
-				<div>
-					<button class="navbar__button" onclick="toggleRightDrawer()">
+				<div class="navbar__right">
+					<button class="navbar__button" onclick="document.getElementById('myOtherDrawer').toggle()">
 						<i class="fa fa-lg fa-ellipsis-v"></i>
 					</button>
 				</div>
 			</px-navbar>
 
-
-
-
-
 			<px-drawer id="myLeftDrawer" side="left" theme="dark" fixed>
-				<ul class="table-view table-view--bare">
-					<px-table-row title="Home" icon="fa fa-home" type="tappable" href="#home"></px-table-row>
-					<px-table-row title="Dashboard" icon="fa fa-dashboard" type="tappable" href="#dashboard"></px-table-row>
-					<px-table-row title="Alerts" icon="fa fa-exclamation-triangle" type="tappable" href="#alerts"></px-table-row>
-					<px-table-row title="Cases" icon="fa fa-briefcase" type="tappable" href="#cases"></px-table-row>
-					<px-table-row title="Analysis" icon="fa fa-bar-chart" type="tappable" href="#analysis"></px-table-row>
+				<ul class="table-view">
+					<px-table-row title="Home" icon="fa fa-home" type="tappable"></px-table-row>
+					<px-table-row title="Dashboard" icon="fa fa-dashboard" type="tappable"></px-table-row>
+					<px-table-row title="Alerts" icon="fa fa-exclamation-triangle" type="tappable"></px-table-row>
+					<px-table-row title="Cases" icon="fa fa-briefcase" type="tappable"></px-table-row>
+					<px-table-row title="Analysis" icon="fa fa-bar-chart" type="tappable"></px-table-row>
 				</ul>
 			</px-drawer>
 
-
-
-
-
-
-
-			<px-drawer id="myRightDrawer" side="right" theme="dark" fixed>
+			<px-drawer id="myOtherDrawer" side="bottom" theme="dark" fixed>
 				<div class="u-m">
 					<p>
 						This is content inside of the drawer
@@ -97,14 +87,14 @@
 						<button class="btn btn--full" type="button" onclick="document.getElementById('navbar1').theme = 'default'">Default</button>
 						<button class="btn btn--full" type="button" onclick="document.getElementById('navbar1').theme = 'transparent'">Transparent</button>
 						<button class="btn btn--full" type="button" onclick="document.getElementById('navbar1').theme = 'chrome'">Chrome</button>
-						<button class="btn btn--full" type="button" onclick="document.getElementById('navbar1').theme = 'alt'">Alt</button>
+
 						<button class="btn btn--full" type="button" onclick="document.getElementById('navbar1').theme = 'dark'">Dark</button>
 						<button class="btn btn--full" type="button" onclick="document.getElementById('navbar1').theme = 'primary'">Primary</button>
 					</p>
 				</div>
 			</px-drawer>
 
-			
+
 			<div class="viewport">
 				<div class="u-m">
 					<h2>px-navbar</h2>
@@ -140,12 +130,6 @@
 		tmpl.title = "View Title";
 		//	tmpl.subtitle = "View Context";
 
-		var toggleLeftDrawer = function() {
-			document.getElementById('myLeftDrawer').toggle();
-		};
-		var toggleRightDrawer = function() {
-			document.getElementById('myRightDrawer').toggle();
-		};
 
 		</script>
 

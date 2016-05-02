@@ -6,16 +6,16 @@ This repository contains the web components for px navbar.
 To use this component simply use the following example:
 
 ```
-<px-navbar id="navbar1" title="Navbar Title" subtitle="My Subtitle" theme="dark">
-	<!-- 1st div is always on the left -->
-  <div>
-    <button class="navbar__button">Label</button>
+<px-navbar id="navbar1" title="Navbar Title">
+	<div class="navbar__left">
+		
+	</div>
+	<div class="navbar__center">
+  		
   </div>
-
-	<!-- 2nd div is always on the right -->
-  <div>
-    <button class="navbar__button">Label</button>
-  </div>
+	<div class="navbar__right">
+		
+	</div>
 </px-navbar>
 ```
 
@@ -25,7 +25,7 @@ You can customize the appearance of the component by changing the following prop
 
 1. `title` - This represents the title of the navbar.
 2. `subtitle` - This represents the sub-title of the navbar.
-3. `theme` - This is the default color theme to apply. (white, dark, primary, alt, chrome)
+3. `theme` - This is the default color theme to apply. (white, dark, primary, chrome, transparent)
 
 > There are more options available as the documentation page defines.
 
@@ -33,19 +33,21 @@ You can customize the appearance of the component by changing the following prop
 To add custom contents inside the navbar you can do something like below:
 
 ```
-<px-navbar title="Navbar Title">
-  <div>
-    <button class="navbar__button">Label</button>
-  </div>
-  <div>
-    <button class="navbar__button">Label</button>
-  </div>
-</px-navbar>
+<div class="navbar__left">
+	<button class="navbar__button" onclick="document.getElementById('myLeftDrawer').toggle()">
+		<i class="fa fa-lg fa-bars"></i>
+	</button>
+</div>
+<div class="navbar__right">
+	<button class="navbar__button" onclick="document.getElementById('myOtherDrawer').toggle()">
+		<i class="fa fa-lg fa-ellipsis-v"></i>
+	</button>
+</div>
 ```
 
 
 ## Example
-The following is an example of using the `px-navbar` component with the `px-sidebar` component to create an offcanvas navigation experience.
+The following is an example of using the `px-navbar` component with the `px-drawer` component to create an off-canvas navigation experience.
 
 ### Usage with Sidebar
 
