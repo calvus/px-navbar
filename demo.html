@@ -1,24 +1,24 @@
 <html>
 
-<head>
-	<title>px navbar demo</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<head>
+		<title>px navbar demo</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-	<link rel='stylesheet prefetch' href='https://predixdev.github.io/px-library-design/css/style.css'>
+		<link rel='stylesheet prefetch' href='https://predixdev.github.io/px-library-design/css/style.css'>
 
-	<!-- TODO: Dependencies -->
-	<script src="../webcomponentsjs/webcomponents.min.js"></script>
+		<!-- TODO: Dependencies -->
+		<script src="../webcomponentsjs/webcomponents.min.js"></script>
 
-	<link rel="import" href="../iron-demo-helpers/demo-snippet.html" />
+		<link rel="import" href="../iron-demo-helpers/demo-snippet.html" />
 
-	<!-- TODO: pxm components -->
-	<link rel="import" href="px-navbar.html">
+		<!-- TODO: pxm components -->
+		<link rel="import" href="px-navbar.html">
 
-	<style media="screen">
+		<style media="screen">
 		.box {
 			background: transparent;
 			border: none;
-			padding: 0;
+			padding: 10px;
 		}
 
 		.position-relative {
@@ -28,8 +28,7 @@
 		.position-relative {
 			min-height: 75px;
 		}
-	</style>
-	<style media="screen">
+
 		body {
 			background: #efeff4;
 			overflow: hidden;
@@ -37,271 +36,255 @@
 			overflow-y: auto;
 			-webkit-overflow-scrolling: touch;
 		}
-	</style>
+		</style>
 
-</head>
+	</head>
 
-<body class="viewport">
+	<body>
+		<div class="viewport">
 
-	<h1>px-navbar</h1>
-	<p>The px-navbar component is a responsive mobile first navigation bar.</p>
+			<h1>px-navbar</h1>
+			<p>The px-navbar component is a responsive mobile first navigation bar.</p>
 
-	<h1>HTML Examples</h1>
-
-	<div class="box box--small u-mb++">
-		<h2>Default</h2>
-		<demo-snippet>
-			<template>
-				<div class="position-relative">
-					<div class="navbar navbar--default">
-						<div class="navbar__center">
-							<span class="navbar__title">Navbar Title</span>
+			<div class="box box--small u-mb">
+				<h2>Default - Title</h2>
+				<demo-snippet>
+					<template>
+						<div class="position-relative">
+							<px-navbar id="navbar1-0" title="Navbar"></px-navbar>
 						</div>
-					</div>
-				</div>
-			</template>
-		</demo-snippet>
-	</div>
+					</template>
+				</demo-snippet>
+			</div>
 
-	<div class="box box--small u-mb++">
-		<h2>Default with Subtitle</h2>
-		<demo-snippet>
-			<template>
-				<div class="position-relative">
-					<div class="navbar navbar--default">
-						<div class="navbar__center">
-							<span class="navbar__title">Navbar Title</span>
-							<span class="navbar__subtitle">Subtitle</span>
+			<div class="box box--small u-mb">
+				<h2>Default - Title - Subtitle</h2>
+				<demo-snippet>
+					<template>
+						<div class="position-relative">
+							<px-navbar id="navbar1-1" title="Navbar" subtitle="Subtitle"></px-navbar>
 						</div>
-					</div>
-				</div>
-			</template>
-		</demo-snippet>
-	</div>
+					</template>
+				</demo-snippet>
+			</div>
 
-	<div class="box box--small u-mb++">
-		<h2>Default with Back Button</h2>
-		<demo-snippet>
-			<template>
-				<div class="position-relative">
-					<div class="navbar navbar--default">
-						<div class="navbar__left">
-							<button class="navbar__button navbar__button--back">
-								<i class="fa fa-angle-left"></i>
-								<span>Back</span>
-							</button>
+			<div class="box box--small u-mb">
+				<h2>Default - Title - Menu</h2>
+				<demo-snippet>
+					<template>
+						<div class="position-relative">
+							<px-navbar id="navbar1-2" title="Navbar">
+								<div class="navbar__left">
+									<button class="navbar__button"><i class="fa fa-lg fa-navicon"></i></button>
+								</div>
+							</px-navbar>
 						</div>
-						<div class="navbar__center">
-							<span class="navbar__title">Navbar Title</span>
+					</template>
+				</demo-snippet>
+			</div>
+
+			<div class="box box--small u-mb">
+				<h2>Default - Back Button</h2>
+				<demo-snippet>
+					<template>
+						<div class="position-relative">
+							<px-navbar id="navbar1-3" title="Navbar" back-label="Back" back>
+							</px-navbar>
 						</div>
-					</div>
-				</div>
-			</template>
-		</demo-snippet>
-	</div>
+					</template>
+				</demo-snippet>
+			</div>
 
-	<div class="box box--small u-mb++">
-		<h2>Default with Action Button</h2>
-		<demo-snippet>
-			<template>
-				<div class="position-relative">
-					<div class="navbar navbar--default">
-						<div class="navbar__left">
-							<button class="navbar__button navbar__button--back">
-								<i class="fa fa-lg fa-angle-left"></i>
-								<span>Back</span>
-							</button>
+			<div class="box box--small u-mb">
+				<h2>Default - Left / Right Buttons</h2>
+				<demo-snippet>
+					<template>
+						<div class="position-relative">
+							<px-navbar id="navbar1-4" title="Navbar">
+								<div class="navbar__left">
+									<button class="navbar__button">Button</button>
+								</div>
+								<div class="navbar__right">
+									<button class="navbar__button">Button</button>
+								</div>
+							</px-navbar>
 						</div>
-						<div class="navbar__center">
-							<span class="navbar__title">Navbar Title</span>
-							<span class="navbar__subtitle">Subtitle</span>
+					</template>
+				</demo-snippet>
+			</div>
+
+			<div class="box box--small u-mb">
+				<h2>Default - Left / Right Primary Buttons</h2>
+				<demo-snippet>
+					<template>
+						<div class="position-relative">
+							<px-navbar id="navbar1-4" title="Navbar">
+								<div class="navbar__left">
+									<button class="btn btn--primary">Button</button>
+								</div>
+								<div class="navbar__right">
+									<button class="btn btn--primary">Button</button>
+								</div>
+							</px-navbar>
 						</div>
-						<div class="navbar__right">
-							<button class="navbar__button navbar__button--icon">
-								<i class="fa fa-plus fa-lg"></i>
-							</button>
+					</template>
+				</demo-snippet>
+			</div>
+			<div class="box box--small u-mb">
+				<h2>Default - Left / Right Tertiary Buttons</h2>
+				<demo-snippet>
+					<template>
+						<div class="position-relative">
+							<px-navbar id="navbar1-4" title="Navbar">
+								<div class="navbar__left">
+									<button class="btn btn--tertiary">Button</button>
+								</div>
+								<div class="navbar__right">
+									<button class="btn btn--tertiary">Button</button>
+								</div>
+							</px-navbar>
 						</div>
-					</div>
-				</div>
-			</template>
-		</demo-snippet>
-	</div>
+					</template>
+				</demo-snippet>
+			</div>
 
-	<div class="box box--small u-mb++">
-		<h2>Default with Modal Actions</h2>
-		<demo-snippet>
-			<template>
-				<div class="position-relative">
-					<div class="navbar navbar--default">
-						<div class="navbar__center">
-							<span class="navbar__title">Navbar Title</span>
-						</div>
-						<div class="navbar__content">
-							<div>
-								<button class="navbar__button navbar__button--back">
-									<i class="fa fa-angle-left"></i>
-									<span>Back</span>
-								</button>
-							</div>
-							<button class="btn btn btn--primary">
-								Done
-							</button>
-						</div>
-					</div>
-				</div>
-			</template>
-		</demo-snippet>
-	</div>
+			<!--
+    <h1>HTML Examples</h1>
+    <div class="box box--small u-mb++">
+        <h2>Default</h2>
+        <demo-snippet>
+            <template>
+                <div class="position-relative">
+                    <div class="navbar navbar--default">
+                        <div class="navbar__center">
+                            <span class="navbar__title">Navbar Title</span>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </demo-snippet>
+    </div>
 
-	<div class="box box--small u-mb++">
-		<h2>Default with Buttons</h2>
-		<demo-snippet>
-			<template>
-				<div class="position-relative">
-					<div class="navbar navbar--default">
+    <div class="box box--small u-mb++">
+        <h2>Default with Subtitle</h2>
+        <demo-snippet>
+            <template>
+                <div class="position-relative">
+                    <div class="navbar navbar--default">
+                        <div class="navbar__center">
+                            <span class="navbar__title">Navbar Title</span>
+                            <span class="navbar__subtitle">Subtitle</span>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </demo-snippet>
+    </div>
 
-						<div class="navbar__left">
-							<button class="navbar__button navbar__button--icon">
-								<i class="fa fa-navicon fa-lg"></i>
-							</button>
-						</div>
-						<div class="navbar__center">
-							<span class="navbar__title">Navbar Title</span>
-						</div>
-						<div class="navbar__right">
-							<button class="navbar__button navbar__button--icon">
-								<i class="fa fa-plus fa-lg"></i>
-							</button>
-						</div>
+    <div class="box box--small u-mb++">
+        <h2>Default with Back Button</h2>
+        <demo-snippet>
+            <template>
+                <div class="position-relative">
+                    <div class="navbar navbar--default">
+                        <div class="navbar__left">
+                            <button class="navbar__button navbar__button--back">
+                                <i class="fa fa-angle-left"></i>
+                                <span>Back</span>
+                            </button>
+                        </div>
+                        <div class="navbar__center">
+                            <span class="navbar__title">Navbar Title</span>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </demo-snippet>
+    </div>
 
+    <div class="box box--small u-mb++">
+        <h2>Default with Action Button</h2>
+        <demo-snippet>
+            <template>
+                <div class="position-relative">
+                    <div class="navbar navbar--default">
+                        <div class="navbar__left">
+                            <button class="navbar__button navbar__button--back">
+                                <i class="fa fa-lg fa-angle-left"></i>
+                                <span>Back</span>
+                            </button>
+                        </div>
+                        <div class="navbar__center">
+                            <span class="navbar__title">Navbar Title</span>
+                            <span class="navbar__subtitle">Subtitle</span>
+                        </div>
+                        <div class="navbar__right">
+                            <button class="navbar__button navbar__button--icon">
+                                <i class="fa fa-plus fa-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </demo-snippet>
+    </div>
 
-					</div>
-				</div>
-			</template>
-		</demo-snippet>
-	</div>
+    <div class="box box--small u-mb++">
+        <h2>Default with Modal Actions</h2>
+        <demo-snippet>
+            <template>
+                <div class="position-relative">
+                    <div class="navbar navbar--default">
+                        <div class="navbar__center">
+                            <span class="navbar__title">Navbar Title</span>
+                        </div>
+                        <div class="navbar__content">
+                            <div>
+                                <button class="navbar__button navbar__button--back">
+                                    <i class="fa fa-angle-left"></i>
+                                    <span>Back</span>
+                                </button>
+                            </div>
+                            <button class="btn btn btn--primary">
+                                Done
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </demo-snippet>
+    </div>
 
-	<h1>Web Component Examples</h1>
-	<div class="box box--small u-mb++">
-		<h2>Default</h2>
-		<demo-snippet>
-			<template>
-				<div class="position-relative">
-					<px-navbar id="navbar1" title="Navbar Title"></px-navbar>
-				</div>
-				<div class="position-relative">
-					<px-navbar id="navbar2" title="Navbar Title" theme="chrome"></px-navbar>
-				</div>
+    <div class="box box--small u-mb++">
+        <h2>Default with Buttons</h2>
+        <demo-snippet>
+            <template>
+                <div class="position-relative">
+                    <div class="navbar navbar--default">
 
-				<div class="position-relative">
-					<px-navbar id="navbar3" title="Navbar Title" theme="dark"></px-navbar>
-				</div>
-				<div class="position-relative">
-					<px-navbar id="navbar3" title="Navbar Title" theme="primary"></px-navbar>
-				</div>
-
-			</template>
-		</demo-snippet>
-	</div>
-
-	<div class="box box--small u-mb++">
-		<h2>Default with Back Button</h2>
-		<demo-snippet>
-			<template>
-				<div class="position-relative">
-					<px-navbar id="navbar1-1" title="Navbar Title" back-label="Back" back>
-						<button class="navbar__button">
-							<i class="fa fa-lg fa-ellipsis-v"></i>
-						</button>
-					</px-navbar>
-				</div>
-				<div class="position-relative">
-					<px-navbar id="navbar2-1" title="Navbar Title" back-label="Back" back theme="chrome"></px-navbar>
-				</div>
-
-				<div class="position-relative">
-					<px-navbar id="navbar3-1" title="Navbar Title" back-label="Back" back theme="dark"></px-navbar>
-				</div>
-				<div class="position-relative">
-					<px-navbar id="navbar3-1" title="Navbar Title" back-label="Back" back theme="primary"></px-navbar>
-				</div>
-			</template>
-		</demo-snippet>
-	</div>
-
-	<div class="box box--small u-mb++">
-		<h2>Default with Sub Title</h2>
-		<demo-snippet>
-			<template>
-				<div class="position-relative">
-					<px-navbar id="navbar1-2" title="Navbar Title" subtitle="Subtitle"></px-navbar>
-				</div>
-				<div class="position-relative">
-					<px-navbar id="navbar2-2" title="Navbar Title" subtitle="Subtitle" theme="chrome"></px-navbar>
-				</div>
-				<div class="position-relative">
-					<px-navbar id="navbar3-2" title="Navbar Title" subtitle="Subtitle" theme="dark"></px-navbar>
-				</div>
-				<div class="position-relative">
-					<px-navbar id="navbar3-2" title="Navbar Title" subtitle="Subtitle" theme="primary"></px-navbar>
-				</div>
-
-			</template>
-		</demo-snippet>
-	</div>
-
-	<div class="box box--small u-mb++">
-		<h2>Default with Buttons</h2>
-		<demo-snippet>
-			<template>
-				<div class="position-relative">
-					<px-navbar id="navbar1-3" title="Navbar Title">
-						<div>
-							<button class="navbar__button">Label</button>
-						</div>
-						<div>
-							<button class="navbar__button">Label</button>
-						</div>
-					</px-navbar>
-				</div>
-
-				<div class="position-relative">
-					<px-navbar id="navbar2-3" title="Navbar Title" theme="chrome">
-						<div>
-							<button class="navbar__button">Label</button>
-						</div>
-						<div>
-							<button class="navbar__button">Label</button>
-						</div>
-					</px-navbar>
-				</div>
+                        <div class="navbar__left">
+                            <button class="navbar__button navbar__button--icon">
+                                <i class="fa fa-navicon fa-lg"></i>
+                            </button>
+                        </div>
+                        <div class="navbar__center">
+                            <span class="navbar__title">Navbar Title</span>
+                        </div>
+                        <div class="navbar__right">
+                            <button class="navbar__button navbar__button--icon">
+                                <i class="fa fa-plus fa-lg"></i>
+                            </button>
+                        </div>
 
 
-				<div class="position-relative">
-					<px-navbar id="navbar3-3" title="Navbar Title" theme="dark">
-						<div>
-							<button class="navbar__button">Label</button>
-						</div>
-						<div>
-							<button class="navbar__button">Label</button>
-						</div>
-					</px-navbar>
-				</div>
+                    </div>
+                </div>
+            </template>
+        </demo-snippet>
+    </div>
+    -->
 
-				<div class="position-relative">
-					<px-navbar id="navbar4-3" title="Navbar Title" theme="primary">
-						<div>
-							<button class="navbar__button">Label</button>
-						</div>
-						<div>
-							<button class="navbar__button">Label</button>
-						</div>
-					</px-navbar>
-				</div>
-			</template>
-		</demo-snippet>
-	</div>
-
-</body>
+		</div>
+	</body>
 
 </html>

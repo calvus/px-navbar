@@ -1,58 +1,66 @@
 ///
 @import "variables";
-
 ///
 @import 'px-mobile-mixin-design/_mixins';
 @import 'px-navbar-predix';
 
-.navbar {
-		///.navbar--transparent
-		@include modifier ('transparent') {
-				background-color: transparent;
-				color           : $navbar-default-font-color;
+@include block ('navbar') {
+	//font-size       : 17px;
+	//font-weight     : 400;
+	color: $navbar-default-font-color;
+	border-bottom: 1px solid darken($navbar-default-background-color, 50%);
+	background-color: $navbar-default-background-color;
 
-				.navbar__button {
-						color: $navbar-default-font-color;
-				}
-		}
-		///.navbar--chrome
-		@include modifier ('chrome') {
-				background-color   : $navbar-chrome-background-color;
-				border-bottom-color: darken($navbar-chrome-background-color, 20%);
-				color              : $navbar-chrome-font-color;
+	///.navbar--transparent
+	@include modifier ('transparent') {
+		background-color: transparent;
+		color: $navbar-default-font-color;
 
-				.navbar__button {
-						color: $navbar-chrome-font-color;
-				}
+		.navbar__button {
+			color: $navbar-default-font-color;
 		}
-		///.navbar--fixed
-		@include modifier ('alt') {
-				background-color   : $navbar-alt-background-color;
-				color              : $navbar-alt-font-color;
-				border-bottom-color: darken($navbar-alt-background-color, 20%);
+	}
 
-				.navbar__button {
-						color: $navbar-alt-font-color;
-				}
-		}
-		///.navbar--fixed
-		@include modifier ('dark') {
-				background-color   : $navbar-dark-background-color;
-				color              : $navbar-dark-font-color;
-				border-bottom-color: darken($navbar-dark-background-color, 20%);
+	///.navbar--chrome
+	@include modifier ('chrome') {
+		background-color: $navbar-chrome-background-color;
+		border-bottom-color: darken($navbar-chrome-background-color, 20%);
+		color: $navbar-chrome-font-color;
 
-				.navbar__button {
-						color: $navbar-dark-font-color;
-				}
+		.navbar__button {
+			color: $navbar-chrome-font-color;
 		}
-		///.navbar--fixed
-		@include modifier ('primary') {
-				background-color   : $navbar-primary-background-color;
-				color              : $navbar-primary-font-color;
-				border-bottom-color: darken($navbar-primary-background-color, 20%);
+	}
 
-				.navbar__button {
-						color: $navbar-primary-font-color;
-				}
+	///.navbar--dark
+	@include modifier ('dark') {
+		background-color: $navbar-dark-background-color;
+		color: $navbar-dark-font-color;
+		border-bottom-color: darken($navbar-dark-background-color, 20%);
+
+		.navbar__button {
+			color: $navbar-dark-font-color;
 		}
+	}
+
+	///.navbar--primary
+	@include modifier ('primary') {
+		background-color: $navbar-primary-background-color;
+		color: $navbar-primary-font-color;
+		border-bottom-color: darken($navbar-primary-background-color, 20%);
+
+		.navbar__button {
+			color: $navbar-primary-font-color;
+		}
+	}
+
+	@include element('title') {
+		font-size: $navbar-title-font-size;
+		color: $navbar-title-font-color;
+	}
+
+	@include element('subtitle') {
+		font-size: $navbar-subtitle-font-size;
+		color: $navbar-subtitle-font-color;
+	}
 }

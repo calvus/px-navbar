@@ -2,7 +2,17 @@
 
 <!--
 ```
-<px-navbar id="navbar1" title="Navbar Title" subtitle="Subtitle"></px-navbar>
+<px-navbar id="navbar1" title="Navbar Title">
+	<div class="navbar__left">
+
+	</div>
+	<div class="navbar__center">
+
+  </div>
+	<div class="navbar__right">
+
+	</div>
+</px-navbar>
 ```
 @element px-navbar.html
 @blurb px-navbar
@@ -31,32 +41,12 @@
 		:host .navbar--primary::content .navbar__button {
 			color: #fff !important;
 		}
-
-		:host .navbar--dark .navbar__hamburger__icon,
-		:host .navbar--primary .navbar__hamburger__icon {
-			background-color: #fff !important;
-		}
-
-		:host.px-sidebar-open .hamburger-1 {
-			-webkit-transform: translate3d(0, 0, 0) rotate(45deg);
-			transform: translate3d(0, 0, 0) rotate(45deg);
-		}
-
-		:host.px-sidebar-open .hamburger-2 {
-			-webkit-transform: translate3d(0, 0, 0) scale(0.1, 1);
-			transform: translate3d(0, 0, 0) scale(0.1, 1);
-		}
-
-		:host.px-sidebar-open .hamburger-3 {
-			-webkit-transform: translate3d(0, 0, 0) rotate(-45deg);
-			transform: translate3d(0, 0, 0) rotate(-45deg);
-		}
 		</style>
 
 		<template is="dom-if" if="{{back}}">
 			<div class="navbar__left">
 				<button class="navbar__button navbar__button--back" on-click="_handleBackClick">
-					<i class="fa fa-lg fa-angle-left"></i>
+					<i class="fa fa-2x fa-angle-left"></i>
 					<span>{{backLabel}}</span>
 				</button>
 			</div>
@@ -65,11 +55,11 @@
 		<!-- title -->
 		<template is="dom-if" if="{{title}}">
 			<div class="navbar__center">
-				<span class="color-auto navbar__center__title">{{title}}</span>
-				<span class="color-auto navbar__center__subtitle">{{subtitle}}</span>
+				<span class="navbar__title">{{title}}</span>
+				<span class="navbar__subtitle">{{subtitle}}</span>
 			</div>
 		</template>
-		<content id="navbarContent" select=".navbar__left, .navbar__right"></content>
+		<content id="navbarContent" select=".navbar__left, .navbar__right, .navbar__center"></content>
 
 	</template>
 	<script>
@@ -84,10 +74,6 @@
 			title: {
 				type: String
 			},
-			//The #id of the sidebar container.
-			sidebarContainer: {
-				type: String
-			},
 			//The #id of the view container.
 			viewContainer: {
 				type: String,
@@ -96,18 +82,6 @@
 			},
 			//Fix the navbar to the top.
 			fixed: {
-				type: Boolean,
-				value: false
-			},
-			//Display open
-			open: {
-				type: Boolean,
-				notify: true,
-				observer: '_openChanged',
-				value: false
-			},
-			//Show the menu button
-			menu: {
 				type: Boolean,
 				value: false
 			},
@@ -126,15 +100,16 @@
 			backLabel: {
 				type: String,
 				value: 'Back'
-			},
+			}
 			//The type of theme to apply.
+			/*
 			theme: {
 				type: String,
 				value: 'white',
 				notify: true,
 				observer: '_themeChanged',
 				reflectToAttribute: true
-			}
+			}*/
 		},
 		ready: function() {
 			this.toggleClass('navbar');
@@ -161,7 +136,7 @@
 					_this.viewContainer = parent.viewContainer.id;
 					_this.views = document.getElementById(_this.viewContainer);
 					_this.menu = _this.views.getCurrent().main;
-					console.log('parentViewContainer', parent.viewContainer);
+					//console.log('parentViewContainer', parent.viewContainer);
 					//_this.title = _this.views.getCurrent().attr('title');
 				}
 			}
@@ -171,7 +146,6 @@
 					_this.menu = _this.views.getCurrent().main;
 					//	_this.title = _this.views.getCurrent().attr('title');
 					_this.views.addEventListener('change', function(e) {
-						console.log('Page changed', e);
 						_this.debounce('change', function() {
 							_this.title = e.detail.title;
 							_this.menu = (_this.views.getCurrent().main);
@@ -183,27 +157,6 @@
 				}, 150);
 			}
 			this._fixButtons();
-		},
-		//I handle firing a toggle-menu event.
-		toggleMenu: function() {
-			return this.fire('px-toggle-menu', this);
-		},
-		//Handle toggling the sidebar.
-		toggleSidebar: function(open) {
-			//	this.open = open || !this.open;
-			if (this.sidebar && this.sidebar.toggle) {
-				this.sidebar.toggle();
-				if (this.viewContainer && this.views) {
-					this.views.toggleClass('px-sidebar-open');
-				}
-			}
-			this.fire('sidebar:toggle');
-		},
-		_handleMenuClick: function(e) {
-			if (this.sidebar && this.sidebar.toggle) {
-				this.sidebar.toggle();
-			}
-			this.fire('menu:click', e);
 		},
 		//Handle when the back button is clicked.
 		_handleBackClick: function() {
@@ -227,7 +180,7 @@
 			this.toggleClass('hidden', this.hidden);
 		},
 		//Handle getting the current view/page, if there is a viewContainer.
-		getCurrent: function() {
+		getCurrentView: function() {
 			if (this.viewContainer && this.views) {
 				return this.views.getCurrent();
 			}
@@ -239,14 +192,6 @@
 		//Unlisten for a click outside the sidebar and toggle the menu
 		_deregisterOffclick: function() {
 			this.views.removeEventListener('click', this.toggleMenu);
-		},
-		_openChanged: function(newVal, oldVal) {
-			var _this = this;
-			if (_this.sidebar && _this.sidebar.toggle) {
-				this.debounce('openSidebar', function() {
-					_this.sidebar.toggle(newVal);
-				}, 100);
-			}
 		},
 		//Handle when the theme property changes
 		_themeChanged: function(newVal, oldVal) {

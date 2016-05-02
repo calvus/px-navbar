@@ -1,6 +1,5 @@
 ///
 @import "variables";
-
 ///
 @import 'px-mobile-mixin-design/_mixins';
 
@@ -9,179 +8,161 @@
 ///
 /// @access public
 @include block ('navbar') {
-		font-family     : 'GE Inspira Sans', sans-serif;
-		user-select     : none;
-		z-index         : 200;
-		box-sizing      : border-box;
-		white-space     : nowrap;
-		//background-clip: padding-box;
-		//background-size: 100% 1px;
-		//background-repeat: no-repeat;
-		//background-position: bottom;
-		//background-image: linear-gradient(0deg, $navbar-border-color, $navbar-border-color 50%, transparent 50%);
-		height          : $navbar-height;
-		padding         : $navbar-padding;
-		color           : $navbar-default-font-color;
-		//font-size       : 17px;
-		//font-weight     : 400;
-		border-bottom   : 1px solid darken($navbar-default-background-color, 50%);
-		background-color: $navbar-default-background-color;
-		position        : absolute;
-		top             : 0;
-		left            : 0;
-		right           : 0;
-		display         : flex;
+	font-family    : 'GE Inspira Sans', sans-serif;
+	user-select    : none;
+	z-index        : 200;
+	box-sizing     : border-box;
+	white-space    : nowrap;
+	align-items    : center;
+	justify-content: space-between;
+	//background-clip: padding-box;
+	//background-size: 100% 1px;
+	//background-repeat: no-repeat;
+	//background-position: bottom;
+	//background-image: linear-gradient(0deg, $navbar-border-color, $navbar-border-color 50%, transparent 50%);
+	height         : $navbar-height;
+	padding        : $navbar-padding;
+	position       : absolute;
+	top            : 0;
+	left           : 0;
+	right          : 0;
+	display        : flex;
+
+	* {
+		user-select: none;
+		outline    : 0;
+	}
+
+	button {
+		outline: 0;
+	}
+
+	///.navbar--fixed
+	@include modifier ('fixed') {
+		position: fixed;
+	}
+	///.navbar--shadow
+	@include modifier ('shadow') {
+		box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
+	}
+	///.navbar--static
+	@include modifier ('static') {
+		position: static;
+	}
+
+	//todo - Need to use absolute position for true center.
+	@include element ('center') {
+		@include centerer();
+		order     : 2;
+		flex      : 1 0 auto;
+		align-self: center;
+		text-align: center;
 
 		> * {
-				user-select: none;
-				outline    : none;
+			display: block;
+		}
+	}
+	///.navbar__left
+	@include element ('left') {
+		order: 1;
+		//flex : 1 0 auto;
+	}
+	///.navbar__right
+	@include element ('right') {
+		order: 3;
+
+	}
+	///.navbar__title
+	@include element ('title') {
+
+		display    : block;
+		margin     : 0;
+		padding    : 0;
+		user-select: none;
+		outline    : 0;
+	}
+	///.navbar__subtitle
+	@include element ('subtitle') {
+		display    : block;
+		user-select: none;
+
+	}
+
+	///.navbar__content
+	@include element ('content') {
+		position       : relative;
+		display        : flex;
+		justify-content: space-between;
+		overflow       : hidden;
+	}
+
+	///.navbar__button
+	@include element ('button') {
+		padding         : $navbar-button-padding;
+		letter-spacing  : 0;
+		text-shadow     : 0 1px none;
+
+		font-weight     : 400;
+		line-height     : 34px;
+		background-color: $navbar-button-background-color;
+		border-radius   : $navbar-button-border-radius;
+		border          : $navbar-button-border;
+		font-size       : $navbar-button-font-size;
+		padding         : $navbar-button-padding;
+		min-width       : $navbar-button-height;
+		height          : $navbar-button-height;
+		transition      : none;
+		vertical-align  : middle;
+		box-shadow      : none;
+		display         : flex;
+		align-items     : center;
+
+		&.btn {
+			min-width       : $navbar-button-height;
+			height          : $navbar-button-height;
+			background-color: inherit;
+			border          : inherit;
+			border-radius   : inherit;
 		}
 
-		button {
-				outline: none;
+		i,
+		span {
+			flex: 1;
 		}
 
-		///.navbar--fixed
-		@include modifier ('fixed') {
-				position: fixed;
-		}
-		///.navbar--shadow
-		@include modifier ('shadow') {
-				box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
-		}
-		///.navbar--static
-		@include modifier ('static') {
-				position: static;
+		&:active {
+			background-color: rgba(0, 0, 0, .5);
+			transition      : none;
+			opacity         : .5;
 		}
 
-		&__left {
-				order: 1;
-				//flex : 1 0 auto;
+		&:disabled,
+		&[disabled] {
+			opacity       : .3;
+			cursor        : default;
+			pointer-events: none;
 		}
 
-		&__center {
-				order     : 2;
-				flex      : 1 0 auto;
-				align-self: center;
-				text-align: center;
-
-				> * {
-						display: block;
-				}
+		&:focus {
+			outline   : 0;
+			transition: none;
 		}
 
-		&__right {
-				order: 3;
+		&:hover {
+			box-shadow: none;
+			transition: none;
 		}
 
-		@include element ('title') {
-				display    : block;
-				//font-size  : 1.3rem;
-				//font-weight: 500;
-				margin     : 0;
-				padding    : 0;
-				user-select: none;
+		@include modifier ('back') {
+			i {
+				margin-right: .4rem;
+			}
 		}
+	}
 
-		@include element ('subtitle') {
-				display    : block;
-				user-select: none;
-				//font-size: 80%;
-		}
+	.btn {
+		min-width: $navbar-button-height;
+		height   : $navbar-button-height;
+	}
 
-		///.navbar__content
-		@include element ('content') {
-				position       : relative;
-				display        : flex;
-				justify-content: space-between;
-				//padding        : 0 0.4rem;
-				//margin: .5%;
-				overflow       : hidden;
-		}
-
-		///.navbar__button
-		@include element ('button') {
-				padding         : $navbar-button-padding;
-				letter-spacing  : 0;
-				text-shadow     : 0 1px none;
-				background-color: $navbar-button-background-color;
-				border-radius   : 2px;
-				border          : 1px solid transparent;
-				font-weight     : 400;
-				line-height     : 34px;
-				font-size       : $navbar-button-font-size;
-				padding         : $navbar-button-padding;
-				min-width       : $navbar-button-height;
-				height          : $navbar-button-height;
-				transition      : none;
-				vertical-align  : middle;
-				box-shadow      : none;
-				display         : flex;
-				align-items     : center;
-
-				i,
-				span {
-						flex: 1;
-				}
-
-				&:active {
-						background-color: rgba(0, 0, 0, .5);
-						transition      : none;
-						opacity         : 0.5;
-				}
-
-				&:disabled,
-				&[disabled] {
-						opacity       : 0.3;
-						cursor        : default;
-						pointer-events: none;
-				}
-
-				&:focus {
-						outline   : 0;
-						transition: none;
-				}
-
-				&:hover {
-						box-shadow: none;
-						transition: none;
-				}
-
-				@include modifier ('back') {
-						i {
-
-								//	margin-right: 0.4rem;
-						}
-				}
-		}
-		//Hamburger Menu
-		@include element ('hamburger') {
-				//	width     : 2.5em;
-				transition: all 0.2s;
-				position  : relative;
-
-				@include element ('icon') {
-						width             : 25px;
-						height            : 2px;
-						display           : block;
-						position          : absolute;
-						top               : 50%;
-						left              : 15%;
-						-webkit-transition: -webkit-transform 300ms;
-						transition        : transform 300ms;
-						background        : rgba(0, 0, 0, .5);
-
-						@include modifier ('1') {
-								transform: translate3d(0, -8px, 0);
-						}
-
-						@include modifier ('2') {
-								transform: translate3d(0, 0, 0);
-						}
-
-						@include modifier ('3') {
-								transform: translate3d(0, 8px, 0);
-						}
-				}
-		}
 }
