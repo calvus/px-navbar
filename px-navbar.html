@@ -109,54 +109,67 @@
 			 reflectToAttribute: true
 			 }*/
 		},
-		ready: function() {
-			this.toggleClass('navbar');
-			if (this.theme) {
-				this.toggleClass('navbar--' + this.theme, true);
-			}
-			if (this.fixed) {
-				this.toggleClass('navbar--fixed', true);
-			}
-		},
+		ready: function() {},
 		attached: function() {
+			console.log(this.tagName, 'attached', 'setting up handlers');
 			var _this = this;
-			if (_this.sidebarContainer) {
-				_this.sidebar = document.getElementById(_this.sidebarContainer);
-				_this.sidebar.addEventListener('toggle', function() {
-					_this.toggleClass('px-sidebar-open', _this.sidebar.open);
-				});
-			}
-			var parent = this.parentNode;
-			if (parent && parent.localName === 'px-page') {
-				this.theme = parent.attr('theme');
-				this.title = parent.attr('title');
-				if (parent.viewContainer) {
-					_this.viewContainer = parent.viewContainer.id;
-					_this.views = document.getElementById(_this.viewContainer);
-					_this.menu = _this.views.getCurrent().main;
-					//console.log('parentViewContainer', parent.viewContainer);
-					//_this.title = _this.views.getCurrent().attr('title');
+			_this.async(function() {
+				_this.toggleClass('navbar');
+				if (_this.theme) {
+					_this.toggleClass('navbar--' + _this.theme, true);
 				}
-			}
-			if (this.viewContainer) {
-				this.debounce('initViews', function() {
-					_this.views = document.getElementById(_this.viewContainer);
-					_this.menu = _this.views.getCurrent().main;
-					//	_this.title = _this.views.getCurrent().attr('title');
-					_this.views.addEventListener('change', function(e) {
-						_this.debounce('change', function() {
-							_this.title = e.detail.title;
-							_this.menu = (_this.views.getCurrent().main);
-							_this.back = _this.views.getCurrent().main ? false : true;
-							_this.backLabel = (_this.views.prevView ? _this.views.prevView.title : '');
-						}, 50);
-						console.warn('Add back button to previous page', _this.back);
-					});
-				}, 150);
-			}
-			this._fixButtons();
+				if (_this.fixed) {
+					_this.toggleClass('navbar--fixed', true);
+				}
+				_this._setupHandlers();
+				_this._fixButtons();
+			});
 		},
-		//Handle when the back button is clicked.
+		detached: function() {
+			console.log(this.tagName, 'detached', 'cleaning up handlers');
+			this._cleanupHandlers();
+		},
+		//Setup event listeners
+		_setupHandlers: function() {
+			console.log(this.tagName, '_setupHandlers');
+			var _this = this;
+			if (_this.viewContainer) {
+				_this.debounce('initViews', function() {
+					_this.views = document.getElementById(_this.viewContainer);
+					if (_this.views) {
+						_this.views.addEventListener('change', _this._handleViewChange.bind(this));
+					}
+				}, 50);
+			}
+		},
+		//Cleanup event listeners
+		_cleanupHandlers: function() {
+			console.log(this.tagName, '_cleanupHandlers');
+			var _this = this;
+			if (this.viewContainer) {
+				_this.views.removeEventListener('change', _this._handleViewChange);
+			}
+		},
+		//Handle when then view is changed, if there is a view container.
+		_handleViewChange: function(e) {
+			console.log(this.tagName, '_handleViewChange');
+			var _this = this;
+			var current = null;
+			_this.debounce('_handleViewChange', function() {
+				current = _this.views.getCurrent();
+				if (current) {
+					_this.theme = current.attr('theme');
+					_this.title = current.attr('title');
+					_this.back = _this.views.getCurrent().main ? false : true;
+					//_this.back = (current !== _this.views.main);
+					//_this.backLabel = (_this.views.prevView ? _this.views.prevView.title : '');
+				}
+			}, 50);
+			console.log('Add back button to previous page', _this.back);
+		},
+		/**
+		 * Handle when the back button is clicked.
+		 */
 		_handleBackClick: function() {
 			if (this.parentNode && this.parentNode.viewContainer) {
 				this.parentNode.viewContainer.back();
@@ -165,12 +178,6 @@
 				this.views.back();
 			}
 			this.fire('back');
-		},
-		//Handle when a view from the viewContainer is changed.
-		_handleViewChange: function() {
-			if (this.viewContainer && this.views) {
-				this.back = (this.views.getCurrent() !== this.views.main);
-			}
 		},
 		//Toggle the display of the navbar.
 		toggle: function(display) {
