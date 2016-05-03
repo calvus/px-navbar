@@ -48,20 +48,15 @@
 			<px-drawer id="myOtherDrawer" side="bottom" theme="dark" fixed>
 				<div class="u-m">
 					<p>
-						This is content inside of the drawer
+						This is the px-drawer component. 
 					</p>
-					<p class="flex flex--col">
-						<button class="btn btn--full" type="button" onclick="document.getElementById('navbar1').theme = 'default'">Default</button>
-						<button class="btn btn--full" type="button" onclick="document.getElementById('navbar1').theme = 'transparent'">Transparent</button>
-						<button class="btn btn--full" type="button" onclick="document.getElementById('navbar1').theme = 'chrome'">Chrome</button>
-
-						<button class="btn btn--full" type="button" onclick="document.getElementById('navbar1').theme = 'dark'">Dark</button>
-						<button class="btn btn--full" type="button" onclick="document.getElementById('navbar1').theme = 'primary'">Primary</button>
+					<p>
+						This is content inside of the drawer
 					</p>
 				</div>
 			</px-drawer>
 
-			<px-pages id="pages" selected="0" debug loop>
+			<px-pages id="pages" selected="0" debug>
 				<!-- TODO: Page 1 -->
 				<px-page id="page1" main>
 					<px-navbar id="navbar1" view-container="pages">
