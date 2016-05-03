@@ -5,14 +5,15 @@
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  box-sizing: border-box;
-  white-space: nowrap;
-  align-items: center;
-  justify-content: space-between;
-  height: 56px;
-  padding: 0;
-  display: flex; }
+  right: 0; }
+  :root .navbar .viewport {
+    box-sizing: border-box;
+    white-space: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+    padding: 0;
+    display: flex; }
   :root .navbar * {
     user-select: none;
     outline: 0; }
@@ -56,7 +57,7 @@
     letter-spacing: 0;
     text-shadow: 0 1px none;
     font-weight: 400;
-    line-height: 34px;
+    line-height: 33px;
     padding: 0.2rem 0.5rem;
     min-width: 44px;
     height: 44px;
@@ -73,9 +74,10 @@
       border-radius: inherit; }
     :root .navbar__button i,
     :root .navbar__button span {
-      flex: 1; }
+      flex: 1;
+      align-self: stretch; }
     :root .navbar__button:disabled, :root .navbar__button[disabled] {
-      opacity: .3;
+      opacity: 0.3;
       cursor: default;
       pointer-events: none; }
     :root .navbar__button:focus {
@@ -85,7 +87,7 @@
       box-shadow: none;
       transition: none; }
     :root .navbar__button--back i {
-      margin-right: .4rem; }
+      margin-right: 0.4rem; }
   :root .navbar .btn {
     min-width: 44px;
     height: 44px; }

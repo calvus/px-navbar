@@ -1,31 +1,20 @@
 :root .navbar {
   font-family: 'GE Inspira Sans', sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   z-index: 200;
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  box-sizing: border-box;
-  white-space: nowrap;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  height: 56px;
-  padding: 0;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex; }
+  right: 0; }
+  :root .navbar .viewport {
+    box-sizing: border-box;
+    white-space: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+    padding: 0;
+    display: flex; }
   :root .navbar * {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
     outline: 0; }
   :root .navbar button {
@@ -38,50 +27,29 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    -webkit-order: 2;
-    -ms-flex-order: 2;
     order: 2;
-    -webkit-flex: 1 0 auto;
-    -ms-flex: 1 0 auto;
     flex: 1 0 auto;
-    -webkit-align-self: center;
-    -ms-flex-item-align: center;
     align-self: center;
     text-align: center; }
     :root .navbar__center > * {
       display: block; }
   :root .navbar__left {
-    -webkit-order: 1;
-    -ms-flex-order: 1;
     order: 1; }
   :root .navbar__right {
-    -webkit-order: 3;
-    -ms-flex-order: 3;
     order: 3; }
   :root .navbar__title {
     display: block;
     margin: 0;
     padding: 0;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
     outline: 0; }
   :root .navbar__subtitle {
     display: block;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none; }
   :root .navbar__content {
     position: relative;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-justify-content: space-between;
-    -ms-flex-pack: justify;
     justify-content: space-between;
     overflow: hidden; }
   :root .navbar__button {
@@ -89,18 +57,14 @@
     letter-spacing: 0;
     text-shadow: 0 1px none;
     font-weight: 400;
-    line-height: 34px;
+    line-height: 33px;
     padding: 0.2rem 0.5rem;
     min-width: 44px;
     height: 44px;
     transition: none;
     vertical-align: middle;
     box-shadow: none;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
     align-items: center; }
     :root .navbar__button.btn {
       min-width: 44px;
@@ -110,11 +74,10 @@
       border-radius: inherit; }
     :root .navbar__button i,
     :root .navbar__button span {
-      -webkit-flex: 1;
-      -ms-flex: 1;
-      flex: 1; }
+      flex: 1;
+      align-self: stretch; }
     :root .navbar__button:disabled, :root .navbar__button[disabled] {
-      opacity: .3;
+      opacity: 0.3;
       cursor: default;
       pointer-events: none; }
     :root .navbar__button:focus {
@@ -124,7 +87,7 @@
       box-shadow: none;
       transition: none; }
     :root .navbar__button--back i {
-      margin-right: .4rem; }
+      margin-right: 0.4rem; }
   :root .navbar .btn {
     min-width: 44px;
     height: 44px; }

@@ -42,22 +42,24 @@
 		}
 		</style>
 
-		<template is="dom-if" if="{{back}}">
-			<div class="navbar__left">
-				<button class="navbar__button navbar__button--back" on-click="_handleBackClick">
-					<i class="fa fa-2x fa-angle-left"></i>
-					<span>{{backLabel}}</span>
-				</button>
-			</div>
-		</template>
+		<div class="viewport">
+			<template is="dom-if" if="{{back}}">
+				<div class="navbar__left">
+					<button class="navbar__button navbar__button--back" on-click="_handleBackClick">
+						<i class="fa fa-2x fa-angle-left"></i>
+						<span>{{backLabel}}</span>
+					</button>
+				</div>
+			</template>
 
-		<template is="dom-if" if="{{title}}">
-			<div class="navbar__center">
-				<span class="navbar__title">{{title}}</span>
-				<span class="navbar__subtitle">{{subtitle}}</span>
-			</div>
-		</template>
-		<content id="navbarContent" select=".navbar__left, .navbar__right, .navbar__center"></content>
+			<template is="dom-if" if="{{title}}">
+				<div class="navbar__center">
+					<span class="navbar__title">{{title}}</span>
+					<span class="navbar__subtitle">{{subtitle}}</span>
+				</div>
+			</template>
+			<content id="navbarContent" select=".navbar__left, .navbar__right, .navbar__center"></content>
+		</div>
 
 	</template>
 	<script>
