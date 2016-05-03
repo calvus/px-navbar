@@ -115,6 +115,7 @@
 				</demo-snippet>
 			</div>
 
+			<!-- TODO: Left / Right buttons -->
 			<div class="box box--small u-mb">
 				<h2>Default - Left / Right Primary Buttons</h2>
 				<demo-snippet>
@@ -132,6 +133,8 @@
 					</template>
 				</demo-snippet>
 			</div>
+
+			<!-- TODO: Left/Right Buttons -->
 			<div class="box box--small u-mb">
 				<h2>Default - Left / Right Tertiary Buttons</h2>
 				<demo-snippet>
@@ -149,6 +152,50 @@
 					</template>
 				</demo-snippet>
 			</div>
+
+
+			<!-- TODO: Auto Back / Title  -->
+			<div class="box box--small u-mb">
+				<h2>Default - Auto Back Button - Auto Title</h2>
+				<link rel="import" href="../px-page/px-pages.html">
+				<div class="app">
+					<style>
+						px-pages{
+
+						}
+						px-page{
+
+						}
+						px-page:nth-child(odd) {
+							background: lime;
+						}
+						px-page:nth-child(even) {
+							background: fuchsia;
+						}
+					</style>
+
+					<px-pages id="pages"  debug >
+						<px-page id="page1" title="Page 1" main>
+							<px-navbar view-container="pages"></px-navbar>
+							<button type="button" class="btn btn--large btn--full" onclick="document.getElementById('pages').next()">Next Page</button>
+						</px-page>
+						<px-page id="page2" title="Page 2">
+							<px-navbar view-container="pages"></px-navbar>
+							<button type="button" class="btn btn--large btn--full" onclick="document.getElementById('pages').next()">Next Page</button>
+						</px-page>
+						<px-page id="page3" title="Page 3">
+							<px-navbar view-container="pages"></px-navbar>
+							<button type="button" class="btn btn--large btn--full" onclick="document.getElementById('pages').next()">Next Page</button>
+						</px-page>
+						<px-page id="page4" title="Page 4">
+							<px-navbar view-container="pages"></px-navbar>
+							<button type="button" class="btn btn--large btn--full" onclick="document.getElementById('pages').reset()">Reset Pages</button>
+						</px-page>
+					</px-pages>
+
+			</div>
+
+
 
 			<!--
     <h1>HTML Examples</h1>
