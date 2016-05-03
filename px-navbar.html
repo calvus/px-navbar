@@ -29,7 +29,9 @@
 			right: 0;
 			left: 0;
 		}
-
+		:host .viewport{
+			max-width: 100rem;
+		}
 		:host .navbar__fixed {
 			position: fixed;
 			top: 0;
@@ -167,7 +169,7 @@
 					//_this.backLabel = (_this.views.prevView ? _this.views.prevView.title : '');
 				}
 			}, 0);
-			console.log('Add back button to previous page', _this.back);
+			console.log(this.tagName, this.id, 'Add back button to previous page', _this.back);
 		},
 		/**
 		 * Handle when the back button is clicked.
