@@ -1,5 +1,7 @@
 <link rel="import" href="../polymer/polymer.html"/>
+<link rel="import" href="../px-theme/px-app.html"/>
 <link rel="import" href="../px-theme/px-theme.html"/>
+<link rel="import" href="px-navbar-behavior.html">
 <!--
 
 ##Overview
@@ -37,9 +39,6 @@ Visit the <a href="mobile-demo.html" target="_blank">mobile demo</a> on a device
 				right: 0;
 				left: 0;
 			}
-			:host .viewport {
-				max-width: 100rem;
-			}
 			:host .navbar__fixed {
 				position: fixed;
 				top: 0;
@@ -50,7 +49,7 @@ Visit the <a href="mobile-demo.html" target="_blank">mobile demo</a> on a device
 				color: #fff !important;
 			}
 		</style>
-		<div class="viewport">
+		<div class="navbar__inner">
 			<template is="dom-if" if="{{back}}">
 				<div class="navbar__left">
 					<button class="navbar__button navbar__button--back" on-click="_handleBackClick">
@@ -71,6 +70,7 @@ Visit the <a href="mobile-demo.html" target="_blank">mobile demo</a> on a device
 	<script>
 		Polymer({
 			is: 'px-navbar',
+			behaviors: [pxNavbarBehavior],
 			properties: {
 				//The sub-title to display.
 				subtitle: {
@@ -115,106 +115,6 @@ Visit the <a href="mobile-demo.html" target="_blank">mobile demo</a> on a device
 			 observer: '_themeChanged',
 			 reflectToAttribute: true
 			 }*/
-			},
-			attached: function () {
-				//console.log(this.tagName, 'attached', 'setting up handlers');
-				var _this = this;
-				_this.async(function () {
-					_this.toggleClass('navbar');
-					if (_this.theme) {
-						_this.toggleClass('navbar--' + _this.theme, true);
-					}
-					if (_this.fixed) {
-						_this.toggleClass('navbar--fixed', true);
-					}
-					_this._setupHandlers();
-					_this._fixButtons();
-				});
-			},
-			detached: function () {
-				//console.log(this.tagName, 'detached', 'cleaning up handlers');
-				this._cleanupHandlers();
-			},
-			//Setup event listeners
-			_setupHandlers: function () {
-				//console.log(this.tagName, '_setupHandlers');
-				var _this = this;
-				if (_this.viewContainer) {
-					_this.debounce('initViews', function () {
-						_this.views = document.getElementById(_this.viewContainer);
-						if (_this.views) {
-							_this.views.addEventListener('change', _this._handleViewChange.bind(this));
-						}
-					}, 0);
-				}
-			},
-			//Cleanup event listeners
-			_cleanupHandlers: function () {
-				//console.log(this.tagName, '_cleanupHandlers');
-				var _this = this;
-				if (_this.views) {
-					_this.views.removeEventListener('change', _this._handleViewChange.bind(this));
-				}
-			},
-			//Handle when then view is changed, if there is a view container.
-			_handleViewChange: function (e) {
-				var _this = this;
-				var current = e.detail;
-				if (current) {
-					_this.debounce('_handleViewChange', function () {
-						_this.theme = current.attr('theme');
-						_this.title = current.attr('title');
-						_this.back = (current.main ? false : true);
-					}, 100);
-					//_this.back = (current !== _this.views.main); _this.backLabel = (_this.views.prevView ? _this.views.prevView.title : '');
-					//console.log(_this.tagName, _this.id, 'Add back button to current page', _this.back);
-				}
-			},
-			/**
-		 * Handle when the back button is clicked.
-		 */
-			_handleBackClick: function () {
-				if (this.views) {
-					this.views.back();
-				}
-				this.fire('back');
-			},
-			//Toggle the display of the navbar.
-			toggle: function (display) {
-				this.hidden = !this.hidden;
-				this.toggleClass('hidden', this.hidden);
-			},
-			//Handle getting the current view/page, if there is a viewContainer.
-			getCurrentView: function () {
-				if (this.viewContainer && this.views) {
-					return this.views.getCurrent();
-				}
-			},
-			//Listen for a click outside the sidebar and toggle the menu
-			_registerOffclick: function () {
-				this.views.addEventListener('click', this.toggleMenu);
-			},
-			//Unlisten for a click outside the sidebar and toggle the menu
-			_deregisterOffclick: function () {
-				this.views.removeEventListener('click', this.toggleMenu);
-			},
-			//Handle when the theme property changes
-			_themeChanged: function (newVal, oldVal) {
-				var _this = this;
-				this.async(function () {
-					if (oldVal) {
-						_this.toggleClass('navbar--' + oldVal, false, _this.$$('.navbar'));
-					}
-					_this.toggleClass('navbar--' + newVal, true, _this.$$('.navbar'));
-				});
-			},
-			//Handle fixing the class naming of the buttons.
-			_fixButtons: function () {
-				this.queryAllEffectiveChildren('.btn').forEach(function (b) {
-					if (b && b.toggleClass) {
-						b.toggleClass('navbar__button');
-					}
-				});
 			}
 		});
 	</script>

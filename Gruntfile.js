@@ -96,7 +96,9 @@ module.exports = function(grunt) {
 		'wct-test': {
 			local: {
 				options: {
-					remote: false
+					verbose: true,
+					remote: false,
+					browsers: ['chrome', 'firefox']
 				},
 			},
 			remote: {
@@ -150,8 +152,8 @@ module.exports = function(grunt) {
 	// Default task.
 	grunt.registerTask('test', 'Test', [
 		'jshint',
-		'webdriver'
-		//'wct-test:local'
+		//	'webdriver'
+		'wct-test:local'
 	]);
 
 	grunt.registerTask('release', 'Release', [

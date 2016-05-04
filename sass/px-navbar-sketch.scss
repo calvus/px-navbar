@@ -7,9 +7,8 @@
 	@import 'px-navbar-predix';
 
 	.navbar {
-
 		color           : $navbar-default-font-color;
-		border-bottom   : 1px solid darken($navbar-default-background-color, 50%);
+		border-bottom   : $navbar-default-border-bottom;
 		background-color: $navbar-default-background-color;
 
 		///.navbar--transparent
@@ -30,7 +29,7 @@
 		///.navbar--chrome
 		@include modifier ('chrome') {
 			background-color   : $navbar-chrome-background-color;
-			border-bottom-color: darken($navbar-chrome-background-color, 20%);
+			border-bottom-color: $navbar-chrome-border-color;
 			color              : $navbar-chrome-font-color;
 
 			.navbar__button {
@@ -42,7 +41,7 @@
 		@include modifier ('dark') {
 			background-color   : $navbar-dark-background-color;
 			color              : $navbar-dark-font-color;
-			border-bottom-color: darken($navbar-dark-background-color, 20%);
+			border-bottom-color: $navbar-dark-border-color;
 
 			.navbar__button {
 				color: $navbar-dark-font-color;
@@ -53,7 +52,7 @@
 		@include modifier ('primary') {
 			background-color   : $navbar-primary-background-color;
 			color              : $navbar-primary-font-color;
-			border-bottom-color: darken($navbar-primary-background-color, 20%);
+			border-bottom-color: $navbar-primary-border-color;
 
 			.navbar__button {
 				color: $navbar-primary-font-color;

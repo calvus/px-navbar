@@ -50,7 +50,7 @@
 				Visit the <a href="mobile-demo.html" target="_blank">mobile demo</a> on a mobile device.
 			</p>
 
-			<div class="box box--small u-mb">
+			<div class="u-mb">
 				<h2>Default - Title</h2>
 				<demo-snippet>
 					<template>
@@ -61,7 +61,7 @@
 				</demo-snippet>
 			</div>
 
-			<div class="box box--small u-mb">
+			<div class="u-mb">
 				<h2>Default - Title - Subtitle</h2>
 				<demo-snippet>
 					<template>
@@ -72,7 +72,7 @@
 				</demo-snippet>
 			</div>
 
-			<div class="box box--small u-mb">
+			<div class="u-mb">
 				<h2>Default - Title - Menu</h2>
 				<demo-snippet>
 					<template>
@@ -87,7 +87,7 @@
 				</demo-snippet>
 			</div>
 
-			<div class="box box--small u-mb">
+			<div class="u-mb">
 				<h2>Default - Back Button</h2>
 				<demo-snippet>
 					<template>
@@ -99,7 +99,7 @@
 				</demo-snippet>
 			</div>
 
-			<div class="box box--small u-mb">
+			<div class="u-mb">
 				<h2>Default - Left / Right Buttons</h2>
 				<demo-snippet>
 					<template>
@@ -118,7 +118,7 @@
 			</div>
 
 			<!-- TODO: Left / Right buttons -->
-			<div class="box box--small u-mb">
+			<div class="u-mb">
 				<h2>Default - Left / Right Primary Buttons</h2>
 				<demo-snippet>
 					<template>
@@ -137,7 +137,7 @@
 			</div>
 
 			<!-- TODO: Left/Right Buttons -->
-			<div class="box box--small u-mb">
+			<div class="u-mb">
 				<h2>Default - Left / Right Tertiary Buttons</h2>
 				<demo-snippet>
 					<template>
@@ -157,16 +157,14 @@
 
 
 			<!-- TODO: Auto Back / Title  -->
-			<div class="box box--small u-mb">
-				<h2>Default - Auto Back Button - Auto Title</h2>
+			<div class="u-mb">
+				<h2>Default - Auto Back Button - Auto Title - with px-pages</h2>
 				<link rel="import" href="../px-page/px-pages.html">
 				<div class="app">
 					<style>
 						px-pages{
-
 						}
 						px-page{
-
 						}
 						px-page:nth-child(odd) {
 							background: lime;
@@ -176,8 +174,8 @@
 						}
 					</style>
 
-					<px-pages id="pages"  debug >
-						<px-page id="page1" title="Page 1" main>
+					<px-pages id="pages" debug>
+						<px-page id="page1" title="Page 1" main class="current">
 							<px-navbar view-container="pages"></px-navbar>
 							<button type="button" class="btn btn--large btn--full" onclick="document.getElementById('pages').next()">Next Page</button>
 						</px-page>
@@ -201,7 +199,7 @@
 
 			<!--
     <h1>HTML Examples</h1>
-    <div class="box box--small u-mb++">
+    <div class="u-mb++">
         <h2>Default</h2>
         <demo-snippet>
             <template>
@@ -216,7 +214,7 @@
         </demo-snippet>
     </div>
 
-    <div class="box box--small u-mb++">
+    <div class="u-mb++">
         <h2>Default with Subtitle</h2>
         <demo-snippet>
             <template>
@@ -232,7 +230,7 @@
         </demo-snippet>
     </div>
 
-    <div class="box box--small u-mb++">
+    <div class="u-mb++">
         <h2>Default with Back Button</h2>
         <demo-snippet>
             <template>
@@ -253,7 +251,7 @@
         </demo-snippet>
     </div>
 
-    <div class="box box--small u-mb++">
+    <div class="u-mb++">
         <h2>Default with Action Button</h2>
         <demo-snippet>
             <template>
@@ -280,7 +278,7 @@
         </demo-snippet>
     </div>
 
-    <div class="box box--small u-mb++">
+    <div class="u-mb++">
         <h2>Default with Modal Actions</h2>
         <demo-snippet>
             <template>
@@ -306,7 +304,7 @@
         </demo-snippet>
     </div>
 
-    <div class="box box--small u-mb++">
+    <div class="u-mb++">
         <h2>Default with Buttons</h2>
         <demo-snippet>
             <template>

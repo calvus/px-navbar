@@ -1,35 +1,38 @@
 //@import 'px-mobile-design';
-@import 'px-mobile-design/sass/_variables';
+//@import 'px-mobile-design/sass/_variables';
 @import 'px-mobile-mixin-design/_mixins';
+@import 'px-spacing-design/_trumps.spacing.scss';
+@import 'px-colors-design/_settings.colors.scss';
 
 ///px-navbar vars
 ///
-$navbar-font-color              : $black;
-$navbar-border-color            : $gray5;
 
 ///
 $navbar-default-background-color: $white;
 $navbar-default-font-color      : $black;
+$navbar-default-border-bottom   : 1px solid $gray5;
 
 ///
 $navbar-chrome-background-color : $gray2;
 $navbar-chrome-font-color       : $gray10;
+$navbar-chrome-border-color     : $gray4;
 
 ///
 $navbar-dark-background-color   : $gray10;
 $navbar-dark-font-color         : $white;
+$navbar-dark-border-color       : $black;
 
 ///
 $navbar-primary-background-color: $primary-blue;
 $navbar-primary-font-color      : $white;
-
+$navbar-primary-border-color    : $primary-blue-pressed;
 ///
 $navbar-height                  : 56px;
-$navbar-padding                 : 0;
+$navbar-padding                 : $inuit-base-spacing-unit--tiny;
 
 ///
 $navbar-button-font-size        : 1rem;
-$navbar-button-padding          : .2rem .5rem;
+$navbar-button-padding          : $inuit-base-spacing-unit--tiny;
 $navbar-button-height           : 44px;
 $navbar-button-background-color : rgba(0, 0, 0, 0);
 $navbar-button-border-radius    : 2px;
