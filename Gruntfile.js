@@ -1,7 +1,7 @@
 'use strict';
 
 var pkg = require('./package.json');
-module.exports = function (grunt) {
+module.exports = function(grunt) {
 
 	var importOnce = require('node-sass-import-once');
 	// Project configuration.
@@ -95,13 +95,19 @@ module.exports = function (grunt) {
 		},
 		'wct-test': {
 			local: {
-				options: {remote: false},
+				options: {
+					remote: false
+				},
 			},
 			remote: {
-				options: {remote: true}
+				options: {
+					remote: true
+				}
 			},
 			chrome: {
-				options: {browsers: ['chrome']}
+				options: {
+					browsers: ['chrome']
+				}
 			}
 		},
 		concurrent: {
@@ -135,7 +141,7 @@ module.exports = function (grunt) {
 	]);
 
 	// First run task.
-	grunt.registerTask('firstrun', 'Basic first run', function () {
+	grunt.registerTask('firstrun', 'Basic first run', function() {
 		grunt.config.set('depserveOpenUrl', '/index.html');
 		grunt.task.run('default');
 		grunt.task.run('depserve');
@@ -144,7 +150,8 @@ module.exports = function (grunt) {
 	// Default task.
 	grunt.registerTask('test', 'Test', [
 		'jshint',
-		'wct-test:local'
+		'webdriver'
+		//'wct-test:local'
 	]);
 
 	grunt.registerTask('release', 'Release', [
