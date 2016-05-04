@@ -25,7 +25,9 @@
   "dependencies": {
     "polymer": "latest",
     "fastclick": "latest",
-    "px-drawer": "https://github.com/PredixDev/px-drawer.git"
+    "px-drawer": "https://github.com/PredixDev/px-drawer.git",
+    "px-buttons-design": "https://github.com/PredixDev/px-buttons-design.git#^0.4.23",
+    "px-flexbox-design": "https://github.com/PredixDev/px-flexbox-design.git#^0.3.7"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#~1.0.5",
