@@ -1,6 +1,6 @@
-<link rel="import" href="../polymer/polymer.html"/>
-<link rel="import" href="../px-theme/px-app.html"/>
-<link rel="import" href="../px-theme/px-theme.html"/>
+<link rel="import" href="../polymer/polymer.html" />
+<link rel="import" href="../px-theme/px-app.html" />
+<link rel="import" href="../px-theme/px-theme.html" />
 <link rel="import" href="px-navbar-behavior.html">
 <!--
 
@@ -39,10 +39,12 @@ Visit the <a href="mobile-demo.html" target="_blank">mobile demo</a> on a device
 				right: 0;
 				left: 0;
 			}
+
 			:host .navbar__fixed {
 				position: fixed;
 				top: 0;
 			}
+
 			:host .navbar--alt::content .navbar__button,
 			:host .navbar--dark::content .navbar__button,
 			:host .navbar--primary::content .navbar__button {
@@ -88,6 +90,11 @@ Visit the <a href="mobile-demo.html" target="_blank">mobile demo</a> on a device
 				},
 				//Fix the navbar to the top.
 				fixed: {
+					type: Boolean,
+					value: false
+				},
+				//Add a shadow to the navbar
+				shadow: {
 					type: Boolean,
 					value: false
 				},
