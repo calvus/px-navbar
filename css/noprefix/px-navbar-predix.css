@@ -122,7 +122,7 @@
       border-radius: inherit; }
     .navbar__button i,
     .navbar__button span {
-      flex: 1;
+      flex: 1 0 auto;
       align-self: stretch; }
     .navbar__button:disabled, .navbar__button[disabled] {
       opacity: 0.3;
