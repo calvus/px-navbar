@@ -49,8 +49,8 @@
 			var current = e.detail;
 			if (current) {
 				_this.debounce('_handleViewChange', function() {
-					_this.theme = current.attr('theme');
-					_this.title = current.attr('title');
+					_this.theme = current.getAttribute('theme');
+					_this.title = current.getAttribute('title');
 					_this.back = (current.main ? false : true);
 				}, 100);
 				//_this.back = (current !== _this.views.main); _this.backLabel = (_this.views.prevView ? _this.views.prevView.title : '');
