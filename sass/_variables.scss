@@ -3,7 +3,7 @@
 @import 'px-mobile-mixin-design/_mixins';
 @import 'px-spacing-design/_trumps.spacing.scss';
 @import 'px-colors-design/_settings.colors.scss';
-
+@import "px-functions-design/_tools.functions.scss";
 ///px-navbar vars
 ///
 
@@ -45,3 +45,9 @@ $navbar-title-font-color        : $black;
 ///
 $navbar-subtitle-font-size      : 1rem;
 $navbar-subtitle-font-color     : $gray6;
+
+$navbar-padding--tiny           : $inuit-base-spacing-unit--tiny;
+$navbar-padding--small          : $inuit-base-spacing-unit--small;
+$navbar-padding--default        : $inuit-base-spacing-unit;
+$navbar-padding--large          : $inuit-base-spacing-unit--large;
+$navbar-padding--huge           : $inuit-base-spacing-unit--huge;

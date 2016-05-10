@@ -3,6 +3,10 @@
 ///
 @import 'px-mobile-mixin-design/_mixins';
 
+.has-navbar {
+	padding-top: $navbar-height;
+}
+
 ///px-navbar styles
 ///
 ///
@@ -36,6 +40,26 @@
 		outline: 0;
 	}
 
+	@include modifier ('tiny') {
+		padding: $navbar-padding--tiny;
+	}
+
+	@include modifier ('small') {
+		padding: $navbar-padding--small;
+	}
+
+	@include modifier ('default') {
+		padding: $navbar-padding--default;
+	}
+
+	@include modifier ('large') {
+		padding: $navbar-padding--large;
+	}
+
+	@include modifier ('huge') {
+		padding: $navbar-padding--huge;
+	}
+
 	///.navbar--fixed
 	@include modifier ('fixed') {
 		position: fixed;
@@ -44,6 +68,14 @@
 	///.navbar--static
 	@include modifier ('static') {
 		position: static;
+	}
+
+	@include respond ('small') {
+		position: fixed;
+	}
+
+	@include respond ('xsmall') {
+		position: fixed;
 	}
 
 	//todo - Need to use absolute position for true center.

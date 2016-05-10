@@ -45,6 +45,9 @@
 /**
      * Dark
      */
+:root .has-navbar {
+  padding-top: 56px; }
+
 :root .navbar {
   font-family: 'GE Inspira Sans', sans-serif;
   -webkit-user-select: none;
@@ -79,10 +82,26 @@
     outline: 0; }
   :root .navbar button {
     outline: 0; }
+  :root .navbar--tiny {
+    padding: 0.3333333333rem; }
+  :root .navbar--small {
+    padding: 0.6666666667rem; }
+  :root .navbar--default {
+    padding: 1rem; }
+  :root .navbar--large {
+    padding: 1.3333333333rem; }
+  :root .navbar--huge {
+    padding: 2rem; }
   :root .navbar--fixed {
     position: fixed; }
   :root .navbar--static {
     position: static; }
+  @media only screen and (max-device-width: 640px), only screen and (max-device-width: 667px), only screen and (max-width: 480px) {
+    :root .navbar {
+      position: fixed; } }
+  @media (min-width: 321px) {
+    :root .navbar {
+      position: fixed; } }
   :root .navbar__center {
     position: absolute;
     top: 50%;
