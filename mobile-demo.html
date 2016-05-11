@@ -31,31 +31,44 @@
 				window.scrollTo(0, 1);
 			});
 		</script>
+		<style media="screen">
+
+			px-page {
+				-webkit-transition: all 0.3s ease-out;
+				transition: all 0.3s ease-out;
+				will-change: transform;
+			}
+
+			px-page.current {
+				}
+
+			px-page.next {
+				}
+
+			px-page.previous {
+				}
+
+		</style>
 	</head>
 
-	<body unresolved class="u-bg--gray1">
+	<body unresolved>
 
 		<px-drawer id="myLeftDrawer" side="left" theme="dark" fixed>
-			<ul class="table-view">
-				<px-table-row title="Home" icon="fa fa-home" type="tappable"></px-table-row>
-				<px-table-row title="Dashboard" icon="fa fa-dashboard" type="tappable"></px-table-row>
-				<px-table-row title="Alerts" icon="fa fa-exclamation-triangle" type="tappable"></px-table-row>
-				<px-table-row title="Cases" icon="fa fa-briefcase" type="tappable"></px-table-row>
-				<px-table-row title="Analysis" icon="fa fa-bar-chart" type="tappable"></px-table-row>
-			</ul>
+
+			<p>
+				This is the px-drawer component.
+			</p>
 		</px-drawer>
 		<px-drawer id="myOtherDrawer" side="bottom" theme="dark" fixed>
 			<div class="u-m">
-				<p>
-					This is the px-drawer component.
-				</p>
+
 				<p>
 					This is content inside of the drawer
 				</p>
 			</div>
 		</px-drawer>
 
-		<px-pages id="pages" selected="0" debug>
+		<px-pages id="pages" selected="0" debug class="u-bg--gray1">
 			<!-- TODO: Page 1 -->
 			<px-page id="page1" main>
 				<px-navbar id="navbar1" view-container="pages" title="px-navbar">

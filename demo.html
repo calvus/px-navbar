@@ -3,40 +3,43 @@
 	<head>
 		<title>px navbar demo</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<!--
+		<!--
 		<link rel='stylesheet prefetch' href='https://predixdev.github.io/px-library-design/css/style.css'>
 	-->
 
 		<!-- TODO: Dependencies -->
 		<script src="../webcomponentsjs/webcomponents.min.js"></script>
 
-		<link rel="import" href="../iron-demo-helpers/demo-snippet.html" />
+		<link rel="import" href="../iron-demo-helpers/demo-snippet.html"/>
 
 		<!-- TODO: pxm components -->
+		<link rel="import" href="../px-theme/px-theme.html">
+		<link rel="import" href="../px-theme/px-app.html">
 		<link rel="import" href="px-navbar.html">
 
 		<style media="screen">
-		.box {
-			background: transparent;
-			border: none;
-			padding: 10px;
-		}
+			.box {
+				background: transparent;
+				border: none;
+				padding: 10px;
+			}
 
-		.position-relative {
-			position: relative;
-		}
+			.position-relative {
+				position: relative;
+			}
 
-		.position-relative {
-			min-height: 75px;
-		}
+			.position-relative {
+				min-height: 75px;
+			}
 
-		body {
-			background: #efeff4;
-			overflow: hidden;
-			overflow-y: scroll;
-			overflow-y: auto;
-			-webkit-overflow-scrolling: touch;
-		}
+			body {
+				background: #efeff4;
+				overflow: hidden;
+				overflow-y: scroll;
+				overflow-y: auto;
+				-webkit-overflow-scrolling: touch;
+			}
+
 		</style>
 
 	</head>
@@ -47,7 +50,9 @@
 			<h1>px-navbar</h1>
 			<p>The px-navbar component is a responsive mobile first navigation bar.</p>
 			<p>
-				Visit the <a href="mobile-demo.html" target="_blank">mobile demo</a> on a mobile device.
+				Visit the
+				<a href="mobile-demo.html" target="_blank">mobile demo</a>
+				on a mobile device.
 			</p>
 
 			<div class="u-mb">
@@ -79,7 +84,9 @@
 						<div class="position-relative">
 							<px-navbar id="navbar1-2" title="Navbar">
 								<div class="navbar__left">
-									<button class="navbar__button"><i class="fa fa-lg fa-navicon"></i></button>
+									<button class="navbar__button">
+										<i class="fa fa-lg fa-navicon"></i>
+									</button>
 								</div>
 							</px-navbar>
 						</div>
@@ -92,8 +99,7 @@
 				<demo-snippet>
 					<template>
 						<div class="position-relative">
-							<px-navbar id="navbar1-3" title="Navbar" back-label="Back" back>
-							</px-navbar>
+							<px-navbar id="navbar1-3" title="Navbar" back-label="Back" back></px-navbar>
 						</div>
 					</template>
 				</demo-snippet>
@@ -155,49 +161,86 @@
 				</demo-snippet>
 			</div>
 
-
 			<!-- TODO: Auto Back / Title  -->
 			<div class="u-mb">
 				<h2>Default - Auto Back Button - Auto Title - with px-pages</h2>
 				<link rel="import" href="../px-page/px-pages.html">
 				<div class="app">
 					<style>
-						px-pages{
-						}
-						px-page{
-						}
+						px-pages {}
+						px-page {}
 						px-page:nth-child(odd) {
 							background: lime;
 						}
 						px-page:nth-child(even) {
 							background: fuchsia;
 						}
+
 					</style>
 
 					<px-pages id="pages" debug>
-						<px-page id="page1" title="Page 1" main class="current">
-							<px-navbar view-container="pages"></px-navbar>
-							<button type="button" class="btn btn--large btn--full" onclick="document.getElementById('pages').next()">Next Page</button>
+						<!-- TODO: Page 1 -->
+						<px-page id="page1" main>
+							<px-navbar id="navbar1" view-container="pages" title="px-navbar">
+								<div class="navbar__left">
+									<button class="navbar__button" onclick="document.getElementById('myLeftDrawer').toggle()">
+										<i class="fa fa-lg fa-bars"></i>
+									</button>
+								</div>
+								<div class="navbar__center">
+									<span class="navbar__title">px-navbar</span>
+								</div>
+							</px-navbar>
+							<section class="viewport">
+								<h2>px-navbar</h2>
+								<p>The px-navbar enables navigation through an information hierarchy and, optionally, management of screen contents.</p>
+								<div class="flex">
+									<button class="btn btn--full" onclick="document.getElementById('pages').next()">Next</button>
+								</div>
+							</section>
 						</px-page>
+						<!-- TODO: Page 2 -->
 						<px-page id="page2" title="Page 2">
-							<px-navbar view-container="pages"></px-navbar>
-							<button type="button" class="btn btn--large btn--full" onclick="document.getElementById('pages').next()">Next Page</button>
+							<px-navbar id="navbar2" view-container="pages"></px-navbar>
+							<section class="viewport">
+								<p>When the user goes to a new level in a navigation hierarchy, two things should happen:</p>
+								<p>
+									<ol>
+										<li>The navigation bar title should change to the new level’s title, if appropriate.</li>
+										<li>A back button should appear in the left end of the bar; it can be labeled with the previous level’s title if it adds value.</li>
+									</ol>
+								</p>
+								<div class="flex">
+									<button class="btn btn--full" onclick="document.getElementById('pages').next()">Next</button>
+								</div>
+							</section>
 						</px-page>
+						<!-- TODO: Page 3 -->
 						<px-page id="page3" title="Page 3">
-							<px-navbar view-container="pages"></px-navbar>
-							<button type="button" class="btn btn--large btn--full" onclick="document.getElementById('pages').next()">Next Page</button>
-						</px-page>
-						<px-page id="page4" title="Page 4">
-							<px-navbar view-container="pages"></px-navbar>
-							<button type="button" class="btn btn--large btn--full" onclick="document.getElementById('pages').reset()">Reset Pages</button>
+							<px-navbar id="navbar3" view-container="pages">
+								<div class="navbar__right">
+									<button class="navbar__button" onclick="document.getElementById('myOtherDrawer').toggle()">
+										<i class="fa fa-lg fa-ellipsis-v"></i>
+									</button>
+								</div>
+							</px-navbar>
+							<section class="viewport">
+								<p>In general, a navigation bar should contain no more than the view’s current title, the back button, and one control that manages the view’s contents.</p>
+								<p>
+									<blockquote>
+										<p>By default, the buttons are a minimum size of 44x44 (Per Apple Design Guidelines)</p>
+									</blockquote>
+								</p>
+								<div class="flex">
+									<button class="btn btn--full" onclick="document.getElementById('pages').reset()">Reset</button>
+								</div>
+							</section>
 						</px-page>
 					</px-pages>
 
-			</div>
+				</div>
 
-
-
-			<!--
+				<!--
     <h1>HTML Examples</h1>
     <div class="u-mb++">
         <h2>Default</h2>
@@ -333,7 +376,7 @@
     </div>
     -->
 
-		</div>
-	</body>
+			</div>
+		</body>
 
-</html>
+	</html>
