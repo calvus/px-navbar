@@ -1,9 +1,14 @@
 <script type="text/javascript">
+	/**
+	 * Behavior that manages the px-navbar
+	 *
+	 * @polymerBehavior
+	 */
 	var pxNavbarBehavior = {
-		attached: function() {
+		attached: function () {
 			//console.log(this.tagName, 'attached', 'setting up handlers');
 			var _this = this;
-			_this.async(function() {
+			_this.async(function () {
 				_this.toggleClass('navbar');
 				if (_this.theme) {
 					_this.toggleClass('navbar--' + _this.theme, true);
@@ -18,16 +23,16 @@
 				_this._fixButtons();
 			});
 		},
-		detached: function() {
+		detached: function () {
 			//console.log(this.tagName, 'detached', 'cleaning up handlers');
 			this._cleanupHandlers();
 		},
 		//Setup event listeners
-		_setupHandlers: function() {
+		_setupHandlers: function () {
 			//console.log(this.tagName, '_setupHandlers');
 			var _this = this;
 			if (_this.viewContainer) {
-				_this.debounce('initViews', function() {
+				_this.debounce('initViews', function () {
 					_this.views = document.getElementById(_this.viewContainer);
 					if (_this.views) {
 						_this.views.addEventListener('change', _this._handleViewChange.bind(this));
@@ -36,7 +41,7 @@
 			}
 		},
 		//Cleanup event listeners
-		_cleanupHandlers: function() {
+		_cleanupHandlers: function () {
 			//console.log(this.tagName, '_cleanupHandlers');
 			var _this = this;
 			if (_this.views) {
@@ -44,51 +49,52 @@
 			}
 		},
 		//Handle when then view is changed, if there is a view container.
-		_handleViewChange: function(e) {
+		_handleViewChange: function (e) {
 			var _this = this;
 			var current = e.detail;
 			if (current) {
-				_this.debounce('_handleViewChange', function() {
+				_this.debounce('_handleViewChange', function () {
 					_this.theme = current.getAttribute('theme');
 					_this.title = current.getAttribute('title');
-					_this.back = (current.main ? false : true);
+					_this.back = (current.main
+						? false
+						: true);
 				}, 100);
-				//_this.back = (current !== _this.views.main); _this.backLabel = (_this.views.prevView ? _this.views.prevView.title : '');
-				//console.log(_this.tagName, _this.id, 'Add back button to current page', _this.back);
+				//_this.back = (current !== _this.views.main); _this.backLabel = (_this.views.prevView ? _this.views.prevView.title : ''); console.log(_this.tagName, _this.id, 'Add back button to current page', _this.back);
 			}
 		},
 		/**
 		 * Handle when the back button is clicked.
 		 */
-		_handleBackClick: function() {
+		_handleBackClick: function () {
 			if (this.views) {
 				this.views.back();
 			}
 			this.fire('back');
 		},
 		//Toggle the display of the navbar.
-		toggle: function(display) {
+		toggle: function (display) {
 			this.hidden = !this.hidden;
 			this.toggleClass('hidden', this.hidden);
 		},
 		//Handle getting the current view/page, if there is a viewContainer.
-		getCurrentView: function() {
+		getCurrentView: function () {
 			if (this.viewContainer && this.views) {
 				return this.views.getCurrent();
 			}
 		},
 		//Listen for a click outside the sidebar and toggle the menu
-		_registerOffclick: function() {
+		_registerOffclick: function () {
 			this.views.addEventListener('click', this.toggleMenu);
 		},
 		//Unlisten for a click outside the sidebar and toggle the menu
-		_deregisterOffclick: function() {
+		_deregisterOffclick: function () {
 			this.views.removeEventListener('click', this.toggleMenu);
 		},
 		//Handle when the theme property changes
-		_themeChanged: function(newVal, oldVal) {
+		_themeChanged: function (newVal, oldVal) {
 			var _this = this;
-			this.async(function() {
+			this.async(function () {
 				if (oldVal) {
 					_this.toggleClass('navbar--' + oldVal, false, _this.$$('.navbar'));
 				}
@@ -96,8 +102,8 @@
 			});
 		},
 		//Handle fixing the class naming of the buttons.
-		_fixButtons: function() {
-			this.queryAllEffectiveChildren('.btn').forEach(function(b) {
+		_fixButtons: function () {
+			this.queryAllEffectiveChildren('.btn').forEach(function (b) {
 				if (b && b.toggleClass) {
 					b.toggleClass('navbar__button');
 				}
