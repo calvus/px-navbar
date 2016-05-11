@@ -79,6 +79,8 @@
        -moz-user-select: none;
         -ms-user-select: none;
             user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
     outline: 0; }
   :root .navbar button {
     outline: 0; }
@@ -96,12 +98,6 @@
     position: fixed; }
   :root .navbar--static {
     position: static; }
-  @media only screen and (max-device-width: 640px), only screen and (max-device-width: 667px), only screen and (max-width: 480px) {
-    :root .navbar {
-      position: fixed; } }
-  @media (min-width: 321px) {
-    :root .navbar {
-      position: fixed; } }
   :root .navbar__center {
     position: absolute;
     top: 50%;

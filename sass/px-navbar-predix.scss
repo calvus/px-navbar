@@ -32,8 +32,10 @@
 	}
 
 	* {
-		user-select: none;
-		outline    : 0;
+		user-select          : none;
+		-webkit-touch-callout: none;
+		-webkit-user-select  : none;
+		outline              : 0;
 	}
 
 	button {
@@ -71,11 +73,11 @@
 	}
 
 	@include respond ('small') {
-		position: fixed;
+		//position: fixed;
 	}
 
 	@include respond ('xsmall') {
-		position: fixed;
+		//position: fixed;
 	}
 
 	//todo - Need to use absolute position for true center.

@@ -10,134 +10,128 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="apple-touch-icon" href="touch-icon-iphone.png">
 
-		<link rel='stylesheet prefetch' href="http://predixdev.github.io/px-library-design/css/style.css">
-
 		<script src="../webcomponentsjs/webcomponents.min.js"></script>
 		<script src="../fastclick/lib/fastclick.js"></script>
 
 		<link rel="import" href="../px-table-view/px-table-view.html">
+		<link rel="import" href="../px-theme/px-theme.html">
+		<link rel="import" href="../px-theme/px-app.html">
+		<link rel="import" href="../px-page/px-pages.html">
 		<link rel="import" href="../px-page/px-pages.html">
 		<link rel="import" href="../px-drawer/px-drawer.html">
 		<link rel="import" href="px-navbar.html">
 
-		<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
-
 		<script type="text/javascript">
-		if ('addEventListener' in document) {
-			document.addEventListener('DOMContentLoaded', function() {
-				FastClick.attach(document.body);
-			}, false);
-		}
-		document.addEventListener('WebComponentsReady', function() {
-			window.scrollTo(0, 1);
-		});
+			if ('addEventListener' in document) {
+				document.addEventListener('DOMContentLoaded', function () {
+					FastClick.attach(document.body);
+				}, false);
+			}
+			document.addEventListener('WebComponentsReady', function () {
+				window.scrollTo(0, 1);
+			});
 		</script>
 	</head>
 
 	<body unresolved class="u-bg--gray1">
-		<template id="navbarTmpl" is="dom-bind">
-			<px-drawer id="myLeftDrawer" side="left" theme="dark" fixed>
-				<ul class="table-view">
-					<px-table-row title="Home" icon="fa fa-home" type="tappable"></px-table-row>
-					<px-table-row title="Dashboard" icon="fa fa-dashboard" type="tappable"></px-table-row>
-					<px-table-row title="Alerts" icon="fa fa-exclamation-triangle" type="tappable"></px-table-row>
-					<px-table-row title="Cases" icon="fa fa-briefcase" type="tappable"></px-table-row>
-					<px-table-row title="Analysis" icon="fa fa-bar-chart" type="tappable"></px-table-row>
-				</ul>
-			</px-drawer>
-			<px-drawer id="myOtherDrawer" side="bottom" theme="dark" fixed>
-				<div class="u-m">
+
+		<px-drawer id="myLeftDrawer" side="left" theme="dark" fixed>
+			<ul class="table-view">
+				<px-table-row title="Home" icon="fa fa-home" type="tappable"></px-table-row>
+				<px-table-row title="Dashboard" icon="fa fa-dashboard" type="tappable"></px-table-row>
+				<px-table-row title="Alerts" icon="fa fa-exclamation-triangle" type="tappable"></px-table-row>
+				<px-table-row title="Cases" icon="fa fa-briefcase" type="tappable"></px-table-row>
+				<px-table-row title="Analysis" icon="fa fa-bar-chart" type="tappable"></px-table-row>
+			</ul>
+		</px-drawer>
+		<px-drawer id="myOtherDrawer" side="bottom" theme="dark" fixed>
+			<div class="u-m">
+				<p>
+					This is the px-drawer component.
+				</p>
+				<p>
+					This is content inside of the drawer
+				</p>
+			</div>
+		</px-drawer>
+
+		<px-pages id="pages" selected="0" debug>
+			<!-- TODO: Page 1 -->
+			<px-page id="page1" main>
+				<px-navbar id="navbar1" view-container="pages" title="px-navbar">
+					<div class="navbar__left">
+						<button class="navbar__button" onclick="document.getElementById('myLeftDrawer').toggle()">
+							<i class="fa fa-lg fa-bars"></i>
+						</button>
+					</div>
+					<div class="navbar__center">
+						<span class="navbar__title">px-navbar</span>
+					</div>
+				</px-navbar>
+				<section class="viewport">
+					<h2>px-navbar</h2>
+					<p>The px-navbar enables navigation through an information hierarchy and, optionally, management of screen contents.</p>
+					<div class="flex">
+						<button class="btn btn--full" onclick="document.getElementById('pages').next()">Next</button>
+					</div>
+				</section>
+			</px-page>
+			<!-- TODO: Page 2 -->
+			<px-page id="page2" title="Page 2">
+				<px-navbar id="navbar2" view-container="pages"></px-navbar>
+				<section class="viewport">
+					<p>When the user goes to a new level in a navigation hierarchy, two things should happen:</p>
 					<p>
-						This is the px-drawer component. 
+						<ol>
+							<li>The navigation bar title should change to the new level’s title, if appropriate.</li>
+							<li>A back button should appear in the left end of the bar; it can be labeled with the previous level’s title if it adds value.</li>
+						</ol>
 					</p>
+					<div class="flex">
+						<button class="btn btn--full" onclick="document.getElementById('pages').next()">Next</button>
+					</div>
+				</section>
+			</px-page>
+			<!-- TODO: Page 3 -->
+			<px-page id="page3" title="Page 3">
+				<px-navbar id="navbar3" view-container="pages">
+					<div class="navbar__right">
+						<button class="navbar__button" onclick="document.getElementById('myOtherDrawer').toggle()">
+							<i class="fa fa-lg fa-ellipsis-v"></i>
+						</button>
+					</div>
+				</px-navbar>
+				<section class="viewport">
+					<p>In general, a navigation bar should contain no more than the view’s current title, the back button, and one control that manages the view’s contents.</p>
 					<p>
-						This is content inside of the drawer
+						<blockquote>
+							<p>By default, the buttons are a minimum size of 44x44 (Per Apple Design Guidelines)</p>
+						</blockquote>
 					</p>
-				</div>
-			</px-drawer>
+					<div class="flex">
+						<button class="btn btn--full" onclick="document.getElementById('pages').next()">Next</button>
+					</div>
+				</section>
+			</px-page>
 
-			<px-pages id="pages" selected="0" debug>
-				<!-- TODO: Page 1 -->
-				<px-page id="page1" main>
-					<px-navbar id="navbar1" view-container="pages">
-						<div class="navbar__left">
-							<button class="navbar__button" onclick="document.getElementById('myLeftDrawer').toggle()">
-								<i class="fa fa-lg fa-bars"></i>
-							</button>
-						</div>
-						<div class="navbar__center">
-							<span class="navbar__title">px-navbar</span>
-						</div>
-					</px-navbar>
-					<section class="viewport">
-						<h2>px-navbar</h2>
-						<p>The px-navbar enables navigation through an information hierarchy and, optionally, management of screen contents.</p>
-						<div class="flex">
-							<button class="btn btn--full" onclick="document.getElementById('pages').next()">Next</button>
-						</div>
-					</section>
-				</px-page>
-				<!-- TODO: Page 2 -->
-				<px-page id="page2" title="Page 2">
-					<px-navbar id="navbar2" view-container="pages"></px-navbar>
-					<section class="viewport">
-						<p>When the user goes to a new level in a navigation hierarchy, two things should happen:</p>
-						<p>
-							<ol>
-								<li>The navigation bar title should change to the new level’s title, if appropriate.</li>
-								<li>A back button should appear in the left end of the bar; it can be labeled with the previous level’s title if it adds value.</li>
-							</ol>
-						</p>
-						<div class="flex">
-							<button class="btn btn--full" onclick="document.getElementById('pages').next()">Next</button>
-						</div>
-					</section>
-				</px-page>
-				<!-- TODO: Page 3 -->
-				<px-page id="page3" title="Page 3">
-					<px-navbar id="navbar3" view-container="pages">
-						<div class="navbar__right">
-							<button class="navbar__button" onclick="document.getElementById('myOtherDrawer').toggle()">
-								<i class="fa fa-lg fa-ellipsis-v"></i>
-							</button>
-						</div>
-					</px-navbar>
-					<section class="viewport">
-						<p>In general, a navigation bar should contain no more than the view’s current title, the back button, and one control that manages the view’s contents.</p>
-						<p>
-							<blockquote>
-								<p>By default, the buttons are a minimum size of 44x44 (Per Apple Design Guidelines)</p>
-							</blockquote>
-						</p>
-						<div class="flex">
-							<button class="btn btn--full" onclick="document.getElementById('pages').next()">Next</button>
-						</div>
-					</section>
-				</px-page>
-
-				<!-- TODO: Page 4 -->
-				<px-page id="page4" title="Page 4">
-					<px-navbar id="navbar4" view-container="pages"></px-navbar>
-					<section class="viewport">
-						<p>The following items are configurable:</p>
-						<p>
-							<ol>
-								<li>title</li>
-								<li>subtitle</li>
-								<li>buttons on the left/right</li>
-							</ol>
-						</p>
-						<div class="flex">
-							<button class="btn btn--full" onclick="document.getElementById('pages').reset()">Back to Main</button>
-						</div>
-					</section>
-				</px-page>
-			</px-pages>
-
-		</template>
-		<script type="text/javascript">
-		var tmpl = document.getElementById('navbarTmpl');
-		</script>
+			<!-- TODO: Page 4 -->
+			<px-page id="page4" title="Page 4">
+				<px-navbar id="navbar4" view-container="pages"></px-navbar>
+				<section class="viewport">
+					<p>The following items are configurable:</p>
+					<p>
+						<ol>
+							<li>title</li>
+							<li>subtitle</li>
+							<li>buttons on the left/right</li>
+						</ol>
+					</p>
+					<div class="flex">
+						<button class="btn btn--full" onclick="document.getElementById('pages').reset()">Back to Main</button>
+					</div>
+				</section>
+			</px-page>
+		</px-pages>
 
 	</body>
 
