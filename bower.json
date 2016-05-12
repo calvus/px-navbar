@@ -27,7 +27,9 @@
     "fastclick": "latest",
     "px-drawer": "https://github.com/PredixDev/px-drawer.git",
     "px-buttons-design": "^0.4.23",
+		"px-mobile-design": "https://github.com/PredixDev/px-mobile-design.git",
     "px-flexbox-design": "https://github.com/PredixDev/px-flexbox-design.git#^0.3.7",
+		"px-page": "https://github.com/PredixDev/px-page.git",
     "px-theme": "^0.7.0",
     "px-code-design": "^0.2.11",
     "px-normalize-design": "^0.3.8",
@@ -37,10 +39,7 @@
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#~1.0.5",
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.2.3",
-    "px-page": "https://github.com/PredixDev/px-page.git",
-    "px-table-view": "https://github.com/PredixDev/px-table-view.git",
-    "px-mobile-design": "https://github.com/PredixDev/px-mobile-design.git",
-    "px-mobile-mixin-design": "https://github.com/PredixDev/px-mobile-mixin-design.git"
+    "px-table-view": "https://github.com/PredixDev/px-table-view.git"
   },
   "resolutions": {
     "polymer": "~v1.4.0",
