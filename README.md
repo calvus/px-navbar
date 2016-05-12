@@ -1,9 +1,34 @@
-# px navbar
-This repository contains the web components for px navbar.
+#px-navbar
 
+## Overview
+
+px-navbar is a Predix UI component
 
 ## Usage
-To use this component simply use the following example:
+
+### Prerequisites
+1. node.js
+2. npm
+3. bower
+4. [webcomponents-lite.js polyfill](https://github.com/webcomponents/webcomponentsjs)
+
+Node, npm and bower are necessary to install the component and dependencies. webcomponents.js adds support for web components and custom elements to your application.
+
+## Getting Started
+
+First, install the component via bower on the command line.
+
+```
+bower install px-navbar --save
+```
+
+Second, import the component to your application with the following tag in your head.
+
+```
+<link rel="import" href="/bower_components/px-navbar/px-navbar.html"/>
+```
+
+Finally, use the component in your application:
 
 ```
 <px-navbar id="navbar1" title="Navbar Title">
@@ -19,85 +44,49 @@ To use this component simply use the following example:
 </px-navbar>
 ```
 
+<br />
+<hr />
 
-### Options
-You can customize the appearance of the component by changing the following properties:
+## Documentation
 
-1. `title` - This represents the title of the navbar.
-2. `subtitle` - This represents the sub-title of the navbar.
-3. `theme` - This is the default color theme to apply. (white, dark, primary, chrome, transparent)
+Read the full API and view the demo [here](https://predixdev.github.io/px-navbar).
 
-> There are more options available as the documentation page defines.
-
-## Customizing
-To add custom contents inside the navbar you can do something like below:
-
-```
-<div class="navbar__left">
-	<button class="navbar__button" onclick="document.getElementById('myLeftDrawer').toggle()">
-		<i class="fa fa-lg fa-bars"></i>
-	</button>
-</div>
-<div class="navbar__right">
-	<button class="navbar__button" onclick="document.getElementById('myOtherDrawer').toggle()">
-		<i class="fa fa-lg fa-ellipsis-v"></i>
-	</button>
-</div>
-```
+The documentation in this repository is supplemental to the official Predix documentation, which is continuously updated and maintained by the Predix documentation team. Go to [http://predix.io](http://predix.io)  to see the official Predix documentation.
 
 
-## Example
-The following is an example of using the `px-navbar` component with the `px-drawer` component to create an off-canvas navigation experience.
+## Local Development
 
-### Usage with Sidebar
+From the component's directory...
 
 ```
-<link rel="import" href="../px-sidebar/px-sidebar.html">
-<px-navbar id="myNavbar" sidebar-container="mySidebar" title="px-navbar demo">
-	<px-button class="navbar__button"
-		icon="navicon"
-		theme="tertiary"
-		onclick="document.getElementById('mySidebar').toggle()"></px-button>
-</px-navbar>
-<px-sidebar id="mySidebar"
-	menu='[
-		{"label":"Alerts","icon":"fa fa-exclamation-triangle","path":"#alerts"},
-		{"label":"Cases","icon":"fa fa-briefcase","path":"#cases"},
-		{"label":"Analysis","icon":"fa fa-bar-chart","path":"#analysis"},
-		{"label":"Dashboards","icon":"fa fa-dashboard","path":"#dashboards"}
-	]'></px-sidebar>
-<section>
-	<p>The px-navbar and px-sidebar component is a responsive component that can be used for navigation.</p>
-</section>
+$ npm install
+$ bower install
+$ grunt sass
 ```
 
-
-### Usage with Action Button and More
-
-```
-	<div class="position-relative">
-	  <px-navbar id="navbar4-3" title="Navbar Title" subtitle="Sub Title" theme="primary">
-	    <div>
-	      <button class="navbar__button">Action</button>
-	    </div>
-	    <div>
-	      <button class="navbar__button">
-	      	<i class="fa fa-ellipsis-v"></i>
-	      </button>
-	    </div>
-	  </px-navbar>
-	</div>
-```
-
-
-
-
-
-## Unit Tests
-To run the tests simply invoke the `npm test` command:
-
-### Latest Specs
+From the component's directory, to start a local server run:
 
 ```
+$ grunt depserve
+```
+
+Navigate to the root of that server (e.g. http://localhost:8080/) in a browser to open the API documentation page, with link to the "Demo" / working examples.
+
+
+### DevMode
+Devmode runs `grunt depserve` and `grunt watch` concurrently so that when you make a change to your source files and save them, your preview will be updated in any browsers you have opened and turned on LiveReload.
+From the component's directory run:
 
 ```
+$ grunt devmode
+```
+
+### GE Coding Style Guide
+[GE JS Developer's Guide](https://github.com/GeneralElectric/javascript)
+
+<br />
+<hr />
+
+## Known Issues
+
+Please use [Github Issues](https://github.com/PredixDev/px-navbar/issues) to submit any bugs you might find.

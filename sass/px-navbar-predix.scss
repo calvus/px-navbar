@@ -8,87 +8,82 @@
  * under which the software has been supplied.
  */
 @import "variables";
-///
-@import 'px-mobile-mixin-design/_mixins';
+@import 'px-mobile-design/sass/_mixins.scss';
+@import 'px-navbar-sketch.scss';
 
-:root {
-	@import 'px-navbar-predix';
+.navbar {
+	color           : $navbar-default-font-color;
+	border-bottom   : $navbar-default-border-bottom;
+	background-color: $navbar-default-background-color;
 
-	.navbar {
+	///.navbar--transparent
+	@include modifier ('transparent') {
+		background-color: transparent;
 		color           : $navbar-default-font-color;
-		border-bottom   : $navbar-default-border-bottom;
-		background-color: $navbar-default-background-color;
 
-		///.navbar--transparent
-		@include modifier ('transparent') {
-			background-color: transparent;
-			color           : $navbar-default-font-color;
-
-			.navbar__button {
-				color: $navbar-default-font-color;
-			}
-		}
-
-		///.navbar--shadow
-		@include modifier ('shadow') {
-			box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
-		}
-
-		///.navbar--chrome
-		@include modifier ('chrome') {
-			background-color   : $navbar-chrome-background-color;
-			border-bottom-color: $navbar-chrome-border-color;
-			color              : $navbar-chrome-font-color;
-
-			.navbar__button {
-				color: $navbar-chrome-font-color;
-			}
-		}
-
-		///.navbar--dark
-		@include modifier ('dark') {
-			background-color   : $navbar-dark-background-color;
-			color              : $navbar-dark-font-color;
-			border-bottom-color: $navbar-dark-border-color;
-
-			.navbar__button {
-				color: $navbar-dark-font-color;
-			}
-		}
-
-		///.navbar--primary
-		@include modifier ('primary') {
-			background-color   : $navbar-primary-background-color;
-			color              : $navbar-primary-font-color;
-			border-bottom-color: $navbar-primary-border-color;
-
-			.navbar__button {
-				color: $navbar-primary-font-color;
-			}
-		}
-
-		@include element ('button') {
-			background-color: $navbar-button-background-color;
-			border-radius   : $navbar-button-border-radius;
-			border          : $navbar-button-border;
-			font-size       : $navbar-button-font-size;
-
-			&:active {
-				background-color: rgba(0, 0, 0, .5);
-				transition      : none;
-				opacity         : 0.5;
-			}
-		}
-
-		@include element ('title') {
-			font-size: $navbar-title-font-size;
-			color    : $navbar-title-font-color;
-		}
-
-		@include element ('subtitle') {
-			font-size: $navbar-subtitle-font-size;
-			color    : $navbar-subtitle-font-color;
+		.navbar__button {
+			color: $navbar-default-font-color;
 		}
 	}
 
+	///.navbar--shadow
+	@include modifier ('shadow') {
+		box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
+	}
+
+	///.navbar--chrome
+	@include modifier ('chrome') {
+		background-color   : $navbar-chrome-background-color;
+		border-bottom-color: $navbar-chrome-border-color;
+		color              : $navbar-chrome-font-color;
+
+		.navbar__button {
+			color: $navbar-chrome-font-color;
+		}
+	}
+
+	///.navbar--dark
+	@include modifier ('dark') {
+		background-color   : $navbar-dark-background-color;
+		color              : $navbar-dark-font-color;
+		border-bottom-color: $navbar-dark-border-color;
+
+		.navbar__button {
+			color: $navbar-dark-font-color;
+		}
+	}
+
+	///.navbar--primary
+	@include modifier ('primary') {
+		background-color   : $navbar-primary-background-color;
+		color              : $navbar-primary-font-color;
+		border-bottom-color: $navbar-primary-border-color;
+
+		.navbar__button {
+			color: $navbar-primary-font-color;
+		}
+	}
+
+	@include element ('button') {
+		background-color: $navbar-button-background-color;
+		border-radius   : $navbar-button-border-radius;
+		border          : $navbar-button-border;
+		font-size       : $navbar-button-font-size;
+
+		&:active {
+			background-color: rgba(0, 0, 0, .5);
+			transition      : none;
+			opacity         : 0.5;
+		}
+	}
+
+	@include element ('title') {
+		font-size: $navbar-title-font-size;
+		color    : $navbar-title-font-color;
+	}
+
+	@include element ('subtitle') {
+		font-size: $navbar-subtitle-font-size;
+		color    : $navbar-subtitle-font-color;
+	}
 }

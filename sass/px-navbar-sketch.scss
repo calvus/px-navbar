@@ -7,9 +7,26 @@
  * with the terms and conditions stipulated in the agreement/contract
  * under which the software has been supplied.
  */
+///
 @import "variables";
 ///
-@import 'px-mobile-mixin-design/_mixins';
+@import 'px-mobile-design/sass/_mixins.scss';
+
+$inuit-enable-btn--small: true;
+$inuit-enable-btn--bare: true;
+$inuit-enable-btn--icon: true;
+$inuit-enable-btn--full: true;
+$inuit-enable-btn--large: true;
+$inuit-enable-btn--huge: true;
+$inuit-enable-btn--primary: true;
+$inuit-enable-btn--tertiary: true;
+
+// Generic
+@import "px-buttons-design/_objects.buttons.scss";
+
+//Base
+
+//Components
 
 .has-navbar {
 	padding-top: $navbar-height;
@@ -20,24 +37,11 @@
 ///
 /// @access public
 .navbar {
-	font-family: 'GE Inspira Sans', sans-serif;
-	user-select: none;
-	z-index    : 200;
-	position   : absolute;
-	top        : 0;
-	left       : 0;
-	right      : 0;
-
-	@include element ('inner') {
-		box-sizing     : border-box;
-		white-space    : nowrap;
-		align-items    : center;
-		justify-content: space-between;
-		min-height     : $navbar-height;
-		padding        : $navbar-padding;
-		display        : flex;
-		overflow       : hidden;
-	}
+	z-index : 200;
+	position: absolute;
+	top     : 0;
+	left    : 0;
+	right   : 0;
 
 	* {
 		user-select          : none;
@@ -80,12 +84,15 @@
 		position: static;
 	}
 
-	@include respond ('small') {
-		//position: fixed;
-	}
-
-	@include respond ('xsmall') {
-		//position: fixed;
+	@include element ('inner') {
+		box-sizing     : border-box;
+		white-space    : nowrap;
+		align-items    : center;
+		justify-content: space-between;
+		min-height     : $navbar-height;
+		padding        : $navbar-padding;
+		display        : flex;
+		overflow       : hidden;
 	}
 
 	//todo - Need to use absolute position for true center.
@@ -138,7 +145,7 @@
 	@include element ('button') {
 		padding       : $navbar-button-padding;
 		letter-spacing: 0;
-		text-shadow   : 0 1px none;
+		//text-shadow   : 0 1px none;
 
 		font-weight   : 400;
 		line-height   : 33px;
@@ -168,7 +175,7 @@
 
 		&:disabled,
 		&[disabled] {
-			opacity       : .3;
+			opacity       : 0.3;
 			cursor        : default;
 			pointer-events: none;
 		}
@@ -185,7 +192,7 @@
 
 		@include modifier ('back') {
 			i {
-				margin-right: .4rem;
+				margin-right: 0.4rem;
 			}
 		}
 	}
