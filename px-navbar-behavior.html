@@ -5,8 +5,10 @@
 	 * @polymerBehavior
 	 */
 	var pxNavbarBehavior = {
+		/**
+		 * Handle setting up the class naming when attached.
+		 */
 		attached: function () {
-			//console.log(this.tagName, 'attached', 'setting up handlers');
 			var _this = this;
 			_this.async(function () {
 				_this.toggleClass('navbar');
@@ -23,13 +25,17 @@
 				_this._fixButtons();
 			});
 		},
+		/**
+		 * Handle cleaning up the event listeners when the component is detached.
+		 */
 		detached: function () {
 			//console.log(this.tagName, 'detached', 'cleaning up handlers');
 			this._cleanupHandlers();
 		},
-		//Setup event listeners
+		/**
+		 * Handle setting up the event listeners to the 'change' event of the views
+		 */
 		_setupHandlers: function () {
-			//console.log(this.tagName, '_setupHandlers');
 			var _this = this;
 			if (_this.viewContainer) {
 				_this.debounce('initViews', function () {
@@ -40,15 +46,19 @@
 				}, 0);
 			}
 		},
-		//Cleanup event listeners
+		/**
+		 * Cleanup event listeners
+		 */
 		_cleanupHandlers: function () {
-			//console.log(this.tagName, '_cleanupHandlers');
 			var _this = this;
 			if (_this.views) {
 				_this.views.removeEventListener('change', _this._handleViewChange.bind(this));
 			}
 		},
-		//Handle when then view is changed, if there is a view container.
+		/**
+		 * Handle when then view is changed, if there is a view container.
+		 * If you want to change the back label, add the back-label="My Label" to the pages navbar element.
+		 */
 		_handleViewChange: function (e) {
 			var _this = this;
 			var current = e.detail;
@@ -59,7 +69,7 @@
 					_this.back = (current.main
 						? false
 						: true);
-				}, 100);
+				}, 50);
 				//_this.back = (current !== _this.views.main); _this.backLabel = (_this.views.prevView ? _this.views.prevView.title : ''); console.log(_this.tagName, _this.id, 'Add back button to current page', _this.back);
 			}
 		},
@@ -72,36 +82,24 @@
 			}
 			this.fire('back');
 		},
-		//Toggle the display of the navbar.
+		/**
+		 * Toggle the display of the navbar.
+		 */
 		toggle: function (display) {
 			this.hidden = !this.hidden;
 			this.toggleClass('hidden', this.hidden);
 		},
-		//Handle getting the current view/page, if there is a viewContainer.
+		/**
+		 * Handle getting the current view/page, if there is a viewContainer.
+		 */
 		getCurrentView: function () {
 			if (this.viewContainer && this.views) {
 				return this.views.getCurrent();
 			}
 		},
-		//Listen for a click outside the sidebar and toggle the menu
-		_registerOffclick: function () {
-			this.views.addEventListener('click', this.toggleMenu);
-		},
-		//Unlisten for a click outside the sidebar and toggle the menu
-		_deregisterOffclick: function () {
-			this.views.removeEventListener('click', this.toggleMenu);
-		},
-		//Handle when the theme property changes
-		_themeChanged: function (newVal, oldVal) {
-			var _this = this;
-			this.async(function () {
-				if (oldVal) {
-					_this.toggleClass('navbar--' + oldVal, false, _this.$$('.navbar'));
-				}
-				_this.toggleClass('navbar--' + newVal, true, _this.$$('.navbar'));
-			});
-		},
-		//Handle fixing the class naming of the buttons.
+		/**
+		 * Handle fixing the class naming of the buttons.
+		 */
 		_fixButtons: function () {
 			this.queryAllEffectiveChildren('.btn').forEach(function (b) {
 				if (b && b.toggleClass) {

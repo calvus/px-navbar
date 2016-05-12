@@ -31,7 +31,7 @@ The customizable options include the following:
 -->
 <dom-module id="px-navbar">
 	<link rel="stylesheet" href="css/px-navbar.css">
-	<template>
+	<template strip-whitespace>
 		<style>
 			:host {
 				position: absolute;
@@ -74,54 +74,61 @@ The customizable options include the following:
 			is: 'px-navbar',
 			behaviors: [pxNavbarBehavior],
 			properties: {
-				//The sub-title to display.
+				/**
+				 * The sub-title to display.
+					*/
 				subtitle: {
 					type: String
 				},
-				//The title to display.
+				/**
+				 * The title to display.
+				 */
 				title: {
 					type: String
 				},
-				//The #id of the view container.
+				/**
+				 * The #id of the view container.
+				 */
 				viewContainer: {
 					type: String,
 					notify: true,
 					reflectToAttribute: true
 				},
-				//Fix the navbar to the top.
+				/**
+				 * Fix the navbar to the top.
+				 */
 				fixed: {
 					type: Boolean,
 					value: false
 				},
-				//Add a shadow to the navbar
+				/**
+				 * Add a shadow to the navbar
+				 */
 				shadow: {
 					type: Boolean,
 					value: false
 				},
-				//The view containers instance.
+				/**
+				 * The view containers instance.
+				 */
 				views: {
 					type: Object
 				},
-				//To show the back button or not.
+				/**
+				 * To show the back button or not.
+				 */
 				back: {
 					type: Boolean,
 					value: false,
 					reflectToAttribute: true
 				},
-				//The label for the back button.
+				/**
+				 * The label for the back button.
+				 */
 				backLabel: {
 					type: String,
 					value: 'Back'
 				}
-				//The type of theme to apply.
-				/*
-			 theme: {
-			 type: String,
-			 value: 'white',
-			 notify: true,
-			 observer: '_themeChanged',
-			 reflectToAttribute: true
-			 }*/
 			}
 		});
 	</script>

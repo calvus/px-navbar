@@ -145,7 +145,7 @@ $inuit-enable-btn--tertiary: true;
 	@include element ('button') {
 		padding       : $navbar-button-padding;
 		letter-spacing: 0;
-		text-shadow   : 0 1px none;
+		//text-shadow   : 0 1px none;
 
 		font-weight   : 400;
 		line-height   : 33px;
