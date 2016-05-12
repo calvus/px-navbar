@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 GE Global Research. All rights reserved.
+ * Copyright (c) 2016 GE Global Research. All rights reserved.
  *
  * The copyright to the computer software herein is the property of
  * GE Global Research. The software may be used and/or copied only
@@ -7,88 +7,199 @@
  * with the terms and conditions stipulated in the agreement/contract
  * under which the software has been supplied.
  */
+///
 @import "variables";
 ///
-@import 'px-mobile-mixin-design/_mixins';
+@import 'px-mobile-design/sass/_mixins.scss';
 
-:root {
-	@import 'px-navbar-predix';
+$inuit-enable-btn--small: true;
+$inuit-enable-btn--bare: true;
+$inuit-enable-btn--icon: true;
+$inuit-enable-btn--full: true;
+$inuit-enable-btn--large: true;
+$inuit-enable-btn--huge: true;
+$inuit-enable-btn--primary: true;
+$inuit-enable-btn--tertiary: true;
 
-	.navbar {
-		color           : $navbar-default-font-color;
-		border-bottom   : $navbar-default-border-bottom;
-		background-color: $navbar-default-background-color;
+// Generic
+@import "px-buttons-design/_objects.buttons.scss";
 
-		///.navbar--transparent
-		@include modifier ('transparent') {
-			background-color: transparent;
-			color           : $navbar-default-font-color;
+//Base
 
-			.navbar__button {
-				color: $navbar-default-font-color;
+//Components
+
+.has-navbar {
+	padding-top: $navbar-height;
+}
+
+///px-navbar styles
+///
+///
+/// @access public
+.navbar {
+	z-index : 200;
+	position: absolute;
+	top     : 0;
+	left    : 0;
+	right   : 0;
+
+	* {
+		user-select          : none;
+		-webkit-touch-callout: none;
+		-webkit-user-select  : none;
+		outline              : 0;
+	}
+
+	button {
+		outline: 0;
+	}
+
+	@include modifier ('tiny') {
+		padding: $navbar-padding--tiny;
+	}
+
+	@include modifier ('small') {
+		padding: $navbar-padding--small;
+	}
+
+	@include modifier ('default') {
+		padding: $navbar-padding--default;
+	}
+
+	@include modifier ('large') {
+		padding: $navbar-padding--large;
+	}
+
+	@include modifier ('huge') {
+		padding: $navbar-padding--huge;
+	}
+
+	///.navbar--fixed
+	@include modifier ('fixed') {
+		position: fixed;
+	}
+
+	///.navbar--static
+	@include modifier ('static') {
+		position: static;
+	}
+
+	@include element ('inner') {
+		box-sizing     : border-box;
+		white-space    : nowrap;
+		align-items    : center;
+		justify-content: space-between;
+		min-height     : $navbar-height;
+		padding        : $navbar-padding;
+		display        : flex;
+		overflow       : hidden;
+	}
+
+	//todo - Need to use absolute position for true center.
+	@include element ('center') {
+		@include centerer();
+		order     : 2;
+		flex      : 1 0 auto;
+		align-self: center;
+		text-align: center;
+
+		> * {
+			display: block;
+		}
+	}
+	///.navbar__left
+	@include element ('left') {
+		order: 1;
+		//flex : 1 0 auto;
+	}
+	///.navbar__right
+	@include element ('right') {
+		order: 3;
+
+	}
+	///.navbar__title
+	@include element ('title') {
+
+		display    : block;
+		margin     : 0;
+		padding    : 0;
+		user-select: none;
+		outline    : 0;
+	}
+	///.navbar__subtitle
+	@include element ('subtitle') {
+		display    : block;
+		user-select: none;
+
+	}
+
+	///.navbar__content
+	@include element ('content') {
+		position       : relative;
+		display        : flex;
+		justify-content: space-between;
+		overflow       : hidden;
+	}
+
+	///.navbar__button
+	@include element ('button') {
+		padding       : $navbar-button-padding;
+		letter-spacing: 0;
+		text-shadow   : 0 1px none;
+
+		font-weight   : 400;
+		line-height   : 33px;
+
+		padding       : $navbar-button-padding;
+		min-width     : $navbar-button-height;
+		height        : $navbar-button-height;
+		transition    : none;
+		vertical-align: middle;
+		box-shadow    : none;
+		display       : flex;
+		align-items   : center;
+
+		&.btn {
+			min-width       : $navbar-button-height;
+			height          : $navbar-button-height;
+			background-color: inherit;
+			border          : inherit;
+			border-radius   : inherit;
+		}
+
+		i,
+		span {
+			flex      : 1 0 auto;
+			align-self: stretch;
+		}
+
+		&:disabled,
+		&[disabled] {
+			opacity       : 0.3;
+			cursor        : default;
+			pointer-events: none;
+		}
+
+		&:focus {
+			outline   : 0;
+			transition: none;
+		}
+
+		&:hover {
+			box-shadow: none;
+			transition: none;
+		}
+
+		@include modifier ('back') {
+			i {
+				margin-right: 0.4rem;
 			}
 		}
+	}
 
-		///.navbar--shadow
-		@include modifier ('shadow') {
-			box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
-		}
-
-		///.navbar--chrome
-		@include modifier ('chrome') {
-			background-color   : $navbar-chrome-background-color;
-			border-bottom-color: $navbar-chrome-border-color;
-			color              : $navbar-chrome-font-color;
-
-			.navbar__button {
-				color: $navbar-chrome-font-color;
-			}
-		}
-
-		///.navbar--dark
-		@include modifier ('dark') {
-			background-color   : $navbar-dark-background-color;
-			color              : $navbar-dark-font-color;
-			border-bottom-color: $navbar-dark-border-color;
-
-			.navbar__button {
-				color: $navbar-dark-font-color;
-			}
-		}
-
-		///.navbar--primary
-		@include modifier ('primary') {
-			background-color   : $navbar-primary-background-color;
-			color              : $navbar-primary-font-color;
-			border-bottom-color: $navbar-primary-border-color;
-
-			.navbar__button {
-				color: $navbar-primary-font-color;
-			}
-		}
-
-		@include element ('button') {
-			background-color: $navbar-button-background-color;
-			border-radius   : $navbar-button-border-radius;
-			border          : $navbar-button-border;
-			font-size       : $navbar-button-font-size;
-
-			&:active {
-				background-color: rgba(0, 0, 0, .5);
-				transition      : none;
-				opacity         : 0.5;
-			}
-		}
-
-		@include element ('title') {
-			font-size: $navbar-title-font-size;
-			color    : $navbar-title-font-color;
-		}
-
-		@include element ('subtitle') {
-			font-size: $navbar-subtitle-font-size;
-			color    : $navbar-subtitle-font-color;
-		}
+	.btn {
+		min-width: $navbar-button-height;
+		height   : $navbar-button-height;
 	}
 
 }

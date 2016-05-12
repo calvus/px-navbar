@@ -26,9 +26,13 @@
     "polymer": "latest",
     "fastclick": "latest",
     "px-drawer": "https://github.com/PredixDev/px-drawer.git",
-    "px-buttons-design": "https://github.com/PredixDev/px-buttons-design.git#^0.4.23",
+    "px-buttons-design": "^0.4.23",
     "px-flexbox-design": "https://github.com/PredixDev/px-flexbox-design.git#^0.3.7",
-    "px-theme": "^0.7.0"
+    "px-theme": "^0.7.0",
+    "px-code-design": "^0.2.11",
+    "px-normalize-design": "^0.3.8",
+    "px-viewport-design": "^0.4.5",
+    "px-box-sizing-design": "^0.2.7"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#~1.0.5",

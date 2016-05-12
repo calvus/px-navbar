@@ -23,9 +23,8 @@ module.exports = function(grunt) {
 			},
 			dist: {
 				files: {
-					'css/<%= pkg.name %>.css': 'sass/<%= pkg.name %>-sketch.scss',
-					'css/noprefix/<%= pkg.name %>-sketch.css': 'sass/<%= pkg.name %>-sketch.scss',
-					'css/noprefix/<%= pkg.name %>-predix.css': 'sass/<%= pkg.name %>-predix.scss'
+					'css/noprefix/px-navbar-sketch.css': 'sass/px-navbar-sketch.scss',
+					'css/noprefix/px-navbar.css': 'sass/px-navbar-predix.scss'
 				}
 			}
 		},
