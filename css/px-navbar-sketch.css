@@ -8,6 +8,12 @@
  * with the terms and conditions stipulated in the agreement/contract
  * under which the software has been supplied.
  */
+/**
+ * Margin and padding helper classes. Use these to tweak layout on a micro
+ * level.
+ *
+ * `.u-(m|p)(t|r|b|l|h|v)(-|+|0) {}` = utility - margin/padding top/right/bottom/left/horizontal/vertical less/more/none
+ */
 /*------------------------------------*    #PX-COLORS-DESIGN
 \*------------------------------------*/
 /**
@@ -49,12 +55,6 @@
 /**
      * Dark
      */
-/**
- * Margin and padding helper classes. Use these to tweak layout on a micro
- * level.
- *
- * `.u-(m|p)(t|r|b|l|h|v)(-|+|0) {}` = utility - margin/padding top/right/bottom/left/horizontal/vertical less/more/none
- */
 .btn {
   display: inline-block;
   overflow: visible;
@@ -206,7 +206,8 @@ button.btn {
     line-height: 1.8em; } }
 
 .has-navbar {
-  padding-top: 56px; }
+  padding-top: 56px;
+  position: relative; }
 
 .navbar {
   z-index: 200;
@@ -222,6 +223,20 @@ button.btn {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     outline: 0; }
+  @media screen and (max-width: 360px) {
+    .navbar {
+      background-color: red !important;
+      position: fixed; } }
+  @media screen and (min-width: 375px) and (max-width: 736px) {
+    .navbar {
+      background-color: blue !important;
+      position: fixed; } }
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .navbar {
+      background-color: green !important; } }
+  @media screen and (min-width: 1080px) and (max-width: 1200px) {
+    .navbar {
+      background-color: pink !important; } }
   .navbar button {
     outline: 0; }
   .navbar--tiny {
@@ -274,11 +289,17 @@ button.btn {
   .navbar__left {
     -webkit-order: 1;
         -ms-flex-order: 1;
-            order: 1; }
+            order: 1;
+    -webkit-align-self: flex-start;
+        -ms-flex-item-align: start;
+            align-self: flex-start; }
   .navbar__right {
     -webkit-order: 3;
         -ms-flex-order: 3;
-            order: 3; }
+            order: 3;
+    -webkit-align-self: flex-end;
+        -ms-flex-item-align: end;
+            align-self: flex-end; }
   .navbar__title {
     display: block;
     margin: 0;
@@ -306,8 +327,6 @@ button.btn {
   .navbar__button {
     padding: 0.3333333333rem;
     letter-spacing: 0;
-    text-shadow: 0 1px none;
-    font-weight: 400;
     line-height: 33px;
     padding: 0.3333333333rem;
     min-width: 44px;
@@ -336,7 +355,7 @@ button.btn {
           -ms-flex-item-align: stretch;
               align-self: stretch; }
     .navbar__button:disabled, .navbar__button[disabled] {
-      opacity: 0.3;
+      opacity: .3;
       cursor: default;
       pointer-events: none; }
     .navbar__button:focus {
@@ -346,7 +365,7 @@ button.btn {
       box-shadow: none;
       transition: none; }
     .navbar__button--back i {
-      margin-right: 0.4rem; }
+      margin-right: 0.6666666667rem; }
   .navbar .btn {
     min-width: 44px;
-    height: 44px; }
+    min-height: 44px; }

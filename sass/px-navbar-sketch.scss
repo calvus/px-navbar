@@ -30,6 +30,7 @@ $inuit-enable-btn--tertiary: true;
 
 .has-navbar {
 	padding-top: $navbar-height;
+	position   : relative;
 }
 
 ///px-navbar styles
@@ -50,26 +51,44 @@ $inuit-enable-btn--tertiary: true;
 		outline              : 0;
 	}
 
+	@include media-breakpoint ('xs') {
+		background-color: red !important;
+		position        : fixed;
+	}
+
+	@include media-breakpoint ('sm') {
+		background-color: blue!important;
+		position        : fixed;
+	}
+
+	@include media-breakpoint ('md') {
+		background-color: green!important;
+	}
+
+	@include media-breakpoint ('lg') {
+		background-color: pink!important;
+	}
+
 	button {
 		outline: 0;
 	}
-
+	///.navbar--tiny
 	@include modifier ('tiny') {
 		padding: $navbar-padding--tiny;
 	}
-
+	///.navbar--small
 	@include modifier ('small') {
 		padding: $navbar-padding--small;
 	}
-
+	///.navbar--default
 	@include modifier ('default') {
 		padding: $navbar-padding--default;
 	}
-
+	///.navbar--large
 	@include modifier ('large') {
 		padding: $navbar-padding--large;
 	}
-
+	///.navbar--huge
 	@include modifier ('huge') {
 		padding: $navbar-padding--huge;
 	}
@@ -84,6 +103,7 @@ $inuit-enable-btn--tertiary: true;
 		position: static;
 	}
 
+	///.navbar__inner
 	@include element ('inner') {
 		box-sizing     : border-box;
 		white-space    : nowrap;
@@ -95,7 +115,7 @@ $inuit-enable-btn--tertiary: true;
 		overflow       : hidden;
 	}
 
-	//todo - Need to use absolute position for true center.
+	//TODO - Need to use absolute position for true center.
 	@include element ('center') {
 		@include centerer();
 		order     : 2;
@@ -109,12 +129,13 @@ $inuit-enable-btn--tertiary: true;
 	}
 	///.navbar__left
 	@include element ('left') {
-		order: 1;
-		//flex : 1 0 auto;
+		order     : 1;
+		align-self: flex-start;
 	}
 	///.navbar__right
 	@include element ('right') {
-		order: 3;
+		order     : 3;
+		align-self: flex-end;
 
 	}
 	///.navbar__title
@@ -126,6 +147,7 @@ $inuit-enable-btn--tertiary: true;
 		user-select: none;
 		outline    : 0;
 	}
+
 	///.navbar__subtitle
 	@include element ('subtitle') {
 		display    : block;
@@ -145,9 +167,6 @@ $inuit-enable-btn--tertiary: true;
 	@include element ('button') {
 		padding       : $navbar-button-padding;
 		letter-spacing: 0;
-		//text-shadow   : 0 1px none;
-
-		font-weight   : 400;
 		line-height   : 33px;
 
 		padding       : $navbar-button-padding;
@@ -175,7 +194,7 @@ $inuit-enable-btn--tertiary: true;
 
 		&:disabled,
 		&[disabled] {
-			opacity       : 0.3;
+			opacity       : .3;
 			cursor        : default;
 			pointer-events: none;
 		}
@@ -192,14 +211,14 @@ $inuit-enable-btn--tertiary: true;
 
 		@include modifier ('back') {
 			i {
-				margin-right: 0.4rem;
+				margin-right: $navbar-padding--small;
 			}
 		}
 	}
 
 	.btn {
-		min-width: $navbar-button-height;
-		height   : $navbar-button-height;
+		min-width : $navbar-button-height;
+		min-height: $navbar-button-height;
 	}
 
 }
