@@ -52,21 +52,21 @@ $inuit-enable-btn--tertiary: true;
 	}
 
 	@include media-breakpoint ('xs') {
-		background-color: red !important;
+		//background-color: red !important;
 		position        : fixed;
 	}
 
 	@include media-breakpoint ('sm') {
-		background-color: blue!important;
-		position        : fixed;
+	//	background-color: blue!important;
+	position        : fixed;
 	}
 
 	@include media-breakpoint ('md') {
-		background-color: green!important;
+	//	background-color: green!important;
 	}
 
 	@include media-breakpoint ('lg') {
-		background-color: pink!important;
+	//	background-color: pink!important;
 	}
 
 	button {

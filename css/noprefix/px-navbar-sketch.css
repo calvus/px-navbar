@@ -8,12 +8,6 @@
  * with the terms and conditions stipulated in the agreement/contract
  * under which the software has been supplied.
  */
-/**
- * Margin and padding helper classes. Use these to tweak layout on a micro
- * level.
- *
- * `.u-(m|p)(t|r|b|l|h|v)(-|+|0) {}` = utility - margin/padding top/right/bottom/left/horizontal/vertical less/more/none
- */
 /*------------------------------------*    #PX-COLORS-DESIGN
 \*------------------------------------*/
 /**
@@ -55,6 +49,12 @@
 /**
      * Dark
      */
+/**
+ * Margin and padding helper classes. Use these to tweak layout on a micro
+ * level.
+ *
+ * `.u-(m|p)(t|r|b|l|h|v)(-|+|0) {}` = utility - margin/padding top/right/bottom/left/horizontal/vertical less/more/none
+ */
 .btn {
   display: inline-block;
   overflow: visible;
@@ -222,18 +222,10 @@ button.btn {
     outline: 0; }
   @media screen and (max-width: 360px) {
     .navbar {
-      background-color: red !important;
       position: fixed; } }
   @media screen and (min-width: 375px) and (max-width: 736px) {
     .navbar {
-      background-color: blue !important;
       position: fixed; } }
-  @media screen and (min-width: 768px) and (max-width: 1024px) {
-    .navbar {
-      background-color: green !important; } }
-  @media screen and (min-width: 1080px) and (max-width: 1200px) {
-    .navbar {
-      background-color: pink !important; } }
   .navbar button {
     outline: 0; }
   .navbar--tiny {
