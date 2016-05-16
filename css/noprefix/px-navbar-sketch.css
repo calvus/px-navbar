@@ -220,12 +220,6 @@ button.btn {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     outline: 0; }
-  @media screen and (max-width: 360px) {
-    .navbar {
-      position: fixed; } }
-  @media screen and (min-width: 375px) and (max-width: 736px) {
-    .navbar {
-      position: fixed; } }
   .navbar button {
     outline: 0; }
   .navbar--tiny {
