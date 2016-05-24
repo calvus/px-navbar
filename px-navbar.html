@@ -85,8 +85,9 @@ The customizable options include the following:
 				<span class="navbar__title"><content select="[title]"></content></span>
 				<span class="navbar__subtitle"><content select="[subtitle]"></content></span>
 			</div>
+
 			<div class="navbar__right">
-				<content select="[right]"></content>
+				<content select=".navbar__right, [right]"></content>
 			</div>
 
 			<content id="navbarContent" select="[content]"></content>
