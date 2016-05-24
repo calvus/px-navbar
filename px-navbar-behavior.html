@@ -94,6 +94,14 @@
 			this.fire('back');
 		},
 		/**
+		 * Handle when the navicon button is clicked.
+		 */
+		_handleNaviconClick: function () {
+			if (this.drawer) {
+				this.drawer.toggle();
+			}
+		},
+		/**
 		 * Toggle the display of the navbar.
 		 */
 		toggle: function (display) {

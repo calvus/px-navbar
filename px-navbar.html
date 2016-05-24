@@ -53,6 +53,15 @@ The customizable options include the following:
 		</style>
 		<div class="navbar__inner">
 
+			<template is="dom-if" if="{{drawer}}">
+				<div class="navbar__left">
+					<button class="navbar__button" on-click="_handleNaviconClick">
+						<i class="fa fa-2x fa-navicon"></i>
+
+					</button>
+				</div>
+			</template>
+
 			<template is="dom-if" if="{{back}}">
 				<div class="navbar__left">
 					<button class="navbar__button navbar__button--back" on-click="_handleBackClick">
@@ -72,8 +81,12 @@ The customizable options include the following:
 					<span class="navbar__subtitle">{{subtitle}}</span>
 				</div>
 			</template>
-
-			<content id="navbarContent" select=".navbar__right, .navbar__center"></content>
+			<div class="navbar__center">
+				<span class="navbar__title">
+					<content select="title"></content>
+				</span>
+			</div>
+			<content id="navbarContent" select="*"></content>
 		</div>
 	</template>
 	<script>
@@ -119,6 +132,12 @@ The customizable options include the following:
 				 * The view containers instance.
 				 */
 				views: {
+					type: Object
+				},
+				/**
+				 * The drawer instance.
+				 */
+				drawer: {
 					type: Object
 				},
 				/**
