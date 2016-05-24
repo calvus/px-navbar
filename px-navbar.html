@@ -12,13 +12,13 @@ The customizable options include the following:
 
 ```
 <px-navbar id="navbar1" title="Navbar Title">
-	<div class="navbar__left">
+	<div left>
 
 	</div>
-	<div class="navbar__center">
+	<div center>
 
   </div>
-	<div class="navbar__right">
+	<div right>
 
 	</div>
 </px-navbar>
@@ -57,7 +57,6 @@ The customizable options include the following:
 				<div class="navbar__left">
 					<button class="navbar__button" on-click="_handleNaviconClick">
 						<i class="fa fa-2x fa-navicon"></i>
-
 					</button>
 				</div>
 			</template>
@@ -72,7 +71,7 @@ The customizable options include the following:
 			</template>
 
 			<template is="dom-if" if="{{!back}}">
-				<content select=".navbar__left"></content>
+				<content select=".navbar__left, [left]"></content>
 			</template>
 
 			<template is="dom-if" if="{{title}}">
@@ -81,12 +80,17 @@ The customizable options include the following:
 					<span class="navbar__subtitle">{{subtitle}}</span>
 				</div>
 			</template>
+
 			<div class="navbar__center">
-				<span class="navbar__title">
-					<content select="title"></content>
-				</span>
+				<span class="navbar__title"><content select="[title]"></content></span>
+				<span class="navbar__subtitle"><content select="[subtitle]"></content></span>
 			</div>
-			<content id="navbarContent" select="*"></content>
+			<div class="navbar__right">
+				<content select="[right]"></content>
+			</div>
+
+			<content id="navbarContent" select="[content]"></content>
+
 		</div>
 	</template>
 	<script>
