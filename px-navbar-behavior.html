@@ -21,17 +21,18 @@
 		 */
 		attached: function () {
 			var _this = this;
+			_this.toggleClass('navbar', true, this.$$('.navbar'));
+			if (_this.theme) {
+				_this.toggleClass('navbar--' + _this.theme, true, this.$$('.navbar'));
+			}
+			if (_this.shadow) {
+				_this.toggleClass('navbar--shadow', true, this.$$('.navbar'));
+			}
+			if (_this.fixed) {
+				_this.toggleClass('navbar--fixed', true, this.$$('.navbar'));
+			}
 			_this.async(function () {
-				_this.toggleClass('navbar');
-				if (_this.theme) {
-					_this.toggleClass('navbar--' + _this.theme, true);
-				}
-				if (_this.shadow) {
-					_this.toggleClass('navbar--shadow', true);
-				}
-				if (_this.fixed) {
-					_this.toggleClass('navbar--fixed', true);
-				}
+
 				_this._setupHandlers();
 				_this._fixButtons();
 			});
@@ -97,8 +98,10 @@
 		 * Handle when the navicon button is clicked.
 		 */
 		_handleNaviconClick: function () {
-			if (this.drawer) {
+			if (this.drawer && this.drawer.toggle) {
 				this.drawer.toggle();
+			} else {
+				console.warn(this.tagName, 'could not find drawer');
 			}
 		},
 		/**

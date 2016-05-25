@@ -43,12 +43,10 @@ $inuit-enable-btn--tertiary: true;
 	top     : 0;
 	left    : 0;
 	right   : 0;
+	@include noselect();
 
-	* {
-		user-select          : none;
-		-webkit-touch-callout: none;
-		-webkit-user-select  : none;
-		outline              : 0;
+	*, ::content > * {
+		@include noselect();
 	}
 
 	@include media-breakpoint (xs) {
@@ -69,8 +67,8 @@ $inuit-enable-btn--tertiary: true;
 	//	background-color: pink!important;
 	}
 
-	button {
-		outline: 0;
+	button, ::content button, ::content .btn {
+		outline: none;
 	}
 	///.navbar--tiny
 	@include modifier ('tiny') {
@@ -92,17 +90,14 @@ $inuit-enable-btn--tertiary: true;
 	@include modifier ('huge') {
 		padding: $navbar-padding--huge;
 	}
-
 	///.navbar--fixed
 	@include modifier ('fixed') {
 		position: fixed;
 	}
-
 	///.navbar--static
 	@include modifier ('static') {
 		position: static;
 	}
-
 	///.navbar__inner
 	@include element ('inner') {
 		box-sizing     : border-box;
@@ -122,14 +117,13 @@ $inuit-enable-btn--tertiary: true;
 		flex      : 1 0 auto;
 		align-self: center;
 		text-align: center;
-
 		> * {
 			display: block;
 		}
 	}
 	///.navbar__left
 	@include element ('left') {
-		order     : 1;
+		order     : 0;
 		align-self: flex-start;
 	}
 	///.navbar__right
@@ -140,19 +134,16 @@ $inuit-enable-btn--tertiary: true;
 	}
 	///.navbar__title
 	@include element ('title') {
-
 		display    : block;
 		margin     : 0;
 		padding    : 0;
 		user-select: none;
-		outline    : 0;
 	}
 
 	///.navbar__subtitle
 	@include element ('subtitle') {
 		display    : block;
 		user-select: none;
-
 	}
 
 	///.navbar__content
@@ -164,7 +155,7 @@ $inuit-enable-btn--tertiary: true;
 	}
 
 	///.navbar__button
-	@include element ('button') {
+	.navbar__button, ::content .navbar__button{
 		padding       : $navbar-button-padding;
 		letter-spacing: 0;
 		line-height   : 33px;
@@ -200,7 +191,7 @@ $inuit-enable-btn--tertiary: true;
 		}
 
 		&:focus {
-			outline   : 0;
+			outline   : none;
 			transition: none;
 		}
 
@@ -210,7 +201,7 @@ $inuit-enable-btn--tertiary: true;
 		}
 
 		@include modifier ('back') {
-			i {
+			i.fa-angle-left {
 				margin-right: $navbar-padding--small;
 			}
 		}

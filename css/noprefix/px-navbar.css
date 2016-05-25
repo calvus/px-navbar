@@ -55,6 +55,15 @@
  *
  * `.u-(m|p)(t|r|b|l|h|v)(-|+|0) {}` = utility - margin/padding top/right/bottom/left/horizontal/vertical less/more/none
  */
+/*
+ * Copyright (c) 2016 GE Global Research. All rights reserved.
+ *
+ * The copyright to the computer software herein is the property of
+ * GE Global Research. The software may be used and/or copied only
+ * with the written permission of GE Global Research or in accordance
+ * with the terms and conditions stipulated in the agreement/contract
+ * under which the software has been supplied.
+ */
 .btn {
   display: inline-block;
   overflow: visible;
@@ -335,3 +344,49 @@ button.btn {
   .navbar .btn {
     min-width: 44px;
     min-height: 44px; }
+
+.navbar {
+  color: black;
+  border-bottom: 1px solid #b1b1bc;
+  background-color: white; }
+  .navbar--transparent {
+    background-color: transparent;
+    color: black; }
+    .navbar--transparent .navbar__button {
+      color: black; }
+  .navbar--shadow {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15); }
+  .navbar--chrome {
+    background-color: #efeff4;
+    border-bottom-color: #d1d0d8;
+    color: #242326; }
+    .navbar--chrome .navbar__button {
+      color: #242326; }
+  .navbar--dark {
+    background-color: #242326;
+    color: white;
+    border-bottom-color: black; }
+    .navbar--dark .navbar__button {
+      color: white; }
+  .navbar--primary {
+    background-color: #3e87e8;
+    color: white;
+    border-bottom-color: #2b5ea2; }
+    .navbar--primary .navbar__button {
+      color: white; }
+  .navbar .navbar__button, .navbar ::content .navbar__button {
+    background-color: transparent;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    font-size: 1rem; }
+    .navbar .navbar__button:active, .navbar ::content .navbar__button:active {
+      background-color: rgba(0, 0, 0, 0.5);
+      transition: none;
+      opacity: 0.5; }
+  .navbar__title {
+    font-size: 1.1333333333rem;
+    color: black;
+    color: var(--navbar-title-font-color, black); }
+  .navbar__subtitle {
+    font-size: 1rem;
+    color: #9999a3; }

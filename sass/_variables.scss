@@ -8,46 +8,48 @@
 ///
 
 ///
-$navbar-default-background-color: $white;
-$navbar-default-font-color      : $black;
-$navbar-default-border-bottom   : 1px solid $gray5;
+$navbar-default-background-color       : $white;
+$navbar-default-font-color             : $black;
+$navbar-default-border-bottom          : 1px solid $gray5;
+$navbar-default-box-shadow             : 0 2px 2px 0 rgba(0, 0, 0, 0.15);
 
 ///
-$navbar-chrome-background-color : $gray2;
-$navbar-chrome-font-color       : $gray10;
-$navbar-chrome-border-color     : $gray4;
+$navbar-chrome-background-color        : $gray2;
+$navbar-chrome-font-color              : $gray10;
+$navbar-chrome-border-color            : $gray4;
 
 ///
-$navbar-dark-background-color   : $gray10;
-$navbar-dark-font-color         : $white;
-$navbar-dark-border-color       : $black;
+$navbar-dark-background-color          : $gray10;
+$navbar-dark-font-color                : $white;
+$navbar-dark-border-color              : $black;
 
 ///
-$navbar-primary-background-color: $primary-blue;
-$navbar-primary-font-color      : $white;
-$navbar-primary-border-color    : $primary-blue-pressed;
+$navbar-primary-background-color       : $primary-blue;
+$navbar-primary-font-color             : $white;
+$navbar-primary-border-color           : $primary-blue-pressed;
 ///
-$navbar-height                  : 56px;
-$navbar-padding                 : $inuit-base-spacing-unit--tiny;
+$navbar-height                         : 56px;
+$navbar-padding                        : $inuit-base-spacing-unit--tiny;
 
 ///
-$navbar-button-font-size        : 1rem;
-$navbar-button-padding          : $inuit-base-spacing-unit--tiny;
-$navbar-button-height           : 44px;
-$navbar-button-background-color : rgba(0, 0, 0, 0);
-$navbar-button-border-radius    : 2px;
-$navbar-button-border           : 1px solid transparent;
+$navbar-button-font-size               : calculateRem(15px);
+$navbar-button-padding                 : $inuit-base-spacing-unit--tiny;
+$navbar-button-height                  : 44px;
+$navbar-button-background-color        : rgba(0, 0, 0, 0);
+$navbar-button-border-radius           : 2px;
+$navbar-button-border                  : 1px solid transparent;
+$navbar-button-background-color--active: rgba(0, 0, 0, .5);
+$navbar-button-opacity--active         : .5;
+///
+$navbar-title-font-size                : calculateRem(17px);
+$navbar-title-font-color               : $black;
 
 ///
-$navbar-title-font-size         : 1.1rem;
-$navbar-title-font-color        : $black;
+$navbar-subtitle-font-size             : calculateRem(15px);
+$navbar-subtitle-font-color            : $gray6;
 
-///
-$navbar-subtitle-font-size      : 1rem;
-$navbar-subtitle-font-color     : $gray6;
-
-$navbar-padding--tiny           : $inuit-base-spacing-unit--tiny;
-$navbar-padding--small          : $inuit-base-spacing-unit--small;
-$navbar-padding--default        : $inuit-base-spacing-unit;
-$navbar-padding--large          : $inuit-base-spacing-unit--large;
-$navbar-padding--huge           : $inuit-base-spacing-unit--huge;
+$navbar-padding--tiny                  : $inuit-base-spacing-unit--tiny;
+$navbar-padding--small                 : $inuit-base-spacing-unit--small;
+$navbar-padding--default               : $inuit-base-spacing-unit;
+$navbar-padding--large                 : $inuit-base-spacing-unit--large;
+$navbar-padding--huge                  : $inuit-base-spacing-unit--huge;

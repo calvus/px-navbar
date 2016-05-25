@@ -1,3 +1,14 @@
+<!--
+/*
+ * Copyright (c) 2016 GE Global Research. All rights reserved.
+ *
+ * The copyright to the computer software herein is the property of
+ * GE Global Research. The software may be used and/or copied only
+ * with the written permission of GE Global Research or in accordance
+ * with the terms and conditions stipulated in the agreement/contract
+ * under which the software has been supplied.
+ */
+ -->
 <link rel="import" href="../polymer/polymer.html"/>
 <link rel="import" href="px-navbar-behavior.html">
 <!--
@@ -30,75 +41,71 @@ The customizable options include the following:
 @homepage index.html
 -->
 <dom-module id="px-navbar">
-<!--
-<link rel="import" href="px-navbar-styles.html">
-
--->
-	<link rel="import" type="css" href="css/px-navbar.css" >
+	<link rel="import" type="css" href="css/px-navbar.css">
 	<template strip-whitespace>
-
 		<style>
 			:host {
+				display: block;
 				position: absolute;
 				top: 0;
 				right: 0;
 				left: 0;
+
 			}
 
-			:host .navbar__fixed {
+
+
+			:host.navbar--fixed {
 				position: fixed;
+			}
+			:host.navbar--fixed--top {
 				top: 0;
 			}
-			:host .navbar--alt::content .navbar__button,
-			:host .navbar--dark::content .navbar__button,
-			:host .navbar--primary::content .navbar__button {
-				color: #fff !important;
+			:host.navbar--fixed--bottom {
+				bottom: 0;
 			}
 
 		</style>
-		<div class="navbar__inner">
 
-			<template is="dom-if" if="{{drawer}}">
-				<div class="navbar__left">
-					<button class="navbar__button" on-click="_handleNaviconClick">
-						<i class="fa fa-2x fa-navicon"></i>
-					</button>
-				</div>
-			</template>
+		<header class="navbar">
+			<div class="navbar__inner">
+				<template is="dom-if" if="{{drawer}}">
+					<div class="navbar__left">
+						<button class="navbar__button" on-click="_handleNaviconClick">
+							<i class="fa fa-2x fa-navicon"></i>
+						</button>
+					</div>
+				</template>
 
-			<template is="dom-if" if="{{back}}">
-				<div class="navbar__left">
-					<button class="navbar__button navbar__button--back" on-click="_handleBackClick">
-						<i class="fa fa-2x fa-angle-left"></i>
-						<span>{{backLabel}}</span>
-					</button>
-				</div>
-			</template>
+				<template is="dom-if" if="{{back}}">
+					<div class="navbar__left">
+						<button class="navbar__button navbar__button--back" on-click="_handleBackClick">
+							<i class="fa fa-2x fa-angle-left"></i>
+							<span>{{backLabel}}</span>
+						</button>
+					</div>
+				</template>
 
-			<template is="dom-if" if="{{!back}}">
-				<content select=".navbar__left, [left]"></content>
-			</template>
+				<template is="dom-if" if="{{title}}">
+					<div class="navbar__center">
+						<span class="navbar__title">{{title}}</span>
+						<span class="navbar__subtitle">{{subtitle}}</span>
+					</div>
+				</template>
 
-			<template is="dom-if" if="{{title}}">
 				<div class="navbar__center">
-					<span class="navbar__title">{{title}}</span>
-					<span class="navbar__subtitle">{{subtitle}}</span>
+					<span class="navbar__title"><content select="[title]"></content></span>
+					<span class="navbar__subtitle"><content select="[subtitle]"></content></span>
 				</div>
-			</template>
 
-			<div class="navbar__center">
-				<span class="navbar__title"><content select="[title]"></content></span>
-				<span class="navbar__subtitle"><content select="[subtitle]"></content></span>
-			</div>
+				<template is="dom-if" if="{{!back}}">
+					<content select="[left]"></content>
+				</template>
 
-			<div class="navbar__right">
 				<content select="[right]"></content>
+				<content id="navbarContent" select="*, [content]"></content>
 			</div>
-			<content select=".navbar__right"></content>
-
-			<content id="navbarContent" select="[content]"></content>
-
-		</div>
+		</header>
 	</template>
 	<script>
 		Polymer({
@@ -146,7 +153,7 @@ The customizable options include the following:
 					type: Object
 				},
 				/**
-				 * The drawer instance.
+				 * The drawer id.
 				 */
 				drawer: {
 					type: Object

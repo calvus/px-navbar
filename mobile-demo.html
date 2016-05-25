@@ -1,26 +1,19 @@
 <html>
-
 	<head>
 		<title>px-navbar mobile demo</title>
 		<!-- Sets initial viewport load and disables zooming  -->
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
-
 		<!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="apple-touch-icon" href="touch-icon-iphone.png">
-
 		<script src="../webcomponentsjs/webcomponents.min.js"></script>
 		<script src="../fastclick/lib/fastclick.js"></script>
-
-		<link rel="import" href="../px-table-view/px-table-view.html">
 		<link rel="import" href="../px-theme/px-theme.html">
 		<link rel="import" href="../px-theme/px-app.html">
 		<link rel="import" href="../px-page/px-pages.html">
-		<link rel="import" href="../px-page/px-pages.html">
 		<link rel="import" href="../px-drawer/px-drawer.html">
 		<link rel="import" href="px-navbar.html">
-
 		<script type="text/javascript">
 			if ('addEventListener' in document) {
 				document.addEventListener('DOMContentLoaded', function () {
@@ -32,53 +25,37 @@
 			});
 		</script>
 		<style media="screen">
-
-			px-page {
-				-webkit-transition: all 0.3s ease-out;
-				transition: all 0.3s ease-out;
-				will-change: transform;
+			body,
+			html {
+				background: #eee;
 			}
-
-			px-page.current {
-				}
-
-			px-page.next {
-				}
-
-			px-page.previous {
-				}
-
+			px-page {}
+			px-page.current {}
+			px-page.next {}
+			px-page.previous {}
 		</style>
 	</head>
-
 	<body unresolved>
-
-		<px-drawer id="myLeftDrawer" side="left" theme="dark" fixed>
-
+		<px-drawer id="myLeftDrawer" align="left" theme="dark" fixed>
 			<p>
 				This is the px-drawer component.
 			</p>
 		</px-drawer>
-		<px-drawer id="myOtherDrawer" side="bottom" theme="dark" fixed>
+		<px-drawer id="myOtherDrawer" align="bottom" theme="dark" fixed>
 			<div class="u-m">
-
 				<p>
 					This is content inside of the drawer
 				</p>
 			</div>
 		</px-drawer>
-
 		<px-pages id="pages" selected="0" debug class="u-bg--gray1">
 			<!-- TODO: Page 1 -->
 			<px-page id="page1" main>
 				<px-navbar id="navbar1" view-container="pages" title="px-navbar">
-					<div class="navbar__left">
+					<div left>
 						<button class="navbar__button" onclick="document.getElementById('myLeftDrawer').toggle()">
 							<i class="fa fa-lg fa-bars"></i>
 						</button>
-					</div>
-					<div class="navbar__center">
-						<span class="navbar__title">px-navbar</span>
 					</div>
 				</px-navbar>
 				<section class="viewport">
@@ -108,7 +85,7 @@
 			<!-- TODO: Page 3 -->
 			<px-page id="page3" title="Page 3">
 				<px-navbar id="navbar3" view-container="pages">
-					<div class="navbar__right">
+					<div right>
 						<button class="navbar__button" onclick="document.getElementById('myOtherDrawer').toggle()">
 							<i class="fa fa-lg fa-ellipsis-v"></i>
 						</button>
@@ -126,7 +103,6 @@
 					</div>
 				</section>
 			</px-page>
-
 			<!-- TODO: Page 4 -->
 			<px-page id="page4" title="Page 4">
 				<px-navbar id="navbar4" view-container="pages"></px-navbar>
@@ -145,7 +121,5 @@
 				</section>
 			</px-page>
 		</px-pages>
-
 	</body>
-
 </html>

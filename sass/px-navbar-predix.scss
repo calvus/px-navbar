@@ -7,7 +7,7 @@
  * with the terms and conditions stipulated in the agreement/contract
  * under which the software has been supplied.
  */
-@import "variables";
+@import 'variables';
 @import 'px-mobile-design/sass/_mixins.scss';
 @import 'px-navbar-sketch.scss';
 
@@ -28,7 +28,7 @@
 
 	///.navbar--shadow
 	@include modifier ('shadow') {
-		box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
+		box-shadow: $navbar-default-box-shadow;
 	}
 
 	///.navbar--chrome
@@ -65,22 +65,23 @@
 	}
 
 	//::content .navbar__button {
-	@include element ('button') {
+	.navbar__button, ::content .navbar__button {
 		background-color: $navbar-button-background-color;
 		border-radius   : $navbar-button-border-radius;
 		border          : $navbar-button-border;
 		font-size       : $navbar-button-font-size;
 
 		&:active {
-			background-color: rgba(0, 0, 0, .5);
+			background-color: $navbar-button-background-color--active;
 			transition      : none;
-			opacity         : 0.5;
+			opacity         : $navbar-button-opacity--active;
 		}
 	}
 
 	@include element ('title') {
 		font-size: $navbar-title-font-size;
 		color    : $navbar-title-font-color;
+		color: var(--navbar-title-font-color, $navbar-title-font-color);
 	}
 
 	@include element ('subtitle') {
