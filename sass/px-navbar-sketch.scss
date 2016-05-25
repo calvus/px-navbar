@@ -37,7 +37,7 @@ $inuit-enable-btn--tertiary: true;
 ///
 ///
 /// @access public
-.navbar {
+@include b('navbar') {
 	z-index : 200;
 	position: absolute;
 	top     : 0;

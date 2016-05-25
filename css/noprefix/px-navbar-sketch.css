@@ -100,7 +100,7 @@ button.btn {
 * Establish default space between adjacent buttons
 */
 .btn + .btn {
-  margin-left: 0.6666666667rem; }
+  margin-left: 0.66667rem; }
 
 /**
    * Buttons with no styles (good a11y practice to use <button> for actions rather than <a>).
@@ -154,7 +154,7 @@ button.btn {
    * Small buttons.
    */
 .btn--small {
-  height: 1.6666666667em;
+  height: 1.66667em;
   font-size: 0.8rem;
   line-height: calc($inuit-btn-height--small - 2px); }
 
@@ -169,7 +169,7 @@ button.btn {
    * Large buttons.
    */
 .btn--large {
-  font-size: 1.3333333333rem; }
+  font-size: 1.33333rem; }
 
 /**
    * Call-to-action buttons.
@@ -223,13 +223,13 @@ button.btn {
   .navbar button {
     outline: 0; }
   .navbar--tiny {
-    padding: 0.3333333333rem; }
+    padding: 0.33333rem; }
   .navbar--small {
-    padding: 0.6666666667rem; }
+    padding: 0.66667rem; }
   .navbar--default {
     padding: 1rem; }
   .navbar--large {
-    padding: 1.3333333333rem; }
+    padding: 1.33333rem; }
   .navbar--huge {
     padding: 2rem; }
   .navbar--fixed {
@@ -242,7 +242,7 @@ button.btn {
     align-items: center;
     justify-content: space-between;
     min-height: 56px;
-    padding: 0.3333333333rem;
+    padding: 0.33333rem;
     display: flex;
     overflow: hidden; }
   .navbar__center {
@@ -277,10 +277,10 @@ button.btn {
     justify-content: space-between;
     overflow: hidden; }
   .navbar__button {
-    padding: 0.3333333333rem;
+    padding: 0.33333rem;
     letter-spacing: 0;
     line-height: 33px;
-    padding: 0.3333333333rem;
+    padding: 0.33333rem;
     min-width: 44px;
     height: 44px;
     transition: none;
@@ -309,7 +309,7 @@ button.btn {
       box-shadow: none;
       transition: none; }
     .navbar__button--back i {
-      margin-right: 0.6666666667rem; }
+      margin-right: 0.66667rem; }
   .navbar .btn {
     min-width: 44px;
     min-height: 44px; }

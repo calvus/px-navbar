@@ -30,8 +30,13 @@ The customizable options include the following:
 @homepage index.html
 -->
 <dom-module id="px-navbar">
-	<link rel="stylesheet" href="css/px-navbar.css">
+<!--
+<link rel="import" href="px-navbar-styles.html">
+
+-->
+	<link rel="import" type="css" href="css/px-navbar.css" >
 	<template strip-whitespace>
+
 		<style>
 			:host {
 				position: absolute;
@@ -87,8 +92,9 @@ The customizable options include the following:
 			</div>
 
 			<div class="navbar__right">
-				<content select=".navbar__right, [right]"></content>
+				<content select="[right]"></content>
 			</div>
+			<content select=".navbar__right"></content>
 
 			<content id="navbarContent" select="[content]"></content>
 

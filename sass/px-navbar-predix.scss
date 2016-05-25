@@ -11,7 +11,7 @@
 @import 'px-mobile-design/sass/_mixins.scss';
 @import 'px-navbar-sketch.scss';
 
-.navbar {
+@include b('navbar') {
 	color           : $navbar-default-font-color;
 	border-bottom   : $navbar-default-border-bottom;
 	background-color: $navbar-default-background-color;
@@ -64,6 +64,7 @@
 		}
 	}
 
+	//::content .navbar__button {
 	@include element ('button') {
 		background-color: $navbar-button-background-color;
 		border-radius   : $navbar-button-border-radius;
