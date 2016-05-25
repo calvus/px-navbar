@@ -31,14 +31,14 @@ Second, import the component to your application with the following tag in your 
 Finally, use the component in your application:
 
 ```
-<px-navbar id="navbar1" title="Navbar Title">
-	<div class="navbar__left">
+<px-navbar id="navbar1">
+	<div left>
 
 	</div>
-	<div class="navbar__center">
+	<div title>
 
   </div>
-	<div class="navbar__right">
+	<div right>
 
 	</div>
 </px-navbar>
