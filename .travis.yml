@@ -1,3 +1,4 @@
+sudo: required
 dist: trusty
 language: node_js
 node_js:
@@ -14,7 +15,6 @@ addons:
     - google-chrome-stable
 before_script:
 - npm install web-component-tester
-- npm install bower
 - export PATH=$PWD/node_modules/.bin:$PATH
 script:
 - npm test
