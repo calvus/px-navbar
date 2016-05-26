@@ -76,6 +76,36 @@
 					</template>
 				</demo-snippet>
 			</div>
+			<div class="u-mb">
+				<h2>Custom CSS Vars</h2>
+				<demo-snippet>
+					<template>
+						<style media="screen">
+						#navbar2 .navbar__title {
+							color: red;
+							font-weight: bold;
+						}
+							px-navbar{
+								--navbar-title-font-color: red;
+							}
+							px-navbar#navbar2{
+								--navbar-title-font-color: red;
+							}
+						</style>
+						<div class="position-relative">
+							<px-navbar id="navbar2" title="title">
+								<div left>
+									left
+								</div>
+
+								<div right>
+									right
+								</div>
+							</px-navbar>
+						</div>
+					</template>
+				</demo-snippet>
+			</div>
 
 
 
