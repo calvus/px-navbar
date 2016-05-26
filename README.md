@@ -1,8 +1,11 @@
 #px-navbar
 
+[![Build Status](https://travis-ci.org/PredixDev/px-navbar.svg?branch=master)](https://travis-ci.org/PredixDev/px-navbar)
+
+
 ## Overview
 
-px-navbar is a Predix UI component
+px-navbar is a Predix UI component.
 
 ## Usage
 
