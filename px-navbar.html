@@ -43,16 +43,22 @@ The customizable options include the following:
 <dom-module id="px-navbar">
 	<link rel="import" type="css" href="css/px-navbar.css">
 	<template strip-whitespace>
-	
+
 
 		<header class="navbar">
 			<div class="navbar__inner">
+
+
 				<template is="dom-if" if="{{drawer}}">
 					<div class="navbar__left">
 						<button class="navbar__button" on-click="_handleNaviconClick">
 							<i class="fa fa-2x fa-navicon"></i>
 						</button>
 					</div>
+				</template>
+
+				<template is="dom-if" if="{{!back}}">
+					<content select="[left]"></content>
 				</template>
 
 				<template is="dom-if" if="{{back}}">
@@ -64,21 +70,16 @@ The customizable options include the following:
 					</div>
 				</template>
 
-				<template is="dom-if" if="{{title}}">
-					<div class="navbar__center">
-						<span class="navbar__title">{{title}}</span>
-						<span class="navbar__subtitle">{{subtitle}}</span>
-					</div>
-				</template>
-
 				<div class="navbar__center">
-					<span class="navbar__title"><content select="[title]"></content></span>
-					<span class="navbar__subtitle"><content select="[subtitle]"></content></span>
+					<span class="navbar__title">
+						<span hidden="{{!title}}">{{title}}</span>
+						<content select="[title]"></content>
+					</span>
+					<span class="navbar__subtitle">
+							<span hidden="{{!subtitle}}">{{subtitle}}</span>
+						<content select="[subtitle]"></content>
+					</span>
 				</div>
-
-				<template is="dom-if" if="{{!back}}">
-					<content select="[left]"></content>
-				</template>
 
 				<content select="[right]"></content>
 				<content id="navbarContent" select="*, [content]"></content>
