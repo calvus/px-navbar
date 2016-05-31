@@ -57,19 +57,19 @@ function ResourceTree(data) {
 	self.rows = [];
 
 	if (data && data.rows) {
-		data.rows.forEach(function(row) {
+		data.rows.forEach(function (row) {
 			if (row && row.dataType === 'entity') {
 				self.rows.push(new Doc(row));
 			}
 		});
 	}
 
-	self.rows.forEach(function(row) {
+	self.rows.forEach(function (row) {
 		console.warn('Indexing', row);
 		self.nodesMap[row._id] = row;
 	});
 
-	self.rootNodes = self.rows.filter(function(row) {
+	self.rootNodes = self.rows.filter(function (row) {
 		if (row.parent && row.parent.length === 0) {
 			console.warn('Found root node', row);
 			return true;
@@ -82,7 +82,7 @@ function ResourceTree(data) {
 		}
 	});
 
-	self.rows.forEach(function(row) {
+	self.rows.forEach(function (row) {
 		if (self.nodesMap[row.parent_id]) {
 			row.hasChildren = true;
 			row.meta = {
@@ -92,7 +92,7 @@ function ResourceTree(data) {
 		}
 	});
 
-	var nodesWithParent = self.rows.filter(function(row) {
+	var nodesWithParent = self.rows.filter(function (row) {
 		if (row.parent && row.parent.length > 0) {
 			return true;
 		} else {
@@ -100,11 +100,11 @@ function ResourceTree(data) {
 		}
 	});
 
-	this.getRootNodes = function() {
+	this.getRootNodes = function () {
 		return self.rootNodes;
 	};
 
-	this.findById = function(id) {
+	this.findById = function (id) {
 		if (self.nodesMap.hasOwnProperty(id)) {
 			return self.nodesMap[id];
 		} else {
@@ -112,7 +112,7 @@ function ResourceTree(data) {
 		}
 	};
 
-	this.hasChildren = function(id) {
+	this.hasChildren = function (id) {
 		if (self.findById(id) && self.findById(id).children.length > 0) {
 			return true;
 		} else {
@@ -120,11 +120,11 @@ function ResourceTree(data) {
 		}
 	};
 
-	this.getNode = function(id) {
+	this.getNode = function (id) {
 		return this.findById(id);
 	};
 
-	this.getChildren = function(id) {
+	this.getChildren = function (id) {
 		if (this.hasChildren(id)) {
 			return this.findById(id).children;
 		} else {
@@ -139,9 +139,9 @@ function ResourceTree(data) {
 
 
 function loadDemoData(url) {
-	return new Promise(function(resolve, reject) {
-		fetch(url).then(function(resp) {
-			resp.json().then(function(json) {
+	return new Promise(function (resolve, reject) {
+		fetch(url).then(function (resp) {
+			resp.json().then(function (json) {
 				resolve(json);
 			});
 		}).catch(reject);
@@ -149,7 +149,7 @@ function loadDemoData(url) {
 }
 
 function createResourceTree(data) {
-	return new Promise(function(resolve, reject) {
+	return new Promise(function (resolve, reject) {
 		try {
 			var _tree = new ResourceTree(data);
 		} catch (e) {
@@ -174,3 +174,28 @@ loadDemoData('data.json')
 		console.log(tree);
 	});
 */
+
+window.hideUrlBar = function () {
+	var win = window,
+		doc = win.document;
+	// If there's a hash, or addEventListener is undefined, stop here
+	if (!location.hash || !win.addEventListener) {
+		//scroll to 1
+		window.scrollTo(0, 1);
+		var scrollTop = 1,
+			//reset to 0 on bodyready, if needed
+			bodycheck = setInterval(function () {
+				if (doc.body) {
+					clearInterval(bodycheck);
+					scrollTop = "scrollTop" in doc.body ? doc.body.scrollTop : 1;
+					win.scrollTo(0, scrollTop === 1 ? 0 : 1);
+				}
+			}, 15);
+		win.addEventListener("load", function () {
+			setTimeout(function () {
+				//reset to hide addr bar at onload
+				win.scrollTo(0, scrollTop === 1 ? 0 : 1);
+			}, 0);
+		}, false);
+	}
+};
