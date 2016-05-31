@@ -12,7 +12,7 @@
 @import 'px-navbar-sketch.scss';
 
 @include b('navbar') {
-	color           : $navbar-default-font-color;
+
 	border-bottom   : $navbar-default-border-bottom;
 	background-color: $navbar-default-background-color;
 
@@ -81,11 +81,12 @@
 	@include element ('title') {
 		font-size: $navbar-title-font-size;
 		color    : $navbar-title-font-color;
-		color: var(--navbar-title-font-color, $navbar-title-font-color);
+		color: var(--navbar-title-color, $navbar-title-font-color);
 	}
 
 	@include element ('subtitle') {
 		font-size: $navbar-subtitle-font-size;
 		color    : $navbar-subtitle-font-color;
+		color: var(--navbar-subtitle-color, $navbar-subtitle-font-color);
 	}
 }

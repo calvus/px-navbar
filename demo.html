@@ -55,13 +55,13 @@
 				on a mobile device.
 			</p>
 
-
+					<link rel="import" href="../iron-demo-helpers/demo-snippet.html"/>
 			<div class="u-mb">
 				<h2>Custom Content</h2>
 				<demo-snippet>
 					<template>
 						<div class="position-relative">
-							<px-navbar id="navbar1" >
+							<px-navbar id="navbar1">
 								<div left>
 									left
 								</div>
@@ -76,24 +76,20 @@
 					</template>
 				</demo-snippet>
 			</div>
+
+
 			<div class="u-mb">
 				<h2>Custom CSS Vars</h2>
 				<demo-snippet>
 					<template>
 						<style media="screen">
-						#navbar2 .navbar__title {
-							color: red;
-							font-weight: bold;
-						}
-							px-navbar{
-								--navbar-title-font-color: red;
-							}
-							px-navbar#navbar2{
-								--navbar-title-font-color: red;
+							.custom{
+								--navbar-title-color: red;
+								--navbar-subtitle-color: blue;
 							}
 						</style>
 						<div class="position-relative">
-							<px-navbar id="navbar2" title="title">
+							<px-navbar id="navbar2" title="title" class="custom">
 								<div left>
 									left
 								</div>

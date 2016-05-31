@@ -385,7 +385,6 @@ button.btn {
     min-height: 44px; }
 
 .navbar {
-  color: black;
   border-bottom: 1px solid #b1b1bc;
   background-color: white; }
   .navbar--transparent {
@@ -425,7 +424,8 @@ button.btn {
   .navbar__title {
     font-size: 1.1333333333rem;
     color: black;
-    color: var(--navbar-title-font-color, black); }
+    color: var(--navbar-title-color, black); }
   .navbar__subtitle {
     font-size: 1rem;
-    color: #9999a3; }
+    color: #9999a3;
+    color: var(--navbar-subtitle-color, #9999a3); }

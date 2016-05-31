@@ -42,6 +42,11 @@ The customizable options include the following:
 -->
 <dom-module id="px-navbar">
 	<link rel="import" type="css" href="css/px-navbar.css">
+	<style media="screen">
+		:host{
+			display: block;
+		}
+	</style>
 	<template strip-whitespace>
 
 
@@ -79,6 +84,7 @@ The customizable options include the following:
 							<span hidden="{{!subtitle}}">{{subtitle}}</span>
 						<content select="[subtitle]"></content>
 					</span>
+					<content select="[center]"></content>
 				</div>
 
 				<content select="[right]"></content>
