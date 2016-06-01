@@ -9,7 +9,8 @@
  * under which the software has been supplied.
  */
  -->
-<link rel="import" href="../polymer/polymer.html"/>
+ <link rel="import" href="../polymer/polymer.html">
+ <link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
 <link rel="import" href="px-navbar-behavior.html">
 <!--
 <p>
@@ -95,7 +96,11 @@ The customizable options include the following:
 	<script>
 		Polymer({
 			is: 'px-navbar',
-			behaviors: [pxNavbarBehavior],
+			behaviors: [
+
+				pxNavbarBehavior,
+					Polymer.IronResizableBehavior
+			],
 			properties: {
 				/**
 				 * The sub-title to display.
@@ -158,7 +163,19 @@ The customizable options include the following:
 					type: String,
 					value: 'Back'
 				}
-			}
+			},
+			listeners: {
+				'iron-resize': '_resizeHandler'
+			},
+			observers: [
+				'resetLayout(isAttached, fixed)'
+			],
+			resetLayout: function(){
+        console.warn(this.tagName, 'resetLayout');
+      },
+      _resizeHandler: function() {
+        this.resetLayout();
+      }
 		});
 	</script>
 </dom-module>

@@ -386,7 +386,9 @@ button.btn {
 
 .navbar {
   border-bottom: 1px solid #b1b1bc;
-  background-color: white; }
+  border-bottom: var(--px-navbar-border-bottom, 1px solid #b1b1bc);
+  background-color: var(--px-navbar-background-color, white);
+  color: var(--px-navbar-color, black); }
   .navbar--transparent {
     background-color: transparent;
     color: black; }
@@ -413,6 +415,7 @@ button.btn {
     .navbar--primary .navbar__button {
       color: white; }
   .navbar .navbar__button, .navbar ::content .navbar__button {
+    color: var(--px-navbar-color, black);
     background-color: transparent;
     border-radius: 2px;
     border: 1px solid transparent;
@@ -424,7 +427,8 @@ button.btn {
   .navbar__title {
     font-size: 1.1333333333rem;
     color: black;
-    color: var(--navbar-title-color, black); }
+    color: var(--navbar-title-color, black);
+    color: var(--navbar-color, black); }
   .navbar__subtitle {
     font-size: 1rem;
     color: #9999a3;

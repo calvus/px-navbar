@@ -14,8 +14,9 @@
 @include b('navbar') {
 
 	border-bottom   : $navbar-default-border-bottom;
-	background-color: $navbar-default-background-color;
-
+	border-bottom: var(--px-navbar-border-bottom, $navbar-default-border-bottom);
+	background-color: var(--px-navbar-background-color, $navbar-default-background-color);
+	color: var(--px-navbar-color, $navbar-default-font-color);
 	///.navbar--transparent
 	@include modifier ('transparent') {
 		background-color: transparent;
@@ -66,6 +67,7 @@
 
 	//::content .navbar__button {
 	.navbar__button, ::content .navbar__button {
+		color: var(--px-navbar-color, $navbar-default-font-color);
 		background-color: $navbar-button-background-color;
 		border-radius   : $navbar-button-border-radius;
 		border          : $navbar-button-border;
@@ -82,6 +84,7 @@
 		font-size: $navbar-title-font-size;
 		color    : $navbar-title-font-color;
 		color: var(--navbar-title-color, $navbar-title-font-color);
+		color: var(--navbar-color, $navbar-title-font-color);
 	}
 
 	@include element ('subtitle') {
