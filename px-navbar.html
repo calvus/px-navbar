@@ -9,8 +9,8 @@
  * under which the software has been supplied.
  */
  -->
- <link rel="import" href="../polymer/polymer.html">
- <link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
 <link rel="import" href="px-navbar-behavior.html">
 <!--
 <p>
@@ -19,15 +19,14 @@
 
 The `px-navbar` enables navigation through an information hierarchy and, optionally, management of screen contents.
 
-## Usage
-The customizable options include the following:
+### Usage
 
 ```
 <px-navbar id="navbar1">
 	<div left>
 
 	</div>
-	<div title>
+	<div center>
 
   </div>
 	<div right>
@@ -35,6 +34,19 @@ The customizable options include the following:
 	</div>
 </px-navbar>
 ```
+
+
+### Styling
+
+Custom property | Description | Default
+------------ | ------------- | ------------
+`--px-navbar`   | Style mixin to be applied to the element | null
+`--px-navbar-color` | The font color | $black
+`--px-navbar-border-bottom` | The border bottom style | null
+`--px-navbar-background-color` | The background color | $white
+`--px-navbar-title-color` | The title font color | $black
+`--px-navbar-subtitle-color` | The subtitle font color | $black
+
 @element px-navbar.html
 @blurb px-navbar
 @demo demo.html
@@ -44,17 +56,16 @@ The customizable options include the following:
 <dom-module id="px-navbar">
 	<link rel="import" type="css" href="css/px-navbar.css">
 	<style media="screen">
-		:host{
+		:host {
 			display: block;
 		}
+    :host .navbar{
+      @apply(--px-navbar);
+    }
 	</style>
 	<template strip-whitespace>
-
-
 		<header class="navbar">
 			<div class="navbar__inner">
-
-
 				<template is="dom-if" if="{{drawer}}">
 					<div class="navbar__left">
 						<button class="navbar__button" on-click="_handleNaviconClick">
@@ -62,11 +73,9 @@ The customizable options include the following:
 						</button>
 					</div>
 				</template>
-
 				<template is="dom-if" if="{{!back}}">
 					<content select="[left]"></content>
 				</template>
-
 				<template is="dom-if" if="{{back}}">
 					<div class="navbar__left">
 						<button class="navbar__button navbar__button--back" on-click="_handleBackClick">
@@ -75,19 +84,17 @@ The customizable options include the following:
 						</button>
 					</div>
 				</template>
-
 				<div class="navbar__center">
 					<span class="navbar__title">
 						<span hidden="{{!title}}">{{title}}</span>
 						<content select="[title]"></content>
 					</span>
 					<span class="navbar__subtitle">
-							<span hidden="{{!subtitle}}">{{subtitle}}</span>
+						<span hidden="{{!subtitle}}">{{subtitle}}</span>
 						<content select="[subtitle]"></content>
 					</span>
 					<content select="[center]"></content>
 				</div>
-
 				<content select="[right]"></content>
 				<content id="navbarContent" select="*, [content]"></content>
 			</div>
@@ -97,9 +104,7 @@ The customizable options include the following:
 		Polymer({
 			is: 'px-navbar',
 			behaviors: [
-
-				pxNavbarBehavior,
-					Polymer.IronResizableBehavior
+				pxNavbarBehavior, Polymer.IronResizableBehavior
 			],
 			properties: {
 				/**
@@ -167,15 +172,13 @@ The customizable options include the following:
 			listeners: {
 				'iron-resize': '_resizeHandler'
 			},
-			observers: [
-				'resetLayout(isAttached, fixed)'
-			],
-			resetLayout: function(){
-        console.warn(this.tagName, 'resetLayout');
-      },
-      _resizeHandler: function() {
-        this.resetLayout();
-      }
+			observers: ['resetLayout(isAttached, fixed)'],
+			resetLayout: function () {
+				console.warn(this.tagName, 'resetLayout');
+			},
+			_resizeHandler: function () {
+				this.resetLayout();
+			}
 		});
 	</script>
 </dom-module>

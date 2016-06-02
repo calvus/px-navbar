@@ -16,7 +16,7 @@
 		<link rel="import" href="../px-theme/px-theme.html">
 		<link rel="import" href="../px-theme/px-app.html">
 		<link rel="import" href="px-navbar.html">
-
+		<link rel="import" href="../iron-demo-helpers/demo-snippet.html"/>
 		<style media="screen">
 			.box {
 				background: transparent;
@@ -32,8 +32,8 @@
 				min-height: 75px;
 			}
 
-			body {
-				background: #efeff4;
+			html, body {
+				background: #efeff4 !important;
 				overflow: hidden;
 				overflow-y: scroll;
 				overflow-y: auto;
@@ -44,10 +44,10 @@
 
 	</head>
 
-	<body>
+	<body unresolved>
 		<div class="viewport">
 
-			<h1>px-navbar</h1>
+			<h1 class="beta">px-navbar</h1>
 			<p>The px-navbar component is a responsive mobile first navigation bar.</p>
 			<p>
 				Visit the
@@ -55,7 +55,7 @@
 				on a mobile device.
 			</p>
 
-					<link rel="import" href="../iron-demo-helpers/demo-snippet.html"/>
+
 			<div class="u-mb">
 				<h2>Custom Content</h2>
 				<demo-snippet>
@@ -82,14 +82,16 @@
 				<h2>Custom CSS Vars</h2>
 				<demo-snippet>
 					<template>
-						<style media="screen">
-							.custom{
-								--navbar-title-color: red;
-								--navbar-subtitle-color: blue;
+						<style is="custom-style">
+							.a{
+								--px-navbar: {
+									background-color: blue;
+									color: white;
+								}
 							}
 						</style>
 						<div class="position-relative">
-							<px-navbar id="navbar2" title="title" class="custom">
+							<px-navbar id="navbar2" title="Custom Styles" subtitle="Using CSS Vars" class="a">
 								<div left>
 									left
 								</div>
