@@ -2,8 +2,8 @@
   "name": "px-navbar",
   "version": "0.0.1",
   "authors": [
-		"Jonnie Spratley <jonnie.spratley@ge.com>"
-	],
+    "Jonnie Spratley <jonnie.spratley@ge.com>"
+  ],
   "description": "A web component for mobile navigation.",
   "repository": {
     "type": "git",
@@ -11,21 +11,22 @@
   },
   "main": "px-navbar.html",
   "keywords": [
-		"px",
-		"px-mobile"
-	],
+    "px",
+    "px-mobile"
+  ],
   "license": "MIT",
   "ignore": [
-		"**/.*",
-		"node_modules",
-		"bower_components",
-		"test",
-		"tests"
-	],
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
   "dependencies": {
     "polymer": "~v1.4.0",
     "fastclick": "latest",
-    "px-drawer": "https://github.com/PredixDev/px-drawer.git"
+    "px-drawer": "https://github.com/PredixDev/px-drawer.git",
+    "polymer-font-awesome": "https://github.com/jonniespratley/polymer-font-awesome.git#~0.1.5"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#~1.0.5",
@@ -44,6 +45,7 @@
   "resolutions": {
     "polymer": "~v1.4.0",
     "fetch": "~0.10.0",
-    "px-theme": "^0.7.0"
+    "px-theme": "^0.7.0",
+    "polymer-font-awesome": "~0.1.5"
   }
 }

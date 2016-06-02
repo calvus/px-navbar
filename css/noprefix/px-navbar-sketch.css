@@ -297,40 +297,47 @@ button.btn {
     display: flex;
     justify-content: space-between;
     overflow: hidden; }
-  .navbar .navbar__button, .navbar ::content .navbar__button {
+  .navbar ::content .navbar__button,
+  .navbar .navbar__button {
     padding: 0.3333333333rem;
     letter-spacing: 0;
     line-height: 33px;
     padding: 0.3333333333rem;
     min-width: 44px;
-    height: 44px;
+    min-height: 44px;
     transition: none;
     vertical-align: middle;
     box-shadow: none;
     display: flex;
     align-items: center; }
-    .navbar .navbar__button.btn, .navbar ::content .navbar__button.btn {
+    .navbar ::content .navbar__button.btn,
+    .navbar .navbar__button.btn {
       min-width: 44px;
       height: 44px;
       background-color: inherit;
       border: inherit;
       border-radius: inherit; }
+    .navbar ::content .navbar__button i,
+    .navbar ::content .navbar__button span,
     .navbar .navbar__button i,
-    .navbar .navbar__button span, .navbar ::content .navbar__button i,
-    .navbar ::content .navbar__button span {
+    .navbar .navbar__button span {
       flex: 1 0 auto;
-      align-self: stretch; }
-    .navbar .navbar__button:disabled, .navbar .navbar__button[disabled], .navbar ::content .navbar__button:disabled, .navbar ::content .navbar__button[disabled] {
+      align-self: center; }
+    .navbar ::content .navbar__button:disabled, .navbar ::content .navbar__button[disabled],
+    .navbar .navbar__button:disabled,
+    .navbar .navbar__button[disabled] {
       opacity: .3;
       cursor: default;
       pointer-events: none; }
-    .navbar .navbar__button:focus, .navbar ::content .navbar__button:focus {
+    .navbar ::content .navbar__button:focus,
+    .navbar .navbar__button:focus {
       outline: none;
       transition: none; }
-    .navbar .navbar__button:hover, .navbar ::content .navbar__button:hover {
+    .navbar ::content .navbar__button:hover,
+    .navbar .navbar__button:hover {
       box-shadow: none;
       transition: none; }
-    .navbar .navbar__button i.fa-angle-left, .navbar ::content .navbar__button--back i.fa-angle-left {
+    .navbar ::content .navbar__button i.fa-angle-left, .navbar .navbar__button--back i.fa-angle-left {
       margin-right: 0.6666666667rem; }
   .navbar .btn {
     min-width: 44px;

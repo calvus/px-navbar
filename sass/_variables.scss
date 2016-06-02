@@ -32,7 +32,7 @@ $navbar-height                         : 56px;
 $navbar-padding                        : $inuit-base-spacing-unit--tiny;
 
 ///
-$navbar-button-font-size               : calculateRem(15px);
+$navbar-button-font-size               : calculateRem(18px);
 $navbar-button-padding                 : $inuit-base-spacing-unit--tiny;
 $navbar-button-height                  : 44px;
 $navbar-button-background-color        : rgba(0, 0, 0, 0);
@@ -41,11 +41,11 @@ $navbar-button-border                  : 1px solid transparent;
 $navbar-button-background-color--active: rgba(0, 0, 0, .5);
 $navbar-button-opacity--active         : .5;
 ///
-$navbar-title-font-size                : calculateRem(17px);
+$navbar-title-font-size                : calculateRem(19px);
 $navbar-title-font-color               : $black;
 
 ///
-$navbar-subtitle-font-size             : calculateRem(15px);
+$navbar-subtitle-font-size             : calculateRem(16px);
 $navbar-subtitle-font-color            : $gray6;
 
 $navbar-padding--tiny                  : $inuit-base-spacing-unit--tiny;

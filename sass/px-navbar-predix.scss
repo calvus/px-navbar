@@ -66,8 +66,8 @@
 	}
 
 	//::content .navbar__button {
-	.navbar__button, ::content .navbar__button {
-		color: var(--px-navbar-color, $navbar-default-font-color);
+	@include c('.navbar__button') {
+//		color: var(--px-navbar-color, $navbar-default-font-color);
 		background-color: $navbar-button-background-color;
 		border-radius   : $navbar-button-border-radius;
 		border          : $navbar-button-border;
@@ -82,14 +82,11 @@
 
 	@include element ('title') {
 		font-size: $navbar-title-font-size;
-		color    : $navbar-title-font-color;
 		color: var(--navbar-title-color, $navbar-title-font-color);
-		color: var(--navbar-color, $navbar-title-font-color);
 	}
 
 	@include element ('subtitle') {
 		font-size: $navbar-subtitle-font-size;
-		color    : $navbar-subtitle-font-color;
 		color: var(--navbar-subtitle-color, $navbar-subtitle-font-color);
 	}
 }

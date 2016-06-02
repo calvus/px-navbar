@@ -10,6 +10,7 @@
  */
  -->
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../polymer-font-awesome/polymer-font-awesome.html"/>
 <link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
 <link rel="import" href="px-navbar-behavior.html">
 <!--
@@ -78,8 +79,9 @@ Custom property | Description | Default
 				</template>
 				<template is="dom-if" if="{{back}}">
 					<div class="navbar__left">
-						<button class="navbar__button navbar__button--back" on-click="_handleBackClick">
-							<i class="fa fa-2x fa-angle-left"></i>
+						<button class="navbar__button" on-tap="_handleBackClick">
+							<!--i class="fa fa-2x fa-angle-left"></i-->
+							<iron-icon icon="fa:fa-angle-left"></iron-icon>
 							<span>{{backLabel}}</span>
 						</button>
 					</div>
@@ -174,7 +176,6 @@ Custom property | Description | Default
 			},
 			observers: ['resetLayout(isAttached, fixed)'],
 			resetLayout: function () {
-				console.warn(this.tagName, 'resetLayout');
 			},
 			_resizeHandler: function () {
 				this.resetLayout();

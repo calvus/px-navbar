@@ -155,14 +155,14 @@ $inuit-enable-btn--tertiary: true;
 	}
 
 	///.navbar__button
-	.navbar__button, ::content .navbar__button{
+	@include c('.navbar__button') {
 		padding       : $navbar-button-padding;
 		letter-spacing: 0;
 		line-height   : 33px;
 
 		padding       : $navbar-button-padding;
 		min-width     : $navbar-button-height;
-		height        : $navbar-button-height;
+		min-height        : $navbar-button-height;
 		transition    : none;
 		vertical-align: middle;
 		box-shadow    : none;
@@ -180,7 +180,7 @@ $inuit-enable-btn--tertiary: true;
 		i,
 		span {
 			flex      : 1 0 auto;
-			align-self: stretch;
+			align-self: center;
 		}
 
 		&:disabled,
