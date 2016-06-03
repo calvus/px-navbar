@@ -67,25 +67,28 @@ Custom property | Description | Default
 	<template strip-whitespace>
 		<header class="navbar">
 			<div class="navbar__inner">
+				<div class="navbar__left">
 				<template is="dom-if" if="{{drawer}}">
-					<div class="navbar__left">
 						<button class="navbar__button" on-click="_handleNaviconClick">
 							<i class="fa fa-2x fa-navicon"></i>
 						</button>
-					</div>
 				</template>
-				<template is="dom-if" if="{{!back}}">
+
+					<template is="dom-if" if="{{!back}}">
 					<content select="[left]"></content>
 				</template>
+
 				<template is="dom-if" if="{{back}}">
-					<div class="navbar__left">
+
 						<button class="navbar__button" on-tap="_handleBackClick">
 							<!--i class="fa fa-2x fa-angle-left"></i-->
 							<iron-icon icon="fa:fa-angle-left"></iron-icon>
 							<span>{{backLabel}}</span>
 						</button>
-					</div>
+
 				</template>
+
+				</div>
 				<div class="navbar__center">
 					<span class="navbar__title">
 						<span hidden="{{!title}}">{{title}}</span>
