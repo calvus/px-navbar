@@ -78,9 +78,11 @@
 				_this.debounce('_handleViewChange', function () {
 					_this.theme = current.getAttribute('theme');
 					_this.title = current.getAttribute('title');
-					_this.back = (current.main
-						? false
-						: true);
+					if(!_this.disableBack){
+						_this.back = (current.main
+							? false
+							: true);
+					}
 				}, 50);
 				//_this.back = (current !== _this.views.main); _this.backLabel = (_this.views.prevView ? _this.views.prevView.title : ''); console.log(_this.tagName, _this.id, 'Add back button to current page', _this.back);
 			}
