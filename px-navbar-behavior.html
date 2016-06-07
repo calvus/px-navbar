@@ -21,18 +21,17 @@
 		 */
 		attached: function () {
 			var _this = this;
-			_this.toggleClass('navbar', true, this.$$('.navbar'));
+			_this.toggleClass('navbar', true, this.$.navbar);
 			if (_this.theme) {
-				_this.toggleClass('navbar--' + _this.theme, true, this.$$('.navbar'));
+				_this.toggleClass('navbar--' + _this.theme, true, this.$.navbar);
 			}
 			if (_this.shadow) {
-				_this.toggleClass('navbar--shadow', true, this.$$('.navbar'));
+				_this.toggleClass('navbar--shadow', true, this.$.navbar);
 			}
 			if (_this.fixed) {
-				_this.toggleClass('navbar--fixed', true, this.$$('.navbar'));
+				_this.toggleClass('navbar--fixed', true, this.$.navbar);
 			}
 			_this.async(function () {
-
 				_this._setupHandlers();
 				_this._fixButtons();
 			});
@@ -78,12 +77,12 @@
 				_this.debounce('_handleViewChange', function () {
 					_this.theme = current.getAttribute('theme');
 					_this.title = current.getAttribute('title');
-					if(!_this.disableBack){
+					if (!_this.disableBack) {
 						_this.back = (current.main
 							? false
 							: true);
 					}
-				}, 50);
+				}, 0);
 				//_this.back = (current !== _this.views.main); _this.backLabel = (_this.views.prevView ? _this.views.prevView.title : ''); console.log(_this.tagName, _this.id, 'Add back button to current page', _this.back);
 			}
 		},
@@ -110,8 +109,22 @@
 		 * Toggle the display of the navbar.
 		 */
 		toggle: function (display) {
-			this.hidden = !this.hidden;
-			this.toggleClass('hidden', this.hidden);
+			this.isHidden = !this.isHidden;
+		},
+		/**
+		 * Handle showing the navbar.
+		 */
+		show: function () {
+			this.isHidden = false;
+		},
+		/**
+		 * Handle hidding the navbar.
+		 */
+		hide: function () {
+			this.isHidden = true;
+		},
+		_isHiddenHandler: function (newVal, oldVal) {
+			this.toggleClass('navbar--is-hidden', newVal, this.$.navbar);
 		},
 		/**
 		 * Handle getting the current view/page, if there is a viewContainer.
@@ -125,11 +138,70 @@
 		 * Handle fixing the class naming of the buttons.
 		 */
 		_fixButtons: function () {
-			this.queryAllEffectiveChildren('.btn').forEach(function (b) {
-				if (b && b.toggleClass) {
-					b.toggleClass('navbar__button');
-				}
-			});
+			var buttons = this.$$('button');
+			if (buttons && buttons.length) {
+				buttons.forEach(function (b) {
+					if (b && b.toggleClass) {
+						b.toggleClass('navbar__button', true);
+					}
+				});
+			}
+		},
+		_handleAutoHide: function (newVal, oldVal) {},
+		_initScroll: 0,
+		_previousScroll: 0,
+		_scrollThrottle: 10,
+		_scrollDebounce: 5,
+		_navbarHeight: 0,
+		_currentScroll: 0,
+		_previousScrollTime: null,
+		_isScrollingDown: false,
+		_windowHeight: window.innerHeight,
+		_documentHeight: document.body.offsetHeight,
+		_clamp: function(v, min, max) {
+			return Math.min(max, Math.max(min, v));
+		},
+
+		_scrollHandler: function (e) {
+			if (this._height === 0) {
+        return;
+      }
+			if (!this.autoHide) {
+				return;
+			}
+			this.debounce('scrollHandler', function () {
+					var navbarHeight = this.getHeight();
+
+					var _initScroll = this._initScroll;
+					var _currentScroll = e.target.body.scrollTop;
+					var _previousScroll = this._previousScroll;
+					var _windowHeight = this._windowHeight;
+					var delta = _currentScroll - _previousScroll;
+					var _documentHeight = e.target.body.offsetHeight;
+					var _isScrollingDown = (_currentScroll > _previousScroll);
+					var _willScroll = (_currentScroll > _initScroll && _currentScroll > navbarHeight && _currentScroll < (_documentHeight - _windowHeight));
+					var _now = Date.now();
+
+					//var scrollVelocity = (delta / (_now - this._previousScrollTime));
+					//this._previousScrollTime = _now;
+
+					//					this.$.navbar.style.transitionDuration = this._clamp((_previousScroll - _currentScroll) / scrollVelocity, 0, 300) + 'ms';
+					//console.log('scrollVelocity', scrollVelocity);
+
+					if (_willScroll) {
+						if (_isScrollingDown) {
+							this.debounce('hideNav', this.hide, this._scrollThrottle);
+							console.log('hideNav', _now);
+						} else {
+							this.debounce('showNav', this.show, 1);
+						}
+
+						this._previousScroll = _currentScroll;
+					}
+			}, this._scrollDebounce);
+		},
+		_transformHeader: function (y) {
+			this.transform('translate3d(0, ' + y + '%, 0)', this.$.navbar);
 		}
 	};
 </script>

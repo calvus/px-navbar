@@ -12,6 +12,7 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../polymer-font-awesome/polymer-font-awesome.html"/>
 <link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
+<link rel="import" href="../iron-scroll-target-behavior/iron-scroll-target-behavior.html">
 <link rel="import" href="px-navbar-behavior.html">
 <!--
 <p>
@@ -60,30 +61,28 @@ Custom property | Description | Default
 		:host {
 			display: block;
 		}
-    :host .navbar{
-      @apply(--px-navbar);
-    }
+		:host .navbar {
+			@apply(--px-navbar);
+		}
 	</style>
 	<template strip-whitespace>
-		<header class="navbar">
+		<nav id="navbar" class="navbar">
 			<div class="navbar__inner">
 				<div id="left" class="navbar__left">
-				<template is="dom-if" if="{{drawer}}">
+					<template is="dom-if" if="{{drawer}}">
 						<button class="navbar__button flex flex--center" drawer-toggle>
 							<iron-icon icon="fa:fa-bars"></iron-icon>
 						</button>
-				</template>
-				<template is="dom-if" if="{{!back}}">
-					<content id="leftContent" select="[left]"></content>
-				</template>
-
-				<template is="dom-if" if="{{back}}">
-					<button class="navbar__button" on-tap="_handleBackClick">
-						<iron-icon icon="fa:fa-angle-left"></iron-icon>
-						<span>{{backLabel}}</span>
-					</button>
-				</template>
-
+					</template>
+					<template is="dom-if" if="{{!back}}">
+						<content id="leftContent" select="[left]"></content>
+					</template>
+					<template is="dom-if" if="{{back}}">
+						<button class="navbar__button" on-tap="_handleBackClick">
+							<iron-icon icon="fa:fa-angle-left"></iron-icon>
+							<span>{{backLabel}}</span>
+						</button>
+					</template>
 				</div>
 				<div class="navbar__center">
 					<span class="navbar__title">
@@ -99,13 +98,13 @@ Custom property | Description | Default
 				<content select="[right]"></content>
 				<content id="navbarContent" select="*, [content]"></content>
 			</div>
-		</header>
+		</nav>
 	</template>
 	<script>
 		Polymer({
 			is: 'px-navbar',
 			behaviors: [
-				pxNavbarBehavior, Polymer.IronResizableBehavior
+				Polymer.IronScrollTargetBehavior, Polymer.IronResizableBehavior, pxNavbarBehavior
 			],
 			properties: {
 				/**
@@ -143,6 +142,23 @@ Custom property | Description | Default
 					value: false
 				},
 				/**
+				 * The current state of the navbar
+				 */
+				isHidden: {
+					type: Boolean,
+					value: false,
+					reflectToAttribute: true,
+					observer: '_isHiddenHandler'
+				},
+				/**
+				 * Auto Hide the navbar on user scroll down, reveal on tap or scroll up.
+				 */
+				autoHide: {
+					type: Boolean,
+					value: false,
+					observer: '_handleAutoHide'
+				},
+				/**
 				 * The view containers instance.
 				 */
 				views: {
@@ -178,11 +194,16 @@ Custom property | Description | Default
 					value: 'Back'
 				}
 			},
+			_throttleTime: 100,
+			_delta: 5,
+			_scrollCurrent: 0,
 			listeners: {
 				'iron-resize': '_resizeHandler'
 			},
 			observers: ['resetLayout(isAttached, fixed)'],
-			resetLayout: function () {
+			resetLayout: function () {},
+			getHeight: function () {
+				return this.$.navbar.offsetHeight;
 			},
 			_resizeHandler: function () {
 				this.resetLayout();

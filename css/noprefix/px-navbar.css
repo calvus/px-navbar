@@ -236,7 +236,11 @@ button.btn {
   /* Internet Explorer/Edge */
   user-select: none;
   /* Non-prefixed version, currently
-                                 not supported by any browser */ }
+                                 not supported by any browser */
+  transform: translate3d(0, 0, 0);
+  transition: var(--px-navbar-transition, transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1)); }
+  .navbar--is-hidden {
+    transform: translate3d(0, -100%, 0); }
   .navbar *, .navbar ::content > * {
     -webkit-touch-callout: none;
     /* iOS Safari */
@@ -289,10 +293,14 @@ button.btn {
       display: block; }
   .navbar__left {
     order: 0;
-    align-self: flex-start; }
+    align-self: center;
+    display: flex;
+    align-content: center; }
   .navbar__right {
     order: 3;
-    align-self: flex-end; }
+    align-self: flex-end;
+    display: flex;
+    align-content: center; }
   .navbar__title {
     display: block;
     margin: 0;
@@ -322,10 +330,7 @@ button.btn {
     .navbar ::content .navbar__button.btn,
     .navbar .navbar__button.btn {
       min-width: 44px;
-      height: 44px;
-      background-color: inherit;
-      border: inherit;
-      border-radius: inherit; }
+      height: 44px; }
     .navbar ::content .navbar__button i,
     .navbar ::content .navbar__button span,
     .navbar .navbar__button i,
@@ -384,10 +389,17 @@ button.btn {
       color: white; }
   .navbar ::content .navbar__button,
   .navbar .navbar__button {
+    display: flex;
+    align-items: center;
+    align-content: center;
     background-color: transparent;
     border-radius: 2px;
     border: 1px solid transparent;
-    font-size: 1.2rem; }
+    font-size: 1.1333333333rem; }
+    .navbar ::content .navbar__button > *,
+    .navbar .navbar__button > * {
+      align-self: center;
+      flex: 1; }
     .navbar ::content .navbar__button:active,
     .navbar .navbar__button:active {
       background-color: rgba(0, 0, 0, 0.5);

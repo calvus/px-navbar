@@ -26,7 +26,8 @@
     "polymer": "~v1.4.0",
     "fastclick": "latest",
     "px-drawer": "https://github.com/PredixDev/px-drawer.git",
-    "polymer-font-awesome": "https://github.com/jonniespratley/polymer-font-awesome.git#~0.1.5"
+    "polymer-font-awesome": "https://github.com/jonniespratley/polymer-font-awesome.git#~0.1.5",
+    "iron-scroll-target-behavior": "PolymerElements/iron-scroll-target-behavior#~1.0.6"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#~1.0.5",

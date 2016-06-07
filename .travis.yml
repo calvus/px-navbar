@@ -17,4 +17,4 @@ before_script:
 - npm install web-component-tester
 - export PATH=$PWD/node_modules/.bin:$PATH
 script:
-- wct
+- xvfb-run wct --skip-plugin sauce

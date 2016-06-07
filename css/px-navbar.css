@@ -236,7 +236,14 @@ button.btn {
   /* Internet Explorer/Edge */
   user-select: none;
   /* Non-prefixed version, currently
-                                 not supported by any browser */ }
+                                 not supported by any browser */
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  transition: var(--px-navbar-transition, -webkit-transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1));
+  transition: var(--px-navbar-transition, transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1)); }
+  .navbar--is-hidden {
+    -webkit-transform: translate3d(0, -100%, 0);
+            transform: translate3d(0, -100%, 0); }
   .navbar *, .navbar ::content > * {
     -webkit-touch-callout: none;
     /* iOS Safari */
@@ -304,16 +311,28 @@ button.btn {
     -webkit-order: 0;
         -ms-flex-order: 0;
             order: 0;
-    -webkit-align-self: flex-start;
-        -ms-flex-item-align: start;
-            align-self: flex-start; }
+    -webkit-align-self: center;
+        -ms-flex-item-align: center;
+            align-self: center;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-content: center;
+        -ms-flex-line-pack: center;
+            align-content: center; }
   .navbar__right {
     -webkit-order: 3;
         -ms-flex-order: 3;
             order: 3;
     -webkit-align-self: flex-end;
         -ms-flex-item-align: end;
-            align-self: flex-end; }
+            align-self: flex-end;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-content: center;
+        -ms-flex-line-pack: center;
+            align-content: center; }
   .navbar__title {
     display: block;
     margin: 0;
@@ -357,10 +376,7 @@ button.btn {
     .navbar ::content .navbar__button.btn,
     .navbar .navbar__button.btn {
       min-width: 44px;
-      height: 44px;
-      background-color: inherit;
-      border: inherit;
-      border-radius: inherit; }
+      height: 44px; }
     .navbar ::content .navbar__button i,
     .navbar ::content .navbar__button span,
     .navbar .navbar__button i,
@@ -423,10 +439,27 @@ button.btn {
       color: white; }
   .navbar ::content .navbar__button,
   .navbar .navbar__button {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-align-content: center;
+        -ms-flex-line-pack: center;
+            align-content: center;
     background-color: transparent;
     border-radius: 2px;
     border: 1px solid transparent;
-    font-size: 1.2rem; }
+    font-size: 1.1333333333rem; }
+    .navbar ::content .navbar__button > *,
+    .navbar .navbar__button > * {
+      -webkit-align-self: center;
+          -ms-flex-item-align: center;
+              align-self: center;
+      -webkit-flex: 1;
+          -ms-flex: 1;
+              flex: 1; }
     .navbar ::content .navbar__button:active,
     .navbar .navbar__button:active {
       background-color: rgba(0, 0, 0, 0.5);

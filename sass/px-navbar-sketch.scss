@@ -45,6 +45,15 @@ $inuit-enable-btn--tertiary: true;
 	right   : 0;
 	@include noselect();
 
+	transform: translate3d(0, 0, 0);
+	transition: var(--px-navbar-transition, transform .5s cubic-bezier( 0.215, 0.610, 0.355, 1.000 ));
+
+	///-----------------------------------------------------------------
+	///.navbar--hidden
+	@include modifier ('is-hidden') {
+		transform: translate3d(0, -100%, 0);
+	}
+
 	*, ::content > * {
 		@include noselect();
 	}
@@ -124,13 +133,16 @@ $inuit-enable-btn--tertiary: true;
 	///.navbar__left
 	@include element ('left') {
 		order     : 0;
-		align-self: flex-start;
+		align-self: center;;
+		display: flex;
+		align-content: center;
 	}
 	///.navbar__right
 	@include element ('right') {
 		order     : 3;
 		align-self: flex-end;
-
+		display: flex;
+		align-content: center;
 	}
 	///.navbar__title
 	@include element ('title') {
@@ -172,9 +184,6 @@ $inuit-enable-btn--tertiary: true;
 		&.btn {
 			min-width       : $navbar-button-height;
 			height          : $navbar-button-height;
-			background-color: inherit;
-			border          : inherit;
-			border-radius   : inherit;
 		}
 
 		i,
