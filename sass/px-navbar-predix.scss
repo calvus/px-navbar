@@ -67,11 +67,18 @@
 
 	//::content .navbar__button {
 	@include c('.navbar__button') {
-//		color: var(--px-navbar-color, $navbar-default-font-color);
+		display: flex;
+		align-items: center;
+		align-content: center;
+		//		color: var(--px-navbar-color, $navbar-default-font-color);
 		background-color: $navbar-button-background-color;
 		border-radius   : $navbar-button-border-radius;
 		border          : $navbar-button-border;
 		font-size       : $navbar-button-font-size;
+		> *{
+			align-self: center;
+			flex: 1;
+		}
 
 		&:active {
 			background-color: $navbar-button-background-color--active;
