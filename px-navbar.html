@@ -193,11 +193,7 @@ Custom property | Description | Default
 					type: String,
 					value: 'Back'
 				}
-			},
-			_throttleTime: 100,
-			_delta: 5,
-			_scrollCurrent: 0,
-			listeners: {
+			},listeners: {
 				'iron-resize': '_resizeHandler'
 			},
 			observers: ['resetLayout(isAttached, fixed)'],
@@ -207,6 +203,193 @@ Custom property | Description | Default
 			},
 			_resizeHandler: function () {
 				this.resetLayout();
+			},
+			/**
+			 * Handle setting up the class naming when attached.
+			 */
+			attached: function () {
+				var _this = this;
+				_this.toggleClass('navbar', true, this.$.navbar);
+				if (_this.theme) {
+					_this.toggleClass('navbar--' + _this.theme, true, this.$.navbar);
+				}
+				if (_this.shadow) {
+					_this.toggleClass('navbar--shadow', true, this.$.navbar);
+				}
+				if (_this.fixed) {
+					_this.toggleClass('navbar--fixed', true, this.$.navbar);
+				}
+				_this.async(function () {
+					_this._setupHandlers();
+					_this._fixButtons();
+				});
+			},
+			/**
+			 * Handle cleaning up the event listeners when the component is detached.
+			 */
+			detached: function () {
+				//console.log(this.tagName, 'detached', 'cleaning up handlers');
+				this._cleanupHandlers();
+			},
+			/**
+			 * Handle setting up the event listeners to the 'change' event of the views
+			 */
+			_setupHandlers: function () {
+				var _this = this;
+				if (_this.viewContainer) {
+					_this.debounce('initViews', function () {
+						_this.views = document.getElementById(_this.viewContainer);
+						if (_this.views) {
+							_this.views.addEventListener('change', _this._handleViewChange.bind(this));
+						}
+					}, 0);
+				}
+			},
+			/**
+			 * Cleanup event listeners
+			 */
+			_cleanupHandlers: function () {
+				var _this = this;
+				if (_this.views) {
+					_this.views.removeEventListener('change', _this._handleViewChange.bind(this));
+				}
+			},
+			/**
+			 * Handle when then view is changed, if there is a view container.
+			 * If you want to change the back label, add the back-label="My Label" to the pages navbar element.
+			 */
+			_handleViewChange: function (e) {
+				var _this = this;
+				var current = e.detail;
+				if (current) {
+					_this.debounce('_handleViewChange', function () {
+						_this.theme = current.getAttribute('theme');
+						_this.title = current.getAttribute('title');
+						if (!_this.disableBack) {
+							_this.back = (current.main
+								? false
+								: true);
+						}
+					}, 0);
+					//_this.back = (current !== _this.views.main); _this.backLabel = (_this.views.prevView ? _this.views.prevView.title : ''); console.log(_this.tagName, _this.id, 'Add back button to current page', _this.back);
+				}
+			},
+			/**
+			 * Handle when the back button is clicked.
+			 */
+			_handleBackClick: function () {
+				if (this.views) {
+					this.views.back();
+				}
+				this.fire('back');
+			},
+			/**
+			 * Handle when the navicon button is clicked.
+			 */
+			_handleNaviconClick: function () {
+				if (this.drawer && this.drawer.toggle) {
+					this.drawer.toggle();
+				} else {
+					console.warn(this.tagName, 'could not find drawer');
+				}
+			},
+			/**
+			 * Toggle the display of the navbar.
+			 */
+			toggle: function (display) {
+				this.isHidden = !this.isHidden;
+			},
+			/**
+			 * Handle showing the navbar.
+			 */
+			show: function () {
+				this.isHidden = false;
+			},
+			/**
+			 * Handle hidding the navbar.
+			 */
+			hide: function () {
+				this.isHidden = true;
+			},
+			_isHiddenHandler: function (newVal, oldVal) {
+				this.toggleClass('navbar--is-hidden', newVal, this.$.navbar);
+			},
+			/**
+			 * Handle getting the current view/page, if there is a viewContainer.
+			 */
+			getCurrentView: function () {
+				if (this.viewContainer && this.views) {
+					return this.views.getCurrent();
+				}
+			},
+			/**
+			 * Handle fixing the class naming of the buttons.
+			 */
+			_fixButtons: function () {
+				var buttons = this.$$('button');
+				if (buttons && buttons.length) {
+					buttons.forEach(function (b) {
+						if (b && b.toggleClass) {
+							b.toggleClass('navbar__button', true);
+						}
+					});
+				}
+			},
+			_handleAutoHide: function (newVal, oldVal) {},
+			_initScroll: 0,
+			_previousScroll: 0,
+			_scrollThrottle: 10,
+			_scrollDebounce: 5,
+			_navbarHeight: 0,
+			_currentScroll: 0,
+			_previousScrollTime: null,
+			_isScrollingDown: false,
+			_windowHeight: window.innerHeight,
+			_documentHeight: null,
+			_clamp: function(v, min, max) {
+				return Math.min(max, Math.max(min, v));
+			},
+
+			_scrollHandler: function (e) {
+				if (this._height === 0) {
+	        return;
+	      }
+				if (!this.autoHide) {
+					return;
+				}
+				this.debounce('scrollHandler', function () {
+						var navbarHeight = this.getHeight();
+						this._documentHeight = window.document.body.offsetHeight;
+						var _initScroll = this._initScroll;
+						var _currentScroll = e.target.body.scrollTop;
+						var _previousScroll = this._previousScroll;
+						var _windowHeight = this._windowHeight;
+						var delta = _currentScroll - _previousScroll;
+						var _documentHeight = e.target.body.offsetHeight;
+						var _isScrollingDown = (_currentScroll > _previousScroll);
+						var _willScroll = (_currentScroll > _initScroll && _currentScroll > navbarHeight && _currentScroll < (_documentHeight - _windowHeight));
+						var _now = Date.now();
+
+						//var scrollVelocity = (delta / (_now - this._previousScrollTime));
+						//this._previousScrollTime = _now;
+
+						//					this.$.navbar.style.transitionDuration = this._clamp((_previousScroll - _currentScroll) / scrollVelocity, 0, 300) + 'ms';
+						//console.log('scrollVelocity', scrollVelocity);
+
+						if (_willScroll) {
+							if (_isScrollingDown) {
+								this.debounce('hideNav', this.hide, this._scrollThrottle);
+								console.log('hideNav', _now);
+							} else {
+								this.debounce('showNav', this.show, 1);
+							}
+
+							this._previousScroll = _currentScroll;
+						}
+				}, this._scrollDebounce);
+			},
+			_transformHeader: function (y) {
+				this.transform('translate3d(0, ' + y + '%, 0)', this.$.navbar);
 			}
 		});
 	</script>
