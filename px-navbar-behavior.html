@@ -16,7 +16,6 @@
 	 * @polymerBehavior
 	 */
 	var pxNavbarBehavior = {};
-
 	var elHeight = 0,
 		elTop = 0,
 		dHeight = 0,
@@ -25,14 +24,12 @@
 		wScrollBefore = 0,
 		wScrollDiff = 0;
 	pxNavbarBehavior._scrollHandler = function (e) {
-		console.log('scrollHandler', e);
 		if (this._height === 0) {
 			return;
 		}
 		if (!this.autoHide) {
 			return;
 		}
-
 		var element = this.$.navbar;
 		elHeight = element.offsetHeight;
 		dHeight = document.body.offsetHeight;
@@ -60,10 +57,7 @@
 					? -elHeight
 					: elTop) + 'px';
 			}
-
 		}
-
 		wScrollBefore = wScrollCurrent;
-
 	};
 </script>
