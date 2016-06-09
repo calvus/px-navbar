@@ -46,7 +46,7 @@ $inuit-enable-btn--tertiary: true;
 	@include noselect();
 
 	transform: translate3d(0, 0, 0);
-	transition: var(--px-navbar-transition, transform .5s cubic-bezier( 0.215, 0.610, 0.355, 1.000 ));
+	transition: var(--px-navbar-transition, transform .4s cubic-bezier( 0.215, 0.610, 0.355, 1.000 ));
 
 	///-----------------------------------------------------------------
 	///.navbar--hidden
