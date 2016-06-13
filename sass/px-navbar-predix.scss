@@ -94,12 +94,12 @@
 	///-----------------------------------------------------------------
 	@include element ('title') {
 		font-size: $navbar-title-font-size;
-		color: var(--navbar-title-color, $navbar-title-font-color);
+		color: var(--px-navbar-title-color, $navbar-title-font-color);
 	}
 
 	///-----------------------------------------------------------------
 	@include element ('subtitle') {
 		font-size: $navbar-subtitle-font-size;
-		color: var(--navbar-subtitle-color, $navbar-subtitle-font-color);
+		color: var(--px-navbar-subtitle-color, $navbar-subtitle-font-color);
 	}
 }

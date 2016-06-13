@@ -239,8 +239,8 @@ button.btn {
                                  not supported by any browser */
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
-  transition: var(--px-navbar-transition, -webkit-transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1));
-  transition: var(--px-navbar-transition, transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1)); }
+  transition: var(--px-navbar-transition, -webkit-transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1));
+  transition: var(--px-navbar-transition, transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1)); }
   .navbar--is-hidden {
     -webkit-transform: translate3d(0, -100%, 0);
             transform: translate3d(0, -100%, 0); }
@@ -467,7 +467,7 @@ button.btn {
       opacity: 0.5; }
   .navbar__title {
     font-size: 1.2666666667rem;
-    color: var(--navbar-title-color, black); }
+    color: var(--px-navbar-title-color, black); }
   .navbar__subtitle {
     font-size: 1.0666666667rem;
-    color: var(--navbar-subtitle-color, #9999a3); }
+    color: var(--px-navbar-subtitle-color, #9999a3); }

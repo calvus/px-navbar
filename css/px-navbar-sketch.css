@@ -230,8 +230,8 @@ button.btn {
                                  not supported by any browser */
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
-  transition: var(--px-navbar-transition, -webkit-transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1));
-  transition: var(--px-navbar-transition, transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1)); }
+  transition: var(--px-navbar-transition, -webkit-transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1));
+  transition: var(--px-navbar-transition, transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1)); }
   .navbar--is-hidden {
     -webkit-transform: translate3d(0, -100%, 0);
             transform: translate3d(0, -100%, 0); }
