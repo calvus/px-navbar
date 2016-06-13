@@ -24,7 +24,7 @@ The `px-navbar` enables navigation through an information hierarchy and, optiona
 ### Usage
 
 ```
-<px-navbar id="navbar1">
+<px-navbar id="navbar1" shadow fixed auto-hide>
 	<div left>
 
 	</div>
@@ -43,11 +43,12 @@ The `px-navbar` enables navigation through an information hierarchy and, optiona
 Custom property | Description | Default
 ------------ | ------------- | ------------
 `--px-navbar`   | Style mixin to be applied to the element | null
-`--px-navbar-color` | The font color | $black
-`--px-navbar-border-bottom` | The border bottom style | null
-`--px-navbar-background-color` | The background color | $white
-`--px-navbar-title-color` | The title font color | $black
-`--px-navbar-subtitle-color` | The subtitle font color | $black
+`--px-navbar-transition`   			| The transition for the element | transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1))
+`--px-navbar-color` 						| The font color | #000
+`--px-navbar-border-bottom` 		| The border bottom style | 1px solid #b1b1bc
+`--px-navbar-background-color` 	| The background color | #fff
+`--px-navbar-title-color` 			| The title font color | #000
+`--px-navbar-subtitle-color` 		| The subtitle font color | #9999a3
 
 @element px-navbar.html
 @blurb px-navbar
@@ -197,7 +198,14 @@ Custom property | Description | Default
 				'iron-resize': '_resizeHandler'
 			},
 			observers: ['resetLayout(isAttached, fixed)'],
+			/**
+			 * Handle resetting the layout.
+			 */
 			resetLayout: function () {},
+			/**
+			 * Gets the navbars height.
+			 * @return Number The height of the element.
+			 */
 			getHeight: function () {
 				return this.$.navbar.offsetHeight;
 			},
@@ -316,6 +324,7 @@ Custom property | Description | Default
 			},
 			/**
 			 * Handle getting the current view/page, if there is a viewContainer.
+			 * @returns Element The current active view.
 			 */
 			getCurrentView: function () {
 				if (this.viewContainer && this.views) {
@@ -336,7 +345,7 @@ Custom property | Description | Default
 				}
 			},
 			_handleAutoHide: function (newVal, oldVal) {},
-			
+
 			_transformHeader: function (y) {
 				this.transform('translate3d(0, ' + y + '%, 0)', this.$.navbar);
 			}
