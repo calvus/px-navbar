@@ -87,11 +87,11 @@ Custom property | Description | Default
 				</div>
 				<div class="navbar__center">
 					<span class="navbar__title">
-						<span hidden="{{!title}}">{{title}}</span>
+						<span hidden$="{{!title}}">{{title}}</span>
 						<content select="[title]"></content>
 					</span>
 					<span class="navbar__subtitle">
-						<span hidden="{{!subtitle}}">{{subtitle}}</span>
+						<span hidden$="{{!subtitle}}">{{subtitle}}</span>
 						<content select="[subtitle]"></content>
 					</span>
 					<content select="[center]"></content>
@@ -197,7 +197,7 @@ Custom property | Description | Default
 			},listeners: {
 				'iron-resize': '_resizeHandler'
 			},
-			observers: ['resetLayout(isAttached, fixed)'],
+			observers: ['resetLayout(fixed)'],
 			/**
 			 * Handle resetting the layout.
 			 */
