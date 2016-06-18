@@ -245,12 +245,9 @@ Custom property | Description | Default
 			_setupHandlers: function () {
 				var _this = this;
 				if (_this.viewContainer) {
-					_this.debounce('initViews', function () {
-						_this.views = document.getElementById(_this.viewContainer);
-						if (_this.views) {
-							_this.views.addEventListener('change', _this._handleViewChange.bind(this));
-						}
-					}, 0);
+					//_this.views = document.getElementById(_this.viewContainer);
+					_this.listen(_this.viewContainer, 'px-page-change', '_handleViewChange');
+					//_this.views.addEventListener('px-page-change', _this._handleViewChange.bind(this));
 				}
 			},
 			/**
@@ -259,7 +256,7 @@ Custom property | Description | Default
 			_cleanupHandlers: function () {
 				var _this = this;
 				if (_this.views) {
-					_this.views.removeEventListener('change', _this._handleViewChange.bind(this));
+					//_this.views.removeEventListener('px-page-change', _this._handleViewChange.bind(this));
 				}
 			},
 			/**
@@ -287,9 +284,10 @@ Custom property | Description | Default
 			 */
 			_handleBackClick: function () {
 				if (this.views) {
+					this.views.fire('px-page-back');
 					this.views.back();
 				}
-				this.fire('back');
+				this.fire('px-page-back');
 			},
 			/**
 			 * Handle when the navicon button is clicked.
