@@ -267,7 +267,7 @@ button.btn {
     white-space: nowrap;
     align-items: center;
     justify-content: space-between;
-    min-height: 56px;
+    height: 56px;
     padding: 0.3333333333rem;
     display: flex;
     overflow: hidden; }
