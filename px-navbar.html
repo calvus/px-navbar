@@ -10,7 +10,7 @@
  */
  -->
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../polymer-font-awesome/polymer-font-awesome.html"/>
+<link rel="import" href="../px-partials/px-icon/px-icon.html"/>
 <link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
 <link rel="import" href="../iron-scroll-target-behavior/iron-scroll-target-behavior.html">
 <!--
@@ -42,12 +42,8 @@ The `px-navbar` enables navigation through an information hierarchy and, optiona
 Custom property | Description | Default
 ------------ | ------------- | ------------
 `--px-navbar`   | Style mixin to be applied to the element | null
-`--px-navbar-transition`   			| The transition for the element | transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1))
-`--px-navbar-color` 						| The font color | #000
-`--px-navbar-border-bottom` 		| The border bottom style | 1px solid #b1b1bc
-`--px-navbar-background-color` 	| The background color | #fff
-`--px-navbar-title-color` 			| The title font color | #000
-`--px-navbar-subtitle-color` 		| The subtitle font color | #9999a3
+`--px-navbar-title` 			| Style mixin applied to the title | {}
+`--px-navbar-subtitle` 			| Style mixin applied to the sub title | {}
 
 @element px-navbar.html
 @blurb px-navbar
@@ -57,21 +53,29 @@ Custom property | Description | Default
 -->
 <dom-module id="px-navbar">
 	<link rel="import" type="css" href="css/px-navbar.css">
+
+	<template strip-whitespace>
 	<style media="screen">
 		:host {
 			display: block;
+			
 		}
 		:host .navbar {
 			@apply(--px-navbar);
 		}
+		:host .navbar__title {
+			@apply(--px-navbar-title);
+		}
+		:host .navbar__subtitle {
+			@apply(--px-navbar-subtitle);
+		}
 	</style>
-	<template strip-whitespace>
 		<nav id="navbar" class="navbar">
 			<div class="navbar__inner">
 				<div id="left" class="navbar__left">
 					<template is="dom-if" if="{{drawer}}">
 						<button class="navbar__button flex flex--center" drawer-toggle>
-							<iron-icon icon="fa:fa-bars"></iron-icon>
+							<px-icon icon="fa:fa-bars"></px-icon>
 						</button>
 					</template>
 					<template is="dom-if" if="{{!back}}">
@@ -79,11 +83,12 @@ Custom property | Description | Default
 					</template>
 					<template is="dom-if" if="{{back}}">
 						<button id="backButton" class="navbar__button" on-tap="_handleBackClick">
-							<iron-icon icon="fa:fa-angle-left"></iron-icon>
+							<px-icon icon="fa:fa-angle-left"></px-icon>
 							<span>{{backLabel}}</span>
 						</button>
 					</template>
 				</div>
+
 				<div class="navbar__center">
 					<span class="navbar__title">
 						<span hidden$="{{!title}}">{{title}}</span>
@@ -95,8 +100,12 @@ Custom property | Description | Default
 					</span>
 					<content select="[center]"></content>
 				</div>
-				<content select="[right]"></content>
-				<content id="navbarContent" select="*, [content]"></content>
+
+				<div id="right" class="navbar__right">
+					<content select="[right]"></content>
+				</div>
+
+				<content id="navbarContent" select="[content]"></content>
 			</div>
 		</nav>
 	</template>
@@ -225,17 +234,18 @@ Custom property | Description | Default
 			 */
 			attached: function () {
 				var _this = this;
-				_this.toggleClass('navbar', true, this.$.navbar);
-				if (_this.theme) {
-					_this.toggleClass('navbar--' + _this.theme, true, this.$.navbar);
-				}
-				if (_this.shadow) {
-					_this.toggleClass('navbar--shadow', true, this.$.navbar);
-				}
-				if (_this.fixed) {
-					_this.toggleClass('navbar--fixed', true, this.$.navbar);
-				}
+	console.log(this.tagName, 'attached');
 				_this.async(function () {
+				//	_this.toggleClass('navbar', true, this.$.navbar);
+					if (_this.theme) {
+						_this.toggleClass('navbar--' + _this.theme, true, this.$.navbar);
+					}
+					if (_this.shadow) {
+						_this.toggleClass('navbar--shadow', true, this.$.navbar);
+					}
+					if (_this.fixed) {
+						_this.toggleClass('navbar--fixed', true, this.$.navbar);
+					}
 					_this._setupHandlers();
 					_this._fixButtons();
 				});
@@ -244,7 +254,7 @@ Custom property | Description | Default
 			 * Handle cleaning up the event listeners when the component is detached.
 			 */
 			detached: function () {
-				//console.log(this.tagName, 'detached', 'cleaning up handlers');
+				console.log(this.tagName, 'detached', 'cleaning up handlers');
 				this._cleanupHandlers();
 			},
 			/**

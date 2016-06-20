@@ -37,15 +37,15 @@ $inuit-enable-btn--tertiary: true;
 ///
 ///
 /// @access public
-@include b('navbar') {
-	z-index : 200;
-	position: absolute;
-	top     : 0;
-	left    : 0;
-	right   : 0;
+@include b ('navbar') {
+	z-index   : 200;
+	position  : absolute;
+	top       : 0;
+	left      : 0;
+	right     : 0;
 	@include noselect();
 
-	transform: translate3d(0, 0, 0);
+	transform : translate3d(0, 0, 0);
 	transition: var(--px-navbar-transition, transform .4s cubic-bezier( 0.215, 0.610, 0.355, 1.000 ));
 
 	///-----------------------------------------------------------------
@@ -54,29 +54,28 @@ $inuit-enable-btn--tertiary: true;
 		transform: translate3d(0, -100%, 0);
 	}
 
-	*, ::content > * {
+	*,
+	::content > * {
 		@include noselect();
 	}
-
 	@include media-breakpoint (xs) {
 		//background-color: red !important;
 		//position        : fixed;
 	}
-
 	@include media-breakpoint (sm) {
-	//	background-color: blue!important;
-	//position        : fixed;
+		//	background-color: blue!important;
+		//position        : fixed;
 	}
-
 	@include media-breakpoint (md) {
-	//	background-color: green!important;
+		//	background-color: green!important;
 	}
-
 	@include media-breakpoint (lg) {
-	//	background-color: pink!important;
+		//	background-color: pink!important;
 	}
 
-	button, ::content button, ::content .btn {
+	::content .btn,
+	::content button,
+	button {
 		outline: none;
 	}
 	///.navbar--tiny
@@ -113,7 +112,7 @@ $inuit-enable-btn--tertiary: true;
 		white-space    : nowrap;
 		align-items    : center;
 		justify-content: space-between;
-		height     : $navbar-height;
+		height         : $navbar-height;
 		padding        : $navbar-padding;
 		display        : flex;
 		overflow       : hidden;
@@ -126,23 +125,26 @@ $inuit-enable-btn--tertiary: true;
 		flex      : 1 0 auto;
 		align-self: center;
 		text-align: center;
+
 		> * {
 			display: block;
 		}
 	}
 	///.navbar__left
 	@include element ('left') {
-		order     : 0;
-		align-self: center;;
-		display: flex;
+		order        : 0;
+		align-self   : center;
+		display      : flex;
 		align-content: center;
+		//margin-left  : $navbar-padding--small;
 	}
 	///.navbar__right
 	@include element ('right') {
-		order     : 3;
-		align-self: flex-end;
-		display: flex;
+		order        : 3;
+		align-self   : center;
+		display      : flex;
 		align-content: center;
+	//	margin-right : $navbar-padding--small;
 	}
 	///.navbar__title
 	@include element ('title') {
@@ -167,23 +169,26 @@ $inuit-enable-btn--tertiary: true;
 	}
 
 	///.navbar__button
-	@include c('.navbar__button') {
+	@include c ('.navbar__button') {
 		padding       : $navbar-button-padding;
 		letter-spacing: 0;
-		line-height   : 33px;
+		line-height   : $inuit-base-line-height;
 
 		padding       : $navbar-button-padding;
 		min-width     : $navbar-button-height;
-		min-height        : $navbar-button-height;
+		min-height    : $navbar-button-height;
 		transition    : none;
 		vertical-align: middle;
 		box-shadow    : none;
+
 		display       : flex;
 		align-items   : center;
-
+		align-content: center;
+		justify-content: center;
+		box-sizing: border-box;
 		&.btn {
-			min-width       : $navbar-button-height;
-			height          : $navbar-button-height;
+			min-width: $navbar-button-height;
+			height   : $navbar-button-height;
 		}
 
 		i,
@@ -194,7 +199,7 @@ $inuit-enable-btn--tertiary: true;
 
 		&:disabled,
 		&[disabled] {
-			opacity       : .3;
+			opacity       : 0.3;
 			cursor        : default;
 			pointer-events: none;
 		}

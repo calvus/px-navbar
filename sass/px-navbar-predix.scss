@@ -12,7 +12,7 @@
 @import 'px-navbar-sketch.scss';
 
 @include b('navbar') {
-
+	font-size: $inuit-base-font-size;
 	border-bottom   : $navbar-default-border-bottom;
 	border-bottom: var(--px-navbar-border-bottom, $navbar-default-border-bottom);
 	background-color: var(--px-navbar-background-color, $navbar-default-background-color);
@@ -75,9 +75,10 @@
 		display: flex;
 		align-items: center;
 		align-content: center;
+		justify-content: center;
 		//		color: var(--px-navbar-color, $navbar-default-font-color);
 		background-color: $navbar-button-background-color;
-		border-radius   : $navbar-button-border-radius;
+	//	border-radius   : $navbar-button-border-radius;
 		border          : $navbar-button-border;
 		font-size       : $navbar-button-font-size;
 		> *{
@@ -93,13 +94,13 @@
 	}
 	///-----------------------------------------------------------------
 	@include element ('title') {
-		font-size: $navbar-title-font-size;
-		color: var(--px-navbar-title-color, $navbar-title-font-color);
+		//font-size: $navbar-title-font-size;
+		//color: var(--px-navbar-title-color, $navbar-title-font-color);
 	}
 
 	///-----------------------------------------------------------------
 	@include element ('subtitle') {
-		font-size: $navbar-subtitle-font-size;
-		color: var(--px-navbar-subtitle-color, $navbar-subtitle-font-color);
+		//font-size: $navbar-subtitle-font-size;
+		//color: var(--px-navbar-subtitle-color, $navbar-subtitle-font-color);
 	}
 }

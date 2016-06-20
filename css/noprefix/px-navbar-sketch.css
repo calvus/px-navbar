@@ -232,7 +232,8 @@ button.btn {
   transition: var(--px-navbar-transition, transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1)); }
   .navbar--is-hidden {
     transform: translate3d(0, -100%, 0); }
-  .navbar *, .navbar ::content > * {
+  .navbar *,
+  .navbar ::content > * {
     -webkit-touch-callout: none;
     /* iOS Safari */
     -webkit-user-select: none;
@@ -246,7 +247,9 @@ button.btn {
     user-select: none;
     /* Non-prefixed version, currently
                                  not supported by any browser */ }
-  .navbar button, .navbar ::content button, .navbar ::content .btn {
+  .navbar ::content .btn,
+  .navbar ::content button,
+  .navbar button {
     outline: none; }
   .navbar--tiny {
     padding: 0.3333333333rem; }
@@ -289,7 +292,7 @@ button.btn {
     align-content: center; }
   .navbar__right {
     order: 3;
-    align-self: flex-end;
+    align-self: center;
     display: flex;
     align-content: center; }
   .navbar__title {
@@ -309,7 +312,7 @@ button.btn {
   .navbar .navbar__button {
     padding: 0.3333333333rem;
     letter-spacing: 0;
-    line-height: 33px;
+    line-height: 20px;
     padding: 0.3333333333rem;
     min-width: 44px;
     min-height: 44px;
@@ -317,7 +320,10 @@ button.btn {
     vertical-align: middle;
     box-shadow: none;
     display: flex;
-    align-items: center; }
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    box-sizing: border-box; }
     .navbar ::content .navbar__button.btn,
     .navbar .navbar__button.btn {
       min-width: 44px;
@@ -331,7 +337,7 @@ button.btn {
     .navbar ::content .navbar__button:disabled, .navbar ::content .navbar__button[disabled],
     .navbar .navbar__button:disabled,
     .navbar .navbar__button[disabled] {
-      opacity: .3;
+      opacity: 0.3;
       cursor: default;
       pointer-events: none; }
     .navbar ::content .navbar__button:focus,
