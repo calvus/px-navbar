@@ -7,28 +7,49 @@
  * with the terms and conditions stipulated in the agreement/contract
  * under which the software has been supplied.
  */
+@import "px-defaults-design/_settings.defaults.scss";
+@import "px-colors-design/_settings.colors.scss";
 @import 'variables';
 @import 'px-mobile-design/sass/_mixins.scss';
 @import 'px-navbar-sketch.scss';
 
-@include b('navbar') {
-	font-size: $inuit-base-font-size;
+@include b ('navbar') {
+	font-size       : $inuit-base-font-size;
 	border-bottom   : $navbar-default-border-bottom;
-	border-bottom: var(--px-navbar-border-bottom, $navbar-default-border-bottom);
+	border-bottom   : var(--px-navbar-border-bottom, $navbar-default-border-bottom);
 	background-color: var(--px-navbar-background-color, $navbar-default-background-color);
-	color: var(--px-navbar-color, $navbar-default-font-color);
+	color           : var(--px-navbar-color, $navbar-default-font-color);
+
+	///--------------------------------------------------------------------
+	///Stying distrubited content
+	::content {
+		$inuit-enable-btn--primary: true;
+		$inuit-enable-btn--tertiary: true;
+		$inuit-enable-btn--small: true;
+		$inuit-enable-btn--large: true;
+		$inuit-enable-btn--huge: true;
+		$inuit-enable-btn--full: true;
+		$inuit-enable-btn--icon: true;
+		$inuit-enable-btn--bare: true;
+		$inuit-enable-btn--disabled: true;
+		@import "px-buttons-design/_objects.buttons.scss";
+
+		.btn {
+			min-width : $navbar-button-width;
+			min-height: $navbar-button-height;
+		}
+
+	}
 
 	///-----------------------------------------------------------------
 	///.navbar--transparent
 	@include modifier ('transparent') {
 		background-color: transparent;
 		color           : $navbar-default-font-color;
-
 		.navbar__button {
 			color: $navbar-default-font-color;
 		}
 	}
-
 
 	///-----------------------------------------------------------------
 	///.navbar--shadow
@@ -69,23 +90,17 @@
 			color: $navbar-primary-font-color;
 		}
 	}
-///-----------------------------------------------------------------
+	///-----------------------------------------------------------------
 	//::content .navbar__button {
-	@include c('.navbar__button') {
-		display: flex;
-		align-items: center;
-		align-content: center;
-		justify-content: center;
-		//		color: var(--px-navbar-color, $navbar-default-font-color);
+	@include c ('.navbar__button') {
 		background-color: $navbar-button-background-color;
-	//	border-radius   : $navbar-button-border-radius;
 		border          : $navbar-button-border;
+		border-radius  	: $navbar-button-border-radius;
 		font-size       : $navbar-button-font-size;
-		> *{
+		> * {
+			display: flex;
 			align-self: center;
-			flex: 1;
 		}
-
 		&:active {
 			background-color: $navbar-button-background-color--active;
 			transition      : none;

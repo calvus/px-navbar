@@ -34,7 +34,8 @@ $navbar-padding                        : $inuit-base-spacing-unit--tiny;
 ///
 $navbar-button-font-size               : $inuit-base-font-size;
 $navbar-button-padding                 : $inuit-base-spacing-unit--tiny;
-$navbar-button-height                  : 44px;
+$navbar-button-height                  : calculateRem(44px);
+$navbar-button-width                   : calculateRem(44px);
 $navbar-button-background-color        : rgba(0, 0, 0, 0);
 $navbar-button-border-radius           : 2px;
 $navbar-button-border                  : 1px solid transparent;

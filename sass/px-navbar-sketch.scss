@@ -12,17 +12,7 @@
 ///
 @import 'px-mobile-design/sass/_mixins.scss';
 
-$inuit-enable-btn--small: true;
-$inuit-enable-btn--bare: true;
-$inuit-enable-btn--icon: true;
-$inuit-enable-btn--full: true;
-$inuit-enable-btn--large: true;
-$inuit-enable-btn--huge: true;
-$inuit-enable-btn--primary: true;
-$inuit-enable-btn--tertiary: true;
 
-// Generic
-@import "px-buttons-design/_objects.buttons.scss";
 
 //Base
 
@@ -144,7 +134,7 @@ $inuit-enable-btn--tertiary: true;
 		align-self   : center;
 		display      : flex;
 		align-content: center;
-	//	margin-right : $navbar-padding--small;
+		//	margin-right : $navbar-padding--small;
 	}
 	///.navbar__title
 	@include element ('title') {
@@ -170,22 +160,22 @@ $inuit-enable-btn--tertiary: true;
 
 	///.navbar__button
 	@include c ('.navbar__button') {
-		padding       : $navbar-button-padding;
-		letter-spacing: 0;
-		line-height   : $inuit-base-line-height;
+		padding        : $navbar-button-padding;
+		letter-spacing : 0;
+		line-height    : $inuit-base-line-height;
 
-		padding       : $navbar-button-padding;
-		min-width     : $navbar-button-height;
-		min-height    : $navbar-button-height;
-		transition    : none;
-		vertical-align: middle;
-		box-shadow    : none;
-
-		display       : flex;
-		align-items   : center;
-		align-content: center;
+		padding        : $navbar-button-padding;
+		min-width      : $navbar-button-height;
+		min-height     : $navbar-button-height;
+		transition     : none;
+		vertical-align : middle;
+		box-shadow     : none;
+		display        : flex;
+		align-items    : center;
+		align-content  : center;
 		justify-content: center;
-		box-sizing: border-box;
+		box-sizing     : border-box;
+
 		&.btn {
 			min-width: $navbar-button-height;
 			height   : $navbar-button-height;
@@ -199,7 +189,7 @@ $inuit-enable-btn--tertiary: true;
 
 		&:disabled,
 		&[disabled] {
-			opacity       : 0.3;
+			opacity       : .3;
 			cursor        : default;
 			pointer-events: none;
 		}
@@ -221,9 +211,6 @@ $inuit-enable-btn--tertiary: true;
 		}
 	}
 
-	.btn {
-		min-width : $navbar-button-height;
-		min-height: $navbar-button-height;
-	}
+
 
 }

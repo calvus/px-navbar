@@ -44,6 +44,7 @@ Custom property | Description | Default
 `--px-navbar`   | Style mixin to be applied to the element | null
 `--px-navbar-title` 			| Style mixin applied to the title | {}
 `--px-navbar-subtitle` 			| Style mixin applied to the sub title | {}
+`--px-navbar-button` 			| Style mixin applied to the button | {}
 
 @element px-navbar.html
 @blurb px-navbar
@@ -52,24 +53,28 @@ Custom property | Description | Default
 @homepage index.html
 -->
 <dom-module id="px-navbar">
+
 	<link rel="import" type="css" href="css/px-navbar.css">
-
 	<template strip-whitespace>
-	<style media="screen">
-		:host {
-			display: block;
 
-		}
-		:host .navbar {
-			@apply(--px-navbar);
-		}
-		:host .navbar__title {
-			@apply(--px-navbar-title);
-		}
-		:host .navbar__subtitle {
-			@apply(--px-navbar-subtitle);
-		}
-	</style>
+		<style media="screen">
+			:host {
+				display: block;
+
+			}
+			:host .navbar {
+				@apply(--px-navbar);
+			}
+			:host .navbar .navbar__title {
+				@apply(--px-navbar-title);
+			}
+			:host .navbar .navbar__subtitle {
+				@apply(--px-navbar-subtitle);
+			}
+			:host .navbar .navbar__button, :host .navbar ::content .navbar__button {
+				@apply(--px-navbar-button);
+			}
+		</style>
 		<nav id="navbar" class="navbar">
 			<div class="navbar__inner">
 				<div id="left" class="navbar__left">
@@ -120,20 +125,25 @@ Custom property | Description | Default
 		Polymer({
 			is: 'px-navbar',
 			behaviors: [
-				Polymer.IronScrollTargetBehavior, Polymer.IronResizableBehavior
+				Polymer.IronScrollTargetBehavior,
+				Polymer.IronResizableBehavior
 			],
 			properties: {
 				/**
 				 * The sub-title to display.
 					*/
 				subtitle: {
-					type: String
+					type: String,
+					notify: true,
+					reflectToAttribute: true
 				},
 				/**
 				 * The title to display.
 				 */
 				title: {
-					type: String
+					type: String,
+					notify: true,
+					reflectToAttribute: true
 				},
 				/**
 				 * The #id of the view container.
@@ -173,12 +183,6 @@ Custom property | Description | Default
 					type: Boolean,
 					value: false,
 					observer: '_handleAutoHide'
-				},
-				/**
-				 * The view containers instance.
-				 */
-				views: {
-					type: Object
 				},
 				/**
 				 * To show the back button or not.
