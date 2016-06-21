@@ -14,11 +14,14 @@
 <link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
 <link rel="import" href="../iron-scroll-target-behavior/iron-scroll-target-behavior.html">
 <!--
-<p>
-  For demo visit <a href="demo.html" target="_blank">Full demo here</a> or <a href="mobile-demo.html" target="_blank">Mobile demo here</a>
-</p>
+
 
 The `px-navbar` enables navigation through an information hierarchy and, optionally, management of screen contents.
+
+[![Build Status](https://travis-ci.org/PredixDev/px-navbar.svg?branch=master)](https://travis-ci.org/PredixDev/px-navbar)
+
+
+For demo visit <a href="demo.html" target="_blank">Full demo here</a> or <a href="mobile-demo.html" target="_blank">Mobile demo here</a>
 
 ### Usage
 
@@ -38,6 +41,7 @@ The `px-navbar` enables navigation through an information hierarchy and, optiona
 
 
 ### Styling
+The following custom properties are available for styling:
 
 Custom property | Description | Default
 ------------ | ------------- | ------------
@@ -71,7 +75,9 @@ Custom property | Description | Default
 			:host .navbar .navbar__subtitle {
 				@apply(--px-navbar-subtitle);
 			}
-			:host .navbar .navbar__button, :host .navbar ::content .navbar__button {
+			:host .navbar .navbar__button, 
+			:host .navbar ::content .navbar__button,
+			:host .navbar ::content .btn {
 				@apply(--px-navbar-button);
 			}
 		</style>
