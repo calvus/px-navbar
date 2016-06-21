@@ -58,7 +58,7 @@ Custom property | Description | Default
 	<style media="screen">
 		:host {
 			display: block;
-			
+
 		}
 		:host .navbar {
 			@apply(--px-navbar);
@@ -227,23 +227,6 @@ Custom property | Description | Default
 			 * Handle setting up the class naming when attached.
 			 */
 			attached: function () {
-<<<<<<< HEAD
-				var _this = this;
-	console.log(this.tagName, 'attached');
-				_this.async(function () {
-				//	_this.toggleClass('navbar', true, this.$.navbar);
-					if (_this.theme) {
-						_this.toggleClass('navbar--' + _this.theme, true, this.$.navbar);
-					}
-					if (_this.shadow) {
-						_this.toggleClass('navbar--shadow', true, this.$.navbar);
-					}
-					if (_this.fixed) {
-						_this.toggleClass('navbar--fixed', true, this.$.navbar);
-					}
-					_this._setupHandlers();
-					_this._fixButtons();
-=======
 				this.toggleClass('navbar', true, this.$.navbar);
 				if (this.shadow) {
 					this.toggleClass('navbar--shadow', true, this.$.navbar);
@@ -254,17 +237,12 @@ Custom property | Description | Default
 				this.async(function () {
 					this._setupHandlers();
 					this._fixButtons();
->>>>>>> 8314640776bd6523c48ddf4ee6522a88947939ca
 				});
 			},
 			/**
 			 * Handle cleaning up the event listeners when the component is detached.
 			 */
 			detached: function () {
-<<<<<<< HEAD
-				console.log(this.tagName, 'detached', 'cleaning up handlers');
-=======
->>>>>>> 8314640776bd6523c48ddf4ee6522a88947939ca
 				this._cleanupHandlers();
 			},
 			/**
