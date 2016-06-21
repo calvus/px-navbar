@@ -237,13 +237,10 @@ button.btn {
   user-select: none;
   /* Non-prefixed version, currently
                                  not supported by any browser */
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-  transition: var(--px-navbar-transition, -webkit-transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1));
+  transform: translate3d(0, 0, 0);
   transition: var(--px-navbar-transition, transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1)); }
   .navbar--is-hidden {
-    -webkit-transform: translate3d(0, -100%, 0);
-            transform: translate3d(0, -100%, 0); }
+    transform: translate3d(0, -100%, 0); }
   .navbar *, .navbar ::content > * {
     -webkit-touch-callout: none;
     /* iOS Safari */
@@ -277,15 +274,12 @@ button.btn {
   .navbar__inner {
     box-sizing: border-box;
     white-space: nowrap;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-justify-content: space-between;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
     height: 56px;
     padding: 0.3333333333rem;
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     overflow: hidden; }
@@ -293,46 +287,34 @@ button.btn {
     position: absolute;
     top: 50%;
     left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-    -webkit-order: 2;
-        -ms-flex-order: 2;
-            order: 2;
-    -webkit-flex: 1 0 auto;
-        -ms-flex: 1 0 auto;
-            flex: 1 0 auto;
-    -webkit-align-self: center;
-        -ms-flex-item-align: center;
-            align-self: center;
+    transform: translate(-50%, -50%);
+    -ms-flex-order: 2;
+        order: 2;
+    -ms-flex: 1 0 auto;
+        flex: 1 0 auto;
+    -ms-flex-item-align: center;
+        align-self: center;
     text-align: center; }
     .navbar__center > * {
       display: block; }
   .navbar__left {
-    -webkit-order: 0;
-        -ms-flex-order: 0;
-            order: 0;
-    -webkit-align-self: center;
-        -ms-flex-item-align: center;
-            align-self: center;
-    display: -webkit-flex;
+    -ms-flex-order: 0;
+        order: 0;
+    -ms-flex-item-align: center;
+        align-self: center;
     display: -ms-flexbox;
     display: flex;
-    -webkit-align-content: center;
-        -ms-flex-line-pack: center;
-            align-content: center; }
+    -ms-flex-line-pack: center;
+        align-content: center; }
   .navbar__right {
-    -webkit-order: 3;
-        -ms-flex-order: 3;
-            order: 3;
-    -webkit-align-self: flex-end;
-        -ms-flex-item-align: end;
-            align-self: flex-end;
-    display: -webkit-flex;
+    -ms-flex-order: 3;
+        order: 3;
+    -ms-flex-item-align: end;
+        align-self: flex-end;
     display: -ms-flexbox;
     display: flex;
-    -webkit-align-content: center;
-        -ms-flex-line-pack: center;
-            align-content: center; }
+    -ms-flex-line-pack: center;
+        align-content: center; }
   .navbar__title {
     display: block;
     margin: 0;
@@ -349,12 +331,10 @@ button.btn {
             user-select: none; }
   .navbar__content {
     position: relative;
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    -webkit-justify-content: space-between;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
     overflow: hidden; }
   .navbar ::content .navbar__button,
   .navbar .navbar__button {
@@ -367,12 +347,10 @@ button.btn {
     transition: none;
     vertical-align: middle;
     box-shadow: none;
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center; }
+    -ms-flex-align: center;
+        align-items: center; }
     .navbar ::content .navbar__button.btn,
     .navbar .navbar__button.btn {
       min-width: 44px;
@@ -381,12 +359,10 @@ button.btn {
     .navbar ::content .navbar__button span,
     .navbar .navbar__button i,
     .navbar .navbar__button span {
-      -webkit-flex: 1 0 auto;
-          -ms-flex: 1 0 auto;
-              flex: 1 0 auto;
-      -webkit-align-self: center;
-          -ms-flex-item-align: center;
-              align-self: center; }
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+      -ms-flex-item-align: center;
+          align-self: center; }
     .navbar ::content .navbar__button:disabled, .navbar ::content .navbar__button[disabled],
     .navbar .navbar__button:disabled,
     .navbar .navbar__button[disabled] {
@@ -439,27 +415,22 @@ button.btn {
       color: white; }
   .navbar ::content .navbar__button,
   .navbar .navbar__button {
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-align-content: center;
-        -ms-flex-line-pack: center;
-            align-content: center;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-line-pack: center;
+        align-content: center;
     background-color: transparent;
     border-radius: 2px;
     border: 1px solid transparent;
     font-size: 1.1333333333rem; }
     .navbar ::content .navbar__button > *,
     .navbar .navbar__button > * {
-      -webkit-align-self: center;
-          -ms-flex-item-align: center;
-              align-self: center;
-      -webkit-flex: 1;
-          -ms-flex: 1;
-              flex: 1; }
+      -ms-flex-item-align: center;
+          align-self: center;
+      -ms-flex: 1;
+          flex: 1; }
     .navbar ::content .navbar__button:active,
     .navbar .navbar__button:active {
       background-color: rgba(0, 0, 0, 0.5);
