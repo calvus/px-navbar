@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/PredixDev/px-navbar.svg?branch=master)](https://travis-ci.org/PredixDev/px-navbar)
 
+[![Coverage Status](https://coveralls.io/repos/github/PredixDev/px-navbar/badge.svg?branch=master)](https://coveralls.io/github/PredixDev/px-navbar?branch=master)
 
 ## Overview
 
