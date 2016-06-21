@@ -58,6 +58,59 @@ function runCustomTests() {
       });
 
     });
+
+    suite('Events', function () {
+      test('_handleBackClick() - fires px-page-back when back button is pressed', function (done) {
+        element.addEventListener('px-page-back', function (event) {
+          assert(event);
+          done();
+        });
+        element._handleBackClick();
+      });
+
+      test('_handleNaviconClick() - dispatches px-drawer-toggle event', function (done) {
+        element.addEventListener('px-drawer-toggle', function (event) {
+          assert(event);
+          done();
+        });
+        element._handleNaviconClick();
+      });
+    });
+
+    suite('Methods', function () {
+
+      test('attached() - Should add proper classes to element', function () {
+        var shadowNavbar = document.getElementById('fixture_shadow');
+        assert(shadowNavbar.$.navbar.classList.contains('navbar--shadow'));
+        assert(shadowNavbar.shadow === true);
+
+        var fixedNavbar = document.getElementById('fixture_fixed');
+        assert(fixedNavbar.$.navbar.classList.contains('navbar--fixed'));
+        assert(fixedNavbar.fixed === true);
+      });
+
+
+
+      test('hide() - hides element', function () {
+        element.hide();
+        assert(element.isHidden === true);
+      });
+
+      test('show() - shows element', function () {
+        element.show();
+        assert(element.isHidden === false);
+      });
+
+      test('toggle() - toggles visiblity of element', function () {
+        element.toggle();
+        assert(element.isHidden === true);
+      });
+
+      test('getHeight() - returns element height', function () {
+        assert.equal(element.getHeight(), 57);
+      });
+
+    });
   });
   // This is the placeholder suite to place custom tests in
   // Use testCase(options) for a more convenient setup of the test cases

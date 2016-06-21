@@ -181,12 +181,6 @@ Custom property | Description | Default
 					type: Object
 				},
 				/**
-				 * The drawer id.
-				 */
-				drawer: {
-					type: Object
-				},
-				/**
 				 * To show the back button or not.
 				 */
 				back: {
@@ -233,6 +227,7 @@ Custom property | Description | Default
 			 * Handle setting up the class naming when attached.
 			 */
 			attached: function () {
+<<<<<<< HEAD
 				var _this = this;
 	console.log(this.tagName, 'attached');
 				_this.async(function () {
@@ -248,33 +243,44 @@ Custom property | Description | Default
 					}
 					_this._setupHandlers();
 					_this._fixButtons();
+=======
+				this.toggleClass('navbar', true, this.$.navbar);
+				if (this.shadow) {
+					this.toggleClass('navbar--shadow', true, this.$.navbar);
+				}
+				if (this.fixed) {
+					this.toggleClass('navbar--fixed', true, this.$.navbar);
+				}
+				this.async(function () {
+					this._setupHandlers();
+					this._fixButtons();
+>>>>>>> 8314640776bd6523c48ddf4ee6522a88947939ca
 				});
 			},
 			/**
 			 * Handle cleaning up the event listeners when the component is detached.
 			 */
 			detached: function () {
+<<<<<<< HEAD
 				console.log(this.tagName, 'detached', 'cleaning up handlers');
+=======
+>>>>>>> 8314640776bd6523c48ddf4ee6522a88947939ca
 				this._cleanupHandlers();
 			},
 			/**
 			 * Handle setting up the event listeners to the 'change' event of the views
 			 */
 			_setupHandlers: function () {
-				var _this = this;
-				if (_this.viewContainer) {
-					//_this.views = document.getElementById(_this.viewContainer);
-					_this.listen(_this.viewContainer, 'px-page-change', '_handleViewChange');
-					//_this.views.addEventListener('px-page-change', _this._handleViewChange.bind(this));
+				if (this.viewContainer) {
+					this.listen(this.viewContainer, 'px-page-change', '_handleViewChange');
 				}
 			},
 			/**
 			 * Cleanup event listeners
 			 */
 			_cleanupHandlers: function () {
-				var _this = this;
-				if (_this.views) {
-					//_this.views.removeEventListener('px-page-change', _this._handleViewChange.bind(this));
+				if (this.viewContainer) {
+					this.unlisten(this.viewContainer, 'px-page-change', '_handleViewChange');
 				}
 			},
 			/**
@@ -291,7 +297,6 @@ Custom property | Description | Default
 								? false
 								: true);
 						}
-						_this.theme = current.getAttribute('theme');
 						_this.title = current.getAttribute('title');
 					});
 					//_this.back = (current !== _this.views.main); _this.backLabel = (_this.views.prevView ? _this.views.prevView.title : ''); console.log(_this.tagName, _this.id, 'Add back button to current page', _this.back);
@@ -301,21 +306,13 @@ Custom property | Description | Default
 			 * Handle when the back button is clicked.
 			 */
 			_handleBackClick: function () {
-				if (this.views) {
-					this.views.fire('px-page-back');
-					this.views.back();
-				}
 				this.fire('px-page-back');
 			},
 			/**
 			 * Handle when the navicon button is clicked.
 			 */
 			_handleNaviconClick: function () {
-				if (this.drawer && this.drawer.toggle) {
-					this.drawer.toggle();
-				} else {
-					console.warn(this.tagName, 'could not find drawer');
-				}
+				this.fire('px-drawer-toggle');
 			},
 			/**
 			 * Toggle the display of the navbar.
