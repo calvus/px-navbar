@@ -107,7 +107,7 @@ function runCustomTests() {
       });
 
       test('getHeight() - returns element height', function () {
-        assert.equal(element.getHeight(), 57);
+        assert.equal(element.getHeight(), 56);
       });
 
     });
