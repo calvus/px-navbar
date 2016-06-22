@@ -101,4 +101,4 @@ gulp.task('styles', gulpSequence('clean', 'sass', 'autoprefixer', 'poly-styles')
 
 gulp.task('watch', ['sass:watch', 'autoprefixer:watch']);
 
-gulp.task('default', gulpSequence('clean', 'sass', 'autoprefixer', 'css', 'sassdoc'));
+gulp.task('default', gulpSequence('clean', 'sass', 'autoprefixer', 'css', 'sassdoc', 'poly-styles'));

@@ -13,6 +13,7 @@
 <link rel="import" href="../px-partials/px-icon/px-icon.html"/>
 <link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
 <link rel="import" href="../iron-scroll-target-behavior/iron-scroll-target-behavior.html">
+<link rel="import" href="px-navbar-styles.html">
 <!--
 
 
@@ -57,8 +58,10 @@ Custom property | Description | Default
 @homepage index.html
 -->
 <dom-module id="px-navbar">
-
+<!--
 	<link rel="import" type="css" href="css/px-navbar.css">
+	-->
+	<style include="px-navbar-css"></style>
 	<template strip-whitespace>
 
 		<style media="screen">
@@ -75,7 +78,7 @@ Custom property | Description | Default
 			:host .navbar .navbar__subtitle {
 				@apply(--px-navbar-subtitle);
 			}
-			:host .navbar .navbar__button, 
+			:host .navbar .navbar__button,
 			:host .navbar ::content .navbar__button,
 			:host .navbar ::content .btn {
 				@apply(--px-navbar-button);
