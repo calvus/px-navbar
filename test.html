@@ -13,25 +13,27 @@
 		</style>
 	</head>
 	<body>
-		<px-navbar id="navbarfixture" title="WCT">
+		<h3>Web Component Test : Fixture for px-navbar</h3>
+		<px-navbar id="fixture" title="WCT">
 			<div class="navbar__right">
 				<button class="navbar__button" onclick="pagesFixture.next()">Next</button>
 			</div>
 		</px-navbar>
-		<!--
-	link rel="import" href="../px-page/px-pages.html">
-	<px-pages id="pagesFixture">
-		<px-page id="page1" title="Page1">
-
-		</px-page>
-		<px-page id="page2" title="Page2">
-			<px-navbar sidebar-container="sidebarFixture"></px-navbar>
-		</px-page>
-	</px-pages>
--->
+		<px-navbar id="fixture_shadow" shadow></px-navbar>
+		<px-navbar id="fixture_fixed" fixed></px-navbar>
+		<link rel="import" href="../px-page/px-pages.html">
+		<px-pages id="pagesFixture">
+			<px-page id="page1" title="Page1" main>
+				<px-navbar id="page1navbar"></px-navbar>
+			</px-page>
+			<px-page id="page2" title="Page2">
+				<px-navbar id="page2navbar"></px-navbar>
+			</px-page>
+		</px-pages>
 		<script>
+			// Place any setup steps like variable declaration and initialization here
 			suite('<px-navbar>', function () {
-				var element = document.getElementById('navbarfixture');
+				var element = document.getElementById('fixture');
 				test('it should have render', function () {
 					assert.ok(element);
 				});
@@ -74,10 +76,83 @@
 						assert.equal(element.backBtnLabel, 'Back to Settings');
 					});
 				});
-				suite('Methods', function () {
-					test('getHeight() - returns element height', function () {
-						assert.equal(element.getHeight(), 57);
+				suite('Events', function () {
+					test('_handleBackClick() - fires px-page-back when back button is pressed', function (done) {
+						element.addEventListener('px-page-back', function (event) {
+							assert(event);
+							done();
+						});
+						element._handleBackClick();
 					});
+					test('_handleNaviconClick() - dispatches px-drawer-toggle event', function (done) {
+						element.addEventListener('px-drawer-toggle', function (event) {
+							assert(event);
+							done();
+						});
+						element._handleNaviconClick();
+					});
+				});
+				suite('Methods', function () {
+					test('attached() - Should add proper classes to element', function () {
+						var shadowNavbar = document.getElementById('fixture_shadow');
+						assert(shadowNavbar.$.navbar.classList.contains('navbar--shadow'));
+						assert(shadowNavbar.shadow === true);
+						var fixedNavbar = document.getElementById('fixture_fixed');
+						assert(fixedNavbar.$.navbar.classList.contains('navbar--fixed'));
+						assert(fixedNavbar.fixed === true);
+					});
+					test('hide() - hides element', function () {
+						element.hide();
+						assert(element.isHidden === true);
+					});
+					test('show() - shows element', function () {
+						element.show();
+						assert(element.isHidden === false);
+					});
+					test('toggle() - toggles visiblity of element', function () {
+						element.toggle();
+						assert(element.isHidden === true);
+					});
+					test('getHeight() - returns element height', function () {
+						assert.isAtMost(element.getHeight(), 57);
+					});
+
+					test('px-page should set reference on child navbar', function () {
+						var page = document.getElementById('page1');
+						assert(page);
+						var navbar = page.navbar;
+						assert(navbar);
+						assert(document.getElementById('page1navbar') === navbar);
+					});
+
+					test('getCurrentPage() - returns the current px-page', function () {
+						var pagesFixture = document.getElementById('pagesFixture');
+						var currentPage = pagesFixture.getSelectedPage();
+						var navbar = currentPage.navbar;
+						assert(navbar.getCurrentPage() === currentPage);
+					});
+
+					test('navbar should NOT show back button if on main page', function (done) {
+						var pagesFixture = document.getElementById('pagesFixture');
+						var currentPage = pagesFixture.getSelectedPage();
+						var navbar = currentPage.navbar;
+
+						assert(!navbar.back);
+						done();
+					});
+					test('navbar should show back button if not on main page', function (done) {
+						var pagesFixture = document.getElementById('pagesFixture');
+						pagesFixture.next();
+
+						setTimeout(function () {
+							var currentPage = pagesFixture.getSelectedPage();
+							var navbar = currentPage.navbar;
+							assert(navbar.back);
+							done();
+						}, 1000);
+					});
+
+
 				});
 			});
 		</script>

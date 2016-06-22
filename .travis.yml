@@ -19,3 +19,7 @@ before_script:
 script:
 - xvfb-run npm run dist
 - xvfb-run wct --skip-plugin sauce
+after_success:
+- cd $TRAVIS_BUILD_DIR/scripts
+- chmod 755 ghp.sh
+- "./ghp.sh"

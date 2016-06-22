@@ -107,8 +107,48 @@ function runCustomTests() {
       });
 
       test('getHeight() - returns element height', function () {
-        assert.equal(element.getHeight(), 56);
+        assert.isAtMost(element.getHeight(), 57);
       });
+
+      test('px-page should set reference on child navbar', function () {
+        var page = document.getElementById('page1');
+        var pnavbar = document.getElementById('page1navbar');
+        var navbar = page.navbar;
+        assert(navbar);
+        assert(page);
+        assert(pnavbar === navbar);
+      });
+
+      test('getCurrentPage() - returns the current px-page', function () {
+        var pagesFixture = document.getElementById('pagesFixture');
+        var currentPage = pagesFixture.getSelectedPage();
+        var navbar = currentPage.navbar;
+        assert(navbar.getCurrentPage() === currentPage);
+      });
+
+      test('navbar should NOT show back button if on main page', function (done) {
+        var pagesFixture = document.getElementById('pagesFixture');
+
+        setTimeout(function () {
+          var currentPage = pagesFixture.getSelectedPage();
+          var navbar = currentPage.navbar;
+          assert(!navbar.back);
+          done();
+        }, 500);
+
+      });
+      test('navbar should show back button if not on main page', function (done) {
+        var pagesFixture = document.getElementById('pagesFixture');
+        pagesFixture.next();
+
+        setTimeout(function () {
+          var currentPage = pagesFixture.getSelectedPage();
+          var navbar = currentPage.navbar;
+          assert(navbar.back);
+          done();
+        }, 500);
+      });
+
 
     });
   });

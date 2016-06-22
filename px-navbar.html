@@ -61,7 +61,6 @@ Custom property | Description | Default
 <!--
 	<link rel="import" type="css" href="css/px-navbar.css">
 	-->
-
 	<template strip-whitespace>
 		<style include="px-navbar-css"></style>
 		<style media="screen">
@@ -105,7 +104,6 @@ Custom property | Description | Default
 						</button>
 					</template>
 				</div>
-
 				<div class="navbar__center">
 					<span class="navbar__title">
 						<span hidden$="{{!title}}">{{title}}</span>
@@ -117,11 +115,9 @@ Custom property | Description | Default
 					</span>
 					<content select="[center]"></content>
 				</div>
-
 				<div id="right" class="navbar__right">
 					<content select="[right]"></content>
 				</div>
-
 				<content id="navbarContent" select="[content]"></content>
 			</div>
 		</nav>
@@ -159,8 +155,9 @@ Custom property | Description | Default
 				},
 				/**
 				 * The #id of the view container.
+				 * @private
 				 */
-				viewContainer: {
+				pagesContainer: {
 					type: String,
 					notify: true,
 					reflectToAttribute: true
@@ -265,16 +262,16 @@ Custom property | Description | Default
 			 * Handle setting up the event listeners to the 'change' event of the views
 			 */
 			_setupHandlers: function () {
-				if (this.viewContainer) {
-					this.listen(this.viewContainer, 'px-page-change', '_handleViewChange');
+				if (this.pagesContainer) {
+					this.listen(this.pagesContainer, 'px-page-change', '_handleViewChange');
 				}
 			},
 			/**
 			 * Cleanup event listeners
 			 */
 			_cleanupHandlers: function () {
-				if (this.viewContainer) {
-					this.unlisten(this.viewContainer, 'px-page-change', '_handleViewChange');
+				if (this.pagesContainer) {
+					this.unlisten(this.pagesContainer, 'px-page-change', '_handleViewChange');
 				}
 			},
 			/**
@@ -330,12 +327,14 @@ Custom property | Description | Default
 				this.toggleClass('navbar--is-hidden', newVal, this.$.navbar);
 			},
 			/**
-			 * Handle getting the current view/page, if there is a viewContainer.
+			 * Handle getting the current view/page, if there is a pagesContainer.
 			 * @returns Element The current active view.
 			 */
-			getCurrentView: function () {
-				if (this.viewContainer && this.views) {
-					return this.views.getCurrent();
+			getCurrentPage: function () {
+				if (this.pagesContainer) {
+					return this.pagesContainer.getCurrent();
+				} else {
+					return false;
 				}
 			},
 			/**
@@ -394,6 +393,14 @@ Custom property | Description | Default
 				}
 				wScrollBefore = wScrollCurrent;
 			}
+			/**
+			 * Fires when the back button is pressed.
+			 * @event px-page-back
+			 */
+			/**
+			 * Fires when the nav button is pressed.
+			 * @event px-drawer-toggle
+			 */
 		});
 	</script>
 </dom-module>
