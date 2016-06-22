@@ -11,7 +11,7 @@
 @import "px-colors-design/_settings.colors.scss";
 @import 'variables';
 @import 'px-mobile-design/sass/_mixins.scss';
-@import 'px-navbar-sketch.scss';
+
 
 @include b ('navbar') {
 	font-size       : $inuit-base-font-size;
