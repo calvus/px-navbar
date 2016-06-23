@@ -31,7 +31,7 @@ module.exports = function (grunt) {
 
 		autoprefixer: {
 			options: {
-				browsers: ['last 2 version']
+				browsers: ['last 2 versions', 'Safari 8' ]
 			},
 			multiple_files: {
 				expand: true,
@@ -119,12 +119,18 @@ module.exports = function (grunt) {
 				}
 			}
 		},
+		cssmin: {
+			target: {
+				files: {
+					'css/<%= pkg.name %>.min.css': ['css/<%= pkg.name %>.css']
+				}
+			}
+		},
 		'polymer-css-compiler': {
-			//Default options sent to task
-			default_options: {
+			target: {
 				filename: '-styles',
 				files: {
-					'./px-navbar.html': ['css/px-navbar.css']
+					'./<%= pkg.name %>.html': ['css/<%= pkg.name %>.min.css']
 				}
 			}
 		}
@@ -140,12 +146,14 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-autoprefixer');
 	grunt.loadNpmTasks('grunt-concurrent');
 	grunt.loadNpmTasks('web-component-tester');
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('polymer-css-compiler');
 	// Default task.
 	grunt.registerTask('default', 'Basic build', [
 		'clean:css',
 		'sass',
 		'autoprefixer',
+		'cssmin',
 		'polymer-css-compiler'
 	]);
 

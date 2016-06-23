@@ -87,10 +87,13 @@
   user-select: none;
   /* Non-prefixed version, currently
                                  not supported by any browser */
-  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  transition: var(--px-navbar-transition, -webkit-transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1));
   transition: var(--px-navbar-transition, transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1)); }
   .navbar--is-hidden {
-    transform: translate3d(0, -100%, 0); }
+    -webkit-transform: translate3d(0, -100%, 0);
+            transform: translate3d(0, -100%, 0); }
   .navbar *,
   .navbar ::content > * {
     -webkit-touch-callout: none;
@@ -127,12 +130,15 @@
   .navbar__inner {
     box-sizing: border-box;
     white-space: nowrap;
-    -ms-flex-align: center;
-        align-items: center;
-    -ms-flex-pack: justify;
-        justify-content: space-between;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     height: 56px;
     padding: 0.3333333333rem;
+    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     overflow: hidden; }
@@ -140,34 +146,46 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-flex-order: 2;
-        order: 2;
-    -ms-flex: 1 0 auto;
-        flex: 1 0 auto;
-    -ms-flex-item-align: center;
-        align-self: center;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    -webkit-order: 2;
+        -ms-flex-order: 2;
+            order: 2;
+    -webkit-flex: 1 0 auto;
+        -ms-flex: 1 0 auto;
+            flex: 1 0 auto;
+    -webkit-align-self: center;
+        -ms-flex-item-align: center;
+            align-self: center;
     text-align: center; }
     .navbar__center > * {
       display: block; }
   .navbar__left {
-    -ms-flex-order: 0;
-        order: 0;
-    -ms-flex-item-align: center;
-        align-self: center;
+    -webkit-order: 0;
+        -ms-flex-order: 0;
+            order: 0;
+    -webkit-align-self: center;
+        -ms-flex-item-align: center;
+            align-self: center;
+    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-line-pack: center;
-        align-content: center; }
+    -webkit-align-content: center;
+        -ms-flex-line-pack: center;
+            align-content: center; }
   .navbar__right {
-    -ms-flex-order: 3;
-        order: 3;
-    -ms-flex-item-align: center;
-        align-self: center;
+    -webkit-order: 3;
+        -ms-flex-order: 3;
+            order: 3;
+    -webkit-align-self: center;
+        -ms-flex-item-align: center;
+            align-self: center;
+    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-line-pack: center;
-        align-content: center; }
+    -webkit-align-content: center;
+        -ms-flex-line-pack: center;
+            align-content: center; }
   .navbar__title {
     display: block;
     margin: 0;
@@ -184,10 +202,12 @@
             user-select: none; }
   .navbar__content {
     position: relative;
+    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-pack: justify;
-        justify-content: space-between;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     overflow: hidden; }
   .navbar ::content .navbar__button,
   .navbar .navbar__button {
@@ -200,14 +220,18 @@
     transition: none;
     vertical-align: middle;
     box-shadow: none;
+    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-align: center;
-        align-items: center;
-    -ms-flex-line-pack: center;
-        align-content: center;
-    -ms-flex-pack: center;
-        justify-content: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-align-content: center;
+        -ms-flex-line-pack: center;
+            align-content: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     box-sizing: border-box; }
     .navbar ::content .navbar__button.btn,
     .navbar .navbar__button.btn {
@@ -217,10 +241,12 @@
     .navbar ::content .navbar__button span,
     .navbar .navbar__button i,
     .navbar .navbar__button span {
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto;
-      -ms-flex-item-align: center;
-          align-self: center; }
+      -webkit-flex: 1 0 auto;
+          -ms-flex: 1 0 auto;
+              flex: 1 0 auto;
+      -webkit-align-self: center;
+          -ms-flex-item-align: center;
+              align-self: center; }
     .navbar ::content .navbar__button:disabled, .navbar ::content .navbar__button[disabled],
     .navbar .navbar__button:disabled,
     .navbar .navbar__button[disabled] {
@@ -434,10 +460,12 @@
     font-size: 15px; }
     .navbar ::content .navbar__button > *,
     .navbar .navbar__button > * {
+      display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
-      -ms-flex-item-align: center;
-          align-self: center; }
+      -webkit-align-self: center;
+          -ms-flex-item-align: center;
+              align-self: center; }
     .navbar ::content .navbar__button:active,
     .navbar .navbar__button:active {
       background-color: rgba(0, 0, 0, 0.5);
