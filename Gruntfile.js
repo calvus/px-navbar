@@ -1,7 +1,7 @@
 'use strict';
 
 var pkg = require('./package.json');
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
 	var importOnce = require('node-sass-import-once');
 	// Project configuration.
@@ -120,14 +120,12 @@ module.exports = function(grunt) {
 			}
 		},
 		'polymer-css-compiler': {
-			default: {
-				files: [{
-					expand: true,
-					cwd: '',
-					dest: './',
-					src: `css/${pkg.name}.css`,
-					ext: '-styles.html'
-				}]
+			//Default options sent to task
+			default_options: {
+				filename: '-styles',
+				files: {
+					'./px-navbar.html': ['css/px-navbar.css']
+				}
 			}
 		}
 	});
@@ -145,8 +143,10 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('polymer-css-compiler');
 	// Default task.
 	grunt.registerTask('default', 'Basic build', [
+		'clean:css',
 		'sass',
-		'autoprefixer'
+		'autoprefixer',
+		'polymer-css-compiler'
 	]);
 
 	grunt.registerTask('devmode', 'Development Mode', [
@@ -154,7 +154,7 @@ module.exports = function(grunt) {
 	]);
 
 	// First run task.
-	grunt.registerTask('firstrun', 'Basic first run', function() {
+	grunt.registerTask('firstrun', 'Basic first run', function () {
 		grunt.config.set('depserveOpenUrl', '/index.html');
 		grunt.task.run('default');
 		grunt.task.run('depserve');

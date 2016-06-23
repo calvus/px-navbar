@@ -12,7 +12,7 @@
 @import 'variables';
 @import 'px-mobile-design/sass/_mixins.scss';
 
-
+@import 'px-navbar-sketch.scss';
 @include b ('navbar') {
 	font-size       : $inuit-base-font-size;
 	border-bottom   : $navbar-default-border-bottom;
