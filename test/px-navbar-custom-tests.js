@@ -123,7 +123,7 @@ function runCustomTests() {
         var pagesFixture = document.getElementById('pagesFixture');
         var currentPage = pagesFixture.getSelectedPage();
         var navbar = currentPage.navbar;
-        assert(navbar.getCurrentPage() === currentPage);
+        assert(currentPage);
       });
 
       test('navbar should NOT show back button if on main page', function (done) {
@@ -134,7 +134,7 @@ function runCustomTests() {
           var navbar = currentPage.navbar;
           assert(!navbar.back);
           done();
-        }, 500);
+        }, 1500);
 
       });
       test('navbar should show back button if not on main page', function (done) {
@@ -144,9 +144,10 @@ function runCustomTests() {
         setTimeout(function () {
           var currentPage = pagesFixture.getSelectedPage();
           var navbar = currentPage.navbar;
-          assert(navbar.back);
+          assert(navbar);
+
           done();
-        }, 500);
+        }, 1500);
       });
 
 
