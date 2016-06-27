@@ -59,7 +59,6 @@
   position: relative; }
 
 .navbar {
-  z-index: 200;
   position: absolute;
   top: 0;
   left: 0;
@@ -75,8 +74,6 @@
   -ms-user-select: none;
   /* Internet Explorer/Edge */
   user-select: none;
-  /* Non-prefixed version, currently
-                                 not supported by any browser */
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
   transition: var(--px-navbar-transition, -webkit-transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1));
@@ -96,9 +93,7 @@
     /* Firefox */
     -ms-user-select: none;
     /* Internet Explorer/Edge */
-    user-select: none;
-    /* Non-prefixed version, currently
-                                 not supported by any browser */ }
+    user-select: none; }
   .navbar ::content .btn,
   .navbar ::content button,
   .navbar button {
