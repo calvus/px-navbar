@@ -222,6 +222,7 @@ Custom property | Description | Default
 				}
 			},
 			listeners: {
+				'px-page-change': '_handleViewChange',
 				'iron-resize': '_resizeHandler'
 			},
 			observers: ['resetLayout(fixed)'],
@@ -250,6 +251,7 @@ Custom property | Description | Default
 				if (this.fixed) {
 					this.toggleClass('navbar--fixed', true, this.$.navbar);
 				}
+
 				this.async(function () {
 					this._setupHandlers();
 					this._fixButtons();
@@ -265,16 +267,17 @@ Custom property | Description | Default
 			 * Handle setting up the event listeners to the 'change' event of the views
 			 */
 			_setupHandlers: function () {
-				if (this.pagesContainer) {
-					this.listen(this.pagesContainer, 'px-page-change', '_handleViewChange');
+				if (this.pagesContainer && this.pagesContainer.id) {
+					//this.pagesContainer = document.getElementById(this.pagesContainer);
+					//this.listen(this.pagesContainer, 'px-page-change', '_handleViewChange');
 				}
 			},
 			/**
 			 * Cleanup event listeners
 			 */
 			_cleanupHandlers: function () {
-				if (this.pagesContainer) {
-					this.unlisten(this.pagesContainer, 'px-page-change', '_handleViewChange');
+				if (this.pagesContainer && this.pagesContainer.id) {
+				//	this.unlisten(this.pagesContainer, 'px-page-change', '_handleViewChange');
 				}
 			},
 			/**
