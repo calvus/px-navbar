@@ -60,16 +60,16 @@ function runCustomTests() {
     });
 
     suite('Events', function () {
-      test('_handleBackClick() - fires px-page-back when back button is pressed', function (done) {
-        element.addEventListener('px-page-back', function (event) {
+      test('_handleBackClick() - fires px-navbar-back when back button is pressed', function (done) {
+        element.addEventListener('px-navbar-back', function (event) {
           assert(event);
           done();
         });
         element._handleBackClick();
       });
 
-      test('_handleNaviconClick() - dispatches px-drawer-toggle event', function (done) {
-        element.addEventListener('px-drawer-toggle', function (event) {
+      test('_handleNaviconClick() - dispatches px-navbar-toggle event', function (done) {
+        element.addEventListener('px-navbar-toggle', function (event) {
           assert(event);
           done();
         });
@@ -101,9 +101,13 @@ function runCustomTests() {
         assert(element.isHidden === false);
       });
 
-      test('toggle() - toggles visiblity of element', function () {
+      test('toggle() - (hide) toggles visiblity of element', function () {
         element.toggle();
         assert(element.isHidden === true);
+      });
+      test('toggle() - (show) toggles visiblity of element', function () {
+        element.toggle();
+        assert(element.isHidden === false);
       });
 
       test('getHeight() - returns element height', function () {
@@ -135,19 +139,20 @@ function runCustomTests() {
           assert(!navbar.back);
           done();
         }, 1500);
-
       });
+
       test('navbar should show back button if not on main page', function (done) {
         var pagesFixture = document.getElementById('pagesFixture');
-        pagesFixture.next();
+
 
         setTimeout(function () {
+          pagesFixture.next();
           var currentPage = pagesFixture.getSelectedPage();
           var navbar = currentPage.navbar;
           assert(navbar);
 
           done();
-        }, 1500);
+        }, 1000);
       });
 
 

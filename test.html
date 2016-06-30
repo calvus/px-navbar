@@ -76,22 +76,7 @@
 						assert.equal(element.backBtnLabel, 'Back to Settings');
 					});
 				});
-				suite('Events', function () {
-					test('_handleBackClick() - fires px-page-back when back button is pressed', function (done) {
-						element.addEventListener('px-page-back', function (event) {
-							assert(event);
-							done();
-						});
-						element._handleBackClick();
-					});
-					test('_handleNaviconClick() - dispatches px-drawer-toggle event', function (done) {
-						element.addEventListener('px-drawer-toggle', function (event) {
-							assert(event);
-							done();
-						});
-						element._handleNaviconClick();
-					});
-				});
+
 				suite('Methods', function () {
 					test('attached() - Should add proper classes to element', function () {
 						var shadowNavbar = document.getElementById('fixture_shadow');
@@ -109,10 +94,14 @@
 						element.show();
 						assert(element.isHidden === false);
 					});
-					test('toggle() - toggles visiblity of element', function () {
-						element.toggle();
-						assert(element.isHidden === true);
-					});
+					test('toggle() - (hide) toggles visiblity of element', function () {
+		        element.toggle();
+		        assert(element.isHidden === true);
+		      });
+		      test('toggle() - (show) toggles visiblity of element', function () {
+		        element.toggle();
+		        assert(element.isHidden === false);
+		      });
 					test('getHeight() - returns element height', function () {
 						assert.isAtMost(element.getHeight(), 57);
 					});
@@ -125,34 +114,58 @@
 						assert(document.getElementById('page1navbar') === navbar);
 					});
 
-					test('getCurrentPage() - returns the current px-page', function () {
+					test('getCurrentPage() - returns the current px-page', function (done) {
 						var pagesFixture = document.getElementById('pagesFixture');
-						var currentPage = pagesFixture.getSelectedPage();
-						var navbar = currentPage.navbar;
-						assert(navbar.getCurrentPage() === currentPage);
-					});
-
-					test('navbar should NOT show back button if on main page', function (done) {
-						var pagesFixture = document.getElementById('pagesFixture');
-						var currentPage = pagesFixture.getSelectedPage();
-						var navbar = currentPage.navbar;
-
-						assert(!navbar.back);
-						done();
-					});
-					test('navbar should show back button if not on main page', function (done) {
-						var pagesFixture = document.getElementById('pagesFixture');
-						pagesFixture.next();
 
 						setTimeout(function () {
 							var currentPage = pagesFixture.getSelectedPage();
 							var navbar = currentPage.navbar;
-							assert(navbar.back);
+							assert(navbar.getCurrentPage() === currentPage);
 							done();
-						}, 1000);
+						}, 500);
 					});
 
+					test('navbar should NOT show back button if on main page', function (done) {
+		        var pagesFixture = document.getElementById('pagesFixture');
 
+		        setTimeout(function () {
+		          var currentPage = pagesFixture.getSelectedPage();
+		          var navbar = currentPage.navbar;
+		          assert(!navbar.back);
+		          done();
+		        }, 1500);
+		      });
+
+		      test('navbar should show back button if not on main page', function (done) {
+		        var pagesFixture = document.getElementById('pagesFixture');
+
+
+		        setTimeout(function () {
+		          pagesFixture.next();
+		          var currentPage = pagesFixture.getSelectedPage();
+		          var navbar = currentPage.navbar;
+		          assert(navbar);
+
+		          done();
+		        }, 1000);
+		      });
+
+				});
+				suite('Events', function () {
+					test('_handleBackClick() - fires px-navbar-back when back button is pressed', function (done) {
+						element.addEventListener('px-navbar-back', function (event) {
+							assert(event);
+							done();
+						});
+						element._handleBackClick();
+					});
+					test('_handleNaviconClick() - dispatches px-navbar-toggle event', function (done) {
+						element.addEventListener('px-navbar-toggle', function (event) {
+							assert(event);
+							done();
+						});
+						element._handleNaviconClick();
+					});
 				});
 			});
 		</script>
