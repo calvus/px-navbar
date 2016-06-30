@@ -1,0 +1,195 @@
+<html class="pxm">
+
+<head>
+	<title>pxm example demo</title>
+
+	<!-- TODO: dependencies -->
+	<script src="../webcomponentsjs/webcomponents-lite.js"></script>
+	<link rel="import" href="../iron-doc-viewer/iron-doc-viewer.html">
+	<link rel="import" href="../iron-demo-helpers/demo-snippet.html"/>
+
+
+
+	<!-- TODO: pxm components
+<link rel="import" href="../../../dist/px-mobile.min.html">
+-->
+
+	<link rel="import" href="../px-theme/px-theme.html">
+
+	<!-- TODO: pxm components -->
+
+	<link rel="import" href="px-demo-helpers.html">
+	<!-- TError: source does not appear to be markup.DO:-->
+
+	<style media="screen">
+		.page-header {
+			border-bottom: 1px solid #eee;
+		}
+		.position-relative{
+			position: relative;
+			min-height: 400px;
+		}
+
+		.page-header h1 small {
+			color: #888;
+		}
+
+		.component {
+			margin: 0 8px 20px 8px;
+			padding: 0;
+			list-style: none;
+			display: inline-block;
+			width: 95%;
+			opacity: 1;
+		}
+
+		.component:hover {
+			opacity: 1;
+		}
+
+		.component-preview {
+			padding: 10px;
+			background: #fff;
+			margin-top: 3px;
+			height: 140px;
+			vertical-align: middle;
+			overflow: hidden;
+			background-color: white;
+			border-radius: 3px;
+			min-width: 220px;
+			position: relative;
+			z-index: 0;
+			cursor: pointer;
+		}
+
+		.components h5 {
+			font-size: 18px;
+			font-weight: 300;
+			color: white;
+			line-height: 28px;
+		}
+
+		.alerts {
+			z-index: 500;
+		}
+	</style>
+</head>
+
+<body class="viewport background-color-dark">
+
+	<div class="container full-width gutters-sm">
+		<div class="col-12">
+
+			<!-- TODO: Example -->
+			<div class="page-header">
+				<h1>px-example
+					<small>Display code snippets</small>
+				</h1>
+			</div>
+			<demo-snippet>
+				<template>
+			<px-example id="test" lang="html">
+				<section>
+					<p>Lorem ipsum dolor sit <strong>amet</strong>, consectetur adipisicing elit.</p>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+					</p>
+					<ul>
+						<li>Duis aute irure</li>
+						<li>dolor in reprehenderit</li>
+					</ul>
+					<p>
+						Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+				</section>
+			</px-example>
+		</template>
+	</demo-snippet>
+			<br>
+
+
+			<div class="u-mb">
+				<h2>device-view</h2>
+				<demo-snippet>
+					<template>
+						<div class="position-relative">
+							<device-view device="phone" src="https://www.polymer-project.org/"></device-view>
+						</div>
+					</template>
+				</demo-snippet>
+			</div>
+
+			<div class="u-mb">
+				<h2>device-layout-viewer</h2>
+				<demo-snippet>
+					<template>
+						<div class="position-relative">
+							<device-layout-viewer device="all" src="https://www.polymer-project.org/"></device-layout-viewer>
+						</div>
+					</template>
+				</demo-snippet>
+			</div>
+
+			<!-- TODO: Code Editor -->
+			<div class="page-header">
+				<h1>px-example-device
+					<small>
+						Edit and preview code.
+					</small>
+				</h1>
+			</div>
+			<demo-snippet>
+				<template>
+					<px-code-editor id="myEditor" theme="ace/theme/github" layout="left"></px-code-editor>
+					<script type="text/javascript">
+						document.addEventListener('WebComponentsReady', function(e) {
+							setTimeout(function() {
+								document.getElementById('myEditor').code = '<h2>Hello</h2>';
+							}, 500);
+						});
+					</script>
+				</template>
+			</demo-snippet>
+
+
+
+
+
+
+
+
+
+			<!-- TODO: Example Device -->
+			<div class="page-header">
+				<h1>px-example-device
+					<small>
+						Display in a device.
+					</small>
+				</h1>
+			</div>
+			<demo-snippet>
+				<template>
+					<px-example id="example2">
+						<px-example-device id="myDevice">
+							<div class="box">
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+									in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+								</p>
+							</div>
+						</px-example-device>
+					</px-example>
+		</template>
+	</demo-snippet>
+
+
+			<br>
+
+
+
+
+		</div>
+	</div>
+</body>
+
+</html>

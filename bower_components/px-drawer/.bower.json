@@ -1,0 +1,57 @@
+{
+  "name": "px-drawer",
+  "version": "0.0.6",
+  "authors": [
+    "Jonnie Spratley <jonnie.spratley@ge.com>"
+  ],
+  "description": "A responsive mobile first web component for hiding content off screen.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PredixDev/px-drawer.git"
+  },
+  "main": "px-drawer.html",
+  "keywords": [
+    "px",
+    "px-mobile"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "~1.4.0",
+    "hammerjs": "~2.0.8",
+    "iron-dropdown": "PolymerElements/iron-dropdown#~1.3.0",
+    "px-navbar": "https://github.com/PredixDev/px-navbar.git",
+    "iron-resizable-behavior": "PolymerElements/iron-resizable-behavior#~1.0.3",
+    "iron-fit-behavior": "PolymerElements/iron-fit-behavior#~1.2.3"
+  },
+  "devDependencies": {
+    "px-mobile-design": "https://github.com/PredixDev/px-mobile-design.git",
+    "iron-component-page": "PolymerElements/iron-component-page#~1.0.5",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.2.3",
+    "px-spacing-design": "https://github.com/PredixDev/px-spacing-design.git",
+    "px-table-view": "https://github.com/PredixDev/px-table-view.git",
+    "px-colors-design": "^0.2.16",
+    "px-spacing-responsive-design": "^0.3.7"
+  },
+  "resolutions": {
+    "polymer": "^1.4.0",
+    "px-theme": "^0.7.0",
+    "polymer-font-awesome": "~0.1.5"
+  },
+  "homepage": "https://github.com/PredixDev/px-drawer",
+  "_release": "0.0.6",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.6",
+    "commit": "b1444d6f4e02d6ee52f034bdbf8ad09e481c49f7"
+  },
+  "_source": "https://github.com/PredixDev/px-drawer.git",
+  "_target": "*",
+  "_originalSource": "px-drawer"
+}
