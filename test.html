@@ -27,7 +27,13 @@
 				<px-navbar id="page1navbar"></px-navbar>
 			</px-page>
 			<px-page id="page2" title="Page2">
-				<px-navbar id="page2navbar"></px-navbar>
+				<px-navbar id="page2navbar" pages-container="pagesFixture"></px-navbar>
+			</px-page>
+			<px-page id="page3" title="Page3">
+				<px-navbar id="page3navbar" pages-container="pagesFixture"></px-navbar>
+			</px-page>
+			<px-page id="page4" title="Page4">
+				<px-navbar id="page4navbar" pages-container="pagesFixture"></px-navbar>
 			</px-page>
 		</px-pages>
 		<script>
@@ -116,39 +122,12 @@
 
 					test('getCurrentPage() - returns the current px-page', function (done) {
 						var pagesFixture = document.getElementById('pagesFixture');
-
+						var currentPage = pagesFixture.getSelectedPage();
 						setTimeout(function () {
-							var currentPage = pagesFixture.getSelectedPage();
-							var navbar = currentPage.navbar;
-							assert(navbar.getCurrentPage() === currentPage);
+							assert.equal(pagesFixture.getSelectedPage().id, currentPage.id);
 							done();
 						}, 500);
 					});
-
-					test('navbar should NOT show back button if on main page', function (done) {
-		        var pagesFixture = document.getElementById('pagesFixture');
-
-		        setTimeout(function () {
-		          var currentPage = pagesFixture.getSelectedPage();
-		          var navbar = currentPage.navbar;
-		          assert(!navbar.back);
-		          done();
-		        }, 1500);
-		      });
-
-		      test('navbar should show back button if not on main page', function (done) {
-		        var pagesFixture = document.getElementById('pagesFixture');
-
-
-		        setTimeout(function () {
-		          pagesFixture.next();
-		          var currentPage = pagesFixture.getSelectedPage();
-		          var navbar = currentPage.navbar;
-		          assert(navbar);
-
-		          done();
-		        }, 1000);
-		      });
 
 				});
 				suite('Events', function () {
@@ -167,6 +146,39 @@
 						element._handleNaviconClick();
 					});
 				});
+
+				suite('Back Button', function(){
+					var pagesFixture = document.getElementById('pagesFixture');
+					test('getCurrentPage() - returns the current px-page', function () {
+						var currentPage = pagesFixture.getSelectedPage();
+						var navbar = currentPage.navbar;
+						assert(currentPage);
+					});
+
+					test('navbar should NOT show back button if on main page', function (done) {
+						setTimeout(function () {
+							var currentPage = pagesFixture.getSelectedPage();
+							var navbar = currentPage.navbar;
+							assert(currentPage.main);
+							assert(navbar.back === false);
+							done();
+						}, 500);
+					});
+
+					test('navbar should show back button if not on main page', function (done) {
+						pagesFixture.next();
+						setTimeout(function () {
+							var currentPage = pagesFixture.getSelectedPage();
+							var navbar = currentPage.navbar;
+							assert(!currentPage.main);
+							assert.ok(navbar.back);
+							done();
+						}, 500);
+					});
+
+				});
+
+
 			});
 		</script>
 	</body>

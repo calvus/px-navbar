@@ -38,12 +38,18 @@
     <px-navbar id="fixture_fixed" fixed></px-navbar>
 
     <px-pages id="pagesFixture">
-      <px-page id="page1" title="Page1" main>
-        <px-navbar id="page1navbar"></px-navbar>
-      </px-page>
-      <px-page id="page2" title="Page2">
-        <px-navbar id="page2navbar"></px-navbar>
-      </px-page>
-    </px-pages>
+			<px-page id="page1" title="Page1" main>
+				<px-navbar id="page1navbar"></px-navbar>
+			</px-page>
+			<px-page id="page2" title="Page2">
+				<px-navbar id="page2navbar" pages-container="pagesFixture"></px-navbar>
+			</px-page>
+			<px-page id="page3" title="Page3">
+				<px-navbar id="page3navbar" pages-container="pagesFixture"></px-navbar>
+			</px-page>
+			<px-page id="page4" title="Page4">
+				<px-navbar id="page4navbar" pages-container="pagesFixture"></px-navbar>
+			</px-page>
+		</px-pages>
   </body>
 </html>
