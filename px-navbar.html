@@ -251,11 +251,10 @@ Custom property | Description | Default
 				if (this.fixed) {
 					this.toggleClass('navbar--fixed', true, this.$.navbar);
 				}
-
 				this.async(function () {
 					this._setupHandlers();
 					this._fixButtons();
-				});
+				}, 500);
 			},
 			/**
 			 * Handle cleaning up the event listeners when the component is detached.
@@ -267,17 +266,17 @@ Custom property | Description | Default
 			 * Handle setting up the event listeners to the 'change' event of the views
 			 */
 			_setupHandlers: function () {
-				if (this.pagesContainer && this.pagesContainer.id) {
-					//this.pagesContainer = document.getElementById(this.pagesContainer);
-					//this.listen(this.pagesContainer, 'px-page-change', '_handleViewChange');
+				if (this.pagesContainer) {
+					this.pagesContainer = document.getElementById(this.pagesContainer);
+					this.listen(this.pagesContainer, 'px-page-change', '_handleViewChange');
 				}
 			},
 			/**
 			 * Cleanup event listeners
 			 */
 			_cleanupHandlers: function () {
-				if (this.pagesContainer && this.pagesContainer.id) {
-				//	this.unlisten(this.pagesContainer, 'px-page-change', '_handleViewChange');
+				if (this.pagesContainer) {
+					this.unlisten(this, 'px-page-change', '_handleViewChange');
 				}
 			},
 			/**
@@ -287,12 +286,11 @@ Custom property | Description | Default
 			_handleViewChange: function (e) {
 				var _this = this;
 				var current = e.detail;
+				
 				if (current) {
 					_this.debounce('_handleViewChange', function () {
 						if (!_this.disableBack) {
-							_this.back = (current.main
-								? false
-								: true);
+							_this.back = (current.main ? false : true);
 						}
 						_this.title = current.getAttribute('title');
 					});
