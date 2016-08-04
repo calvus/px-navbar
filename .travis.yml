@@ -2,23 +2,23 @@ sudo: required
 dist: trusty
 language: node_js
 node_js:
-- stable
+  - stable
 branches:
   except:
-  - gh-pages
+    - gh-pages
 addons:
-  #firefox: latest
   apt:
     sources:
-    - google-chrome
+      - google-chrome
     packages:
-    - google-chrome-stable
+      - google-chrome-stable
+  firefox: '46.0'
 before_script:
-- npm install web-component-tester
-- export PATH=$PWD/node_modules/.bin:$PATH
+  - npm install web-component-tester
+  - 'export PATH=$PWD/node_modules/.bin:$PATH'
 script:
-- xvfb-run wct --skip-plugin sauce
+  - xvfb-run wct --skip-plugin sauce
 after_success:
-- cd $TRAVIS_BUILD_DIR/scripts
-- chmod 755 ghp.sh
-- "./ghp.sh"
+  - cd $TRAVIS_BUILD_DIR/scripts
+  - chmod 755 ghp.sh
+  - ./ghp.sh
